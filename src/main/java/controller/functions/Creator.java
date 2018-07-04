@@ -11,7 +11,7 @@ import java.util.UUID;
  *
  * @author 杨晓宇
  *
- * 初始化所有项目表
+ * 初始化所有项目表以及随机生成一些对象
  *
  * Created by Administrator on 2018/7/4.
  *

@@ -1,12 +1,15 @@
 package model.DAO;
 
-import model.User;
+import model.entity.User;
 import org.apache.ibatis.annotations.Param;
 
 /**
- * @autuor 杨晓宇
+ * @author 杨晓宇
  * User类的数据访问对象
  * Created by Administrator on 2018/7/4.
+ *
+ * 用户类数据访问对象
+ * @see UserDAO
  */
 
 public interface UserDAO {

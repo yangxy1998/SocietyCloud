@@ -39,7 +39,7 @@ public class InitServlet extends HttpServlet {
         session = sessionFactory.openSession();
 
         Loader.LoadDAOs(session);
-
+        Loader.LoadReceivers();
         Creator.createTables(session);
 
     }

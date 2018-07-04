@@ -6,7 +6,7 @@ import model.DAO.*;
  *
  * @author 杨晓宇
  *
- * 数据管理类，包括所有数据管理接口
+ * 用于数据库信息管理的管理者
  *
  * Created by Administrator on 2018/7/4.
  *

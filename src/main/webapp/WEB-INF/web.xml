@@ -5,9 +5,10 @@
          version="3.1">
 
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index/index.jsp</welcome-file>
     </welcome-file-list>
 
+    <!-- 初始化app -->
     <servlet>
         <servlet-name>InitServlet</servlet-name>
         <servlet-class>controller.servlets.InitServlet</servlet-class>
@@ -17,14 +18,45 @@
         <servlet-name>InitServlet</servlet-name>
         <url-pattern>/init</url-pattern>
     </servlet-mapping>
-    
+
+    <!-- 初始页面 -->
     <servlet>
         <servlet-name>Index</servlet-name>
-        <jsp-file>/index.jsp</jsp-file>
-        <load-on-startup>2</load-on-startup>
+        <jsp-file>/index/index.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
-        <url-pattern>/Index</url-pattern>
+        <url-pattern>/welcome</url-pattern>
     </servlet-mapping>
+
+    <!-- 登录页面 -->
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>controller.servlets.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <!-- 注册页面 -->
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>controller.servlets.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <!-- 管理员页面 -->
+    <servlet>
+        <servlet-name>Admin</servlet-name>
+        <jsp-file>/index.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Admin</servlet-name>
+        <url-pattern>/Admin</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -4,7 +4,7 @@ import com.mysql.cj.jdbc.Driver;
 import controller.functions.Creator;
 import controller.functions.Loader;
 import controller.functions.Managers;
-import model.User;
+import model.entity.User;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
