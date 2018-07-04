@@ -52,7 +52,7 @@ public class Creator {
     public static String createTableUser()
     {
         String sql="";
-        sql="ALTER TABLE User(" +
+        sql="CREATE TABLE User(" +
                 "userId VARCHAR(18) NOT NULL ," +
                 "userName VARCHAR(18) NOT NULL ," +
                 "password VARCHAR(18) NOT NULL ," +
