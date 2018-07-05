@@ -1,9 +1,10 @@
 controller
-controller.functions
 controller.implementation
 controller.servlets
 model
 model.DAO
 model.entity
+util
+util.functions
 view
 view.receivers

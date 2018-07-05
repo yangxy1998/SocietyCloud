@@ -1,23 +1,26 @@
 package controller.implementation;
 
-import controller.functions.Managers;
+import model.Managers;
 import model.entity.User;
+import util.Attribute;
 import view.receivers.LoginReceiver;
 
 import javax.servlet.http.HttpServletRequest;
 
 /**
- *
- * @see LoginReceiver 本类实现了登录请求接收者接口
- *
  * Created by Administrator on 2018/7/4.
+ * @author 杨晓宇
+ *
+ * 本类实现了登录请求接收者接口
+ * @see LoginReceiver 登录请求接收者接口
+ *
  */
 
 public class LoginImpl implements LoginReceiver{
 
-    @Override
-    public int loginFromRequest(HttpServletRequest request){
 
+    @Override
+    public int loginFromRequest(@Attribute(User = "user") HttpServletRequest request) {
         String username=request.getParameter("username");
         String password=request.getParameter("password");
         User user= Managers.UserManager.getUserByName(username);
@@ -40,4 +43,8 @@ public class LoginImpl implements LoginReceiver{
         }
     }
 
+    @Override
+    public User getUserFromRequest(@Attribute(User = "user") HttpServletRequest request) {
+        return (User)request.getAttribute("user");
+    }
 }

@@ -4,12 +4,14 @@ import model.entity.User;
 import org.apache.ibatis.annotations.Param;
 
 /**
- * @author 杨晓宇
- * User类的数据访问对象
- * Created by Administrator on 2018/7/4.
  *
- * 用户类数据访问对象
- * @see UserDAO
+ * Created by Administrator on 2018/7/4.
+ * @author 杨晓宇
+ *
+ * 用户类的数据访问对象
+ *
+ * @see User 用户类
+ *
  */
 
 public interface UserDAO {

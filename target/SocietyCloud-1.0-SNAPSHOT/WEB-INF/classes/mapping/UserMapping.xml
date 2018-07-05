@@ -4,7 +4,7 @@
 
 <mapper namespace="model.DAO.UserDAO">
 
-    <resultMap id="UserMap" type="model.User">
+    <resultMap id="UserMap" type="model.entity.User">
         <result property="userId" column="userId"/>
         <result property="userName" column="userName"/>
         <result property="password" column="password"/>
@@ -34,7 +34,7 @@
     <insert id="createUser">
         INSERT INTO User
         VALUES ('${userId}','${userName}','${password}','${phoneNum}',
-        null,null,null,null,1,null)
+        null,null,null,null,0,null)
     </insert>
 
 </mapper>

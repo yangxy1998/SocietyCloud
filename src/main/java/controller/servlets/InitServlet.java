@@ -1,10 +1,9 @@
 package controller.servlets;
 
-import controller.functions.Creator;
-import controller.functions.Loader;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import util.functions.Loader;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,11 +15,12 @@ import java.io.PrintWriter;
 
 /**
  *
+ * Created by Administrator on 2018/7/4.
  * @author 杨晓宇
  *
  * 初始化所有需要的工具接口
  *
- * Created by Administrator on 2018/7/4.
+ * @see Loader 加载者
  *
  */
 
@@ -40,7 +40,6 @@ public class InitServlet extends HttpServlet {
 
         Loader.LoadDAOs(session);
         Loader.LoadReceivers();
-        Creator.createTables(session);
 
     }
 
@@ -56,6 +55,7 @@ public class InitServlet extends HttpServlet {
 
     @Override
     public void destroy() {
+        session.commit();
         session.close();
     }
 }

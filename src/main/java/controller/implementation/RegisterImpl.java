@@ -1,22 +1,26 @@
 package controller.implementation;
 
-import controller.functions.Creator;
-import controller.functions.Managers;
+import model.Managers;
 import model.entity.User;
+import util.Attribute;
+import util.functions.Creator;
 import view.receivers.RegisterReceiver;
 
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @see RegisterReceiver 实现了注册请求接收者接口
- *
  * Created by Administrator on 2018/7/4.
+ * @author 杨晓宇
+ *
+ * 实现了注册请求接收者接口
+ * @see RegisterReceiver 注册请求接收者接口
+ *
  */
 public class RegisterImpl implements RegisterReceiver {
 
-    @Override
-    public int registerFromRequest(HttpServletRequest request){
 
+    @Override
+    public int registerFromRequest(@Attribute(User = "user") HttpServletRequest request) {
         String username=request.getParameter("username");
         String password=request.getParameter("password");
         String confirmPassword=request.getParameter("confirmPassword");
@@ -39,5 +43,4 @@ public class RegisterImpl implements RegisterReceiver {
             return 0;
         }
     }
-
 }

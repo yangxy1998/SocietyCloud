@@ -1,4 +1,4 @@
-package controller.functions;
+package util.functions;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -31,11 +31,11 @@ public class Creator {
      * 创建所有需要的表结构
      * @param session
      */
-    public static void createTables(SqlSession session){
+    public static void findTables(SqlSession session){
         try {
             Connection connection=session.getConnection();
             Statement stmt=connection.createStatement();
-            stmt.execute(createTableUser());
+            stmt.execute(testTableUser());
         } catch (SQLException e) {
             System.out.println("SQLException: " + e.getMessage());
             System.out.println("SQLState: " + e.getSQLState());
@@ -49,21 +49,10 @@ public class Creator {
      * 创建User表
      * @return User表的建表语句
      */
-    public static String createTableUser()
+    public static String testTableUser()
     {
         String sql="";
-        sql="CREATE TABLE User(" +
-                "userId VARCHAR(18) NOT NULL ," +
-                "userName VARCHAR(18) NOT NULL ," +
-                "password VARCHAR(18) NOT NULL ," +
-                "phoneNum VARCHAR(11) NOT NULL ," +
-                "nickName VARCHAR(32) ," +
-                "realName VARCHAR(32) ," +
-                "academicNum VARCHAR(20) ," +
-                "idCard VARCHAR(18) ," +
-                "status INTEGER(1) DEFAULT 1 ," +
-                "description VARCHAR(128) DEFAULT '这个人很懒，什么也没写。'" +
-                ");";
+        sql="SELECT * FROM User";
         return sql;
     }
 }

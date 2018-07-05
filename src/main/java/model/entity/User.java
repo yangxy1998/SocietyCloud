@@ -2,12 +2,13 @@ package model.entity;
 
 /**
  *
+ * Created by Administrator on 2018/7/4.
  * @author 杨晓宇
  *
  * 用户类
  *
  * @see model.DAO.UserDAO
- * Created by Administrator on 2018/7/4.
+ *
  */
 
 public class User {

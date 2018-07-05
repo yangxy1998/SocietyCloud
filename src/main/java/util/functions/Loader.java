@@ -1,8 +1,9 @@
-package controller.functions;
+package util.functions;
 
 import controller.implementation.LoginImpl;
 import controller.implementation.RegisterImpl;
 import model.DAO.UserDAO;
+import model.Managers;
 import org.apache.ibatis.session.SqlSession;
 import view.Receivers;
 

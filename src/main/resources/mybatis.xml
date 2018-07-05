@@ -7,9 +7,9 @@
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/hezitechnology?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true&amp;autoReconnect=true&amp;serverTimezone=UTC"/>
-                <property name="username" value="root"/>
-                <property name="password" value="admin"/>
+                <property name="url" value="jdbc:mysql://118.24.126.124:3306/HZtechnology?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;autoReconnect=true&amp;serverTimezone=UTC"/>
+                <property name="username" value="HZtechnology"/>
+                <property name="password" value="#RoyalNeverGiveUp123"/>
             </dataSource>
 
         </environment>

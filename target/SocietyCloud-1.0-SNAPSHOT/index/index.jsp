@@ -1,4 +1,4 @@
-<%@ page import="model.User" %><%--
+<%@ page import="model.entity.User" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/4
