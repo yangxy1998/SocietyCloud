@@ -32,9 +32,28 @@
     </select>
 
     <insert id="createUser">
-        INSERT INTO User
-        VALUES ('${userId}','${userName}','${password}','${phoneNum}',
-        null,null,null,null,0,null)
+        INSERT INTO User(userId,userName,password,phoneNum)
+        VALUES ('${userId}','${userName}','${password}','${phoneNum}')
     </insert>
+
+    <update id="updateUser">
+        UPDATE USER
+        SET userName='${userName}',password='${password}',phoneNum='${phoneNum}',
+            nickName='${nickName}',realName='${realName}',academicNum='${academicName}',
+            idCard='${idCard}',status=${status},description='${description}'
+        WHERE userId='${userId}'
+    </update>
+
+    <select id="getAllUsers">
+        SELECT * FROM USER
+    </select>
+
+    <delete id="deleteUser">
+        DELETE *
+        FROM USER
+        <where>
+            userId='${userId}'
+        </where>
+    </delete>
 
 </mapper>

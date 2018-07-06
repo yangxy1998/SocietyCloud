@@ -11,7 +11,7 @@
     <!-- 初始化app -->
     <servlet>
         <servlet-name>InitServlet</servlet-name>
-        <servlet-class>controller.servlets.InitServlet</servlet-class>
+        <servlet-class>controller.servlet.InitServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
@@ -28,11 +28,15 @@
         <servlet-name>Index</servlet-name>
         <url-pattern>/welcome</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Index</servlet-name>
+        <url-pattern>*.*</url-pattern>
+    </servlet-mapping>
 
     <!-- 登录页面 -->
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>controller.servlets.LoginServlet</servlet-class>
+        <servlet-class>controller.servlet.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -42,7 +46,7 @@
     <!-- 注册页面 -->
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>controller.servlets.RegisterServlet</servlet-class>
+        <servlet-class>controller.servlet.RegisterServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
@@ -58,5 +62,9 @@
         <servlet-name>Admin</servlet-name>
         <url-pattern>/Admin</url-pattern>
     </servlet-mapping>
+
+    <listener>
+        <listener-class>util.function.ApplicationListener</listener-class>
+    </listener>
 
 </web-app>

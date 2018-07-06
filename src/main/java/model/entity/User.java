@@ -1,17 +1,19 @@
 package model.entity;
 
+import util.Entity;
+
+import javax.servlet.http.HttpSessionBindingEvent;
+
 /**
  *
- * Created by Administrator on 2018/7/4.
- * @author 杨晓宇
  *
  * 用户类
  *
- * @see model.DAO.UserDAO
- *
+ * Created by Administrator on 2018/7/4.
+ * @author 杨晓宇
  */
 
-public class User {
+public class User extends Entity{
 
     //用户唯一id
     private String userId;
@@ -121,5 +123,28 @@ public class User {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String getEntityLog() {
+        return "用户 id："+this.userId+" 用户名："+this.userName;
+    }
+
+    private boolean login=false;
+
+    public boolean isLogin(){
+        return login;
+    }
+
+    @Override
+    public void valueBound(HttpSessionBindingEvent event) {
+        super.valueBound(event);
+        login=true;
+    }
+
+    @Override
+    public void valueUnbound(HttpSessionBindingEvent event) {
+        super.valueUnbound(event);
+        login=false;
     }
 }

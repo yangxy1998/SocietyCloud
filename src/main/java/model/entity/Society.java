@@ -1,13 +1,21 @@
 package model.entity;
 
+import java.util.List;
+
 /**
- * Created by Administrator on 2018/7/5.
- * @author 杨晓宇
- *
  * 社团类
  *
- * @see model.DAO.SocietyDAO
+ * Created by Administrator on 2018/7/5.
+ *
+ * @author 杨晓宇
  *
  */
 public class Society {
+
+    String societyId;
+
+    String societyName;
+
+    List<String> type;
+
 }

@@ -1,7 +1,8 @@
 package util;
 
-import util.functions.Creator;
-import util.functions.Loader;
+import util.exception.MapperNotFoundException;
+import util.function.Creator;
+import util.function.Loader;
 import model.Managers;
 import model.entity.User;
 import org.apache.ibatis.session.SqlSession;
@@ -27,7 +28,11 @@ public class Test {
         SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(is);
 
         SqlSession session = sessionFactory.openSession();
-        Loader.LoadDAOs(session);
+        try {
+            Loader.LoadDAOs(session);
+        } catch (MapperNotFoundException e) {
+            e.printStackTrace();
+        }
         Creator.findTables(session);
         Managers.UserManager.createUser("000000000000000000","DBConnectSuccess","admin","10000000001");
         User user= Managers.UserManager.getUserById("000000000000000000");

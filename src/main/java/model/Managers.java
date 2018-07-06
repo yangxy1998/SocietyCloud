@@ -4,11 +4,11 @@ import model.DAO.*;
 
 /**
  *
+ *
+ * 用于装配所有DAO的管理者集合
+ *
  * Created by Administrator on 2018/7/4.
  * @author 杨晓宇
- *
- * 用于数据库信息管理的管理者集合
- *
  */
 
 

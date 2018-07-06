@@ -1,12 +1,18 @@
-<!DOCTYPE HTML>
-
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2018/7/5
+  Time: 17:10
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>社团Cloud</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <!--[if lte IE 8]><script src="./assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="./assets/css/main.css" />
 </head>
 <body class="landing">
 
@@ -15,6 +21,7 @@
 
     <!-- Header -->
     <header id="header" class="alt">
+        <jsp:useBean id="user" class="model.entity.User" scope="session" />
         <h1><a href="index.html"><b>首页</b></a></h1>
         <nav id="nav">
             <ul>
@@ -25,6 +32,14 @@
                             <li><a href="index.html">主页</a></li>
                             <li><a href="generic.html">管理社团</a></li>
                             <li><a href="elements.html">查看社团</a></li>
+                            <form>
+                                <input type="text" name="in">
+                                <input type="submit">
+                            </form>
+                            <h2>
+                                ${param.in};
+                                ${user.userName};
+                            </h2>
                             <li><a href="../login/login.html">登录</a></li>
                             <li><a href="../register/register.html">注册</a></li>
                         </ul>
@@ -131,13 +146,13 @@
 </div>
 
 <!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.scrollex.min.js"></script>
-<script src="assets/js/jquery.scrolly.min.js"></script>
-<script src="assets/js/skel.min.js"></script>
-<script src="assets/js/util.js"></script>
-<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-<script src="assets/js/main.js"></script>
+<script src="./assets/js/jquery.min.js"></script>
+<script src="./assets/js/jquery.scrollex.min.js"></script>
+<script src="./assets/js/jquery.scrolly.min.js"></script>
+<script src="./assets/js/skel.min.js"></script>
+<script src="./assets/js/util.js"></script>
+<!--[if lte IE 8]><script src="./assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="./assets/js/main.js"></script>
 
 </body>
 </html>
