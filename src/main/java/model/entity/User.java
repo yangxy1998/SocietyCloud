@@ -39,7 +39,7 @@ public class User extends Entity{
     //身份证号
     private String idCard;
 
-    //用户状态，0为冻结，1为正常
+    //用户状态，0为正常，1为冻结
     private int status;
 
     //用户描述

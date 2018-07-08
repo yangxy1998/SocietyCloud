@@ -37,23 +37,21 @@
     </insert>
 
     <update id="updateUser">
-        UPDATE USER
+        UPDATE User
         SET userName='${userName}',password='${password}',phoneNum='${phoneNum}',
-            nickName='${nickName}',realName='${realName}',academicNum='${academicName}',
+            nickName='${nickName}',realName='${realName}',academicNum='${academicNum}',
             idCard='${idCard}',status=${status},description='${description}'
         WHERE userId='${userId}'
     </update>
 
-    <select id="getAllUsers">
-        SELECT * FROM USER
+    <select id="getAllUsers" resultMap="UserMap">
+        SELECT * FROM User
     </select>
 
     <delete id="deleteUser">
-        DELETE *
-        FROM USER
-        <where>
-            userId='${userId}'
-        </where>
+        DELETE
+        FROM User
+        WHERE userId='${userId}'
     </delete>
 
 </mapper>

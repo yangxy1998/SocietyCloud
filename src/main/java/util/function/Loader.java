@@ -18,6 +18,7 @@ public class Loader {
 
     /**
      * 加载所有后台管理接口
+     * @throws MapperNotFoundException 如果找不到对应Mapper则会抛出异常
      * @param session
      */
     public static void LoadDAOs(SqlSession session) throws MapperNotFoundException {

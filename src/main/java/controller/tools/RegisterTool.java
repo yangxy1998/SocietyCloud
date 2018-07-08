@@ -14,13 +14,13 @@ import util.function.Creator;
  * Created by Administrator on 2018/7/4.
  * @author 杨晓宇
  */
-public class RegisterTool {
+public interface RegisterTool {
 
     /**
      * 获得一个全新的用户userId
      * @return userId
      */
-    public static String getNewUserId(){
+    static String getNewUserId(){
         String uuid;
         User user;
         do{
@@ -29,5 +29,6 @@ public class RegisterTool {
         }while (user!=null);
         return uuid;
     }
+
     //TODO:更多接口请在这里定义
 }

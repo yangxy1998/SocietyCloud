@@ -11,4 +11,5 @@
         <result property="attribute" column="attribute"/>
     </resultMap>
 
+
 </mapper>

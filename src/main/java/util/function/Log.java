@@ -128,13 +128,16 @@ public class Log {
     /**
      * 添加管理员日志
      * @param adminLog 管理员日志
+     * @param adminName 管理员名
      */
-    public static void addAdminLog(String adminLog){
+    public static void addAdminLog(String adminLog,String adminName){
         currentLog=new Log();
         currentLog.time= Creator.getTime();
         currentLog.log=adminLog;
         currentLog.type=("admin");
+        currentLog.attribute=adminName;
         logs.add(currentLog);
+        addLog("管理员："+adminName+" "+adminLog);
         showLog();
     }
 

@@ -36,7 +36,7 @@
     <!-- 登录页面 -->
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>controller.servlet.LoginServlet</servlet-class>
+        <servlet-class>controller.servlet.user.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -46,7 +46,7 @@
     <!-- 注册页面 -->
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>controller.servlet.RegisterServlet</servlet-class>
+        <servlet-class>controller.servlet.user.RegisterServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
@@ -56,11 +56,21 @@
     <!-- 管理员页面 -->
     <servlet>
         <servlet-name>Admin</servlet-name>
-        <jsp-file>/index.jsp</jsp-file>
+        <servlet-class>controller.servlet.admin.AdminServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Admin</servlet-name>
-        <url-pattern>/Admin</url-pattern>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+
+    <!-- 管理用户页面 -->
+    <servlet>
+        <servlet-name>AdminUser</servlet-name>
+        <servlet-class>controller.servlet.admin.AdminUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminUser</servlet-name>
+        <url-pattern>/admin.User</url-pattern>
     </servlet-mapping>
 
     <listener>
