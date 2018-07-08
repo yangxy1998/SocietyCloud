@@ -70,8 +70,17 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>AdminSociety</servlet-name>
+        <servlet-class>controller.servlet.admin.AdminSocietyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminSociety</servlet-name>
+        <url-pattern>/admin.Society</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>FoundSocietyServlet</servlet-name>
-        <servlet-class>controller.servlet.user.FoundSocietyServlet</servlet-class>
+        <servlet-class>controller.servlet.user.FoundServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>FoundSocietyServlet</servlet-name>

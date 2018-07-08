@@ -1,6 +1,6 @@
 package controller.servlet.user;
 
-import controller.tools.RegisterTool;
+import controller.tools.user.RegisterTool;
 import model.Managers;
 import model.entity.User;
 import util.function.Log;

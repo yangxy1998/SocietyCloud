@@ -1,4 +1,5 @@
 <%@ page import="util.function.Creator" %>
+<%@ page import="controller.tools.user.RegisterTool" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -34,7 +35,7 @@
             <jsp:useBean id="update" type="java.lang.String" scope="session"/>
             <c:if test="${update.equals(\"newUser\")}">
                 <%
-                    session.setAttribute("uuid",Creator.createUUID());
+                    session.setAttribute("uuid", RegisterTool.getNewUserId());
                 %>
                 <jsp:useBean id="uuid" type="java.lang.String" scope="session"/>
                 <tr>

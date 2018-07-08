@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * Created by Administrator on 2018/7/8.
  */
-public class FoundSocietyServlet extends HttpServlet {
+public class FoundServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }

@@ -1,0 +1,89 @@
+package controller.servlet.admin;
+
+import controller.tools.admin.AdminSocietyTool;
+import controller.tools.admin.AdminTool;
+import model.Managers;
+import util.function.Creator;
+import util.function.Log;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Enumeration;
+import java.util.List;
+
+/**
+ * Created by Administrator on 2018/7/8.
+ */
+public class AdminSocietyServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher diapatcher=request.getRequestDispatcher("./admin/admin.jsp");
+        Enumeration<String> parameterNames=request.getParameterNames();
+        HttpSession session=request.getSession();
+        String adminName=(String) request.getAttribute("adminName");
+        while (parameterNames.hasMoreElements()){
+            String parameterName=parameterNames.nextElement();
+            String operation= AdminTool.getOperation(parameterName);
+            if(operation!=null){
+                String societyId=AdminTool.getId(parameterName);
+                if(operation.equals("create")){
+                    Log.addAdminLog("尝试添加一个社团。",adminName);
+                    session.setAttribute("update",societyId);
+                }
+                else if(operation.equals("update")){
+                    Log.addAdminLog("尝试修改社团"+societyId+"的信息。",adminName);
+                    session.setAttribute("update",societyId);
+                }
+                else if(operation.equals("remove")){
+                    Log.addAdminLog("尝试移除社团"+societyId+"的信息。",adminName);
+                    session.setAttribute("update","");
+                    Managers.SocietyManager.deleteSociety(societyId);
+                    Log.addAdminLog("移除社团"+societyId+"操作成功。",adminName);
+                }
+                else if(operation.equals("commit")){
+                    request.setAttribute("update","");
+                    if(societyId.equals("newSociety")){
+                        String newSocietyId=request.getParameter("societyId");
+                        String newSocietyName=request.getParameter("societyName");
+                        String newSchoolName=request.getParameter("schoolName");
+                        String newFoundTime=request.getParameter("foundDate");
+                        Date newFoundDate= Creator.getDate(newFoundTime);
+                        String newFounder=request.getParameter("founder");
+                        Managers.SocietyManager.createSociety(newSocietyId,newSocietyName,newSchoolName,newFoundDate,newFounder);
+                        Log.addAdminLog("成功添加一个社团，其社团ID为："+societyId+"。",adminName);
+                    }
+                    else {
+                        Enumeration<String> parameters=request.getParameterNames();
+                        List<String> values=new ArrayList<>();
+                        while (parameters.hasMoreElements()){
+                            String parameterN=parameters.nextElement();
+                            if(AdminSocietyTool.checkParameter(parameterN))
+                                values.add(request.getParameter(parameterN));
+                        }
+                        Managers.SocietyManager.updateSociety(values.get(0),values.get(1),values.get(2)
+                                ,values.get(3),values.get(4),Creator.getDate(values.get(5)),values.get(6),
+                                Integer.parseInt(values.get(7)),values.get(8));
+                        Log.addAdminLog("更新用户"+societyId+"的信息，操作成功。",adminName);
+                    }
+                }
+                else {
+                    session.setAttribute("update","");
+                    Log.addAdminLog("取消之前的操作。",adminName);
+                }
+            }
+        }
+        session.setAttribute("societies",Managers.SocietyManager.getAllSocieties());
+        session.setAttribute("admin", "society");
+        diapatcher.forward(request,response);
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+}

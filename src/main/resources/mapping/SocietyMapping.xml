@@ -10,7 +10,7 @@
         <result property="schoolName" column="schoolName"/>
         <result property="mainType" column="mainType"/>
         <result property="subType" column="subType"/>
-        <result property="foundTime" column="foundTime"/>
+        <result property="foundDate" column="foundDate"/>
         <result property="founder" column="founder"/>
         <result property="status" column="status"/>
         <result property="description" column="description"/>
@@ -31,14 +31,14 @@
     </select>
 
     <insert id="createSociety">
-        INSERT INTO Society(societyId,societyName,schoolName,foundTime,founder)
-        VALUES ('${societyId}','${societyName}','${schoolName}','${foundTime}','${founder}')
+        INSERT INTO Society(societyId,societyName,schoolName,foundDate,founder)
+        VALUES ('${societyId}','${societyName}','${schoolName}','${foundDate}','${founder}')
     </insert>
 
-    <update id="updateUser">
-        UPDATE User
+    <update id="updateSociety">
+        UPDATE Society
         SET societyName='${societyName}',schoolName='${schoolName}',mainType='${mainType}',
-        subType='${subType}',foundTime='${foundTime}',founder='${founder}',
+        subType='${subType}',foundDate='${foundDate}',founder='${founder}',
         status='${status}', description='${description}'
         WHERE societyId='${societyId}'
     </update>

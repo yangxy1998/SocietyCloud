@@ -15,11 +15,15 @@
   <body>
   <form method="post" action="admin">
     <input type="submit" name="user" value="用户管理">
+    <input type="submit" name="society" value="社团管理">
     <input type="submit" name="log" value="查看日志">
   </form>
   <jsp:useBean id="admin" type="java.lang.String" scope="session"/>
   <c:if test="${admin.equals(\"user\")}">
     <jsp:include page="./include/user.jsp"/>
+  </c:if>
+  <c:if test="${admin.equals(\"society\")}">
+    <jsp:include page="./include/society.jsp"/>
   </c:if>
   <c:if test="${admin.equals(\"log\")}">
     <jsp:include page="./include/log.jsp"/>

@@ -1,6 +1,7 @@
 package util.function;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,6 +17,9 @@ import java.util.List;
 public class Log {
 
     //日志时间
+    private Date date;
+
+    //日志时间（字符串表示）
     private String time;
 
     //日志内容
@@ -34,12 +38,12 @@ public class Log {
     //日志属性
     private String attribute;
 
-    public String getTime() {
-        return time;
+    public Date getDate() {
+        return date;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getLog() {
@@ -66,6 +70,14 @@ public class Log {
         this.attribute = attribute;
     }
 
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
     //当前日志
     private static Log currentLog=new Log();
     //日志列表
@@ -77,7 +89,8 @@ public class Log {
      */
     public static void addLog(String log){
         currentLog=new Log();
-        currentLog.time= Creator.getTime();
+        currentLog.date= Creator.getDate();
+        currentLog.time= Creator.getTime(currentLog.date);
         currentLog.log=log;
         currentLog.type=("event");
         logs.add(currentLog);
@@ -90,7 +103,8 @@ public class Log {
      */
     public static void addErrorLog(String errorLog){
         currentLog=new Log();
-        currentLog.time= Creator.getTime();
+        currentLog.date= Creator.getDate();
+        currentLog.time= Creator.getTime(currentLog.date);
         currentLog.log=errorLog;
         currentLog.type=("error");
         logs.add(currentLog);
@@ -103,7 +117,8 @@ public class Log {
      */
     public static void addUserLog(String userLog,String userName){
         currentLog=new Log();
-        currentLog.time= Creator.getTime();
+        currentLog.date= Creator.getDate();
+        currentLog.time= Creator.getTime(currentLog.date);
         currentLog.log=userLog;
         currentLog.type=("user");
         currentLog.attribute=userName;
@@ -117,7 +132,8 @@ public class Log {
      */
     public static void addSocietyLog(String societyLog,String societyName){
         currentLog=new Log();
-        currentLog.time= Creator.getTime();
+        currentLog.date= Creator.getDate();
+        currentLog.time= Creator.getTime(currentLog.date);
         currentLog.log=societyLog;
         currentLog.type=("society");
         currentLog.attribute=societyName;
@@ -132,7 +148,8 @@ public class Log {
      */
     public static void addAdminLog(String adminLog,String adminName){
         currentLog=new Log();
-        currentLog.time= Creator.getTime();
+        currentLog.date= Creator.getDate();
+        currentLog.time= Creator.getTime(currentLog.date);
         currentLog.log=adminLog;
         currentLog.type=("admin");
         currentLog.attribute=adminName;

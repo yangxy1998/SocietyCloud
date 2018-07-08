@@ -1,6 +1,7 @@
 package controller.servlet.admin;
 
 import model.Managers;
+import model.entity.Society;
 import model.entity.User;
 import util.function.Log;
 
@@ -30,6 +31,11 @@ public class AdminServlet extends HttpServlet {
             Log.addAdminLog("访问了日志列表。",adminName);
             session.setAttribute("admin","log");
         }
+        String society=request.getParameter("society");
+        if(society!=null){
+            Log.addAdminLog("访问了社团列表。",adminName);
+            session.setAttribute("admin","society");
+        }
         RequestDispatcher dispatcher=request.getRequestDispatcher("./admin/admin.jsp");
         dispatcher.forward(request,response);
     }
@@ -43,8 +49,10 @@ public class AdminServlet extends HttpServlet {
             Log.addAdminLog("登录了管理员页面。",adminName);
             HttpSession session=request.getSession();
             List<User> users=Managers.UserManager.getAllUsers();
+            List<Society> societies=Managers.SocietyManager.getAllSocieties();
             session.setAttribute("adminName",adminName);
             session.setAttribute("users", users);
+            session.setAttribute("societies",societies);
             session.setAttribute("logs", Log.getLogs());
             session.setAttribute("admin", "log");
             session.setAttribute("update","");

@@ -1,4 +1,4 @@
-package controller.tools;
+package controller.tools.user;
 
 import model.Managers;
 import model.entity.User;
@@ -14,13 +14,13 @@ import util.function.Creator;
  * Created by Administrator on 2018/7/4.
  * @author 杨晓宇
  */
-public interface RegisterTool {
+public class RegisterTool {
 
     /**
      * 获得一个全新的用户userId
      * @return userId
      */
-    static String getNewUserId(){
+    public static String getNewUserId(){
         String uuid;
         User user;
         do{
