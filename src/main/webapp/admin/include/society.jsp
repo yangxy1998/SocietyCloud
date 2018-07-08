@@ -41,10 +41,10 @@
                     <td><input type="text" name="societyId" value="${uuid}"></td>
                     <td><input type="text" name="societyName" placeholder="new society name"></td>
                     <td><input type="text" name="schoolName" placeholder="school name of new society"></td>
-                    <td><input type="text" name="foundTime" value="${currentTime}" placeholder="found time of new society"></td>
+                    <td></td>
+                    <td></td>
+                    <td><input type="text" name="foundDate" value="${currentTime}" placeholder="found time of new society"></td>
                     <td><input type="text" name="founder" placeholder="new user phone number"></td>
-                    <td></td>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td><input type="submit" name="commit->newSociety" value="确定"></td>

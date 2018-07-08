@@ -3,7 +3,6 @@ package controller.servlet.admin;
 import controller.tools.admin.AdminSocietyTool;
 import controller.tools.admin.AdminTool;
 import model.Managers;
-import util.function.Creator;
 import util.function.Log;
 
 import javax.servlet.RequestDispatcher;
@@ -14,12 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
 
 /**
+ * 社团管理Servlet
  * Created by Administrator on 2018/7/8.
+ * @author 杨晓宇
  */
 public class AdminSocietyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -52,8 +52,7 @@ public class AdminSocietyServlet extends HttpServlet {
                         String newSocietyId=request.getParameter("societyId");
                         String newSocietyName=request.getParameter("societyName");
                         String newSchoolName=request.getParameter("schoolName");
-                        String newFoundTime=request.getParameter("foundDate");
-                        Date newFoundDate= Creator.getDate(newFoundTime);
+                        String newFoundDate=request.getParameter("foundDate");
                         String newFounder=request.getParameter("founder");
                         Managers.SocietyManager.createSociety(newSocietyId,newSocietyName,newSchoolName,newFoundDate,newFounder);
                         Log.addAdminLog("成功添加一个社团，其社团ID为："+societyId+"。",adminName);
@@ -67,7 +66,7 @@ public class AdminSocietyServlet extends HttpServlet {
                                 values.add(request.getParameter(parameterN));
                         }
                         Managers.SocietyManager.updateSociety(values.get(0),values.get(1),values.get(2)
-                                ,values.get(3),values.get(4),Creator.getDate(values.get(5)),values.get(6),
+                                ,values.get(3),values.get(4),values.get(5),values.get(6),
                                 Integer.parseInt(values.get(7)),values.get(8));
                         Log.addAdminLog("更新用户"+societyId+"的信息，操作成功。",adminName);
                     }

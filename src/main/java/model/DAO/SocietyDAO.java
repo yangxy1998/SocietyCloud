@@ -3,7 +3,6 @@ package model.DAO;
 import model.entity.Society;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,7 +23,7 @@ public interface SocietyDAO {
     void createSociety(@Param("societyId") String societyId,
                        @Param("societyName") String societyName,
                        @Param("schoolName") String schoolName,
-                       @Param("foundDate") Date foundDate,
+                       @Param("foundDate") String foundDate,
                        @Param("founder") String founder);
 
     void updateSociety(@Param("societyId") String societyId,
@@ -32,7 +31,7 @@ public interface SocietyDAO {
                        @Param("schoolName") String schoolName,
                        @Param("mainType") String mainType,
                        @Param("subType") String subType,
-                       @Param("foundDate") Date foundDate,
+                       @Param("foundDate") String foundDate,
                        @Param("founder") String founder,
                        @Param("status") int status,
                        @Param("description") String description);

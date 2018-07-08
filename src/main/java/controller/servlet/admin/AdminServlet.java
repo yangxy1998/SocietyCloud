@@ -15,7 +15,9 @@ import java.io.IOException;
 import java.util.List;
 
 /**
+ * 管理专用Servlet
  * Created by Administrator on 2018/7/8.
+ * @author 杨晓宇
  */
 public class AdminServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

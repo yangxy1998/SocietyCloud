@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ * 成立社团Servlet
  * Created by Administrator on 2018/7/8.
  */
 public class FoundServlet extends HttpServlet {

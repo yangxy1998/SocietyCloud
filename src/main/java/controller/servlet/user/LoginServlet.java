@@ -15,10 +15,11 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
+ * 登录Servlet
  * Created by Administrator on 2018/7/4.
  * @see Parameter
  * @see Attribute
- *
+ * @author 杨晓宇
  */
 
 @Parameter({"username","password"})
