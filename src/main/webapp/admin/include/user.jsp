@@ -24,6 +24,7 @@
                 <th>手机号</th>
                 <th>昵称</th>
                 <th>真实姓名</th>
+                <th>学校名</th>
                 <th>学工号</th>
                 <th>证件号</th>
                 <th>用户状态</th>
@@ -47,6 +48,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td></td>
                     <td><input type="submit" name="commit->newUser" value="确定"></td>
                     <td><input type="submit" name="cancel->newUser" value="撤销"></td>
                 </tr>
@@ -60,6 +62,7 @@
                         <td><input type="text" name="phoneNum" value="${user.phoneNum}"></td>
                         <td><input type="text" name="nickName" value="${user.nickName}"></td>
                         <td><input type="text" name="realName" value="${user.realName}"></td>
+                        <td><input type="text" name="academicNum" value="${user.schoolName}"></td>
                         <td><input type="text" name="academicNum" value="${user.academicNum}"></td>
                         <td><input type="text" name="idCard" value="${user.idCard}"></td>
                         <td><input type="text" name="status" value="${user.status}" placeholder="0：正常 1：冻结"></td>
@@ -76,6 +79,7 @@
                         <td>${user.phoneNum}</td>
                         <td>${user.nickName}</td>
                         <td>${user.realName}</td>
+                        <td>${user.schoolName}</td>
                         <td>${user.academicNum}</td>
                         <td>${user.idCard}</td>
                         <td>${user.status==0?"正常":"冻结"}</td>

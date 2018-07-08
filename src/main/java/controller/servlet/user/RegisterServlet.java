@@ -39,14 +39,12 @@ public class RegisterServlet extends HttpServlet {
         //账号已存在
         if(user!=null){
             Log.addErrorLog("用户 "+username+" 尝试注册，提示此用户名已存在。");
-            dispatcher=request.getRequestDispatcher("/register/register.html");
-            dispatcher.forward(request,response);
+            response.sendRedirect("/register/register.html");
         }
         //密码不一致
         if(!password.equals(confirmPassword)){
             Log.addErrorLog("用户 "+username+" 尝试注册，两次输入密码不一致。");
-            dispatcher=request.getRequestDispatcher("/register/register.html");
-            dispatcher.forward(request,response);
+            response.sendRedirect("/register/register.html");
         }
         //成功
         else {
@@ -54,8 +52,7 @@ public class RegisterServlet extends HttpServlet {
             user=Managers.UserManager.getUserByName(username);
             if(user==null){
                 Log.addErrorLog("用户 "+username+" 尝试注册，但数据库没有及时更新数据。");
-                dispatcher=request.getRequestDispatcher("/register/register.html");
-                dispatcher.forward(request,response);
+                response.sendRedirect("/register/register.html");
             }
             else {
                 Log.addLog("用户 "+username+" 尝试注册，注册成功并跳转到初始页面。");

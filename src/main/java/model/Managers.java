@@ -17,4 +17,7 @@ public class Managers {
     //用户管理接口
     public static UserDAO UserManager;
 
+    //社团管理接口
+    public static SocietyDAO SocietyManager;
+
 }

@@ -11,6 +11,7 @@
         <result property="phoneNum" column="phoneNum"/>
         <result property="nickName" column="nickName"/>
         <result property="realName" column="realName"/>
+        <result property="schoolName" column="schoolName"/>
         <result property="academicNum" column="academicNum"/>
         <result property="idCard" column="idCard"/>
         <result property="status" column="status"/>
@@ -39,8 +40,8 @@
     <update id="updateUser">
         UPDATE User
         SET userName='${userName}',password='${password}',phoneNum='${phoneNum}',
-            nickName='${nickName}',realName='${realName}',academicNum='${academicNum}',
-            idCard='${idCard}',status=${status},description='${description}'
+            nickName='${nickName}',realName='${realName}',schoolName='${schoolName}',
+            academicNum='${academicNum}', idCard='${idCard}',status=${status},description='${description}'
         WHERE userId='${userId}'
     </update>
 

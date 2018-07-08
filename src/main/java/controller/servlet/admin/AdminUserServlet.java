@@ -65,8 +65,8 @@ public class AdminUserServlet extends HttpServlet {
                                 values.add(request.getParameter(parameterN));
                         }
                         Managers.UserManager.updateUser(values.get(0),values.get(1),values.get(2)
-                                ,values.get(3),values.get(4),values.get(5),values.get(6)
-                                ,values.get(7),Integer.parseInt(values.get(8)),values.get(9));
+                                ,values.get(3),values.get(4),values.get(5),values.get(6),values.get(7)
+                                ,values.get(8),Integer.parseInt(values.get(9)),values.get(10));
                         Log.addAdminLog("更新用户"+userId+"的信息，操作成功。",adminName);
                     }
                 }

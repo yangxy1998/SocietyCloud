@@ -1,5 +1,10 @@
 package model.DAO;
 
+import model.entity.Society;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
 /**
  *
  * Society类的数据访问对象
@@ -11,6 +16,27 @@ package model.DAO;
 
 public interface SocietyDAO {
 
+    Society getSocietyById(@Param("societyId") String societyId);
+
+    Society getSocietyByName(@Param("societyName") String societyName);
+
+    void createSociety(@Param("societyId") String societyId,
+                       @Param("societyName") String societyName,
+                       @Param("schoolName") String schoolName,
+                       @Param("foundTime") String foundTime,
+                       @Param("founder") String founder);
+
+    void updateSociety(@Param("societyName") String societyName,
+                          @Param("schoolName") String schoolName,
+                          @Param("mainType") String mainType,
+                          @Param("subType") String subType,
+                          @Param("foundTime") String foundTime,
+                          @Param("founder") String founder,
+                          @Param("status") int status,
+                          @Param("description") String description);
+
+    void deleteSociety(@Param("societyName") String societyName);
 
 
+    List<Society> getAllSocieties();
 }

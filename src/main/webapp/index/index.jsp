@@ -1,4 +1,4 @@
-<%--
+<%@ page import="model.entity.User" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/5
@@ -8,12 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>社团Cloud</title>
+    <title>社团云平台</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!--[if lte IE 8]><script src="./assets/js/ie/html5shiv.js"></script><![endif]-->
-    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="../index/assets/css/main.css" />
+
 </head>
+
 <body class="landing">
 
 <!-- Page Wrapper -->
@@ -22,24 +23,16 @@
     <!-- Header -->
     <header id="header" class="alt">
         <jsp:useBean id="user" class="model.entity.User" scope="session" />
-        <h1><a href="index.html"><b>首页</b></a></h1>
+        <h1><a href="index.jsp"><b>首页</b></a></h1>
         <nav id="nav">
             <ul>
                 <li class="special">
                     <a href="#menu" class="menuToggle"><span><b>菜单</b></span></a>
                     <div id="menu">
                         <ul>
-                            <li><a href="index.html">主页</a></li>
-                            <li><a href="generic.html">管理社团</a></li>
-                            <li><a href="elements.html">查看社团</a></li>
-                            <form>
-                                <input type="text" name="in">
-                                <input type="submit">
-                            </form>
-                            <h2>
-                                ${param.in};
-                                ${user.userName};
-                            </h2>
+                            <li><a href="index.jsp">主页</a></li>
+                            <li><a href="./generic.html">管理社团</a></li>
+                            <li><a href="./elements.html">查看社团</a></li>
                             <li><a href="../login/login.html">登录</a></li>
                             <li><a href="../register/register.html">注册</a></li>
                         </ul>
@@ -48,14 +41,13 @@
             </ul>
         </nav>
     </header>
-
     <!-- Banner -->
     <section id="banner">
         <div class="inner">
-            <h2>社团Cloud</h2>
-            <p>XX<br />
-                XXX<br />
-                XX <a href="http://html5up.net">CLJ</a>.</p>
+            <h2>社团云</h2>
+            <p>欢迎您来到社团云<br />
+                ${user.userName}<br />
+                ${user.nickName}
             <ul class="actions">
                 <li><a href="#" class="button special">Activate</a></li>
             </ul>
@@ -79,26 +71,25 @@
             </ul>
         </div>
     </section>
-    <div class="chs">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div>
 
     <!-- Two -->
     <section id="two" class="wrapper alt style2">
         <section class="spotlight">
-            <div class="image"><img src="./images/pic01.jpg" alt="" /></div><div class="content">
+            <div class="image"><img src="../index/images/pic01.jpg" alt="" /></div><div class="content">
             <h2>Magna primis lobortis<br />
                 sed ullamcorper</h2>
             <p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
         </div>
         </section>
         <section class="spotlight">
-            <div class="image"><img src="./images/pic02.jpg" alt="" /></div><div class="content">
+            <div class="image"><img src="../index/images/pic02.jpg" alt="" /></div><div class="content">
             <h2>Tortor dolore feugiat<br />
                 elementum magna</h2>
             <p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
         </div>
         </section>
         <section class="spotlight">
-            <div class="image"><img src="./images/pic03.jpg" alt="" /></div><div class="content">
+            <div class="image"><img src="../index/images/pic03.jpg" alt="" /></div><div class="content">
             <h2>Augue eleifend aliquet<br />
                 sed condimentum</h2>
             <p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
@@ -146,13 +137,12 @@
 </div>
 
 <!-- Scripts -->
-<script src="./assets/js/jquery.min.js"></script>
-<script src="./assets/js/jquery.scrollex.min.js"></script>
-<script src="./assets/js/jquery.scrolly.min.js"></script>
-<script src="./assets/js/skel.min.js"></script>
-<script src="./assets/js/util.js"></script>
-<!--[if lte IE 8]><script src="./assets/js/ie/respond.min.js"></script><![endif]-->
-<script src="./assets/js/main.js"></script>
+<script src="../index/assets/js/jquery.min.js"></script>
+<script src="../index/assets/js/jquery.scrollex.min.js"></script>
+<script src="../index/assets/js/jquery.scrolly.min.js"></script>
+<script src="../index/assets/js/skel.min.js"></script>
+<script src="../index/assets/js/util.js"></script>
+<script src="../index/assets/js/main.js"></script>
 
 </body>
 </html>

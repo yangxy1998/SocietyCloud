@@ -62,6 +62,7 @@ public interface UserDAO {
                     @Param("phoneNum") String phoneNum,
                     @Param("nickName") String nickName,
                     @Param("realName") String realName,
+                    @Param("schoolName") String schoolName,
                     @Param("academicNum") String academicNum,
                     @Param("idCard") String idCard,
                     @Param("status") int status,

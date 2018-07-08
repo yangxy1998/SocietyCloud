@@ -1,5 +1,6 @@
 package util.function;
 
+import model.DAO.SocietyDAO;
 import model.DAO.UserDAO;
 import model.Managers;
 import org.apache.ibatis.session.SqlSession;
@@ -24,6 +25,8 @@ public class Loader {
     public static void LoadDAOs(SqlSession session) throws MapperNotFoundException {
         Managers.UserManager=session.getMapper(UserDAO.class);
         if(Managers.UserManager==null)throw new MapperNotFoundException();
+        Managers.SocietyManager=session.getMapper(SocietyDAO.class);
+        if(Managers.SocietyManager==null)throw new MapperNotFoundException();
     }
 
 }

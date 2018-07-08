@@ -17,5 +17,6 @@
 
     <mappers>
         <mapper resource="mapping/UserMapping.xml"/>
+        <mapper resource="mapping/SocietyMapping.xml"/>
     </mappers>
 </configuration>

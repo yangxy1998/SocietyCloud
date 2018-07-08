@@ -33,6 +33,9 @@ public class User extends Entity{
     //真实姓名
     private String realName;
 
+    //学校名
+    private String schoolName;
+
     //学工号
     private String academicNum;
 
@@ -115,6 +118,14 @@ public class User extends Entity{
 
     public void setAcademicNum(String academicNum) {
         this.academicNum = academicNum;
+    }
+
+    public String getSchoolName() {
+        return schoolName;
+    }
+
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
     }
 
     public String getDescription() {

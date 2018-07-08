@@ -35,28 +35,24 @@ public class LoginServlet extends HttpServlet {
         //账号不存在
         if(user==null){
             Log.addErrorLog("不存在的用户名："+username);
-            dispatcher=request.getRequestDispatcher("/login/login.html");
-            dispatcher.forward(request,response);
+            response.sendRedirect("/login/login.html");
         }
         //密码不一致
         else if(!password.equals(user.getPassword())){
             Log.addErrorLog("用户 "+username+" 输入的密码不正确："+password);
             Log.addUserLog("从["+address+"]尝试登录，但密码错误。",username);
-            dispatcher=request.getRequestDispatcher("/login/login.html");
-            dispatcher.forward(request,response);
+            response.sendRedirect("/login/login.html");
         }
         //账号已冻结
         else if(user.getStatus()!=0){
             Log.addErrorLog("用户 "+username+" 尝试登录，提示此账号已被冻结。");
             Log.addUserLog("从["+address+"]尝试登录，但账号已冻结。",username);
-            dispatcher=request.getRequestDispatcher("/login/login.html");
-            dispatcher.forward(request,response);
+            response.sendRedirect("/login/login.html");
         }
         else if(user.isLogin()){
             Log.addErrorLog("用户 "+username+" 尝试登录，此账号已有在其他地点登录。");
             Log.addUserLog("从["+address+"]尝试登录，但帐号已登录。",username);
-            dispatcher=request.getRequestDispatcher("/login/login.html");
-            dispatcher.forward(request,response);
+            response.sendRedirect("/login/login.html");
         }
         //成功
         else {

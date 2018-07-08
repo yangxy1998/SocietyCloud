@@ -22,7 +22,7 @@ import java.util.UUID;
 public class Creator {
 
     /**
-     * 获得一个UUID
+     * 获得一个18位纯数字UUID
      * @return 新的UUID
      */
     public static String createUUID(){
@@ -31,12 +31,12 @@ public class Creator {
     }
 
     /**
-     * 获得一个指定长度的UUID
+     * 获得一个指定长度的字母数字混合UUID
      * @param length UUID长度
      * @return 新的UUID
      */
     public static String createUUID(int length){
-        String uuid = UUID.randomUUID().toString().replace("-", "").replaceAll("[a-zA-Z]","").substring(0,18);
+        String uuid = UUID.randomUUID().toString().replace("-", "").substring(0,length);
         return uuid;
     }
 
