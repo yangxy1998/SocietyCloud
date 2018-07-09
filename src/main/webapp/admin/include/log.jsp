@@ -10,9 +10,41 @@
 <html>
 <head>
     <title>查看日志</title>
+    <style type="text/css">
+        table
+        {
+            border-collapse: collapse;
+            margin: 0 auto;
+            text-align: center;
+        }
+        table td, table th
+        {
+            border: 1px solid #000000;
+            color: #020101;
+            height: 30px;
+        }
+        table thead th
+        {
+            background-color: #ddf4ff;
+            width: 100px;
+        }
+        table tr:nth-child(odd)
+        {
+            background: #ffd88d;
+        }
+        table tr:nth-child(even)
+        {
+            background: rgb(255, 251, 253);
+        }
+
+
+
+    </style>
+
 </head>
 
 <body>
+
 <jsp:useBean id="logs" type="java.util.List<util.function.Log>" scope="session"/>
 
 
@@ -71,7 +103,7 @@
         </c:forEach>
     </table>
     <form method="post" action="admin">
-        <input type="submit" value="刷新">
+        <input type="submit" style="width:104px;height:50px;border:none;" value="刷新">
         <%
             request.setAttribute("admin","log");
         %>

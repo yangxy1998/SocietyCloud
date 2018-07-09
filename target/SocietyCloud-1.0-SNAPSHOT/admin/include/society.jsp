@@ -11,6 +11,36 @@
 <html>
 <head>
     <title>社团管理</title>
+    <style type="text/css">
+        table
+        {
+            border-collapse: collapse;
+            margin: 0 auto;
+            text-align: center;
+        }
+        table td, table th
+        {
+            border: 1px solid #000000;
+            color: #020101;
+            height: 30px;
+        }
+        table thead th
+        {
+            background-color: #ddf4ff;
+            width: 100px;
+        }
+        table tr:nth-child(odd)
+        {
+            background: #ffd88d;
+        }
+        table tr:nth-child(even)
+        {
+            background: rgb(255, 251, 253);
+        }
+
+
+    </style>
+
 </head>
 <body>
 <jsp:useBean id="societies" type="java.util.List<model.entity.Society>" scope="session"/>
@@ -27,7 +57,7 @@
                 <th>创始人</th>
                 <th>社团状态</th>
                 <th>社团描述</th>
-                <th><input type="submit" name="create->newSociety" value="新增"></th>
+                <th><input type="submit" name="create->newSociety" style="width:104px;height:50px;border:none;" value="新增"></th>
             </tr>
             <jsp:useBean id="update" type="java.lang.String" scope="session"/>
             <c:if test="${update.equals(\"newSociety\")}">
@@ -47,8 +77,8 @@
                     <td><input type="text" name="founder" placeholder="new user phone number"></td>
                     <td></td>
                     <td></td>
-                    <td><input type="submit" name="commit->newSociety" value="确定"></td>
-                    <td><input type="submit" name="cancel->newSociety" value="撤销"></td>
+                    <td><input type="submit" name="commit->newSociety" style="width:104px;height:50px;border:none;" value="确定"></td>
+                    <td><input type="submit" name="cancel->newSociety" style="width:104px;height:50px;border:none;" value="撤销"></td>
                 </tr>
             </c:if>
             <c:forEach var="society" items="${societies}">
@@ -63,8 +93,8 @@
                         <td><input type="text" name="founder" value="${society.founder}"></td>
                         <td><input type="text" name="status" value="${society.status}" placeholder="0：正常 1：冻结"></td>
                         <td><input type="text" name="description" value="${society.description}"></td>
-                        <td><input type="submit" name="commit->${society.societyId}" value="确定"></td>
-                        <td><input type="submit" name="cancel->${society.societyId}" value="撤销"></td>
+                        <td><input type="submit" name="commit->${society.societyId}"style="width:104px;height:50px;border:none;"  value="确定"></td>
+                        <td><input type="submit" name="cancel->${society.societyId}" style="width:104px;height:50px;border:none;" value="撤销"></td>
                     </tr>
                 </c:if>
                 <c:if test="${!update.equals(society.societyId)}">
@@ -78,8 +108,8 @@
                         <td>${society.founder}</td>
                         <td>${society.status==0?"正常":"冻结"}</td>
                         <td>${society.description}</td>
-                        <td><input type="submit" name="update->${society.societyId}" value="修改"></td>
-                        <td><input type="submit" name="remove->${society.societyId}" value="删除"></td>
+                        <td><input type="submit" name="update->${society.societyId}" style="width:104px;height:50px;border:none;" value="修改"></td>
+                        <td><input type="submit" name="remove->${society.societyId}" style="width:104px;height:50px;border:none;" value="删除"></td>
                     </tr>
                 </c:if>
             </c:forEach>

@@ -41,6 +41,7 @@
             </ul>
         </nav>
     </header>
+
     <!-- Banner -->
     <section id="banner">
         <div class="inner">
@@ -48,9 +49,6 @@
             <p>欢迎您来到社团云<br />
                 ${user.userName}<br />
                 ${user.nickName}
-            <ul class="actions">
-                <li><a href="#" class="button special">Activate</a></li>
-            </ul>
         </div>
         <a href="#one" class="more scrolly">查看更多</a>
     </section>
@@ -92,7 +90,7 @@
             <div class="image"><img src="../index/images/03.jpg" alt="" /></div><div class="content">
             <h2>XXXXXXXXXXXXXXXXXXXXXXXXXXX<br />
                 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</h2>
-            <p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+            <p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
         </div>
         </section>
     </section>
