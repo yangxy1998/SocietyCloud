@@ -88,4 +88,13 @@ public class Creator {
         sql="SELECT * FROM User";
         return sql;
     }
+
+    /**
+     * 获取一个响应当中的js alert事件
+     * @param content alert内容
+     * @return js alert事件
+     */
+    public static String getAlert(String content){
+        return "<script> alert(\""+content+"\"); </script>";
+    }
 }

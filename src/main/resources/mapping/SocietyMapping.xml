@@ -44,7 +44,7 @@
     </update>
 
     <select id="getAllSocieties" resultMap="SocietyMap">
-        SELECT * FROM Society
+        SELECT * FROM Society_view
     </select>
 
     <delete id="deleteSociety">

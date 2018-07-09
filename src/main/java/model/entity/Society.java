@@ -1,9 +1,6 @@
 package model.entity;
 
 import util.Entity;
-import util.function.Creator;
-
-import java.util.Date;
 
 /**
  * 社团类
@@ -31,10 +28,7 @@ public class Society extends Entity{
     String subType;
 
     //创建时间
-    Date foundDate;
-
-    //创建时间（字符串）
-    String foundTime;
+    String foundDate;
 
     //创建人
     String founder;
@@ -85,14 +79,6 @@ public class Society extends Entity{
         this.subType = subType;
     }
 
-    public Date getFoundDate() {
-        return foundDate;
-    }
-
-    public void setFoundDate(Date foundDate) {
-        this.foundDate = foundDate;
-    }
-
     public String getFounder() {
         return founder;
     }
@@ -117,13 +103,12 @@ public class Society extends Entity{
         this.description = description;
     }
 
-    public String getFoundTime() {
-        this.foundTime=Creator.getTime(foundDate);
-        return foundTime;
+    public String getFoundDate() {
+        return foundDate;
     }
 
-    public void setFoundTime(String foundTime) {
-        this.foundTime = foundTime;
+    public void setFoundDate(String foundDate) {
+        this.foundDate = foundDate;
     }
 
     @Override

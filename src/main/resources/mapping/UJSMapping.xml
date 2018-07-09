@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="model.DAO.weak.UserJoinSocietyDAO">
+
+    <resultMap id="UJSMap" type="model.relation.UserJoinSociety">
+        <result property="userId" column="userId"/>
+        <result property="societyId" column="societyId"/>
+        <result property="joinDate" column="joinDate"/>
+        <result property="status" column="status"/>
+        <result property="managerId" column="managerId"/>
+    </resultMap>
+
+    <select id="findSocietiesByUserId" resultMap="UJSMap">
+        SELECT *
+        FROM UserJoinSociety
+        WHERE userId='${userId}'
+    </select>
+    
+    <select id="findUsersBySocietyId" resultMap="UJSMap">
+        SELECT *
+        FROM UserJoinSociety
+        WHERE societyId='${societyId}'
+    </select>
+    
+    <insert id="applyToJoinSociety">
+        INSERT INTO UserJoinSociety(userId,societyId,joinDate)
+        VALUES ('${userId}','${societyId}','${joinDate}')
+    </insert>
+    
+    <update id="passApplication">
+        UPDATE UserJoinSociety
+        SET status=1,managerId='${managerId}'
+        WHERE userId='${userId}' AND societyId='$societyId'
+    </update>
+
+    <update id="denyApplication">
+        UPDATE UserJoinSociety
+        SET status=-1,managerId='${managerId}'
+        WHERE userId='${userId}' AND societyId='$societyId'
+    </update>
+
+</mapper>

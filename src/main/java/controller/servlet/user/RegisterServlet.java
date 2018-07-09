@@ -3,6 +3,7 @@ package controller.servlet.user;
 import controller.tools.user.RegisterTool;
 import model.Managers;
 import model.entity.User;
+import util.function.Creator;
 import util.function.Log;
 import util.annotation.Attribute;
 import util.annotation.Parameter;
@@ -39,11 +40,13 @@ public class RegisterServlet extends HttpServlet {
         //账号已存在
         if(user!=null){
             Log.addErrorLog("用户 "+username+" 尝试注册，提示此用户名已存在。");
+            response.getWriter().println(Creator.getAlert("此用户名已存在。"));
             response.sendRedirect("/register/register.html");
         }
         //密码不一致
         if(!password.equals(confirmPassword)){
             Log.addErrorLog("用户 "+username+" 尝试注册，两次输入密码不一致。");
+            response.getWriter().println(Creator.getAlert("您输入的两次密码不一致。"));
             response.sendRedirect("/register/register.html");
         }
         //成功
@@ -52,6 +55,7 @@ public class RegisterServlet extends HttpServlet {
             user=Managers.UserManager.getUserByName(username);
             if(user==null){
                 Log.addErrorLog("用户 "+username+" 尝试注册，但数据库没有及时更新数据。");
+                response.getWriter().println(Creator.getAlert("系统出现了预计之外的错误。"));
                 response.sendRedirect("/register/register.html");
             }
             else {

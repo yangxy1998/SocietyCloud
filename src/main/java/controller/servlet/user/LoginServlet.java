@@ -2,6 +2,7 @@ package controller.servlet.user;
 
 import model.Managers;
 import model.entity.User;
+import util.function.Creator;
 import util.function.Log;
 import util.annotation.Attribute;
 import util.annotation.Parameter;
@@ -36,23 +37,27 @@ public class LoginServlet extends HttpServlet {
         //账号不存在
         if(user==null){
             Log.addErrorLog("不存在的用户名："+username);
+            response.getWriter().println(Creator.getAlert("用户名不存在！"));
             response.sendRedirect("/login/login.html");
         }
         //密码不一致
         else if(!password.equals(user.getPassword())){
             Log.addErrorLog("用户 "+username+" 输入的密码不正确："+password);
             Log.addUserLog("从["+address+"]尝试登录，但密码错误。",username);
+            response.getWriter().println(Creator.getAlert("您输入的密码错误。"));
             response.sendRedirect("/login/login.html");
         }
         //账号已冻结
         else if(user.getStatus()!=0){
             Log.addErrorLog("用户 "+username+" 尝试登录，提示此账号已被冻结。");
             Log.addUserLog("从["+address+"]尝试登录，但账号已冻结。",username);
+            response.getWriter().println(Creator.getAlert("此账号已被冻结，请联系客服解冻。"));
             response.sendRedirect("/login/login.html");
         }
         else if(user.isLogin()){
             Log.addErrorLog("用户 "+username+" 尝试登录，此账号已有在其他地点登录。");
             Log.addUserLog("从["+address+"]尝试登录，但帐号已登录。",username);
+            response.getWriter().println(Creator.getAlert("此账号已登录，不能重复登录。"));
             response.sendRedirect("/login/login.html");
         }
         //成功
