@@ -18,5 +18,10 @@
     <mappers>
         <mapper resource="mapping/UserMapping.xml"/>
         <mapper resource="mapping/SocietyMapping.xml"/>
+        <mapper resource="mapping/UJSMapping.xml"/>
+        <mapper resource="mapping/UMSMapping.xml"/>
+        <mapper resource="mapping/UCSMapping.xml"/>
     </mappers>
 </configuration>
+        <!-- author:杨晓宇 -->
+        <!-- author:程乐 -->

@@ -1,7 +1,10 @@
 package util.function;
 
-import model.DAO.SocietyDAO;
-import model.DAO.UserDAO;
+import model.DAO.entity.SocietyDAO;
+import model.DAO.entity.UserDAO;
+import model.DAO.relation.UserCommentSocietyDAO;
+import model.DAO.relation.UserJoinSocietyDAO;
+import model.DAO.relation.UserManageSocietyDAO;
 import model.Managers;
 import org.apache.ibatis.session.SqlSession;
 import util.exception.MapperNotFoundException;
@@ -27,6 +30,12 @@ public class Loader {
         if(Managers.UserManager==null)throw new MapperNotFoundException();
         Managers.SocietyManager=session.getMapper(SocietyDAO.class);
         if(Managers.SocietyManager==null)throw new MapperNotFoundException();
+        Managers.JoinManager=session.getMapper(UserJoinSocietyDAO.class);
+        if(Managers.JoinManager==null)throw new MapperNotFoundException();
+        Managers.ManageManager=session.getMapper(UserManageSocietyDAO.class);
+        if(Managers.ManageManager==null)throw new MapperNotFoundException();
+        Managers.CommentManager=session.getMapper(UserCommentSocietyDAO.class);
+        if(Managers.CommentManager==null)throw new MapperNotFoundException();
     }
 
 }

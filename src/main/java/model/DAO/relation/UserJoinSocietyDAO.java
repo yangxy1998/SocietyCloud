@@ -1,4 +1,4 @@
-package model.DAO.weak;
+package model.DAO.relation;
 
 import model.relation.UserJoinSociety;
 import org.apache.ibatis.annotations.Param;
@@ -7,6 +7,8 @@ import java.util.List;
 
 /**
  * Created by Administrator on 2018/7/9.
+ * @author 杨晓宇
+ * @author 程乐
  */
 public interface UserJoinSocietyDAO {
 
@@ -15,14 +17,14 @@ public interface UserJoinSocietyDAO {
      * @param userId 用户id
      * @return 所有关联
      */
-    List<UserJoinSociety> findSocietiesByUserId(@Param("userId") String userId);
+    List<UserJoinSociety> getSocietiesByUserId(@Param("userId") String userId);
 
     /**
      * 找到与一个社团有关的所有用户
      * @param societyId 社团id
      * @return 所有关联
      */
-    List<UserJoinSociety> findUsersBySocietyId(@Param("societyId") String societyId);
+    List<UserJoinSociety> getUsersBySocietyId(@Param("societyId") String societyId);
 
     /**
      * 用户申请加入一个社团

@@ -22,6 +22,7 @@ import java.io.IOException;
  * @see Parameter
  * @see Attribute
  * @author 杨晓宇
+ * @author 林志宸
  */
 
 @Parameter({"username","password","confirmPassword","phoneNum"})

@@ -20,6 +20,7 @@ import java.util.List;
  * 社团管理Servlet
  * Created by Administrator on 2018/7/8.
  * @author 杨晓宇
+ * @author 林志宸
  */
 public class AdminSocietyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

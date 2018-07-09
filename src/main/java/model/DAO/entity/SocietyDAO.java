@@ -1,4 +1,4 @@
-package model.DAO;
+package model.DAO.entity;
 
 import model.entity.Society;
 import org.apache.ibatis.annotations.Param;
@@ -12,6 +12,7 @@ import java.util.List;
  * @see model.entity.Society 社团类
  *
  * @author 杨晓宇
+ * @author 程乐
  */
 
 public interface SocietyDAO {

@@ -8,8 +8,8 @@ import javax.servlet.http.HttpSessionBindingListener;
 /**
  * 实体类
  * 所有实体类的父类，对所有实体类添加一个会话绑定监听者
- * @author 杨晓宇
  * Created by Administrator on 2018/7/6.
+ * @author 杨晓宇
  */
 public abstract class Entity implements HttpSessionBindingListener{
 

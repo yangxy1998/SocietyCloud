@@ -9,6 +9,8 @@ import java.io.IOException;
 /**
  * 成立社团Servlet
  * Created by Administrator on 2018/7/8.
+ * @author 杨晓宇
+ * @author 林志宸
  */
 public class FoundServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

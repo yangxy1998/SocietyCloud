@@ -10,7 +10,10 @@ import javax.servlet.http.HttpSessionBindingEvent;
  * 用户类
  *
  * Created by Administrator on 2018/7/4.
+ * @author 林志宸
  * @author 杨晓宇
+ * @author 黄健勇
+ * @author 万培林
  */
 
 public class User extends Entity{

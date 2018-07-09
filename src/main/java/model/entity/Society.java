@@ -7,8 +7,10 @@ import util.Entity;
  *
  * Created by Administrator on 2018/7/5.
  *
+ * @author 林志宸
  * @author 杨晓宇
- *
+ * @author 黄健勇
+ * @author 万培林
  */
 public class Society extends Entity{
 

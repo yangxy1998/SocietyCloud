@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="model.DAO.relation.UserManageSocietyDAO">
+
+    <resultMap id="UMSMap" type="model.relation.UserManageSociety">
+        <result property="userId" column="userId"/>
+        <result property="societyId" column="societyId"/>
+        <result property="priority" column="priority"/>
+    </resultMap>
+
+    <select id="getSocietiesByUserId" resultMap="UMSMap">
+        SELECT *
+        FROM UserManageSociety
+        WHERE userId='${userId}'
+    </select>
+
+    <select id="getUsersBySocietyId" resultMap="UMSMap">
+        SELECT *
+        FROM UserManageSociety
+        WHERE societyId='${societyId}'
+    </select>
+
+    <insert id="givePriority">
+        INSERT INTO UserManageSociety(userId,societyId,priority)
+        VALUES ('${userId}','${societyId}','${priority}')
+    </insert>
+
+    <delete id="removePriority">
+        DELETE
+        FROM UserManageSociety
+        WHERE userId='${userId}' AND societyId='${societyId}'
+    </delete>
+
+</mapper>
+        <!-- author:杨晓宇 -->
+        <!-- author:程乐 -->

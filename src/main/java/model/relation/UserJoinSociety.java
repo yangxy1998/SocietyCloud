@@ -3,6 +3,10 @@ package model.relation;
 /**
  * 用户加入社团的联系类型
  * Created by Administrator on 2018/7/9.
+ * @author 林志宸
+ * @author 杨晓宇
+ * @author 黄健勇
+ * @author 万培林
  */
 public class UserJoinSociety {
 

@@ -95,6 +95,6 @@ public class Creator {
      * @return js alert事件
      */
     public static String getAlert(String content){
-        return "<script> alert(\""+content+"\"); </script>";
+        return "<script language=\"javascript\"> alert(\""+content+"\"); </script>";
     }
 }

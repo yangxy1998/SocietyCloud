@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="model.DAO.relation.UserCommentSocietyDAO">
+
+    <resultMap id="UCSMap" type="model.relation.UserCommentSociety">
+        <result property="userId" column="userId"/>
+        <result property="societyId" column="societyId"/>
+        <result property="commentDate" column="commentDate"/>
+        <result property="comment" column="comment"/>
+        <result property="visible" column="visible"/>
+    </resultMap>
+
+    <select id="getCommentsByUserId" resultMap="UCSMap">
+        SELECT *
+        FROM UserCommentSociety
+        WHERE userId='${userId}'
+    </select>
+
+    <select id="getCommentsBySocietyId" resultMap="UCSMap">
+        SELECT *
+        FROM UserCommentSociety
+        WHERE societyId='${societyId}'
+    </select>
+
+    <insert id="commentToSociety">
+        INSERT INTO UserCommentSociety(userId,societyId,commentDate,comment)
+        VALUES ('${userId}','${societyId}','${commentDate}','${comment}')
+    </insert>
+
+    <update id="showComment">
+        UPDATE UserCommentSociety
+        SET visible=0
+        WHERE userId='${userId}' AND societyId='$societyId' AND commentDate='${commentDate}'
+    </update>
+
+    <update id="hideComment">
+        UPDATE UserCommentSociety
+        SET visible=-1
+        WHERE userId='${userId}' AND societyId='$societyId' AND commentDate='${commentDate}'
+    </update>
+
+    <update id="summitComment">
+        UPDATE UserCommentSociety
+        SET visible=1
+        WHERE userId='${userId}' AND societyId='$societyId' AND commentDate='${commentDate}'
+    </update>
+
+</mapper>
+
+        <!-- author:杨晓宇 -->
+        <!-- author:程乐 -->

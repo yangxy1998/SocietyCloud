@@ -1,4 +1,4 @@
-package model.DAO;
+package model.DAO.entity;
 
 import model.entity.User;
 import org.apache.ibatis.annotations.Param;
@@ -13,6 +13,7 @@ import java.util.List;
  * @see User 用户类
  *
  * @author 杨晓宇
+ * @author 程乐
  */
 
 public interface UserDAO {
