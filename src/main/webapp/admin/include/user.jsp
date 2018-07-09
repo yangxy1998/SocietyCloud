@@ -1,4 +1,5 @@
 <%@ page import="util.function.Creator" %>
+<%@ page import="controller.tools.user.RegisterTool" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -34,7 +35,7 @@
             <jsp:useBean id="update" type="java.lang.String" scope="session"/>
             <c:if test="${update.equals(\"newUser\")}">
                 <%
-                    session.setAttribute("uuid",Creator.createUUID());
+                    session.setAttribute("uuid", RegisterTool.getNewUserId());
                 %>
                 <jsp:useBean id="uuid" type="java.lang.String" scope="session"/>
                 <tr>
@@ -62,7 +63,7 @@
                         <td><input type="text" name="phoneNum" value="${user.phoneNum}"></td>
                         <td><input type="text" name="nickName" value="${user.nickName}"></td>
                         <td><input type="text" name="realName" value="${user.realName}"></td>
-                        <td><input type="text" name="academicNum" value="${user.schoolName}"></td>
+                        <td><input type="text" name="schoolName" value="${user.schoolName}"></td>
                         <td><input type="text" name="academicNum" value="${user.academicNum}"></td>
                         <td><input type="text" name="idCard" value="${user.idCard}"></td>
                         <td><input type="text" name="status" value="${user.status}" placeholder="0：正常 1：冻结"></td>

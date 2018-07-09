@@ -11,8 +11,11 @@
 <head>
     <title>查看日志</title>
 </head>
+
 <body>
 <jsp:useBean id="logs" type="java.util.List<util.function.Log>" scope="session"/>
+
+
 <center>
     <table border="1">
         <tr>
@@ -21,6 +24,9 @@
             <th>日志类型</th>
             <th>日志属性</th>
         </tr>
+
+
+
         <c:forEach var="log" items="${logs}">
             <c:if test="${log.type.equals(\"event\")}">
                 <tr>
@@ -71,5 +77,8 @@
         %>
     </form>
 </center>
+
+
+
 </body>
 </html>
