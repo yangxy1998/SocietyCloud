@@ -1,3 +1,4 @@
+<!--@author 杨晓宇-->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="model.Managers" %>
 <%--
@@ -12,7 +13,7 @@
   <head>
     <title>社团云管理员工具</title>
        </head>
-  <body background="../admin/include/bg.jpg">
+  <body>
 
   <p>                              </p>
   <form method="post" action="admin" class="special">
