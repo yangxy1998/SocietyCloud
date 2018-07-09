@@ -59,7 +59,7 @@
                         <td><input type="text" name="schoolName" value="${society.schoolName}"></td>
                         <td><input type="text" name="mainType" value="${society.mainType}"></td>
                         <td><input type="text" name="subType" value="${society.subType}"></td>
-                        <td><input type="text" name="foundDate" value="${society.foundTime}"></td>
+                        <td><input type="text" name="foundDate" value="${society.foundDate}"></td>
                         <td><input type="text" name="founder" value="${society.founder}"></td>
                         <td><input type="text" name="status" value="${society.status}" placeholder="0：正常 1：冻结"></td>
                         <td><input type="text" name="description" value="${society.description}"></td>
@@ -74,7 +74,7 @@
                         <td>${society.schoolName}</td>
                         <td>${society.mainType}</td>
                         <td>${society.subType}</td>
-                        <td>${society.foundTime}</td>
+                        <td>${society.foundDate}</td>
                         <td>${society.founder}</td>
                         <td>${society.status==0?"正常":"冻结"}</td>
                         <td>${society.description}</td>

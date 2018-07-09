@@ -38,8 +38,7 @@ public class AdminServlet extends HttpServlet {
             Log.addAdminLog("访问了社团列表。",adminName);
             session.setAttribute("admin","society");
         }
-        RequestDispatcher dispatcher=request.getRequestDispatcher("./admin/admin.jsp");
-        dispatcher.forward(request,response);
+        response.sendRedirect("./admin/admin.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -58,13 +57,13 @@ public class AdminServlet extends HttpServlet {
             session.setAttribute("logs", Log.getLogs());
             session.setAttribute("admin", "log");
             session.setAttribute("update","");
-            dispatcher=request.getRequestDispatcher("./admin/admin.jsp");
+            response.sendRedirect("./admin/admin.jsp");
         }
         else
         {
             Log.addAdminLog("尝试访问管理员页面。",adminName);
-            dispatcher=request.getRequestDispatcher("./admin.html");
+            response.sendRedirect("./admin.html");
         }
-        dispatcher.forward(request,response);
+
     }
 }

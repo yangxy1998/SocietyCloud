@@ -46,7 +46,7 @@
     </update>
 
     <select id="getAllUsers" resultMap="UserMap">
-        SELECT * FROM User
+        SELECT * FROM User_view
     </select>
 
     <delete id="deleteUser">
