@@ -1,6 +1,6 @@
 package util.exception;
 
-import util.function.Log;
+import util.Log;
 
 /**
  *

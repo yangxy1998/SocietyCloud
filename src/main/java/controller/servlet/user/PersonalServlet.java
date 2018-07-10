@@ -1,0 +1,44 @@
+package controller.servlet.user;
+
+import controller.tools.user.PersonalTool;
+import model.Managers;
+import model.entity.User;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+
+/**
+ * Created by Administrator on 2018/7/10.
+ */
+public class PersonalServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        HttpSession session=request.getSession();
+        User user=(User) session.getAttribute("user");
+
+        Enumeration<String> parameters=request.getParameterNames();
+        List<String> values=new ArrayList<>();
+        while (parameters.hasMoreElements()){
+            String parameterN=parameters.nextElement();
+            if(PersonalTool.checkParameter(parameterN))
+                values.add(request.getParameter(parameterN));
+        }
+        Managers.UserManager.updateUser(user.getUserId(),user.getUserName(),user.getPassword(),
+                values.get(0),values.get(1),values.get(2),values.get(3),values.get(4),
+                values.get(5),user.getStatus(),values.get(6));
+        user=Managers.UserManager.getUserById(user.getUserId());
+        session.setAttribute("user",user);
+        response.sendRedirect("../index/personal.jsp");
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+}

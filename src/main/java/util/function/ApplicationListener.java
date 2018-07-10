@@ -1,5 +1,7 @@
 package util.function;
 
+import util.Log;
+
 import javax.servlet.ServletRequestAttributeEvent;
 import javax.servlet.ServletRequestAttributeListener;
 import javax.servlet.ServletRequestEvent;

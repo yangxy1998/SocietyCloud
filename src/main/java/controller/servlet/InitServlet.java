@@ -4,7 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import util.exception.MapperNotFoundException;
-import util.function.Log;
+import util.Log;
 import util.function.Loader;
 
 import javax.servlet.ServletException;

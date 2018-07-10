@@ -1,6 +1,12 @@
 package model.entity;
 
+import model.Managers;
+import model.relation.UserCommentSociety;
+import model.relation.UserJoinSociety;
+import model.relation.UserManageSociety;
 import util.Entity;
+
+import java.util.List;
 
 /**
  * 社团类
@@ -40,6 +46,15 @@ public class Society extends Entity{
 
     //社团介绍
     String description;
+
+    //加入社团的用户关系
+    List<UserJoinSociety> joinUsers;
+
+    //管理社团的用户关系
+    List<UserManageSociety> manageUsers;
+
+    //评论社团的用户关系
+    List<UserCommentSociety> commentUsers;
 
     public String getSocietyId() {
         return societyId;
@@ -113,8 +128,27 @@ public class Society extends Entity{
         this.foundDate = foundDate;
     }
 
+    public List<UserJoinSociety> getJoinUsers() {
+        return joinUsers;
+    }
+
+    public List<UserManageSociety> getManageUsers() {
+        return manageUsers;
+    }
+
+    public List<UserCommentSociety> getCommentUsers() {
+        return commentUsers;
+    }
+
     @Override
     public String getEntityLog() {
         return "社团 id："+this.societyId+" 社团名："+this.societyName;
+    }
+
+    @Override
+    protected void init() {
+        this.joinUsers= Managers.JoinManager.getUsersBySocietyId(societyId);
+        this.manageUsers=Managers.ManageManager.getUsersBySocietyId(societyId);
+        this.commentUsers=Managers.CommentManager.getCommentsBySocieyId(societyId);
     }
 }

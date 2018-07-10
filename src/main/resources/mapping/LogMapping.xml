@@ -4,7 +4,7 @@
 
 <mapper namespace="model.DAO.LogDAO">
 
-    <resultMap id="LogMap" type="util.function.Log">
+    <resultMap id="LogMap" type="util.Log">
         <result property="time" column="time"/>
         <result property="log" column="log"/>
         <result property="type" column="type"/>

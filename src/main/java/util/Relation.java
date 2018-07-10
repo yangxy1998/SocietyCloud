@@ -1,7 +1,6 @@
 package util;
 
-import javax.servlet.http.HttpSessionBindingListener;
-import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * 联系类
@@ -9,30 +8,13 @@ import java.util.List;
  * Created by Administrator on 2018/7/9.
  * @author 杨晓宇
  */
-public abstract class Relation implements HttpSessionBindingListener {
-
-    //一个关联所涉及的实体
-    private List<Entity> entities;
+public abstract class Relation {
 
     /**
-     * 加入一个关联
-     * @param entity
-     */
-    public void join(Entity entity){
-        entities.add(entity);
-    }
-
-    /**
-     * 获取关联的所有实体
+     * 根据联系类型，获取指定类型的实体
+     * @param entityType 实体类型
      * @return 实体
      */
-    public List<Entity> getEntities() {
-        return entities;
-    }
+    public abstract Entity get(@Param("entityType") String entityType);
 
-    /**
-     * 设置关联应该显示的日志
-     * @return 日志内容
-     */
-    public abstract String getRelationLog();
 }

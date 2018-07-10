@@ -1,5 +1,12 @@
 package model.relation;
 
+import model.Managers;
+import model.entity.Society;
+import model.entity.User;
+import org.apache.ibatis.annotations.Param;
+import util.Entity;
+import util.Relation;
+
 /**
  * Created by Administrator on 2018/7/9.
  * @author 林志宸
@@ -7,7 +14,7 @@ package model.relation;
  * @author 黄健勇
  * @author 万培林
  */
-public class UserCommentSociety {
+public class UserCommentSociety extends Relation{
 
     //用户id
     private String userId;
@@ -68,4 +75,24 @@ public class UserCommentSociety {
     public void setVisible(int visible) {
         this.visible = visible;
     }
+
+    private User user;
+
+    private Society society;
+
+    public User getUser() {
+        return Managers.UserManager.getUserById(userId);
+    }
+
+    public Society getSociety() {
+        return Managers.SocietyManager.getSocietyById(societyId);
+    }
+
+    @Override
+    public Entity get(@Param("entityType") String entityType) {
+        if(entityType.equals("User"))return Managers.UserManager.getUserById(userId);
+        if (entityType.equals("Society"))return Managers.SocietyManager.getSocietyById(societyId);
+        else return null;
+    }
+
 }

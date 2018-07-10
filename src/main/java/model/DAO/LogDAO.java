@@ -1,7 +1,7 @@
 package model.DAO;
 
 import org.apache.ibatis.annotations.Param;
-import util.function.Log;
+import util.Log;
 
 import java.util.List;
 

@@ -5,7 +5,7 @@ import model.entity.User;
 import util.annotation.Attribute;
 import util.annotation.Parameter;
 import util.function.Creator;
-import util.function.Log;
+import util.Log;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

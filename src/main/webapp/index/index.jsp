@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--@author 黄健勇-->
 <!--@author 万培林-->
 <!--@author 林志宸-->
@@ -26,6 +27,7 @@
     <!-- Header -->
     <header id="header" class="alt">
         <jsp:useBean id="user" class="model.entity.User" scope="session" />
+        <% session.setAttribute("alert","");%>
         <h1><a href="../index/index.jsp"><b>首页</b></a></h1>
         <nav id="nav">
             <ul>
@@ -34,11 +36,16 @@
                     <div id="menu">
                         <ul>
                             <li><a href="../index/index.jsp">主页</a></li>
-                            <li><a href="../index/generic.html">管理社团</a></li>
-                            <li><a href="../index/elements.html">查看社团</a></li>
-                            <li><a href="../login/login.jsp">登录</a></li>
-                            <% session.setAttribute("alert","");%>
-                            <li><a href="../register/register.jsp">注册</a></li>
+                            <c:if test="${user.userName==null}">
+                                <li><a href="../login/login.jsp">登录</a></li>
+                                <li><a href="../login/register.jsp">注册</a></li>
+                            </c:if>
+                            <c:if test="${user.userName!=null}">
+                                <li><a href="../index/view.jsp">查看社团</a></li>
+                                <li><a href="../index/manage.jsp">管理社团</a></li>
+                                <li><a href="../index/personal.jsp">个人中心</a></li>
+                                <li><a href="../index/index.jsp">退出登录</a> </li>
+                            </c:if>
                         </ul>
                     </div>
                 </li>
@@ -51,8 +58,10 @@
         <div class="inner">
             <h2>社团云</h2>
             <p>欢迎您来到社团云<br />
-                ${user.userName}<br />
-                ${user.nickName}
+                <c:if test="${user.userName!=null}">
+                用户名：${user.userName}<br />
+                昵称：${user.nickName}
+                </c:if>
         </div>
         <a href="#one" class="more scrolly">查看更多</a>
     </section>

@@ -47,7 +47,7 @@
 
 <body>
 
-<jsp:useBean id="logs" type="java.util.List<util.function.Log>" scope="session"/>
+<jsp:useBean id="logs" type="java.util.List<util.Log>" scope="session"/>
 
 
 <center>

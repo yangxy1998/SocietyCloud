@@ -1,5 +1,12 @@
 package model.relation;
 
+import model.Managers;
+import model.entity.Society;
+import model.entity.User;
+import org.apache.ibatis.annotations.Param;
+import util.Entity;
+import util.Relation;
+
 /**
  * 用户加入社团的联系类型
  * Created by Administrator on 2018/7/9.
@@ -8,7 +15,7 @@ package model.relation;
  * @author 黄健勇
  * @author 万培林
  */
-public class UserJoinSociety {
+public class UserJoinSociety extends Relation{
 
     //用户id
     private String userId;
@@ -69,4 +76,31 @@ public class UserJoinSociety {
     public void setManagerId(String managerId) {
         this.managerId = managerId;
     }
+
+    private User user;
+
+    private Society society;
+
+    private User manager;
+
+    public User getUser() {
+        return Managers.UserManager.getUserById(userId);
+    }
+
+    public Society getSociety() {
+        return Managers.SocietyManager.getSocietyById(societyId);
+    }
+
+    public User getManager() {
+        return Managers.UserManager.getUserById(managerId);
+    }
+
+    @Override
+    public Entity get(@Param("entityType") String entityType) {
+        if(entityType.equals("User"))return Managers.UserManager.getUserById(userId);
+        if(entityType.equals("Society")) return Managers.SocietyManager.getSocietyById(societyId);
+        if (entityType.equals("Manager"))return Managers.UserManager.getUserById(managerId);
+        else return null;
+    }
+
 }

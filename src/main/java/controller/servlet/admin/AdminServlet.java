@@ -3,7 +3,7 @@ package controller.servlet.admin;
 import model.Managers;
 import model.entity.Society;
 import model.entity.User;
-import util.function.Log;
+import util.Log;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

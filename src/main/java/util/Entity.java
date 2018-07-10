@@ -1,7 +1,5 @@
 package util;
 
-import util.function.Log;
-
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
 
@@ -17,8 +15,15 @@ public abstract class Entity implements HttpSessionBindingListener{
 
     public abstract String getEntityLog();
 
+    /**
+     * 初始化一个实体，也就是把它所加入的所有联系都加载出来
+     */
+    protected abstract void init();
+
     @Override
     public void valueBound(HttpSessionBindingEvent event) {
+
+        this.init();
 
         String sessionId=event.getSession().getId();
 
@@ -35,7 +40,7 @@ public abstract class Entity implements HttpSessionBindingListener{
         String sessionId=event.getSession().getId();
 
         currentLog=this.getEntityLog()+
-                " 绑定至会话"+sessionId+"。";
+                " 从会话"+sessionId+"解除绑定。";
 
         Log.addLog(currentLog);
 

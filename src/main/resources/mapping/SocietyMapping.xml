@@ -53,6 +53,16 @@
         WHERE societyId='${societyId}'
     </delete>
 
+    <select id="getMainTypeOfSocieties" resultMap="SocietyMap">
+        SELECT * FROM Society_view
+        WHERE mainType='${mainType}'
+    </select>
+
+    <select id="getSubTypeOfSocieties" resultMap="SocietyMap">
+        SELECT * FROM Society_view
+        WHERE mainType='${mainType}' AND subType='${subType}'
+    </select>
+
 </mapper>
         <!-- author:杨晓宇 -->
         <!-- author:程乐 -->

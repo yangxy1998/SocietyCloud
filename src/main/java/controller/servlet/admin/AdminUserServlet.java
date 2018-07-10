@@ -3,7 +3,7 @@ package controller.servlet.admin;
 import controller.tools.admin.AdminTool;
 import controller.tools.admin.AdminUserTool;
 import model.Managers;
-import util.function.Log;
+import util.Log;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

@@ -1,8 +1,13 @@
 package model.entity;
 
+import model.Managers;
+import model.relation.UserCommentSociety;
+import model.relation.UserJoinSociety;
+import model.relation.UserManageSociety;
 import util.Entity;
 
 import javax.servlet.http.HttpSessionBindingEvent;
+import java.util.List;
 
 /**
  *
@@ -50,6 +55,15 @@ public class User extends Entity{
 
     //用户描述
     private String description;
+
+    //用户加入的社团关系
+    private List<UserJoinSociety> joinSocieties;
+
+    //用户管理的社团关系
+    private List<UserManageSociety> manageSocieties;
+
+    //用户评论的社团关系
+    private List<UserCommentSociety> commentSocieties;
 
     public String getUserId() {
         return userId;
@@ -139,9 +153,28 @@ public class User extends Entity{
         this.description = description;
     }
 
+    public List<UserJoinSociety> getJoinSocieties() {
+        return joinSocieties;
+    }
+
+    public List<UserManageSociety> getManageSocieties() {
+        return manageSocieties;
+    }
+
+    public List<UserCommentSociety> getCommentSocieties() {
+        return commentSocieties;
+    }
+
     @Override
     public String getEntityLog() {
         return "用户 id："+this.userId+" 用户名："+this.userName;
+    }
+
+    @Override
+    protected void init() {
+        this.joinSocieties= Managers.JoinManager.getSocietiesByUserId(userId);
+        this.manageSocieties=Managers.ManageManager.getSocietiesByUserId(userId);
+        this.commentSocieties=Managers.CommentManager.getCommentsByUserId(userId);
     }
 
     private boolean login=false;

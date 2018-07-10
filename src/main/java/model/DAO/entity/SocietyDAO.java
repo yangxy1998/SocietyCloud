@@ -41,4 +41,9 @@ public interface SocietyDAO {
 
 
     List<Society> getAllSocieties();
+
+    List<Society> getMainTypeOfSocieties(@Param("mainType") String mainType);
+
+    List<Society> getSubTypeOfSocieties(@Param("mainType") String mainType,
+                                        @Param("subType") String subType);
 }

@@ -4,7 +4,7 @@ import controller.tools.user.RegisterTool;
 import model.Managers;
 import model.entity.User;
 import util.function.Creator;
-import util.function.Log;
+import util.Log;
 import util.annotation.Attribute;
 import util.annotation.Parameter;
 
@@ -43,13 +43,13 @@ public class RegisterServlet extends HttpServlet {
         if(user!=null){
             Log.addErrorLog("用户 "+username+" 尝试注册，提示此用户名已存在。");
             session.setAttribute("alert", Creator.getAlert("您输入的用户名已存在！"));
-            response.sendRedirect("../register/register.jsp");
+            response.sendRedirect("../login/register.jsp");
         }
         //密码不一致
         if(!password.equals(confirmPassword)){
             Log.addErrorLog("用户 "+username+" 尝试注册，两次输入密码不一致。");
             session.setAttribute("alert", Creator.getAlert("您输入的两次密码不一致。"));
-            response.sendRedirect("../register/register.jsp");
+            response.sendRedirect("../login/register.jsp");
         }
         //成功
         else {
@@ -58,7 +58,7 @@ public class RegisterServlet extends HttpServlet {
             if(user==null){
                 Log.addErrorLog("用户 "+username+" 尝试注册，但数据库没有及时更新数据。");
                 session.setAttribute("alert", Creator.getAlert("系统出现错误，请重新注册！"));
-                response.sendRedirect("../register/register.jsp");
+                response.sendRedirect("../login/register.jsp");
             }
             else {
                 Log.addLog("用户 "+username+" 尝试注册，注册成功并跳转到初始页面。");

@@ -50,7 +50,7 @@ ${alert}
                 <input type="submit" value="立 即 登 录">
             </div>
         </form>
-        <a href="../register/register.jsp" ><font size="4" color="lightblue">注册</font></a>
+        <a href="./register.jsp" ><font size="4" color="lightblue">注册</font></a>
         <div class="social-icons w3layouts agileits">
             <p>- 其他方式登录 -</p>
             <ul>

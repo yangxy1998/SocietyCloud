@@ -86,7 +86,25 @@
         <servlet-name>FoundSocietyServlet</servlet-name>
         <url-pattern>/foundSociety</url-pattern>
     </servlet-mapping>
-    
+
+    <servlet>
+        <servlet-name>ViewSocietyServlet</servlet-name>
+        <servlet-class>controller.servlet.user.ViewSocietyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ViewSocietyServlet</servlet-name>
+        <url-pattern>/view.Society</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PersonalServlet</servlet-name>
+        <servlet-class>controller.servlet.user.PersonalServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PersonalServlet</servlet-name>
+        <url-pattern>/user.Personal</url-pattern>
+    </servlet-mapping>
+
     <listener>
         <listener-class>util.function.ApplicationListener</listener-class>
     </listener>
