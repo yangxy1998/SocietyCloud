@@ -36,8 +36,9 @@
                             <li><a href="../index/index.jsp">主页</a></li>
                             <li><a href="../index/generic.html">管理社团</a></li>
                             <li><a href="../index/elements.html">查看社团</a></li>
-                            <li><a href="../login/login.html">登录</a></li>
-                            <li><a href="../register/register.html">注册</a></li>
+                            <li><a href="../login/login.jsp">登录</a></li>
+                            <% session.setAttribute("alert","");%>
+                            <li><a href="../register/register.jsp">注册</a></li>
                         </ul>
                     </div>
                 </li>

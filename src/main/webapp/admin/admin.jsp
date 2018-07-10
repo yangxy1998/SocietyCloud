@@ -16,7 +16,7 @@
   <body>
 
   <p>                              </p>
-  <form method="post" action="admin" class="special">
+  <form method="post" action="../admin" class="special">
     <input type="submit" name="user" style="width:104px;height:50px;border:black;color:black;font-weight:bold;
 	border-radius:3px;background:white;" value="用户管理">
     <input type="submit" name="society" style="width:104px;height:50px;border:black;color:black;font-weight:bold;

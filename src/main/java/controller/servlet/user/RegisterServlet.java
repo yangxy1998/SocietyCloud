@@ -36,19 +36,20 @@ public class RegisterServlet extends HttpServlet {
         String confirmPassword=request.getParameter("confirmPassword");
         String phoneNum=request.getParameter("phoneNum");
         String address=request.getRemoteAddr();
+        HttpSession session = request.getSession();
         User user= Managers.UserManager.getUserByName(username);
         RequestDispatcher dispatcher;
         //账号已存在
         if(user!=null){
             Log.addErrorLog("用户 "+username+" 尝试注册，提示此用户名已存在。");
-            response.getWriter().println(Creator.getAlert("此用户名已存在。"));
-            response.sendRedirect("/register/register.html");
+            session.setAttribute("alert", Creator.getAlert("您输入的用户名已存在！"));
+            response.sendRedirect("../register/register.jsp");
         }
         //密码不一致
         if(!password.equals(confirmPassword)){
             Log.addErrorLog("用户 "+username+" 尝试注册，两次输入密码不一致。");
-            response.getWriter().println(Creator.getAlert("您输入的两次密码不一致。"));
-            response.sendRedirect("/register/register.html");
+            session.setAttribute("alert", Creator.getAlert("您输入的两次密码不一致。"));
+            response.sendRedirect("../register/register.jsp");
         }
         //成功
         else {
@@ -56,14 +57,13 @@ public class RegisterServlet extends HttpServlet {
             user=Managers.UserManager.getUserByName(username);
             if(user==null){
                 Log.addErrorLog("用户 "+username+" 尝试注册，但数据库没有及时更新数据。");
-                response.getWriter().println(Creator.getAlert("系统出现了预计之外的错误。"));
-                response.sendRedirect("/register/register.html");
+                session.setAttribute("alert", Creator.getAlert("系统出现错误，请重新注册！"));
+                response.sendRedirect("../register/register.jsp");
             }
             else {
                 Log.addLog("用户 "+username+" 尝试注册，注册成功并跳转到初始页面。");
                 Log.addUserLog("帐号注册成功，注册地ip："+address,username);
                 Log.addUserLog("从["+address+"]成功登录。",username);
-                HttpSession session = request.getSession();
                 session.setAttribute("user", user);
                 dispatcher = request.getRequestDispatcher("/welcome");
                 dispatcher.forward(request, response);
