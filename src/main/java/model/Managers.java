@@ -1,5 +1,6 @@
 package model;
 
+import model.DAO.LogDAO;
 import model.DAO.entity.*;
 import model.DAO.relation.*;
 
@@ -21,6 +22,9 @@ public class Managers {
 
     //社团实体 管理接口
     public static SocietyDAO SocietyManager;
+
+    //日志管理接口
+    public static LogDAO LogManager;
 
     //社团加入联系 管理接口
     public static UserJoinSocietyDAO JoinManager;

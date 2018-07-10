@@ -23,7 +23,7 @@ import java.util.List;
 public class AdminServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session=request.getSession();
-        String adminName=(String) request.getAttribute("adminName");
+        String adminName=(String) session.getAttribute("adminName");
         String user=request.getParameter("user");
         if(user!=null){
             Log.addAdminLog("访问了用户列表。",adminName);
@@ -56,7 +56,7 @@ public class AdminServlet extends HttpServlet {
             session.setAttribute("adminName",adminName);
             session.setAttribute("users", users);
             session.setAttribute("societies",societies);
-            session.setAttribute("logs", Log.getLogs());
+            session.setAttribute("logs", Log.getRunningLogs());
             session.setAttribute("admin", "log");
             session.setAttribute("update","");
             response.sendRedirect("./admin/admin.jsp");

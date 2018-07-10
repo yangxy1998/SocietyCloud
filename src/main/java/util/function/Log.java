@@ -1,7 +1,8 @@
 package util.function;
 
+import model.Managers;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,9 +18,6 @@ import java.util.List;
 public class Log {
 
     //日志时间
-    private Date date;
-
-    //日志时间（字符串表示）
     private String time;
 
     //日志内容
@@ -28,6 +26,7 @@ public class Log {
     /**
      * 日志类型
      * event 普通事件日志
+     * 以下日志会被记录到数据库中，因为它们对数据库进行了访问
      * error 错误日志
      * user 用户日志
      * society 社团日志
@@ -37,14 +36,6 @@ public class Log {
 
     //日志属性
     private String attribute;
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
     public String getLog() {
         return log;
@@ -89,8 +80,7 @@ public class Log {
      */
     public static void addLog(String log){
         currentLog=new Log();
-        currentLog.date= Creator.getDate();
-        currentLog.time= Creator.getTime(currentLog.date);
+        currentLog.time= Creator.getTime();
         currentLog.log=log;
         currentLog.type=("event");
         logs.add(currentLog);
@@ -103,11 +93,11 @@ public class Log {
      */
     public static void addErrorLog(String errorLog){
         currentLog=new Log();
-        currentLog.date= Creator.getDate();
-        currentLog.time= Creator.getTime(currentLog.date);
+        currentLog.time= Creator.getTime();
         currentLog.log=errorLog;
         currentLog.type=("error");
         logs.add(currentLog);
+        Managers.LogManager.addLog(currentLog.time,errorLog,"error",null);
         showLog();
     }
 
@@ -117,12 +107,12 @@ public class Log {
      */
     public static void addUserLog(String userLog,String userName){
         currentLog=new Log();
-        currentLog.date= Creator.getDate();
-        currentLog.time= Creator.getTime(currentLog.date);
+        currentLog.time= Creator.getTime();
         currentLog.log=userLog;
         currentLog.type=("user");
         currentLog.attribute=userName;
         logs.add(currentLog);
+        Managers.LogManager.addLog(currentLog.time,userLog,"user",userName);
         showLog();
     }
 
@@ -132,12 +122,12 @@ public class Log {
      */
     public static void addSocietyLog(String societyLog,String societyName){
         currentLog=new Log();
-        currentLog.date= Creator.getDate();
-        currentLog.time= Creator.getTime(currentLog.date);
+        currentLog.time= Creator.getTime();
         currentLog.log=societyLog;
         currentLog.type=("society");
         currentLog.attribute=societyName;
         logs.add(currentLog);
+        Managers.LogManager.addLog(currentLog.time,societyLog,"society",societyName);
         showLog();
     }
 
@@ -148,12 +138,12 @@ public class Log {
      */
     public static void addAdminLog(String adminLog,String adminName){
         currentLog=new Log();
-        currentLog.date= Creator.getDate();
-        currentLog.time= Creator.getTime(currentLog.date);
+        currentLog.time= Creator.getTime();
         currentLog.log=adminLog;
         currentLog.type=("admin");
         currentLog.attribute=adminName;
         logs.add(currentLog);
+        Managers.LogManager.addLog(currentLog.time,adminLog,"admin",adminName);
         addLog("管理员："+adminName+" "+adminLog);
         showLog();
     }
@@ -178,7 +168,40 @@ public class Log {
      * 获取日志列表
      * @return 获取日志列表
      */
-    public static List<Log> getLogs() {
+    public static List<Log> getRunningLogs() {
+        return logs;
+    }
+
+    public static List<Log> getAllLogs(){
+        return Managers.LogManager.getAllLogs();
+    }
+
+    public static List<Log> getAllErrorLogs(){
+        List<Log> logs=new ArrayList<>();
+        for (Log log:getAllLogs()) {
+            if(log.type.equals("error"))logs.add(log);
+        }
+        return logs;
+    }
+    public static List<Log> getAllUserLogs(){
+        List<Log> logs=new ArrayList<>();
+        for (Log log:getAllLogs()) {
+            if(log.type.equals("user"))logs.add(log);
+        }
+        return logs;
+    }
+    public static List<Log> getAllSocietyLogs(){
+        List<Log> logs=new ArrayList<>();
+        for (Log log:getAllLogs()) {
+            if(log.type.equals("society"))logs.add(log);
+        }
+        return logs;
+    }
+    public static List<Log> getAllAdminLogs(){
+        List<Log> logs=new ArrayList<>();
+        for (Log log:getAllLogs()) {
+            if(log.type.equals("admin"))logs.add(log);
+        }
         return logs;
     }
 }

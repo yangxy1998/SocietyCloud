@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="model.DAO.LogDAO">
+
+    <resultMap id="LogMap" type="util.function.Log">
+        <result property="time" column="time"/>
+        <result property="log" column="log"/>
+        <result property="type" column="type"/>
+        <result property="attribute" column="attribute"/>
+    </resultMap>
+
+    <select id="getAllLogs" resultMap="LogMap">
+        SELECT * FROM Log_view
+    </select>
+
+    <select id="getErrorLogs" resultMap="LogMap">
+        SELECT * FROM Log_view
+        <where>
+            type = 'error'
+        </where>
+    </select>
+
+    <select id="getUserLogs" resultMap="LogMap">
+        SELECT * FROM Log_view
+        <where>
+            type = 'user' AND attribute='${userId}'
+        </where>
+    </select>
+
+    <select id="getSocietyLogs" resultMap="LogMap">
+        SELECT * FROM Log_view
+        <where>
+            type = 'society' AND attribute='${societyId}'
+        </where>
+    </select>
+
+    <select id="getAdminLogs" resultMap="LogMap">
+        SELECT * FROM Log_view
+        <where>
+            type = 'admin' AND attribute='${adminName}'
+        </where>
+    </select>
+
+
+    <insert id="addLog">
+        INSERT INTO Log(time,log,type,attribute)
+        VALUES ('${time}','${log}','${type}','${attribute}')
+    </insert>
+
+</mapper>
+        <!-- author:杨晓宇 -->
+        <!-- author:程乐 -->

@@ -1,5 +1,6 @@
 package util.function;
 
+import model.DAO.LogDAO;
 import model.DAO.entity.SocietyDAO;
 import model.DAO.entity.UserDAO;
 import model.DAO.relation.UserCommentSocietyDAO;
@@ -30,6 +31,8 @@ public class Loader {
         if(Managers.UserManager==null)throw new MapperNotFoundException();
         Managers.SocietyManager=session.getMapper(SocietyDAO.class);
         if(Managers.SocietyManager==null)throw new MapperNotFoundException();
+        Managers.LogManager=session.getMapper(LogDAO.class);
+        if(Managers.LogManager==null)throw new MapperNotFoundException();
         Managers.JoinManager=session.getMapper(UserJoinSocietyDAO.class);
         if(Managers.JoinManager==null)throw new MapperNotFoundException();
         Managers.ManageManager=session.getMapper(UserManageSocietyDAO.class);

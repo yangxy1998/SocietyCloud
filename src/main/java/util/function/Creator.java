@@ -5,7 +5,6 @@ import org.apache.ibatis.session.SqlSession;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
@@ -42,26 +41,15 @@ public class Creator {
     }
 
     public static String getTime(){
-        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
         String time=format.format(new Date());
         return time;
     }
 
     public static String getTime(Date date){
-        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
         String time=format.format(date);
         return time;
-    }
-
-    public static Date getDate(){
-        return new Date();
-    }
-
-    public static Date getDate(String time){
-        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        ParsePosition pos = new ParsePosition(0);
-        Date date=format.parse(time,pos);
-        return date;
     }
 
     /**
