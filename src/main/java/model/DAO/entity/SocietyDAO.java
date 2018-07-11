@@ -37,7 +37,7 @@ public interface SocietyDAO {
                        @Param("status") int status,
                        @Param("description") String description);
 
-    void deleteSociety(@Param("societyName") String societyName);
+    void deleteSociety(@Param("societyId") String societyId);
 
 
     List<Society> getAllSocieties();

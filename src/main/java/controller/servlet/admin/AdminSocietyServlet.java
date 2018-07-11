@@ -4,6 +4,7 @@ import controller.tools.admin.AdminSocietyTool;
 import controller.tools.admin.AdminTool;
 import model.Managers;
 import util.Log;
+import util.function.Creator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -44,8 +45,10 @@ public class AdminSocietyServlet extends HttpServlet {
                 else if(operation.equals("remove")){
                     Log.addAdminLog("尝试移除社团"+societyId+"的信息。",adminName);
                     session.setAttribute("update","");
+                    String societyName=Managers.SocietyManager.getSocietyById(societyId).getSocietyName();
                     Managers.SocietyManager.deleteSociety(societyId);
                     Log.addAdminLog("移除社团"+societyId+"操作成功。",adminName);
+                    Log.addSocietyLog("社团被管理员移除。",societyName);
                 }
                 else if(operation.equals("commit")){
                     request.setAttribute("update","");
@@ -57,6 +60,7 @@ public class AdminSocietyServlet extends HttpServlet {
                         String newFounder=request.getParameter("founder");
                         Managers.SocietyManager.createSociety(newSocietyId,newSocietyName,newSchoolName,newFoundDate,newFounder);
                         Log.addAdminLog("成功添加一个社团，其社团ID为："+societyId+"。",adminName);
+                        Log.addSocietyLog("社团被管理员添加。",newSocietyName);
                     }
                     else {
                         Enumeration<String> parameters=request.getParameterNames();
@@ -64,12 +68,13 @@ public class AdminSocietyServlet extends HttpServlet {
                         while (parameters.hasMoreElements()){
                             String parameterN=parameters.nextElement();
                             if(AdminSocietyTool.checkParameter(parameterN))
-                                values.add(request.getParameter(parameterN));
+                                values.add(Creator.getChineseBytes(request.getParameter(parameterN)));
                         }
                         Managers.SocietyManager.updateSociety(values.get(0),values.get(1),values.get(2)
                                 ,values.get(3),values.get(4),values.get(5),values.get(6),
                                 Integer.parseInt(values.get(7)),values.get(8));
-                        Log.addAdminLog("更新用户"+societyId+"的信息，操作成功。",adminName);
+                        Log.addAdminLog("更新社团"+societyId+"的信息，操作成功。",adminName);
+                        Log.addSocietyLog("社团信息被管理员修改。",values.get(1));
                     }
                 }
                 else {

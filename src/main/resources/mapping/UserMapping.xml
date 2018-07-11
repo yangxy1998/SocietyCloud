@@ -34,7 +34,7 @@
 
     <insert id="createUser">
         INSERT INTO User(userId,userName,password,phoneNum,nickName)
-        VALUES ('${userId}','${userName}','${password}','${phoneNum}','${nickName}')
+        VALUES ('${userId}','${userName}','${password}','${phoneNum}','${userName}')
     </insert>
 
     <update id="updateUser">

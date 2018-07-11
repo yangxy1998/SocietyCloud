@@ -2,7 +2,7 @@
 <!--@author 黄健勇-->
 <!--@author 万培林-->
 <!--@author 林志宸-->
-<%@ page import="model.entity.User" %><%--
+<%@ page import="util.function.Pages" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/5
@@ -28,7 +28,10 @@
     <header id="header" class="alt">
         <jsp:useBean id="user" class="model.entity.User" scope="session" />
         <% session.setAttribute("alert","");%>
-        <h1><a href="../index/index.jsp"><b>首页</b></a></h1>
+        <h1>
+            <a href="<%=Pages.USER_MAIN_PAGE%>"><b>首页</b></a>
+            <a href="<%=Pages.SOCIETY_MALL_PAGE%>"><b>社团广场</b></a>
+        </h1>
         <nav id="nav">
             <ul>
                 <li class="special">
@@ -37,14 +40,14 @@
                         <ul>
                             <li><a href="../index/index.jsp">主页</a></li>
                             <c:if test="${user.userName==null}">
-                                <li><a href="../login/login.jsp">登录</a></li>
-                                <li><a href="../login/register.jsp">注册</a></li>
+                                <li><a href="<%=Pages.USER_LOGIN_PAGE%>">登录</a></li>
+                                <li><a href="<%=Pages.USER_REGISTER_PAGE%>">注册</a></li>
                             </c:if>
                             <c:if test="${user.userName!=null}">
-                                <li><a href="../index/view.jsp">查看社团</a></li>
-                                <li><a href="../index/manage.jsp">管理社团</a></li>
-                                <li><a href="../index/personal.jsp">个人中心</a></li>
-                                <li><a href="../index/index.jsp">退出登录</a> </li>
+                                <li><a href="<%=Pages.USER_JOINED_SOCIETY_PAGE%>">查看社团</a></li>
+                                <li><a href="<%=Pages.USER_MANAGE_SOCIETY_PAGE%>">管理社团</a></li>
+                                <li><a href="<%=Pages.USER_PERSONAL_CENTER_PAGE%>">个人中心</a></li>
+                                <li><a href="<%=Pages.USER_LOGIN_PAGE%>">退出登录</a> </li>
                             </c:if>
                         </ul>
                     </div>

@@ -4,6 +4,7 @@ import model.Managers;
 import model.entity.Society;
 import model.entity.User;
 import util.Log;
+import util.function.Pages;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -56,15 +57,14 @@ public class AdminServlet extends HttpServlet {
             session.setAttribute("adminName",adminName);
             session.setAttribute("users", users);
             session.setAttribute("societies",societies);
-            session.setAttribute("logs", Log.getRunningLogs());
             session.setAttribute("admin", "log");
             session.setAttribute("update","");
-            response.sendRedirect("./admin/admin.jsp");
+            response.sendRedirect(Pages.ADMIN_MAIN_PAGE);
         }
         else
         {
             Log.addAdminLog("尝试访问管理员页面。",adminName);
-            response.sendRedirect("./admin.html");
+            response.sendRedirect(Pages.ADMIN_LOGIN_PAGE);
         }
 
     }

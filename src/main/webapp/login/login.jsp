@@ -1,4 +1,5 @@
-<%--
+<%@ page import="model.entity.User" %>
+<%@ page import="util.function.Pages" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/10
@@ -28,7 +29,9 @@
 
 
 <body>
-
+<%
+    request.setAttribute("user",new User());
+%>
 <jsp:useBean id="alert" type="java.lang.String" scope="session"/>
 ${alert}
 <h1>社团Cloud</h1>
@@ -50,7 +53,7 @@ ${alert}
                 <input type="submit" value="立 即 登 录">
             </div>
         </form>
-        <a href="./register.jsp" ><font size="4" color="lightblue">注册</font></a>
+        <a href="<%=Pages.USER_REGISTER_PAGE%>" ><font size="4" color="lightblue">注册</font></a>
         <div class="social-icons w3layouts agileits">
             <p>- 其他方式登录 -</p>
             <ul>

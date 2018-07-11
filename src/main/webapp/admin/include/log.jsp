@@ -1,3 +1,8 @@
+<%@ page import="model.Managers" %>
+<%@ page import="model.entity.*" %>
+<%@ page import="util.Log" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
 <!--@author 杨晓宇-->
 <!--@author 万培林-->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -46,10 +51,36 @@
 </head>
 
 <body>
-
+<form method="post">
+    <input type="submit" name="runninglog" value="查看当前服务器日志">
+    <input type="submit" name="alllog" value="查看数据库历史日志">
+    <input type="submit" name="errorlog" value="查看错误日志">
+    <input type="submit" name="userlog" value="查看用户日志">
+    <input type="submit" name="societylog" value="查看社团日志">
+    <input type="submit" name="adminlog" value="查看管理员日志">
+</form>
+<%
+    List<Log> logList=Log.getRunningLogs();
+    String alllog=request.getParameter("alllog");
+    if(alllog!=null)
+        logList=Managers.LogManager.getAllLogs();
+    String errorlog=request.getParameter("errorlog");
+    if(errorlog!=null)
+        logList= Managers.LogManager.getErrorLogs();
+    String userlog=request.getParameter("userlog");
+    if(userlog!=null)
+        logList=Managers.LogManager.getAllUserLogs();
+    String societylog=request.getParameter("societylog");
+    if(societylog!=null)
+        logList=Managers.LogManager.getAllSocietyLogs();
+    String adminlog=request.getParameter("adminlog");
+    if(adminlog!=null){
+        logList=new ArrayList<>();
+            logList.addAll(Managers.LogManager.getAdminLogs("admin"));
+    }
+    session.setAttribute("logs",logList);
+%>
 <jsp:useBean id="logs" type="java.util.List<util.Log>" scope="session"/>
-
-
 <center>
     <table border="1">
         <tr>

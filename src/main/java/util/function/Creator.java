@@ -2,6 +2,7 @@ package util.function;
 
 import org.apache.ibatis.session.SqlSession;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -85,4 +86,16 @@ public class Creator {
     public static String getAlert(String content){
         return "<script language=\"javascript\"> alert(\""+content+"\"); </script>";
     }
+
+    public static String getChineseBytes(String resource){
+        String target="";
+        try {
+            target=new String(resource.getBytes("ISO-8859-1"),"UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return target;
+    }
+
+
 }

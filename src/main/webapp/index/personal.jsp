@@ -1,3 +1,4 @@
+<%@ page import="util.function.Pages" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -34,14 +35,14 @@
                         <ul>
                             <li><a href="../index/index.jsp">主页</a></li>
                             <c:if test="${user.userName==null}">
-                                <li><a href="../login/login.jsp">登录</a></li>
-                                <li><a href="../login/register.jsp">注册</a></li>
+                                <li><a href="<%=Pages.USER_LOGIN_PAGE%>">登录</a></li>
+                                <li><a href="<%=Pages.USER_REGISTER_PAGE%>">注册</a></li>
                             </c:if>
                             <c:if test="${user.userName!=null}">
-                                <li><a href="../index/view.jsp">查看社团</a></li>
-                                <li><a href="../index/manage.jsp">管理社团</a></li>
-                                <li><a href="../index/personal.jsp">个人中心</a></li>
-                                <li><a href="../index/index.jsp">退出登录</a> </li>
+                                <li><a href="<%=Pages.USER_JOINED_SOCIETY_PAGE%>">查看社团</a></li>
+                                <li><a href="<%=Pages.USER_MANAGE_SOCIETY_PAGE%>">管理社团</a></li>
+                                <li><a href="<%=Pages.USER_PERSONAL_CENTER_PAGE%>">个人中心</a></li>
+                                <li><a href="<%=Pages.USER_LOGIN_PAGE%>">退出登录</a> </li>
                             </c:if>
                         </ul>
                     </div>

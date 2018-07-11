@@ -14,9 +14,13 @@ public interface LogDAO {
 
     List<Log> getErrorLogs();
 
-    List<Log> getUserLogs(@Param("userId") String userId);
+    List<Log> getUserLogs(@Param("userName") String userName);
 
-    List<Log> getSocietyLogs(@Param("societyId") String societyId);
+    List<Log> getAllUserLogs();
+
+    List<Log> getSocietyLogs(@Param("societyName") String societyName);
+
+    List<Log> getAllSocietyLogs();
 
     List<Log> getAdminLogs(@Param("adminName") String adminName);
 

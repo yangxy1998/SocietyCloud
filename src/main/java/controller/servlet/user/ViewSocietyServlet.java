@@ -1,6 +1,7 @@
 package controller.servlet.user;
 
 import model.Managers;
+import util.function.Pages;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +25,7 @@ public class ViewSocietyServlet extends HttpServlet {
         HttpSession session=request.getSession();
         if(societyName!=null){
             session.setAttribute("society", Managers.SocietyManager.getSocietyByName(societyName));
-            response.sendRedirect("../society/index.jsp");
+            response.sendRedirect(Pages.SOCIETY_MAIN_PAGE);
         }
 
     }

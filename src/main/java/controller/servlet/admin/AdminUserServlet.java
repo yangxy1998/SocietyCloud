@@ -4,6 +4,7 @@ import controller.tools.admin.AdminTool;
 import controller.tools.admin.AdminUserTool;
 import model.Managers;
 import util.Log;
+import util.function.Creator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,8 +47,10 @@ public class AdminUserServlet extends HttpServlet {
                 else if(operation.equals("remove")){
                     Log.addAdminLog("尝试移除用户"+userId+"的信息。",adminName);
                     session.setAttribute("update","");
+                    String userName=Managers.UserManager.getUserById(userId).getUserName();
                     Managers.UserManager.deleteUser(userId);
                     Log.addAdminLog("移除用户"+userId+"操作成功。",adminName);
+                    Log.addUserLog("用户被管理员移除。",userName);
                 }
                 else if(operation.equals("commit")){
                     request.setAttribute("update","");
@@ -57,7 +60,8 @@ public class AdminUserServlet extends HttpServlet {
                         String newPassword=request.getParameter("password");
                         String newPhoneNum=request.getParameter("phoneNum");
                         Managers.UserManager.createUser(newUserId,newUserName,newPassword,newPhoneNum);
-                        Log.addAdminLog("成功添加一个用户，其用户ID为："+userId+"。",adminName);
+                        Log.addAdminLog("成功添加一个用户，其用户ID为："+newUserId+"。",adminName);
+                        Log.addUserLog("帐号被网站管理员注册。",newUserName);
                     }
                     else {
                         Enumeration<String> parameters=request.getParameterNames();
@@ -65,12 +69,13 @@ public class AdminUserServlet extends HttpServlet {
                         while (parameters.hasMoreElements()){
                             String parameterN=parameters.nextElement();
                             if(AdminUserTool.checkParameter(parameterN))
-                                values.add(request.getParameter(parameterN));
+                                values.add(Creator.getChineseBytes(request.getParameter(parameterN)));
                         }
                         Managers.UserManager.updateUser(values.get(0),values.get(1),values.get(2)
                                 ,values.get(3),values.get(4),values.get(5),values.get(6),values.get(7)
                                 ,values.get(8),Integer.parseInt(values.get(9)),values.get(10));
                         Log.addAdminLog("更新用户"+userId+"的信息，操作成功。",adminName);
+                        Log.addUserLog("帐号信息被管理员修改。",values.get(1));
                     }
                 }
                 else {

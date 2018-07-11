@@ -25,14 +25,28 @@
     <select id="getUserLogs" resultMap="LogMap">
         SELECT * FROM Log_view
         <where>
-            type = 'user' AND attribute='${userId}'
+            type = 'user' AND attribute='${userName}'
+        </where>
+    </select>
+
+    <select id="getAllUserLogs" resultMap="LogMap">
+        SELECT * FROM Log_view
+        <where>
+            type = 'user'
         </where>
     </select>
 
     <select id="getSocietyLogs" resultMap="LogMap">
         SELECT * FROM Log_view
         <where>
-            type = 'society' AND attribute='${societyId}'
+            type = 'society' AND attribute='${societyName}'
+        </where>
+    </select>
+
+    <select id="getAllSocietyLogs" resultMap="LogMap">
+        SELECT * FROM Log_view
+        <where>
+            type = 'society'
         </where>
     </select>
 

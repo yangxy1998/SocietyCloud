@@ -7,6 +7,7 @@ import util.function.Creator;
 import util.Log;
 import util.annotation.Attribute;
 import util.annotation.Parameter;
+import util.function.Pages;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,13 +44,13 @@ public class RegisterServlet extends HttpServlet {
         if(user!=null){
             Log.addErrorLog("用户 "+username+" 尝试注册，提示此用户名已存在。");
             session.setAttribute("alert", Creator.getAlert("您输入的用户名已存在！"));
-            response.sendRedirect("../login/register.jsp");
+            response.sendRedirect(Pages.USER_REGISTER_PAGE);
         }
         //密码不一致
         if(!password.equals(confirmPassword)){
             Log.addErrorLog("用户 "+username+" 尝试注册，两次输入密码不一致。");
             session.setAttribute("alert", Creator.getAlert("您输入的两次密码不一致。"));
-            response.sendRedirect("../login/register.jsp");
+            response.sendRedirect(Pages.USER_REGISTER_PAGE);
         }
         //成功
         else {
@@ -58,18 +59,17 @@ public class RegisterServlet extends HttpServlet {
             if(user==null){
                 Log.addErrorLog("用户 "+username+" 尝试注册，但数据库没有及时更新数据。");
                 session.setAttribute("alert", Creator.getAlert("系统出现错误，请重新注册！"));
-                response.sendRedirect("../login/register.jsp");
+                response.sendRedirect(Pages.USER_REGISTER_PAGE);
             }
             else {
                 Log.addLog("用户 "+username+" 尝试注册，注册成功并跳转到初始页面。");
                 Log.addUserLog("帐号注册成功，注册地ip："+address,username);
                 Log.addUserLog("从["+address+"]成功登录。",username);
                 session.setAttribute("user", user);
-                dispatcher = request.getRequestDispatcher("/welcome");
+                dispatcher = request.getRequestDispatcher(Pages.USER_MAIN_PAGE);
                 dispatcher.forward(request, response);
             }
         }
-
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
