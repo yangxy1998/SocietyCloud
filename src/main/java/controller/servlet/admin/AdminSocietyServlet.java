@@ -28,7 +28,7 @@ public class AdminSocietyServlet extends HttpServlet {
         RequestDispatcher diapatcher=request.getRequestDispatcher("./admin/admin.jsp");
         Enumeration<String> parameterNames=request.getParameterNames();
         HttpSession session=request.getSession();
-        String adminName=(String) request.getAttribute("adminName");
+        String adminName=(String) session.getAttribute("adminName");
         while (parameterNames.hasMoreElements()){
             String parameterName=parameterNames.nextElement();
             String operation= AdminTool.getOperation(parameterName);
@@ -58,7 +58,7 @@ public class AdminSocietyServlet extends HttpServlet {
                         String newSchoolName=request.getParameter("schoolName");
                         String newFoundDate=request.getParameter("foundDate");
                         String newFounder=request.getParameter("founder");
-                        Managers.SocietyManager.createSociety(newSocietyId,newSocietyName,newSchoolName,newFoundDate,newFounder);
+                        Managers.SocietyManager.createSociety(newSocietyId,newSocietyName,newSchoolName,null,null,newFoundDate,newFounder);
                         Log.addAdminLog("成功添加一个社团，其社团ID为："+societyId+"。",adminName);
                         Log.addSocietyLog("社团被管理员添加。",newSocietyName);
                     }

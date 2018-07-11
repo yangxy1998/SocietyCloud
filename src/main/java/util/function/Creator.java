@@ -7,7 +7,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -27,7 +29,7 @@ public class Creator {
      * @return 新的UUID
      */
     public static String createUUID(){
-        String uuid = UUID.randomUUID().toString().replace("-", "").replaceAll("[a-zA-Z]","").substring(0,18);
+        String uuid = UUID.randomUUID().toString().replace("-", "").replaceAll("[a-zA-Z]","").substring(0,17);
         return uuid;
     }
 
@@ -97,5 +99,63 @@ public class Creator {
         return target;
     }
 
+    /**
+     * 获取所有学校
+     * @return 所有学校
+     */
+    public static List<String> getSchools(){
+        List<String> schools=new ArrayList<>();
+        schools.add("武汉大学");
+        schools.add("武汉理工大学");
+        schools.add("华中科技大学");
+        schools.add("华中农业大学");
+        schools.add("华中师范大学");
+        schools.add("中国地质大学");
+        schools.add("中南财经政法大学");
+        return schools;
+    }
 
+    /**
+     * 获取所有主要类型
+     * @return 主要类型
+     */
+    public static List<String> getMainTypes(){
+        List<String> mainTypes=new ArrayList<>();
+        mainTypes.add("实践类");
+        mainTypes.add("学术类");
+        mainTypes.add("体育类");
+        mainTypes.add("艺术类");
+        return mainTypes;
+    }
+
+    /**
+     * 通过主类型获取次级类型
+     * @param mainType 主类型
+     * @return 次级类型
+     */
+    public static List<String> getSubTypes(String mainType){
+        List<String> subTypes=new ArrayList<>();
+        if(mainType.equals("实践类")){
+            subTypes.add("志愿者类");
+            subTypes.add("创新类");
+        }
+        if(mainType.equals("学术类")){
+            subTypes.add("数学类");
+            subTypes.add("物理类");
+            subTypes.add("化学类");
+            subTypes.add("计算机类");
+        }
+        if(mainType.equals("体育类")){
+            subTypes.add("足球类");
+            subTypes.add("篮球类");
+            subTypes.add("排球类");
+        }
+        if(mainType.equals("艺术类")){
+            subTypes.add("戏曲类");
+            subTypes.add("歌舞类");
+            subTypes.add("乐器类");
+            subTypes.add("美术类");
+        }
+        return subTypes;
+    }
 }

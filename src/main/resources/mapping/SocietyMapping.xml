@@ -31,8 +31,8 @@
     </select>
 
     <insert id="createSociety">
-        INSERT INTO Society(societyId,societyName,schoolName,foundDate,founder)
-        VALUES ('${societyId}','${societyName}','${schoolName}','${foundDate}','${founder}')
+        INSERT INTO Society(societyId,societyName,schoolName,mainType,subType,foundDate,founder)
+        VALUES ('${societyId}','${societyName}','${schoolName}','${mainType}','${subType}','${foundDate}','${founder}')
     </insert>
 
     <update id="updateSociety">

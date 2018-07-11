@@ -27,6 +27,7 @@
 <body>
 <jsp:useBean id="alert" type="java.lang.String" scope="session"/>
 ${alert}
+<%session.setAttribute("alert","");%>
 <h1>社团Cloud</h1>
 
 <div class="container w3layouts agileits">

@@ -32,19 +32,19 @@
     <update id="showComment">
         UPDATE UserCommentSociety
         SET visible=0
-        WHERE userId='${userId}' AND societyId='$societyId' AND commentDate='${commentDate}'
+        WHERE userId='${userId}' AND societyId='${societyId}' AND commentDate='${commentDate}'
     </update>
 
     <update id="hideComment">
         UPDATE UserCommentSociety
         SET visible=-1
-        WHERE userId='${userId}' AND societyId='$societyId' AND commentDate='${commentDate}'
+        WHERE userId='${userId}' AND societyId='${societyId}' AND commentDate='${commentDate}'
     </update>
 
     <update id="summitComment">
         UPDATE UserCommentSociety
         SET visible=1
-        WHERE userId='${userId}' AND societyId='$societyId' AND commentDate='${commentDate}'
+        WHERE userId='${userId}' AND societyId='${societyId}' AND commentDate='${commentDate}'
     </update>
 
 </mapper>

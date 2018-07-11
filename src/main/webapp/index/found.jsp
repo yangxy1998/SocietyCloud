@@ -1,10 +1,12 @@
-<%@ page import="util.function.Pages" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
+<%@ page import="util.function.Pages" %>
+<%@ page import="util.function.Creator" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2018/7/10
-  Time: 18:32
+  Date: 2018/7/11
+  Time: 15:07
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -28,6 +30,13 @@ ${alert}
     <!-- Header -->
     <header id="header">
         <jsp:useBean id="user" class="model.entity.User" scope="session" />
+        <%
+            request.setAttribute("schools", Creator.getSchools());
+            request.setAttribute("mainTypes",Creator.getMainTypes());
+            request.setAttribute("subTypes",new ArrayList<>());
+        %>
+        <jsp:useBean id="schools" type="java.util.List<java.lang.String>" scope="request"/>
+        <jsp:useBean id="mainTypes" type="java.util.List<java.lang.String>" scope="request"/>
         <h1><a href="./index.jsp"><b>首页</b></a></h1>
         <nav id="nav">
             <ul>
@@ -56,40 +65,49 @@ ${alert}
     <!-- Main -->
     <article id="main">
         <header>
-            <h2>查看社团</h2>
-            <p>Community view</p>
+            <h2>创建社团</h2>
+            <p>Found A Society</p>
         </header>
         <section class="wrapper style5">
             <div class="inner">
-
                 <section>
-                    <c:if test="${user.joinSocieties.size()>=1}">
-                        <h4>已参加社团:</h4>
-                            <blockquote>
-                                <c:forEach var="society" items="${user.joinSocieties}">
-                                    <form method="post" action="#">
-                                        <div class="12u$" class="row uniform">
-                                            <ul class="actions">
-                                                <li><input type="submit" style="width:300px;height:80px;" value="${society.society.societyName}" /></li>
-                                            </ul>
-                                        </div>
-                                    </form>
+                    <form method="post" action="../user.Found">
+                        <br>
+                        <h3>社团名：<input type="text" name="societyName" placeholder="社团名"></h3>
+                        <h3>社团学校：
+                            <select name="schoolName" size="1">
+                                <c:forEach var="school" items="${schools}">
+                                    <option value="${school}">${school}</option>
                                 </c:forEach>
-                            </blockquote>
-                    </c:if>
-                    <c:if test="${user.joinSocieties.size()<1}">
-                    <blockquote>
-                        <h3>你并没有参加过社团哦~</h3>
-                    </blockquote>
-                    </c:if>
-                    <hr />
-                    <header>
-                        <h4>XXXXX</h4>
-                        <p>XXXXX  XXXXX  XXXX </p>
-
-                    </header>
-                    <hr />
-
+                            </select>
+                        </h3>
+                        <h3>主分类：
+                            <select name="mainType" size="1">
+                                <c:forEach var="mainType" items="${mainTypes}">
+                                    <option value="${mainType}">${mainType}</option>
+                                </c:forEach>
+                            </select>
+                        </h3>
+                        <%
+                            if(request.getParameter("mainType")!=null){
+                                request.setAttribute("subTypes",Creator.getSubTypes(request.getParameter("mainType")));
+                            }
+                            else {
+                                ((List<String>)request.getAttribute("subTypes")).add("");
+                            }
+                        %>
+                        <jsp:useBean id="subTypes" type="java.util.List<java.lang.String>" scope="request"/>
+                        <h3>次级分类：
+                            <select name="subType" size="1">
+                                <c:forEach var="subType" items="${subTypes}">
+                                    <option value="${subType}">${subType}</option>
+                                </c:forEach>
+                            </select>
+                        </h3>
+                        <h3>创建时间：<input type="text" name="foundTime" value="<%=Creator.getTime()%>"></h3>
+                        <h3>创始人：<input type="text" name="founder" value="${user.realName}"></h3>
+                        <input type="submit" value="提交信息">
+                    </form>
                 </section>
 
 
@@ -114,3 +132,4 @@ ${alert}
 
 </body>
 </html>
+

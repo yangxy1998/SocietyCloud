@@ -30,7 +30,7 @@ public class AdminUserServlet extends HttpServlet {
         RequestDispatcher diapatcher=request.getRequestDispatcher("./admin/admin.jsp");
         Enumeration<String> parameterNames=request.getParameterNames();
         HttpSession session=request.getSession();
-        String adminName=(String) request.getAttribute("adminName");
+        String adminName=(String) session.getAttribute("adminName");
         while (parameterNames.hasMoreElements()){
             String parameterName=parameterNames.nextElement();
             String operation= AdminTool.getOperation(parameterName);

@@ -24,6 +24,8 @@ public interface SocietyDAO {
     void createSociety(@Param("societyId") String societyId,
                        @Param("societyName") String societyName,
                        @Param("schoolName") String schoolName,
+                       @Param("mainType") String mainType,
+                       @Param("subType") String subType,
                        @Param("foundDate") String foundDate,
                        @Param("founder") String founder);
 

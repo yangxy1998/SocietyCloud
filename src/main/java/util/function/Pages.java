@@ -31,6 +31,8 @@ public final class Pages {
     //用户个人中心页
     public static final String USER_PERSONAL_CENTER_PAGE="../index/personal.jsp";
 
+    public static final String USER_FOUND_SOCIETY_PAGE="../index/found.jsp";
+
     //社团广场页
     public static final String SOCIETY_MALL_PAGE="../societies/view.jsp";
 

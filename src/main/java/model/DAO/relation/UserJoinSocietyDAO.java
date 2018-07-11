@@ -33,27 +33,27 @@ public interface UserJoinSocietyDAO {
      * @param joinDate 加入时间
      */
     void applyToJoinSociety(@Param("userId") String userId,
-                            @Param("society") String societyId,
+                            @Param("societyId") String societyId,
                             @Param("joinDate") String joinDate);
 
     /**
      * 通过一个用户的申请
      * @param userId 用户id
-     * @param society 社团id
+     * @param societyId 社团id
      * @param managerId 处理人id
      */
     void passApplication(@Param("userId") String userId,
-                         @Param("societyId") String society,
+                         @Param("societyId") String societyId,
                          @Param("managerId") String managerId);
 
     /**
      * 拒绝一个用户的申请，或踢出一个用户
      * @param userId 用户id
-     * @param society 社团id
+     * @param societyId 社团id
      * @param managerId 处理人id
      */
     void denyApplication(@Param("userId") String userId,
-                         @Param("societyId") String society,
+                         @Param("societyId") String societyId,
                          @Param("managerId") String managerId);
 
 

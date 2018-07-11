@@ -66,8 +66,7 @@ public class RegisterServlet extends HttpServlet {
                 Log.addUserLog("帐号注册成功，注册地ip："+address,username);
                 Log.addUserLog("从["+address+"]成功登录。",username);
                 session.setAttribute("user", user);
-                dispatcher = request.getRequestDispatcher(Pages.USER_MAIN_PAGE);
-                dispatcher.forward(request, response);
+                response.sendRedirect(Pages.USER_MAIN_PAGE);
             }
         }
     }

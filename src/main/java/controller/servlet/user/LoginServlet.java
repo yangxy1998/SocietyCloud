@@ -2,13 +2,12 @@ package controller.servlet.user;
 
 import model.Managers;
 import model.entity.User;
+import util.Log;
 import util.annotation.Attribute;
 import util.annotation.Parameter;
 import util.function.Creator;
-import util.Log;
 import util.function.Pages;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,9 +35,7 @@ public class LoginServlet extends HttpServlet {
         String password=request.getParameter("password");
         String address=request.getRemoteAddr();
         User user= Managers.UserManager.getUserByName(username);
-        RequestDispatcher dispatcher;
-        HttpSession session=request.getSession();
-        session.setAttribute("alert", "");
+        HttpSession session=request.getSession(false);
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out=response.getWriter();
         //账号不存在
@@ -72,13 +69,16 @@ public class LoginServlet extends HttpServlet {
             Log.addLog("用户 "+username+" 成功登录。用户Id为 "+user.getUserId());
             Log.addUserLog("从["+address+"]成功登录。",username);
             session.setAttribute("user",user);
-            dispatcher=request.getRequestDispatcher(Pages.USER_MAIN_PAGE);
-            dispatcher.forward(request,response);
+            response.sendRedirect(Pages.USER_MAIN_PAGE);
         }
 
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect(Pages.USER_LOGIN_PAGE);
+        HttpSession session=request.getSession(false);
+        session.invalidate();
+        session=request.getSession();
+        session.setAttribute("user",new User());
+        response.sendRedirect(Pages.USER_MAIN_PAGE);
     }
 }

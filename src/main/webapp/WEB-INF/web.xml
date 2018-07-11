@@ -84,7 +84,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>FoundSocietyServlet</servlet-name>
-        <url-pattern>/foundSociety</url-pattern>
+        <url-pattern>/user.Found</url-pattern>
     </servlet-mapping>
 
     <servlet>

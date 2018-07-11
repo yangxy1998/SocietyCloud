@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>社团Cloud</title>
+    <title>社团云平台</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="./assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -80,6 +80,11 @@
                             <h3>你并没有参加过社团哦~</h3>
                         </blockquote>
                     </c:if>
+
+                    <blockquote>
+                        <h3>您现在可以<a href="../user.Found">创建一个社团</a>。 </h3>
+                    </blockquote>
+
 
                     <hr />
                     <header>

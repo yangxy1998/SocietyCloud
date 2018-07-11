@@ -23,4 +23,13 @@ public class FoundTool {
         return uuid;
     }
 
+    public static boolean checkParameter(String parameterName){
+        if(parameterName.equals("societyName") ||parameterName.equals("schoolName")
+                ||parameterName.equals("mainType") ||parameterName.equals("subType")
+                ||parameterName.equals("foundTime")||parameterName.equals("founder")
+                ||parameterName.equals("description"))
+            return true;
+        else return false;
+    }
+
 }

@@ -32,13 +32,13 @@
     <update id="passApplication">
         UPDATE UserJoinSociety
         SET status=1,managerId='${managerId}'
-        WHERE userId='${userId}' AND societyId='$societyId'
+        WHERE userId='${userId}' AND societyId='${societyId}'
     </update>
 
     <update id="denyApplication">
         UPDATE UserJoinSociety
         SET status=-1,managerId='${managerId}'
-        WHERE userId='${userId}' AND societyId='$societyId'
+        WHERE userId='${userId}' AND societyId='${societyId}'
     </update>
 
 </mapper>
