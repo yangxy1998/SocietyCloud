@@ -15,17 +15,17 @@
     <meta name="author" content="Themeum">
 
     <!-- Include All Css -->
-    <link rel="stylesheet" href="./css/font-awesome.min.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/magnific-popup.css">
-    <link rel="stylesheet" href="./css/animate.css">
-    <link rel="stylesheet" href="./css/fonts.css">
-    <link rel="stylesheet" href="./css/preset.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/responsive.css">
+    <link rel="stylesheet" href="../societies/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../societies/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../societies/css/magnific-popup.css">
+    <link rel="stylesheet" href="../societies/css/animate.css">
+    <link rel="stylesheet" href="../societies/css/fonts.css">
+    <link rel="stylesheet" href="../societies/css/preset.css">
+    <link rel="stylesheet" href="../societies/css/style.css">
+    <link rel="stylesheet" href="../societies/css/responsive.css">
 
     <!--[if lt IE 9]>
-    <script src="./js/html5shive.js"></script>
+    <script src="js/html5shive.js"></script>
     <![endif]-->
 
 </head>
@@ -41,7 +41,7 @@
 
 
                         <div class="login-or-signup pull-left">
-                            <a href="#"><i class="icon-user"></i><span>Login/sign up</span></a>
+                            <a href="#"><i class="icon-user"></i><span>登陆/注册</span></a>
                         </div>
                     </div>
                 </div>
@@ -55,8 +55,8 @@
             <div class="row">
                 <div class="col-sm-12 col-xs-12 text-center">
                     <div class="breadcrumb-content">
-                        <h2>社团Cloud</h2>
-
+                        <h2><font size="40">社团CLOUD</font></h2>
+                        <br><br><br>
                     </div>
                 </div>
             </div>
@@ -463,13 +463,13 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 /*
-                 var defaults = {
-                 containerID: 'toTop', // fading element id
-                 containerHoverID: 'toTopHover', // fading element hover id
-                 scrollSpeed: 1200,
-                 easingType: 'linear'
+                var defaults = {
+                      containerID: 'toTop', // fading element id
+                    containerHoverID: 'toTopHover', // fading element hover id
+                    scrollSpeed: 1200,
+                    easingType: 'linear'
                  };
-                 */
+                */
 
                 $().UItoTop({ easingType: 'easeOutQuart' });
 
@@ -484,10 +484,11 @@
 <!-- /.footer-section -->
 
 <!-- Include All JavaScript -->
-<script src="./js/jquery.min.js"></script>
-<script src="./js/bootstrap.min.js"></script>
-<script src="./js/mixIt.js"></script>
-<script src="./js/jquery.magnific-popup.min.js"></script>
-<script src="./js/main.js"></script>
+<script src="../societies/js/jquery.min.js"></script>
+<script src="../societies/js/bootstrap.min.js"></script>
+<script src="../societies/js/mixIt.js"></script>
+<script src="../societies/js/jquery.magnific-popup.min.js"></script>
+<script src="../societies/js/main.js"></script>
 </body>
 </html>
+
