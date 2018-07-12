@@ -71,11 +71,20 @@ public class AdminUserServlet extends HttpServlet {
                             if(AdminUserTool.checkParameter(parameterN))
                                 values.add(Creator.getChineseBytes(request.getParameter(parameterN)));
                         }
+                        int status=Managers.UserManager.getUserById(userId).getStatus();
                         Managers.UserManager.updateUser(values.get(0),values.get(1),values.get(2)
                                 ,values.get(3),values.get(4),values.get(5),values.get(6),values.get(7)
                                 ,values.get(8),Integer.parseInt(values.get(9)),values.get(10));
+                        if(status==0&&Integer.parseInt(values.get(9))==1){
+                            Log.addAdminLog("帐号被管理员冻结。",adminName);
+                        }
+                        else if(status==1&&Integer.parseInt(values.get(9))==0){
+                            Log.addAdminLog("帐号被管理员解除冻结。",adminName);
+                        }
+                        else {
+                            Log.addUserLog("帐号信息被管理员修改。",values.get(1));
+                        }
                         Log.addAdminLog("更新用户"+userId+"的信息，操作成功。",adminName);
-                        Log.addUserLog("帐号信息被管理员修改。",values.get(1));
                     }
                 }
                 else {

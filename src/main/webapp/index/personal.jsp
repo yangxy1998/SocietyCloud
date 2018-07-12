@@ -1,3 +1,4 @@
+<%@ page import="util.function.Creator" %>
 <%@ page import="util.function.Pages" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
@@ -28,13 +29,18 @@ ${alert}
     <!-- Header -->
     <header id="header">
         <jsp:useBean id="user" class="model.entity.User" scope="session" />
-        <h1><a href="./index.jsp"><b>首页</b></a></h1>
+        <h1>
+            <a href="<%=Pages.USER_MAIN_PAGE%>"><b>首页</b></a>
+            <a href="<%=Pages.SOCIETY_MALL_PAGE%>"><b>社团广场</b></a>
+            <a href=""><b>活动中心</b></a>
+        </h1>
         <nav id="nav">
             <ul>
                 <li class="special">
-                    <a href="#menu" class="menuToggle"><span><b>菜单</b></span></a>
+                    <a href="#menu" class="menuToggle"><span><b>${user.nickName}  菜单</b></span></a>
                     <div id="menu">
                         <ul>
+                            <li>${user.nickName}</li>
                             <li><a href="../index/index.jsp">主页</a></li>
                             <c:if test="${user.userName==null}">
                                 <li><a href="<%=Pages.USER_LOGIN_PAGE%>">登录</a></li>
@@ -59,6 +65,10 @@ ${alert}
             <h2>个人中心</h2>
             <p>Personal Center</p>
         </header>
+        <%
+            request.setAttribute("schools", Creator.getSchools());
+        %>
+        <jsp:useBean id="schools" type="java.util.List<java.lang.String>" scope="request"/>
         <section class="wrapper style5">
             <div class="inner">
 
@@ -70,7 +80,13 @@ ${alert}
                         <h3>电话号码：<input type="text" name="phoneNum" value="${user.phoneNum}"></h3>
                         <h3>用户昵称：<input type="text" name="nickName" value="${user.nickName}"></h3>
                         <h3>真实姓名：<input type="text" name="realName" value="${user.realName}"></h3>
-                        <h3>学校名：<input type="text" name="schoolName" value="${user.schoolName}"></h3>
+                        <h3>学校名：
+                            <select name="schoolName" size="1">
+                            <c:forEach var="school" items="${schools}">
+                                <option value="${school}">${school}</option>
+                            </c:forEach>
+                            </select>
+                        </h3>
                         <h3>学工号：<input type="text" name="academicNum" value="${user.academicNum}"></h3>
                         <h3>证件号：<input type="text" name="idCard" value="${user.idCard}"></h3>
                         <h3>用户状态：${user.status==0?"正常":"冻结"}</h3>

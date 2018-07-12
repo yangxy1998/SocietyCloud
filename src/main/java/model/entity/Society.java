@@ -41,7 +41,12 @@ public class Society extends Entity{
     //创建人
     String founder;
 
-    //社团状态
+    /**
+     * 社团状态
+     * -1：冻结
+     * 0：正在审批
+     * 1：正常
+     */
     int status;
 
     //社团介绍

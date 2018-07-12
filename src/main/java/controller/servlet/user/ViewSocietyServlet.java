@@ -21,7 +21,7 @@ public class ViewSocietyServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String societyName=request.getParameter("society");
+        String societyName=request.getParameter("societyId");
         HttpSession session=request.getSession();
         if(societyName!=null){
             session.setAttribute("society", Managers.SocietyManager.getSocietyByName(societyName));

@@ -70,11 +70,20 @@ public class AdminSocietyServlet extends HttpServlet {
                             if(AdminSocietyTool.checkParameter(parameterN))
                                 values.add(Creator.getChineseBytes(request.getParameter(parameterN)));
                         }
+                        int status=Managers.SocietyManager.getSocietyById(societyId).getStatus();
                         Managers.SocietyManager.updateSociety(values.get(0),values.get(1),values.get(2)
                                 ,values.get(3),values.get(4),values.get(5),values.get(6),
                                 Integer.parseInt(values.get(7)),values.get(8));
+                        if(status==0&&Integer.parseInt(values.get(7))==1)
+                            Log.addSocietyLog("管理员通过了社团审核。",values.get(1));
+                        else if(status==1&&Integer.parseInt(values.get(7))==-1)
+                            Log.addSocietyLog("管理员冻结了社团。",values.get(1));
+                        else if(status==-1&&Integer.parseInt(values.get(7))==1)
+                            Log.addSocietyLog("管理员解冻了社团。",values.get(1));
+                        else{
+                            Log.addSocietyLog("社团信息被管理员修改。",values.get(1));
+                        }
                         Log.addAdminLog("更新社团"+societyId+"的信息，操作成功。",adminName);
-                        Log.addSocietyLog("社团信息被管理员修改。",values.get(1));
                     }
                 }
                 else {

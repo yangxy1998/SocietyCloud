@@ -93,7 +93,7 @@
                         <td><input type="text" name="subType" value="${society.subType}"></td>
                         <td><input type="text" name="foundDate" value="${society.foundDate}"></td>
                         <td><input type="text" name="founder" value="${society.founder}"></td>
-                        <td><input type="text" name="status" value="${society.status}" placeholder="0：正常 1：冻结"></td>
+                        <td><input type="text" name="status" value="${society.status}" placeholder="-1：冻结 0：等待审核 1：正常"></td>
                         <td><input type="text" name="description" value="${society.description}"></td>
                         <td><input type="submit" name="commit->${society.societyId}"style="width:104px;height:50px;border:none;"  value="确定"></td>
                         <td><input type="submit" name="cancel->${society.societyId}" style="width:104px;height:50px;border:none;" value="撤销"></td>
@@ -108,7 +108,11 @@
                         <td>${society.subType}</td>
                         <td>${society.foundDate}</td>
                         <td>${society.founder}</td>
-                        <td>${society.status==0?"正常":"冻结"}</td>
+                        <td>
+                            <c:if test="${society.status==1}">正常</c:if>
+                            <c:if test="${society.status==0}">等待审核</c:if>
+                            <c:if test="${society.status==-1}">冻结</c:if>
+                        </td>
                         <td>${society.description}</td>
                         <td><input type="submit" name="update->${society.societyId}" style="width:104px;height:50px;border:none;" value="修改"></td>
                         <td><input type="submit" name="remove->${society.societyId}" style="width:104px;height:50px;border:none;" value="删除"></td>

@@ -28,13 +28,18 @@ ${alert}
     <!-- Header -->
     <header id="header">
         <jsp:useBean id="user" class="model.entity.User" scope="session" />
-        <h1><a href="./index.jsp"><b>首页</b></a></h1>
+        <h1>
+            <a href="<%=Pages.USER_MAIN_PAGE%>"><b>首页</b></a>
+            <a href="<%=Pages.SOCIETY_MALL_PAGE%>"><b>社团广场</b></a>
+            <a href=""><b>活动中心</b></a>
+        </h1>
         <nav id="nav">
             <ul>
                 <li class="special">
-                    <a href="#menu" class="menuToggle"><span><b>菜单</b></span></a>
+                    <a href="#menu" class="menuToggle"><span><b>${user.nickName}  菜单</b></span></a>
                     <div id="menu">
                         <ul>
+                            <li>${user.nickName}</li>
                             <li><a href="../index/index.jsp">主页</a></li>
                             <c:if test="${user.userName==null}">
                                 <li><a href="<%=Pages.USER_LOGIN_PAGE%>">登录</a></li>
@@ -70,7 +75,13 @@ ${alert}
                                     <form method="post" action="#">
                                         <div class="12u$" class="row uniform">
                                             <ul class="actions">
-                                                <li><input type="submit" style="width:300px;height:80px;" value="${society.society.societyName}" /></li>
+                                                <li>
+                                                    <input type="submit" style="width:300px;height:80px;" value="${society.society.societyName}" />
+
+                                                    <c:if test="${society.status==0}">尚未审批</c:if>
+                                                    <c:if test="${society.status==1}">正式成员</c:if>
+                                                    <c:if test="${society.status==-1}">被拒绝或踢出</c:if>
+                                                </li>
                                             </ul>
                                         </div>
                                     </form>

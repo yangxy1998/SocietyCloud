@@ -37,7 +37,7 @@ public class FoundServlet extends HttpServlet {
                 values.add(Creator.getChineseBytes(request.getParameter(parameterN)));
         }
         if(Managers.SocietyManager.getSocietyByName(values.get(0))!=null){
-            request.setAttribute("alert",Creator.getAlert("社团名已被注册，请尝试使用其他社团名。"));
+            session.setAttribute("alert",Creator.getAlert("社团名已被注册，请尝试使用其他社团名。"));
             Log.addErrorLog(user.getUserName()+"尝试创建社团，但此社团名已被注册。");
             response.sendRedirect(Pages.USER_FOUND_SOCIETY_PAGE);
         }
@@ -47,7 +47,7 @@ public class FoundServlet extends HttpServlet {
                     values.get(1),values.get(2),values.get(3),values.get(4),values.get(5));
             if(Managers.SocietyManager.getSocietyById(societyId)==null){
                 Log.addErrorLog(user.getUserName()+"尝试创建社团，但系统错误。");
-                request.setAttribute("alert",Creator.getAlert("系统错误，请重试。"));
+                session.setAttribute("alert",Creator.getAlert("系统错误，请重试。"));
                 response.sendRedirect(Pages.USER_FOUND_SOCIETY_PAGE);
             }
             else{
@@ -59,8 +59,10 @@ public class FoundServlet extends HttpServlet {
                 Log.addUserLog("成为社团"+values.get(0)+"的社长。",user.getUserName());
                 Log.addSocietyLog("社团被"+user.getUserName()+"创建。",values.get(0));
                 Log.addSocietyLog(user.getNickName()+"加入了社团。",values.get(0));
-                Log.addSocietyLog(user.getNickName()+"成为社长。",values.get(0));
+                Log.addSocietyLog(user.getNickName()+"成为社团所有者。",values.get(0));
                 session.setAttribute("society",Managers.SocietyManager.getSocietyById(societyId));
+                session.setAttribute("user",Managers.UserManager.getUserById(user.getUserId()));
+                session.setAttribute("alert",Creator.getAlert("您已创建社团，现在可以修改社团的信息。在管理员审核通过后即可使用全部的社团功能了。"));
                 response.sendRedirect(Pages.SOCIETY_MAIN_PAGE);
             }
         }
