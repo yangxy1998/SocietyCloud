@@ -327,13 +327,13 @@
 .search-area{
     left: 0;
     position: absolute;
-    top: 0;
+    top: 5;
     width: 100%;
     z-index: 99;
     display: none;
 }
 .search-area > form {
-    background: #f2f5ff none repeat scroll 0 0;
+    background: #2e3842 none repeat scroll 0 0;
     width: 100%;
 }
 .search-area input {
