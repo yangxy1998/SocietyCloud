@@ -84,14 +84,7 @@
                     <blockquote>
                         <h3>您现在可以<a href="../user.Found">创建一个社团</a>。 </h3>
                     </blockquote>
-
-
                     <hr />
-                    <header>
-                        <h4>XXXXX</h4>
-                        <p>XXXXX  XXXXX  XXXX </p>
-
-                    </header>
                     <hr />
 
                 </section>

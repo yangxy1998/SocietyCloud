@@ -32,11 +32,8 @@ ${alert}
         <jsp:useBean id="user" class="model.entity.User" scope="session" />
         <%
             request.setAttribute("schools", Creator.getSchools());
-            request.setAttribute("mainTypes",Creator.getMainTypes());
-            request.setAttribute("subTypes",new ArrayList<>());
         %>
         <jsp:useBean id="schools" type="java.util.List<java.lang.String>" scope="request"/>
-        <jsp:useBean id="mainTypes" type="java.util.List<java.lang.String>" scope="request"/>
         <h1><a href="./index.jsp"><b>首页</b></a></h1>
         <nav id="nav">
             <ul>
@@ -82,26 +79,45 @@ ${alert}
                             </select>
                         </h3>
                         <h3>主分类：
-                            <select name="mainType" size="1">
-                                <c:forEach var="mainType" items="${mainTypes}">
-                                    <option value="${mainType}">${mainType}</option>
-                                </c:forEach>
+                            <select id="mainType" name="mainType" size="1" onchange="change()">
+                                <option value="实践类">实践类</option>
+                                <option value="学术类">学术类</option>
+                                <option value="体育类">体育类</option>
+                                <option value="艺术类">艺术类</option>
+                                <option value="其他类">其他类</option>
                             </select>
                         </h3>
-                        <%
-                            if(request.getParameter("mainType")!=null){
-                                request.setAttribute("subTypes",Creator.getSubTypes(request.getParameter("mainType")));
+                        <script language="JavaScript">
+                            function change(){
+                                var mainType=document.getElementById("mainType");
+                                var subType=document.getElementById("subType");
+                                subType.options.length=0;
+                                if(mainType.selectedIndex==0){
+                                    subType.options.add(new Option("学生会"));
+                                    subType.options.add(new Option("志愿者"));
+                                }
+                                else if(mainType.selectedIndex==1){
+                                    subType.options.add(new Option("物理类"));
+                                    subType.options.add(new Option("生物类"));
+                                    subType.options.add(new Option("文学类"));
+                                }
+                                else if(mainType.selectedIndex==2){
+                                    subType.options.add(new Option("足球类"));
+                                    subType.options.add(new Option("排球类"));
+                                    subType.options.add(new Option("篮球类"));
+                                }
+                                else if(mainType.selectedIndex==3){
+                                    subType.options.add(new Option("美术类"));
+                                    subType.options.add(new Option("影视类"));
+                                    subType.options.add(new Option("歌舞类"));
+                                }
+                                else if(mainType.selectedIndex==4){
+                                    subType.options.add(new Option("无"));
+                                }
                             }
-                            else {
-                                ((List<String>)request.getAttribute("subTypes")).add("");
-                            }
-                        %>
-                        <jsp:useBean id="subTypes" type="java.util.List<java.lang.String>" scope="request"/>
+                        </script>
                         <h3>次级分类：
-                            <select name="subType" size="1">
-                                <c:forEach var="subType" items="${subTypes}">
-                                    <option value="${subType}">${subType}</option>
-                                </c:forEach>
+                            <select id="subType" name="subType" size="1">
                             </select>
                         </h3>
                         <h3>创建时间：<input type="text" name="foundTime" value="<%=Creator.getTime()%>"></h3>

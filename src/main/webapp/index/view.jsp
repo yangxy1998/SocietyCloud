@@ -82,12 +82,12 @@ ${alert}
                         <h3>你并没有参加过社团哦~</h3>
                     </blockquote>
                     </c:if>
-                    <hr />
-                    <header>
-                        <h4>XXXXX</h4>
-                        <p>XXXXX  XXXXX  XXXX </p>
 
-                    </header>
+                    <blockquote>
+                        <h3>您可以<a href="../societies/view.jsp">加入一个社团</a>。 </h3>
+                    </blockquote>
+
+                    <hr />
                     <hr />
 
                 </section>
