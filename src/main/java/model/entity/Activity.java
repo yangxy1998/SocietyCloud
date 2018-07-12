@@ -13,6 +13,9 @@ public class Activity extends Entity{
     //活动名
     private String activityName;
 
+    //活动类型
+    private String activityType;
+
     //主办方
     private String organizer;
 
@@ -52,6 +55,14 @@ public class Activity extends Entity{
 
     public void setActivityName(String activityName) {
         this.activityName = activityName;
+    }
+
+    public String getActivityType() {
+        return activityType;
+    }
+
+    public void setActivityType(String activityType) {
+        this.activityType = activityType;
     }
 
     public String getOrganizer() {
