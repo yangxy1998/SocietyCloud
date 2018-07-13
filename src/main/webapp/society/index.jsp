@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<jsp:useBean id="society" type="model.entity.Society" scope="session"/>
+<--!jsp:useBean id="society" type="model.entity.Society" scope="session"/>-->
 <head>
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,6 +17,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <link href="./css/bootstrap.css" rel='stylesheet' type='text/css' />
     <link href="./css/style.css" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="./assets/css/main.css" />
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.js"></script>
     <!---- start-smoth-scrolling---->
@@ -34,32 +35,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 <!--start-header-->
-<div class="header" id="home">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="" /></a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html" class="hvr-bounce-to-top">主页 <span class="sr-only">(current)</span></a></li>
-                    <li><a href="./about.html" class="hvr-bounce-to-top">关于社团</a></li>
-                    <li><a href="./services.html" class="hvr-bounce-to-top">社团活动</a></li>
-                    <li><a href="./typo.html" class="hvr-bounce-to-top">社团经历</a></li>
-                    <li><a href="./contact.html" class="hvr-bounce-to-top">联系我们</a></li>
-                </ul>
-                <div class="clearfix"></div>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
+<div id="page-wrapper">
+
+    <!-- Header -->
+    <header id="header" >
+        <h1><a href="./index.html"><b>首页</b></a>&nbsp;&nbsp;&nbsp;<a href="../societies/view.jsp"><b>社团广场</b></a>
+            &nbsp;&nbsp;&nbsp;<a href="./about.html"><b>关于社团</b></a>
+            &nbsp;&nbsp;&nbsp;<a href="./services.html"><b>社团活动</b></a>
+            &nbsp;&nbsp;&nbsp;<a href="./experience.html"><b>社团经历</b></a>
+            &nbsp;&nbsp;&nbsp;<a href="./contact.html"><b>联系我们</b></a>
+
+
+
+        </h1>
+
+        <nav id="nav">
+            <ul>
+                <li class="special">
+                    <a href="#menu" class="menuToggle"><span><b>菜单</b></span></a>
+                    <div id="menu">
+                        <ul>
+                            <li><a href="../index/index.jsp">主页</a></li>
+                            <li><a href="#">管理社团</a></li>
+                            <li><a href="#">查看社团</a></li>
+                            <li><a href="../login/login.jsp">登录</a></li>
+                            <li><a href="../login/register.jsp">注册</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+    </header>
 </div>
 <!--end-header-->
 <!--start-banner-->
@@ -165,11 +172,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
                 <h4>活动地点</h4>
                 <p>XXXXXXXXXXXXXXXXXXXXXXXXX</p>
-            </div>
-            <div class="col-md-3 join-left">
-                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                <h4>日历<h4>
-                    <p>XXXXXXXXXXXXXXXXXXXXXXXXX</p>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -298,8 +300,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
         });
     </script>
-    <a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
 </div>
 <!--end-footer-->
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -679,7 +679,7 @@ ul.nav.navbar-nav {
 /*--footer-start--*/
 .footer {
 	padding: 3em 0px;
-	background: #222;
+	background: rgba(5, 166, 179, 0.9);
 }
 .map-marker {
 	display: inline-block;

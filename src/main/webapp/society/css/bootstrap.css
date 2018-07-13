@@ -1264,6 +1264,16 @@ h6 .small,
 h1,
 .h1 {
   font-size: 36px;
+  
+    -moz-transition: opacity 0.2s ease;
+			-webkit-transition: opacity 0.2s ease;
+			-ms-transition: opacity 0.2s ease;
+			transition: opacity 0.2s ease;
+			height: inherit;
+			left: 1.25em;
+			line-height: inherit;
+			position: absolute;
+			top: 0;
 }
 h2,
 .h2 {
@@ -1271,7 +1281,8 @@ h2,
 }
 h3,
 .h3 {
-  font-size: 24px;
+  font-size: 20px;
+  
 }
 h4,
 .h4 {
