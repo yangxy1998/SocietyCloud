@@ -14,12 +14,14 @@
         SELECT *
         FROM UserManageSociety
         WHERE userId='${userId}'
+        ORDER BY priority DESC
     </select>
 
     <select id="getUsersBySocietyId" resultMap="UMSMap">
         SELECT *
         FROM UserManageSociety
         WHERE societyId='${societyId}'
+        ORDER BY priority DESC
     </select>
 
     <insert id="givePriority">

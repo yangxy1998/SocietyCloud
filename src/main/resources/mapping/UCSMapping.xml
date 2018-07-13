@@ -16,12 +16,14 @@
         SELECT *
         FROM UserCommentSociety
         WHERE userId='${userId}'
+        ORDER BY commentDate DESC
     </select>
 
     <select id="getCommentsBySocietyId" resultMap="UCSMap">
         SELECT *
         FROM UserCommentSociety
         WHERE societyId='${societyId}'
+        ORDER BY commentDate DESC
     </select>
 
     <insert id="commentToSociety">

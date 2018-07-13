@@ -72,7 +72,7 @@ public class FoundServlet extends HttpServlet {
 
         HttpSession session=request.getSession(false);
         User user=(User) session.getAttribute("user");
-        if(user.getIdCard().equals("")||user.getRealName().equals("")){
+        if(user.getIdCard()==null||user.getRealName()==null||user.getIdCard().equals("")||user.getRealName().equals("")){
             session.setAttribute("alert", Creator.getAlert("您还没有完成身份认证！请前往个人中心填写真实姓名以及身份证号！"));
             response.sendRedirect(Pages.USER_PERSONAL_CENTER_PAGE);
         }

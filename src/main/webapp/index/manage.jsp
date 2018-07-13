@@ -70,11 +70,11 @@
                         <h4>可管理社团:</h4>
                         <blockquote>
                             <c:forEach var="society" items="${user.manageSocieties}">
-                                <form method="post" action="#">
+                                <form action="/manage.Society">
                                     <div class="12u$" class="row uniform">
                                         <ul class="actions">
                                             <li>
-                                                <input type="submit" style="width:300px;height:80px;" value="${society.society.societyName}" />
+                                                <input type="submit" name="societyName" style="width:300px;height:80px;" value="${society.society.societyName}" />
                                                 权限：
                                                 <c:if test="${society.priority==0}">无权限</c:if>
                                                 <c:if test="${society.priority==1}">社团委员</c:if>

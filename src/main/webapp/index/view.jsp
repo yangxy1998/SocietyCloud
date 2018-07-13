@@ -83,7 +83,7 @@ ${alert}
                                     session.setAttribute("societies",societies);
                                 %>
                                 <c:forEach var="society" items="${user.joinSocieties}">
-                                    <form action="/view.Society" method="post">
+                                    <form action="/view.Mall" method="post">
                                         <div class="12u$" class="row uniform">
                                             <ul class="actions">
                                                 <li>

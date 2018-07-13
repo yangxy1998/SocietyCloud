@@ -16,12 +16,14 @@
         SELECT *
         FROM UserJoinSociety
         WHERE userId='${userId}'
+        ORDER BY joinDate DESC
     </select>
     
     <select id="getUsersBySocietyId" resultMap="UJSMap">
         SELECT *
         FROM UserJoinSociety
         WHERE societyId='${societyId}'
+        ORDER BY joinDate DESC
     </select>
     
     <insert id="applyToJoinSociety">
