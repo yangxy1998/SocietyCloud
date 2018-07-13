@@ -40,7 +40,7 @@
                     <div id="menu">
                         <ul>
                             <li>${user.nickName}</li>
-                            <li><a href="../index/index.jsp">主页</a></li>
+                            <a href="<%=Pages.USER_MAIN_PAGE%>"><b>首页</b></a>
                             <c:if test="${user.userName==null}">
                                 <li><a href="<%=Pages.USER_LOGIN_PAGE%>">登录</a></li>
                                 <li><a href="<%=Pages.USER_REGISTER_PAGE%>">注册</a></li>

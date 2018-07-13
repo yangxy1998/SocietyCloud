@@ -44,7 +44,7 @@ ${alert}
                     <div id="menu">
                         <ul>
                             <li>${user.nickName}</li>
-                            <li><a href="../index/index.jsp">主页</a></li>
+                            <a href="<%=Pages.USER_MAIN_PAGE%>"><b>首页</b></a>
                             <c:if test="${user.userName==null}">
                                 <li><a href="<%=Pages.USER_LOGIN_PAGE%>">登录</a></li>
                                 <li><a href="<%=Pages.USER_REGISTER_PAGE%>">注册</a></li>
@@ -106,7 +106,7 @@ ${alert}
                     </c:if>
 
                     <blockquote>
-                        <h3>您可以<a href="../societies/view.jsp">加入一个社团</a>。 </h3>
+                        <h3>您可以<a href="<%=Pages.SOCIETY_MAIN_PAGE%>">加入一个社团</a>。 </h3>
                     </blockquote>
 
                     <hr />
