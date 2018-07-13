@@ -1,6 +1,8 @@
 package controller.tools.user;
 
 import model.entity.Society;
+import model.entity.User;
+import model.relation.UserJoinSociety;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -21,6 +23,13 @@ public class ViewSocietyTool {
             for(Society society:societies){
                 if(society.getSocietyId().equals(societyId))return societyId;
             }
+        }
+        return null;
+    }
+
+    public static UserJoinSociety isJoinedIntoSociety(User user,Society society){
+        for (UserJoinSociety ujs:society.getJoinUsers()) {
+            if(ujs.getUserId().equals(user.getUserId()))return ujs;
         }
         return null;
     }

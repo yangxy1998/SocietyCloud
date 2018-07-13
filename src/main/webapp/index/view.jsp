@@ -83,7 +83,7 @@ ${alert}
                                     session.setAttribute("societies",societies);
                                 %>
                                 <c:forEach var="society" items="${user.joinSocieties}">
-                                    <form action="/view.Mall" method="post">
+                                    <form action="/view.Society" method="post">
                                         <div class="12u$" class="row uniform">
                                             <ul class="actions">
                                                 <li>
@@ -106,7 +106,7 @@ ${alert}
                     </c:if>
 
                     <blockquote>
-                        <h3>您可以<a href="<%=Pages.SOCIETY_MAIN_PAGE%>">加入一个社团</a>。 </h3>
+                        <h3>您可以<a href="/view.Mall">加入一个社团</a>。 </h3>
                     </blockquote>
 
                     <hr />

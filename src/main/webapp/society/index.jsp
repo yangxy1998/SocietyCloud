@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="model.relation.UserManageSociety" %>
-<%@ page import="util.function.Pages" %><%--
+<%@ page import="util.function.Pages" %>
+<%@ page import="controller.tools.user.ViewSocietyTool" %>
+<%@ page import="model.relation.UserJoinSociety" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/10
@@ -87,6 +89,17 @@ ${alert}
 </div>
 <!--end-header-->
 <!--start-banner-->
+<%
+    UserJoinSociety ujs=ViewSocietyTool.isJoinedIntoSociety(user,society);
+    if(ujs!=null){
+        if(ujs.getStatus()==1)session.setAttribute("joinStatus","已经加入");
+        if(ujs.getStatus()==0)session.setAttribute("joinStatus","等待审批");
+        if(ujs.getStatus()==-1)session.setAttribute("joinStatus","已被拒绝");
+    }
+    else{
+        session.setAttribute("joinStatus","加入社团");
+    }
+%>
 <div class="banner">
     <div class="container">
         <section class="slider">
@@ -97,7 +110,12 @@ ${alert}
                             <h2>-${society.societyName}-</h2>
                             <h3>-${society.mainType}-${society.subType}-</h3>
                             <div class="bnr-btn">
-                                <a href="#" class="hvr-shutter-out-horizontal">更多</a>
+                                <c:if test="${!joinStatus.equals(\"加入社团\")}">
+                                    <div class="hvr-shutter-out-horizontal">${joinStatus}</div>
+                                </c:if>
+                                <c:if test="${joinStatus.equals(\"加入社团\")}">
+                                    <a href="/join.Society" class="hvr-shutter-out-horizontal">${joinStatus}</a>
+                                </c:if>
                             </div>
                         </div>
                     </li>

@@ -1,7 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="model.relation.UserManageSociety" %>
 <%@ page import="util.function.Pages" %>
-<%@ page import="model.Managers" %><%--
+<%@ page import="model.Managers" %>
+<%@ page import="java.util.List" %>
+<%@ page import="model.relation.UserCommentSociety" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/13
@@ -86,14 +89,32 @@ ${alert}
 
     </header>
 </div>
+<br/><br/>
 <%
-    request.setAttribute("comments", society.getCommentUsers());
+    List<UserCommentSociety> comments=society.getCommentUsers();
+    if(comments==null)comments=new ArrayList<>();
+    request.setAttribute("comments", comments);
 %>
-<jsp:useBean id="comments" type="java.util.List<model.relation.UserCommentSociety>" scope="request"/>
-
+<c:forEach var="comment" items="${comments}">
+    <c:if test="${comments.size()<1}">
+        <br/>还没有人评论这个社团~
+    </c:if>
+    <c:if test="${comment.visible==1}">
+        <br/>
+        ${comment.user.nickName}于${comment.commentDate}评论：<br>
+        ${comment.comment}
+    </c:if>
+</c:forEach>
+<c:forEach var="comment" items="${comments}">
+    <c:if test="${comment.visible==0}">
+        <br/>
+        ${comment.user.nickName}于${comment.commentDate}评论：<br>
+        ${comment.comment}
+    </c:if>
+</c:forEach>
 <form method="post" action="../user.Comment">
-    <input type="text" value="comment" placeholder="您可以在这里输入您的评论：字数不超过500字。">
-    <input type="submit">
+    <input type="text" name="comment" placeholder="您可以在这里输入您的评论：字数不超过500字。">
+    <input type="submit" value="评论">
 </form>
 </body>
 </html>

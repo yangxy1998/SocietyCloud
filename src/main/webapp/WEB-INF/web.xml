@@ -132,6 +132,15 @@
         <url-pattern>/manage.Society</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>JoinSocietyServlet</servlet-name>
+        <servlet-class>controller.servlet.user.JoinSocietyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JoinSocietyServlet</servlet-name>
+        <url-pattern>/join.Society</url-pattern>
+    </servlet-mapping>
+    
     <listener>
         <listener-class>util.function.ApplicationListener</listener-class>
     </listener>
