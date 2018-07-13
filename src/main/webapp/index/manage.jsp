@@ -96,7 +96,7 @@
                     </c:if>
 
                     <blockquote>
-                        <h3>您现在可以<a href="../user.Found">创建一个社团</a>。 </h3>
+                        <h3>您现在可以<a href="../user.Found">创建一个社团</a>或者<a href="/view.Mall">加入一个社团</a> 。 </h3>
                     </blockquote>
                     <hr />
                     <hr />

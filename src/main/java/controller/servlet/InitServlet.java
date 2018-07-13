@@ -26,7 +26,7 @@ import java.io.InputStream;
  * @author 林志宸
  */
 
-public class InitServlet extends HttpServlet {
+public class  InitServlet extends HttpServlet {
 
     public static SqlSession session;
 
