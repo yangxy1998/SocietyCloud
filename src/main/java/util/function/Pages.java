@@ -34,7 +34,7 @@ public final class Pages {
     public static final String USER_FOUND_SOCIETY_PAGE="../index/found.jsp";
 
     //社团广场页
-    public static final String SOCIETY_MALL_PAGE="../societies/view.jsp";
+    public static final String SOCIETY_MALL_PAGE="../view.Mall";
 
     //社团主页
     public static final String SOCIETY_MAIN_PAGE="../society/index.jsp";

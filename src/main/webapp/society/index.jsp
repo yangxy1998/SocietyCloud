@@ -1,4 +1,5 @@
-<%--
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="util.function.Pages" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/10
@@ -34,12 +35,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--start-smoth-scrolling-->
 </head>
 <body>
+<jsp:useBean id="alert" type="java.lang.String" scope="session"/>
+${alert}
+<%session.setAttribute("alert","");%>
+<jsp:useBean id="user" type="model.entity.User" scope="session" />
+<jsp:useBean id="society" type="model.entity.Society" scope="session" />
 <!--start-header-->
 <div id="page-wrapper">
 
     <!-- Header -->
     <header id="header" >
-        <h1><a href="./index.html"><b>首页</b></a>&nbsp;&nbsp;&nbsp;<a href="../societies/view.jsp"><b>社团广场</b></a>
+        <h1><a href="./index.html"><b>首页</b></a>
+            &nbsp;&nbsp;&nbsp;<a href="../societies/view.jsp"><b>社团广场</b></a>
             &nbsp;&nbsp;&nbsp;<a href="./about.html"><b>关于社团</b></a>
             &nbsp;&nbsp;&nbsp;<a href="./services.html"><b>社团活动</b></a>
             &nbsp;&nbsp;&nbsp;<a href="./experience.html"><b>社团经历</b></a>
@@ -55,11 +62,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <a href="#menu" class="menuToggle"><span><b>菜单</b></span></a>
                     <div id="menu">
                         <ul>
+                            <li>${user.nickName}</li>
                             <li><a href="../index/index.jsp">主页</a></li>
-                            <li><a href="#">管理社团</a></li>
-                            <li><a href="#">查看社团</a></li>
-                            <li><a href="../login/login.jsp">登录</a></li>
-                            <li><a href="../login/register.jsp">注册</a></li>
+                            <c:if test="${user.userName==null}">
+                                <li><a href="<%=Pages.USER_LOGIN_PAGE%>">登录</a></li>
+                                <li><a href="<%=Pages.USER_REGISTER_PAGE%>">注册</a></li>
+                            </c:if>
+                            <c:if test="${user.userName!=null}">
+                                <li><a href="<%=Pages.USER_JOINED_SOCIETY_PAGE%>">查看社团</a></li>
+                                <li><a href="<%=Pages.USER_MANAGE_SOCIETY_PAGE%>">管理社团</a></li>
+                                <li><a href="<%=Pages.USER_PERSONAL_CENTER_PAGE%>">个人中心</a></li>
+                                <li><a href="<%=Pages.USER_LOGIN_PAGE%>">退出登录</a> </li>
+                            </c:if>
                         </ul>
                     </div>
                 </li>
@@ -77,9 +91,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <ul class="slides">
                     <li>
                         <div class="banner-top">
-                            <h1>${society.societyName}</h1>
-                            <h2>-${society.mainType}-</h2>
-                            <h3>-${society.subType}-</h3>
+                            <h2>-${society.societyName}-</h2>
+                            <h3>-${society.mainType}-${society.subType}-</h3>
                             <div class="bnr-btn">
                                 <a href="#" class="hvr-shutter-out-horizontal">更多</a>
                             </div>
@@ -87,8 +100,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </li>
                     <li>
                         <div class="banner-top">
-                            <h1>XX社</h1>
-                            <h2>XXXXXXXXXXX</h2>
+                            <h2>${society.societyName}</h2>
                             <div class="bnr-btn">
                                 <a href="#" class="hvr-shutter-out-horizontal">更多</a>
                             </div>
@@ -96,8 +108,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </li>
                     <li>
                         <div class="banner-top">
-                            <h1>XX社</h1>
-                            <h2>XXXXXXXXXXX</h2>
+                            <h2>${society.societyName}</h2>
                             <div class="bnr-btn">
                                 <a href="#" class="hvr-shutter-out-horizontal">更多</a>
                             </div>

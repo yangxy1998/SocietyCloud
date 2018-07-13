@@ -103,13 +103,15 @@ ${alert}
                                 }
                                 else if(mainType.selectedIndex==1){
                                     subType.options.add(new Option("物理类"));
+                                    subType.options.add(new Option("化学类"));
                                     subType.options.add(new Option("生物类"));
                                     subType.options.add(new Option("文学类"));
+                                    subType.options.add(new Option("计算机类"));
                                 }
                                 else if(mainType.selectedIndex==2){
                                     subType.options.add(new Option("足球类"));
-                                    subType.options.add(new Option("排球类"));
                                     subType.options.add(new Option("篮球类"));
+                                    subType.options.add(new Option("排球类"));
                                 }
                                 else if(mainType.selectedIndex==3){
                                     subType.options.add(new Option("美术类"));

@@ -1,4 +1,8 @@
+<%@ page import="model.entity.Society" %>
+<%@ page import="model.relation.UserJoinSociety" %>
 <%@ page import="util.function.Pages" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -71,12 +75,19 @@ ${alert}
                     <c:if test="${user.joinSocieties.size()>=1}">
                         <h4>已参加社团:</h4>
                             <blockquote>
+                                <%
+                                    List<Society> societies=new ArrayList<>();
+                                    for (UserJoinSociety ujs:user.getJoinSocieties()) {
+                                        societies.add(ujs.getSociety());
+                                    }
+                                    session.setAttribute("societies",societies);
+                                %>
                                 <c:forEach var="society" items="${user.joinSocieties}">
-                                    <form method="post" action="#">
+                                    <form action="/view.Society" method="post">
                                         <div class="12u$" class="row uniform">
                                             <ul class="actions">
                                                 <li>
-                                                    <input type="submit" style="width:300px;height:80px;" value="${society.society.societyName}" />
+                                                    <input type="submit" style="width:300px;height:80px;" name="${society.society.societyId}" value="${society.society.societyName}" />
 
                                                     <c:if test="${society.status==0}">尚未审批</c:if>
                                                     <c:if test="${society.status==1}">正式成员</c:if>

@@ -1,4 +1,7 @@
-<%--
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="util.function.Pages" %>
+<%@ page import="util.function.Creator" %>
+<%@ page import="controller.tools.user.ViewMallTool" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/10
@@ -31,10 +34,22 @@
 
 </head>
 <body >
+<jsp:useBean id="alert" type="java.lang.String" scope="session"/>
+${alert}
+<%session.setAttribute("alert","");%>
+<jsp:useBean id="user" type="model.entity.User" scope="session" />
+<jsp:useBean id="currentPages" type="java.util.List<java.lang.String>" scope="session" />
+<jsp:useBean id="currentPage" type="java.lang.String" scope="session" />
+<jsp:useBean id="societies" type="java.util.List<model.entity.Society>" scope="session"/>
+<jsp:useBean id="mainTypes" type="java.util.List<util.function.MainType>" scope="session"/>
 <!-- Header Area -->
 <div id="page-wrapper">
     <header id="header" >
-        <h1><a href="../index/index.jsp"><b>首页</b></a>&nbsp;&nbsp;&nbsp;<a href="#"><b>社团广场</b></a></h1>
+        <h1>
+            <a href="<%=Pages.USER_MAIN_PAGE%>"><b>首页</b></a>&nbsp;&nbsp;&nbsp;
+            <a href="<%=Pages.SOCIETY_MALL_PAGE%>"><b>社团广场</b></a>&nbsp;&nbsp;&nbsp;
+            <a href=""><b>活动中心</b></a>
+        </h1>
 
         <nav id="nav">
             <ul>
@@ -42,11 +57,18 @@
                     <a href="#menu" class="menuToggle"><span><b>菜单</b></span></a>
                     <div id="menu">
                         <ul>
+                            <li>${user.nickName}</li>
                             <li><a href="../index/index.jsp">主页</a></li>
-                            <li><a href="generic.html">管理社团</a></li>
-                            <li><a href="elements.html">查看社团</a></li>
-                            <li><a href="file:///C:/Users/KINIONG/Desktop/1/%E7%99%BB%E5%BD%95.html">登录</a></li>
-                            <li><a href="file:///C:/Users/KINIONG/Desktop/2/%E6%B3%A8%E5%86%8C.html">注册</a></li>
+                            <c:if test="${user.userName==null}">
+                                <li><a href="<%=Pages.USER_LOGIN_PAGE%>">登录</a></li>
+                                <li><a href="<%=Pages.USER_REGISTER_PAGE%>">注册</a></li>
+                            </c:if>
+                            <c:if test="${user.userName!=null}">
+                                <li><a href="<%=Pages.USER_JOINED_SOCIETY_PAGE%>">查看社团</a></li>
+                                <li><a href="<%=Pages.USER_MANAGE_SOCIETY_PAGE%>">管理社团</a></li>
+                                <li><a href="<%=Pages.USER_PERSONAL_CENTER_PAGE%>">个人中心</a></li>
+                                <li><a href="<%=Pages.USER_LOGIN_PAGE%>">退出登录</a> </li>
+                            </c:if>
                         </ul>
                     </div>
                 </li>
@@ -82,53 +104,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-xs-12">
-
                     <ul class="main-menu pull-lift">
-                        <li class="menu-has-child">
-                            <a href="index.html">艺术类</a>
-                            <ul>
-                                <li><a href="index2.html">美术</a></li>
-                                <li><a href="index3.html">音乐</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="about-us.html">运动类</a></li>
-                        <li class="menu-has-child">
-                            <a href="#">科技类</a>
-                            <ul>
-                                <li>
-                                    <a href="event.html">Event</a>
-                                    <ul>
-                                        <li><a href="event-details.html">Event Details</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="routine.html">Routine</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                                <li><a href="404.html">404</a></li>
-                                <li><a href="coming-soon.html">Coming Soon</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="shortcode.html">XX类</a></li>
-                        <li class="menu-has-child">
-                            <a href="class.html">教学类</a>
-                            <ul>
-                                <li><a href="class-details.html">Classes Details</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-has-child">
-                            <a href="blog.html">社会类</a>
-                            <ul>
-                                <li><a href="blog-details.html">Blog Details</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-has-child">
-                            <a href="teacher.html">生活类</a>
-                            <ul>
-                                <li><a href="teacher-details.html">Teacher Details</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" id="search-pop"><i class="fa fa-search"></i></a>
-                        </li>
+                        <form action="<%=Pages.SOCIETY_MALL_PAGE%>">
+                        <c:forEach var="mainType" items="${mainTypes}">
+                            <li class="menu-has-child">
+                                <input type="submit" name="${mainType.mainType}" value="${mainType.mainType}">
+                                <ul>
+                                    <c:forEach var="subType" items="${mainType.subTypes}">
+                                        <li><input type="submit" name="${subType}" value="${subType}"></li>
+                                    </c:forEach>
+                                </ul>
+                            </li>
+                        </c:forEach>
+                        </form>
                     </ul>
                     <div class="mobile-menu hidden-lg hidden-md hidden-sm">
                         <span></span>
@@ -177,261 +165,38 @@
         <div class="row">
 
             <div id="mixer">
-                <div class="col-sm-4 col-xs-12 mix kinder play">
-                    <div class="single-class">
-                        <div class="class-img">
-                            <img alt="" src="images/class1/class1.jpg">
-                            <div class="class-hover">
-                                <a href="images/class1/class1.jpg" class="popup"><i class="icon-link"></i></a>
-                            </div>
-                        </div>
-                        <div class="class-details">
-                            <h3><a href="class.html">XX社</a></h3>
-                            <p>Admission Close</p>
-                            <div class="clearfix">
-                                <div class="class-meta pull-left">
-                                    <span>Years Old</span>
-                                    <p>2-3</p>
-                                </div>
-                                <div class="class-meta pull-left">
-                                    <span>Class Size</span>
-                                    <p>24</p>
-                                </div>
-                                <div class="class-meta pull-left">
-                                    <span>Tution Fee</span>
-                                    <p>$129</p>
+                <form action="/view.Society" method="post">
+                <c:forEach var="society" items="${societies}">
+                    <div class="col-sm-4 col-xs-12 mix kinder play">
+                        <div class="single-class">
+                            <div class="class-img">
+                                <img alt="" src="images/class1/class1.jpg">
+                                <div class="class-hover">
+                                    <a href="images/class1/class1.jpg" class="popup"><i class="icon-link"></i></a>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-4 col-xs-12 mix primary story">
-                    <div class="single-class">
-                        <div class="class-img">
-                            <img alt="" src="images/class1/class2.jpg">
-                            <div class="class-hover">
-                                <a href="images/class1/class2.jpg" class="popup"><i class="icon-link"></i></a>
-                            </div>
-                        </div>
-                        <div class="class-details">
-                            <h3><a href="class.html">XX社</a></h3>
-                            <p>Admission Open</p>
-                            <div class="clearfix">
-                                <div class="class-meta pull-left">
-                                    <span>Years Old</span>
-                                    <p>3-5</p>
-                                </div>
-                                <div class="class-meta pull-left">
-                                    <span>Class Size</span>
-                                    <p>20</p>
-                                </div>
-                                <div class="class-meta pull-left">
-                                    <span>Tution Fee</span>
-                                    <p>$140</p>
+                            <div class="class-details">
+                                <h3><input type="submit" name="${society.societyId}">${society.societyName}</h3>
+                                <p>Admission Close</p>
+                                <div class="clearfix">
+                                    <div class="class-meta pull-left">
+                                        <span>Years Old</span>
+                                        <p>2-3</p>
+                                    </div>
+                                    <div class="class-meta pull-left">
+                                        <span>Class Size</span>
+                                        <p>24</p>
+                                    </div>
+                                    <div class="class-meta pull-left">
+                                        <span>Tution Fee</span>
+                                        <p>$129</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-sm-4 col-xs-12 mix kinder primary">
-                    <div class="single-class">
-                        <div class="class-img">
-                            <img alt="" src="images/class1/class3.jpg">
-                            <div class="class-hover">
-                                <a href="images/class1/class3.jpg" class="popup"><i class="icon-link"></i></a>
-                            </div>
-                        </div>
-                        <div class="class-details">
-                            <h3><a href="class.html">XX社</a></h3>
-                            <p>Admission Close</p>
-                            <div class="clearfix">
-                                <div class="class-meta pull-left">
-                                    <span>Years Old</span>
-                                    <p>4-6</p>
-                                </div>
-                                <div class="class-meta pull-left">
-                                    <span>Class Size</span>
-                                    <p>15</p>
-                                </div>
-                                <div class="class-meta pull-left">
-                                    <span>Tution Fee</span>
-                                    <p>$150</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-4 col-xs-12 mix story kinder">
-                    <div class="single-class">
-                        <div class="class-img">
-                            <img alt="" src="images/class1/class4.jpg">
-                            <div class="class-hover">
-                                <a href="images/class1/class4.jpg" class="popup"><i class="icon-link"></i></a>
-                            </div>
-                        </div>
-                        <div class="class-details">
-                            <h3><a href="class.html">XX社</a></h3>
-                            <p>Admission Close</p>
-                            <div class="clearfix">
-                                <div class="class-meta pull-left">
-                                    <span>Years Old</span>
-                                    <p>2-3</p>
-                                </div>
-                                <div class="class-meta pull-left">
-                                    <span>Class Size</span>
-                                    <p>24</p>
-                                </div>
-                                <div class="class-meta pull-left">
-                                    <span>Tution Fee</span>
-                                    <p>$129</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-xs-12 mix kinder play">
-                    <div class="single-class">
-                        <div class="class-img">
-                            <img alt="" src="images/class1/class5.jpg">
-                            <div class="class-hover">
-                                <a href="images/class1/class5.jpg" class="popup"><i class="icon-link"></i></a>
-                            </div>
-                        </div>
-                        <div class="class-details">
-                            <h3><a href="class.html">XX社</a></h3>
-                            <p>Admission Open</p>
-                            <div class="clearfix">
-                                <div class="class-meta pull-left">
-                                    <span>Years Old</span>
-                                    <p>3-5</p>
-                                </div>
-                                <div class="class-meta pull-left">
-                                    <span>Class Size</span>
-                                    <p>20</p>
-                                </div>
-                                <div class="class-meta pull-left">
-                                    <span>Tution Fee</span>
-                                    <p>$140</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-xs-12 mix primary story">
-                    <div class="single-class">
-                        <div class="class-img">
-                            <img alt="" src="images/class1/class6.jpg">
-                            <div class="class-hover">
-                                <a href="images/class1/class6.jpg" class="popup"><i class="icon-link"></i></a>
-                            </div>
-                        </div>
-                        <div class="class-details">
-                            <h3><a href="class.html">XX社</a></h3>
-                            <p>Admission Close</p>
-                            <div class="clearfix">
-                                <div class="class-meta pull-left">
-                                    <span>Years Old</span>
-                                    <p>4-6</p>
-                                </div>
-                                <div class="class-meta pull-left">
-                                    <span>Class Size</span>
-                                    <p>15</p>
-                                </div>
-                                <div class="class-meta pull-left">
-                                    <span>Tution Fee</span>
-                                    <p>$150</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-xs-12 mix kinder primary">
-                    <div class="single-class">
-                        <div class="class-img">
-                            <img alt="" src="images/class1/class7.jpg">
-                            <div class="class-hover">
-                                <a href="images/class1/class7.jpg" class="popup"><i class="icon-link"></i></a>
-                            </div>
-                        </div>
-                        <div class="class-details">
-                            <h3><a href="class.html">XX社</a></h3>
-                            <p>Admission Close</p>
-                            <div class="clearfix">
-                                <div class="class-meta pull-left">
-                                    <span>Years Old</span>
-                                    <p>2-3</p>
-                                </div>
-                                <div class="class-meta pull-left">
-                                    <span>Class Size</span>
-                                    <p>24</p>
-                                </div>
-                                <div class="class-meta pull-left">
-                                    <span>Tution Fee</span>
-                                    <p>$129</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-xs-12 mix play story">
-                    <div class="single-class">
-                        <div class="class-img">
-                            <img alt="" src="images/class1/class8.jpg">
-                            <div class="class-hover">
-                                <a href="images/class1/class8.jpg" class="popup"><i class="icon-link"></i></a>
-                            </div>
-                        </div>
-                        <div class="class-details">
-                            <h3><a href="class.html">XX社</a></h3>
-                            <p>Admission Open</p>
-                            <div class="clearfix">
-                                <div class="class-meta pull-left">
-                                    <span>Years Old</span>
-                                    <p>3-5</p>
-                                </div>
-                                <div class="class-meta pull-left">
-                                    <span>Class Size</span>
-                                    <p>20</p>
-                                </div>
-                                <div class="class-meta pull-left">
-                                    <span>Tution Fee</span>
-                                    <p>$140</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-xs-12 mix kinder play">
-                    <div class="single-class">
-                        <div class="class-img">
-                            <img alt="" src="images/class1/class9.jpg">
-                            <div class="class-hover">
-                                <a href="images/class1/class9.jpg" class="popup"><i class="icon-link"></i></a>
-                            </div>
-                        </div>
-                        <div class="class-details">
-                            <h3><a href="class.html">XX社</a></h3>
-                            <p>Admission Close</p>
-                            <div class="clearfix">
-                                <div class="class-meta pull-left">
-                                    <span>Years Old</span>
-                                    <p>4-6</p>
-                                </div>
-                                <div class="class-meta pull-left">
-                                    <span>Class Size</span>
-                                    <p>15</p>
-                                </div>
-                                <div class="class-meta pull-left">
-                                    <span>Tution Fee</span>
-                                    <p>$150</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </c:forEach>
+                </form>
                 <div class="clearfix"></div>
             </div>
         </div>
@@ -439,16 +204,14 @@
             <div class="col-sm-12 col-xs-12 text-center">
                 <ul class="paginations">
                     <li><a href="#"><i class="icon-prev"></i></a></li>
-                    <li><a href="#">1</a></li>
-                    <li class="active"><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">6</a></li>
-                    <li><a href="#">7</a></li>
-                    <li><a href="#">8</a></li>
-                    <li><a href="#">9</a></li>
-                    <li><a href="#">10</a></li>
+                    <c:forEach var="p" items="${currentPages}">
+                        <c:if test="${p.equals(currentPage)}">
+                            <li class="active"><a href="../view.Mall">${p}</a></li>
+                        </c:if>
+                        <c:if test="${!p.equals(currentPage)}">
+                            <li><a href="../view.Mall">${p}</a></li>
+                        </c:if>
+                    </c:forEach>
                     <li><a href="#"><i class="icon-next"></i></a></li>
                 </ul>
             </div>

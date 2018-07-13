@@ -115,47 +115,61 @@ public class Creator {
         return schools;
     }
 
-//    /**
-//     * 获取所有主要类型
-//     * @return 主要类型
-//     */
-//    public static List<String> getMainTypes(){
-//        List<String> mainTypes=new ArrayList<>();
-//        mainTypes.add("实践类");
-//        mainTypes.add("学术类");
-//        mainTypes.add("体育类");
-//        mainTypes.add("艺术类");
-//        return mainTypes;
-//    }
-//
-//    /**
-//     * 通过主类型获取次级类型
-//     * @param mainType 主类型
-//     * @return 次级类型
-//     */
-//    public static List<String> getSubTypes(String mainType){
-//        List<String> subTypes=new ArrayList<>();
-//        if(mainType.equals("实践类")){
-//            subTypes.add("志愿者类");
-//            subTypes.add("创新类");
-//        }
-//        if(mainType.equals("学术类")){
-//            subTypes.add("数学类");
-//            subTypes.add("物理类");
-//            subTypes.add("化学类");
-//            subTypes.add("计算机类");
-//        }
-//        if(mainType.equals("体育类")){
-//            subTypes.add("足球类");
-//            subTypes.add("篮球类");
-//            subTypes.add("排球类");
-//        }
-//        if(mainType.equals("艺术类")){
-//            subTypes.add("戏曲类");
-//            subTypes.add("歌舞类");
-//            subTypes.add("乐器类");
-//            subTypes.add("美术类");
-//        }
-//        return subTypes;
-//    }
+    /**
+     * 获取所有主要类型
+     * @return 主要类型
+     */
+    public static List<MainType> getMainTypes(){
+        List<MainType> mainTypes=new ArrayList<>();
+        mainTypes.add(new MainType("实践类"));
+        mainTypes.add(new MainType("学术类"));
+        mainTypes.add(new MainType("体育类"));
+        mainTypes.add(new MainType("艺术类"));
+        mainTypes.add(new MainType("其他类"));
+        return mainTypes;
+    }
+
+    /**
+     * 通过主类型获取次级类型
+     * @param mainType 主类型
+     * @return 次级类型
+     */
+    public static List<String> getSubTypes(String mainType){
+        List<String> subTypes=new ArrayList<>();
+        if(("实践类").equals(mainType)){
+            subTypes.add("志愿者");
+            subTypes.add("创新类");
+            subTypes.add("学生会");
+        }
+        if(("学术类").equals(mainType)){
+            subTypes.add("数学类");
+            subTypes.add("物理类");
+            subTypes.add("化学类");
+            subTypes.add("文学类");
+            subTypes.add("计算机类");
+        }
+        if(("体育类").equals(mainType)){
+            subTypes.add("足球类");
+            subTypes.add("篮球类");
+            subTypes.add("排球类");
+        }
+        if(("艺术类").equals(mainType)){
+            subTypes.add("美术类");
+            subTypes.add("影视类");
+            subTypes.add("歌舞类");
+        }
+        if(("其他类").equals(mainType)){
+            subTypes.add("无");
+        }
+        return subTypes;
+    }
+
+    public static String getMainTypeFromSubType(String subType){
+        for (MainType mainType:getMainTypes()) {
+            for(String s:mainType.getSubTypes()){
+                if(s.equals(subType))return mainType.getMainType();
+            }
+        }
+        return null;
+    }
 }

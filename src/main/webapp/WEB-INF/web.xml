@@ -105,6 +105,15 @@
         <url-pattern>/user.Personal</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ViewMallServlet</servlet-name>
+        <servlet-class>controller.servlet.user.ViewMallServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ViewMallServlet</servlet-name>
+        <url-pattern>/view.Mall</url-pattern>
+    </servlet-mapping>
+    
     <listener>
         <listener-class>util.function.ApplicationListener</listener-class>
     </listener>
