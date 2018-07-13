@@ -31,6 +31,7 @@ public final class Pages {
     //用户个人中心页
     public static final String USER_PERSONAL_CENTER_PAGE="../index/personal.jsp";
 
+    //用户建立社团页
     public static final String USER_FOUND_SOCIETY_PAGE="../index/found.jsp";
 
     //社团广场页
@@ -39,4 +40,12 @@ public final class Pages {
     //社团主页
     public static final String SOCIETY_MAIN_PAGE="../society/index.jsp";
 
+    //社团评论页
+    public static final String SOCIETY_COMMENT_PAGE="../society/comment.jsp";
+
+    //社团活动页
+    public static final String SOCIETY_ACTIVITY_PAGE="../society/activity.jsp";
+
+    //社团管理页
+    public static final String SOCIETY_MANAGE_PAGE="../society/manage.jsp";
 }

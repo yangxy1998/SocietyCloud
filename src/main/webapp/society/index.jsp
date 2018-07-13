@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="model.relation.UserManageSociety" %>
 <%@ page import="util.function.Pages" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -8,7 +9,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<--!jsp:useBean id="society" type="model.entity.Society" scope="session"/>-->
 <head>
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,15 +45,18 @@ ${alert}
 
     <!-- Header -->
     <header id="header" >
-        <h1><a href="./index.html"><b>首页</b></a>
-            &nbsp;&nbsp;&nbsp;<a href="../societies/view.jsp"><b>社团广场</b></a>
-            &nbsp;&nbsp;&nbsp;<a href="./about.html"><b>关于社团</b></a>
-            &nbsp;&nbsp;&nbsp;<a href="./services.html"><b>社团活动</b></a>
-            &nbsp;&nbsp;&nbsp;<a href="./experience.html"><b>社团经历</b></a>
-            &nbsp;&nbsp;&nbsp;<a href="./contact.html"><b>联系我们</b></a>
-
-
-
+        <h1><a href="<%=Pages.USER_MAIN_PAGE%>"><b>首页</b></a>
+            &nbsp;&nbsp;&nbsp;<a href="<%=Pages.SOCIETY_MALL_PAGE%>"><b>社团广场</b></a>
+            &nbsp;&nbsp;&nbsp;<a href="<%=Pages.SOCIETY_MAIN_PAGE%>"><b>社团首页</b></a>
+            &nbsp;&nbsp;&nbsp;<a href="<%=Pages.SOCIETY_COMMENT_PAGE%>"><b>社团评论</b></a>
+            &nbsp;&nbsp;&nbsp;<a href="<%=Pages.SOCIETY_ACTIVITY_PAGE%>"><b>社团活动</b></a>
+            <%
+                for (UserManageSociety ums:society.getManageUsers()) {
+                    if(ums.getUserId().equals(user.getUserId())){
+                        out.println("&nbsp;&nbsp;&nbsp;<a href=\""+Pages.SOCIETY_MANAGE_PAGE+"\"><b>管理社团</b></a>");
+                    }
+                }
+            %>
         </h1>
 
         <nav id="nav">

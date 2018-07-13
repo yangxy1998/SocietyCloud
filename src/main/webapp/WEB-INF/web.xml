@@ -113,6 +113,15 @@
         <servlet-name>ViewMallServlet</servlet-name>
         <url-pattern>/view.Mall</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CommentServlet</servlet-name>
+        <servlet-class>controller.servlet.user.CommentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CommentServlet</servlet-name>
+        <url-pattern>/user.Comment</url-pattern>
+    </servlet-mapping>
     
     <listener>
         <listener-class>util.function.ApplicationListener</listener-class>
