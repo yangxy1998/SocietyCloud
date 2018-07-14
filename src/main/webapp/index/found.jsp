@@ -131,6 +131,15 @@ ${alert}
                         <h3>创始人：<input type="text" name="founder" value="${user.realName}"></h3>
                         <input type="submit" value="提交信息">
                     </form>
+                    <%
+                        session.setAttribute("societyName","uhwgeifhewiuf");
+                    %>
+                    <h1>文件上传</h1>
+                    <form id="form" method="post" action="/UploadServlet" enctype="multipart/form-data" >
+                        <input type="submit" value="上传" />
+                        选择文件:
+                        <input type="file" name="uploadFile" />
+                    </form>
                 </section>
 
 
@@ -152,6 +161,7 @@ ${alert}
 <script src="./assets/js/util.js"></script>
 <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="./assets/js/main.js"></script>
+
 
 </body>
 </html>
