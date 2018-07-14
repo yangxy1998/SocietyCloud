@@ -71,7 +71,6 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("user",user);
             response.sendRedirect(Pages.USER_MAIN_PAGE);
         }
-
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

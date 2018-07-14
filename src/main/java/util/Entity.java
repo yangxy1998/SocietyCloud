@@ -1,7 +1,10 @@
 package util;
 
+import javax.servlet.http.HttpSessionActivationListener;
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
+import javax.servlet.http.HttpSessionEvent;
+import java.io.Serializable;
 
 /**
  * 实体类
@@ -9,7 +12,8 @@ import javax.servlet.http.HttpSessionBindingListener;
  * Created by Administrator on 2018/7/6.
  * @author 杨晓宇
  */
-public abstract class Entity implements HttpSessionBindingListener{
+public abstract class Entity implements HttpSessionBindingListener,
+        HttpSessionActivationListener,Serializable{
 
     private static String currentLog;
 
@@ -44,5 +48,23 @@ public abstract class Entity implements HttpSessionBindingListener{
 
         Log.addLog(currentLog);
 
+    }
+
+    @Override
+    public void sessionWillPassivate(HttpSessionEvent event) {
+        String sessionId=event.getSession().getId();
+
+        currentLog=this.getEntityLog()+
+                " 跟随 "+sessionId+"即将迁移至另一个VM。";
+        Log.addLog(currentLog);
+
+    }
+
+    @Override
+    public void sessionDidActivate(HttpSessionEvent event) {
+        String sessionId=event.getSession().getId();
+        currentLog=this.getEntityLog()+
+                " 跟随 "+sessionId+"完成迁移。";
+        Log.addLog(currentLog);
     }
 }

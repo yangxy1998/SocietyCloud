@@ -42,6 +42,5 @@ public class ViewMallServlet extends HttpServlet {
         session.setAttribute("currentPage",page);
         session.setAttribute("mainTypes", Creator.getMainTypes());
         response.sendRedirect("../societies/view.jsp");
-
     }
 }

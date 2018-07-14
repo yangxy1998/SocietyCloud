@@ -153,7 +153,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>UploadServlet</servlet-name>
-        <url-pattern>/UploadServlet</url-pattern>
+        <url-pattern>/upload</url-pattern>
     </servlet-mapping>
 
 </web-app>

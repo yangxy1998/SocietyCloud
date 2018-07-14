@@ -3,10 +3,10 @@ package controller.servlet.user;
 import controller.tools.user.RegisterTool;
 import model.Managers;
 import model.entity.User;
-import util.function.Creator;
 import util.Log;
 import util.annotation.Attribute;
 import util.annotation.Parameter;
+import util.function.Creator;
 import util.function.Pages;
 
 import javax.servlet.RequestDispatcher;

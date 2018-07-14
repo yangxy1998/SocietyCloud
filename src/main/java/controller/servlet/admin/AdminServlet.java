@@ -1,5 +1,6 @@
 package controller.servlet.admin;
 
+import controller.servlet.InitServlet;
 import model.Managers;
 import model.entity.Society;
 import model.entity.User;
@@ -41,6 +42,7 @@ public class AdminServlet extends HttpServlet {
             session.setAttribute("admin","society");
         }
         RequestDispatcher dispatcher=request.getRequestDispatcher("./admin/admin.jsp");
+        InitServlet.session.commit();
         dispatcher.forward(request,response);
     }
 
@@ -66,6 +68,5 @@ public class AdminServlet extends HttpServlet {
             Log.addAdminLog("尝试访问管理员页面。",adminName);
             response.sendRedirect(Pages.ADMIN_LOGIN_PAGE);
         }
-
     }
 }

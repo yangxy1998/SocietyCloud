@@ -119,6 +119,8 @@ public class ManageSocietyServlet extends HttpServlet {
                 }
             }
         }
+        session.setAttribute("society",Managers.SocietyManager.getSocietyById(society.getSocietyId()));
+        session.setAttribute("user",Managers.UserManager.getUserById(user.getUserId()));
         response.sendRedirect(Pages.SOCIETY_MANAGE_PAGE);
     }
 
