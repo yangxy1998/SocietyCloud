@@ -25,7 +25,11 @@ public class CommentServlet extends HttpServlet {
         User user=(User)session.getAttribute("user");
         Society society=(Society)session.getAttribute("society");
         String comment=request.getParameter("comment");
-        if(comment!=null||!comment.equals("")){
+        if(society.getStatus()==0||society.getStatus()==-1){
+            session.setAttribute("alert",Creator.getAlert("当前社团无法评论，可能是该社团已被冻结或尚未通过管理员审核。"));
+            response.sendRedirect(Pages.SOCIETY_COMMENT_PAGE);
+        }
+        else if(comment!=null||!comment.equals("")){
             Managers.CommentManager.commentToSociety(user.getUserId(),society.getSocietyId(), Creator.getTime(),comment);
             session.setAttribute("society",Managers.SocietyManager.getSocietyById(society.getSocietyId()));
             session.setAttribute("user",Managers.UserManager.getUserById(user.getUserId()));

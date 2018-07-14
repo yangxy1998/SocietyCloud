@@ -41,6 +41,14 @@ public class FoundServlet extends HttpServlet {
             Log.addErrorLog(user.getUserName()+"尝试创建社团，但此社团名已被注册。");
             response.sendRedirect(Pages.USER_FOUND_SOCIETY_PAGE);
         }
+        else if(values.get(0).length()>=64){
+            session.setAttribute("alert",Creator.getAlert("社团名不能超过64字节！"));
+            response.sendRedirect(Pages.SOCIETY_MAIN_PAGE);
+        }
+        else if(values.size()<6){
+            session.setAttribute("alert",Creator.getAlert("您还有信息没有正确填写！"));
+            response.sendRedirect(Pages.SOCIETY_MAIN_PAGE);
+        }
         else{
             String societyId=FoundTool.getNewSocietyId();
             Managers.SocietyManager.createSociety(societyId,values.get(0),

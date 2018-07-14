@@ -75,7 +75,7 @@ ${alert}
                 <section>
                     <form method="post" action="../user.Found">
                         <br>
-                        <h3>社团名：<input type="text" name="societyName" placeholder="社团名"></h3>
+                        <h3>社团名：<input type="text" name="societyName" placeholder="社团名，不多于64个字节。"></h3>
                         <h3>社团学校：
                             <select name="schoolName" size="1">
                                 <c:forEach var="school" items="${schools}">
@@ -131,18 +131,11 @@ ${alert}
                         <h3>创始人：<input type="text" name="founder" value="${user.realName}"></h3>
                         <input type="submit" value="提交信息">
                     </form>
-
                 </section>
-
-
-
             </div>
         </section>
     </article>
-
     <!-- Footer -->
-
-
 </div>
 
 <!-- Scripts -->
