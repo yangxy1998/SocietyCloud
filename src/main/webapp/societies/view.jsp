@@ -104,14 +104,19 @@ ${alert}
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-xs-12">
-                    <ul class="main-menu pull-lift">
+                    <ul class="main-menu pull-lift ">
+
+
                         <form action="<%=Pages.SOCIETY_MALL_PAGE%>">
                         <c:forEach var="mainType" items="${mainTypes}">
+
+
                             <li class="menu-has-child">
+
                                 <input type="submit" name="${mainType.mainType}" value="${mainType.mainType}">
                                 <ul>
                                     <c:forEach var="subType" items="${mainType.subTypes}">
-                                        <li><input type="submit" name="${subType}" value="${subType}"></li>
+                                        <li ><input  type="submit" name="${subType}" value="${subType}">
                                     </c:forEach>
                                 </ul>
                             </li>
@@ -176,17 +181,8 @@ ${alert}
                                 </div>
                             </div>
                             <div class="class-details">
-                                <h3><input type="submit" name="${society.societyId}">${society.societyName}</h3>
-                                <p>Admission Close</p>
+                                <h3>${society.societyName}<input type="submit" name="${society.societyId}"></h3>
                                 <div class="clearfix">
-                                    <div class="class-meta pull-left">
-                                        <span>Years Old</span>
-                                        <p>2-3</p>
-                                    </div>
-                                    <div class="class-meta pull-left">
-                                        <span>Class Size</span>
-                                        <p>24</p>
-                                    </div>
                                     <div class="class-meta pull-left">
                                         <span>Tution Fee</span>
                                         <p>$129</p>
