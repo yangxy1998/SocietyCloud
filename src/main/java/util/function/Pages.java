@@ -34,9 +34,6 @@ public final class Pages {
     //用户建立社团页
     public static final String USER_FOUND_SOCIETY_PAGE="../index/found.jsp";
 
-    //用户日志页
-    public static final String USER_LOG_PAGE="../index/userlog.jsp";
-
     //社团广场页
     public static final String SOCIETY_MALL_PAGE="../view.Mall";
 
@@ -51,8 +48,4 @@ public final class Pages {
 
     //社团管理页
     public static final String SOCIETY_MANAGE_PAGE="../society/manage.jsp";
-
-    //社团日志页
-    public static final String SOCIETY_LOG_PAGE="../society/societylog.jsp";
-
 }

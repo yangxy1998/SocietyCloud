@@ -3,7 +3,6 @@ package controller.servlet.user;
 import controller.tools.user.ViewSocietyTool;
 import model.Managers;
 import model.entity.Society;
-import util.Log;
 import util.function.Creator;
 import util.function.Pages;
 
@@ -26,7 +25,6 @@ public class ViewSocietyServlet extends HttpServlet {
         if(societyId!=null){
             Society society=Managers.SocietyManager.getSocietyById(societyId);
             session.setAttribute("society",society );
-            Log.addSocietyLog("有用户查看了社团信息。",society.getSocietyName());
             response.sendRedirect(Pages.SOCIETY_MAIN_PAGE);
         }
         else{

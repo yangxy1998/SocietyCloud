@@ -69,16 +69,6 @@ public class UserManageSociety extends Relation{
         return Managers.SocietyManager.getSocietyById(societyId);
     }
 
-    public static String getPriority(int priority){
-        if(priority==0)return "无权限";
-        else if(priority==1)return "社团委员";
-        else if(priority==2)return "社团秘书";
-        else if(priority==3)return "社团发言人";
-        else if(priority==4)return "社团总管理";
-        else if(priority==5)return "社团拥有者";
-        else return null;
-    }
-
     @Override
     public Entity get(@Param("entityType") String entityType) {
         if(entityType.equals("User"))return Managers.UserManager.getUserById(userId);

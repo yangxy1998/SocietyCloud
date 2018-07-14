@@ -55,11 +55,11 @@ public class FoundServlet extends HttpServlet {
                 Managers.JoinManager.passApplication(user.getUserId(),societyId,user.getUserId());
                 Managers.ManageManager.givePriority(user.getUserId(),societyId,5);
                 Log.addUserLog("创建了社团，社团名为："+values.get(0),user.getUserName());
-                Log.addUserLog("加入了社团 "+values.get(0),user.getUserName());
-                Log.addUserLog("成为社团 "+values.get(0)+" 的社长。",user.getUserName());
-                Log.addSocietyLog("社团被 "+user.getNickName()+" 创建。",values.get(0));
-                Log.addSocietyLog(user.getNickName()+" 加入了社团。",values.get(0));
-                Log.addSocietyLog(user.getNickName()+" 成为社团拥有者。",values.get(0));
+                Log.addUserLog("加入了社团"+values.get(0),user.getUserName());
+                Log.addUserLog("成为社团"+values.get(0)+"的社长。",user.getUserName());
+                Log.addSocietyLog("社团被"+user.getUserName()+"创建。",values.get(0));
+                Log.addSocietyLog(user.getNickName()+"加入了社团。",values.get(0));
+                Log.addSocietyLog(user.getNickName()+"成为社团所有者。",values.get(0));
                 session.setAttribute("society",Managers.SocietyManager.getSocietyById(societyId));
                 session.setAttribute("user",Managers.UserManager.getUserById(user.getUserId()));
                 session.setAttribute("alert",Creator.getAlert("您已创建社团，现在可以修改社团的信息。在管理员审核通过后即可使用全部的社团功能了。"));
