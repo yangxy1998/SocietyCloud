@@ -55,6 +55,7 @@ ${alert}
                 for (UserManageSociety ums:society.getManageUsers()) {
                     if(ums.getUserId().equals(user.getUserId())){
                         out.println("&nbsp;&nbsp;&nbsp;<a href=\""+Pages.SOCIETY_MANAGE_PAGE+"\"><b>管理社团</b></a>");
+                        out.println("&nbsp;&nbsp;&nbsp;<a href=\""+Pages.SOCIETY_LOG_PAGE+"\"><b>社团日志</b></a>");
                         request.setAttribute("priority",ums.getPriority());
                     }
                 }

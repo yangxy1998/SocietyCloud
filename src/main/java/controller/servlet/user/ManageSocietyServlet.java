@@ -6,6 +6,8 @@ import controller.tools.user.ManageSocietyTool;
 import model.Managers;
 import model.entity.Society;
 import model.entity.User;
+import model.relation.UserManageSociety;
+import util.Log;
 import util.function.Creator;
 import util.function.Pages;
 
@@ -39,10 +41,22 @@ public class ManageSocietyServlet extends HttpServlet {
                     int priority=Integer.parseInt(request.getParameter("priority"));
                     Managers.ManageManager.removePriority(id,society.getSocietyId());
                     Managers.ManageManager.givePriority(id,society.getSocietyId(),priority);
+                    Log.addUserLog(user.getNickName()+" 将你在社团 "+society.getSocietyName()+" 的权限修改为 "
+                            + UserManageSociety.getPriority(priority)+"。",Managers.UserManager.getUserById(id).getUserName());
+                    Log.addUserLog("将 "+user.getNickName()+" 在社团 "+society.getSocietyName()+" 的权限修改为 "
+                            + UserManageSociety.getPriority(priority)+"。",user.getUserName());
+                    Log.addSocietyLog(user.getNickName()+" 将用户 "+Managers.UserManager.getUserById(id)
+                            +" 的权限修改为 "+ UserManageSociety.getPriority(priority)+"。",society.getSocietyName());
                 }
                 else if(("givePriority").equals(operation)){
                     int priority=Integer.parseInt(request.getParameter("priority"));
                     Managers.ManageManager.givePriority(id,society.getSocietyId(),priority);
+                    Log.addUserLog(user.getNickName()+" 将你在社团"+society.getSocietyName()+"的权限授予为 "
+                            + UserManageSociety.getPriority(priority)+"。",Managers.UserManager.getUserById(id).getUserName());
+                    Log.addUserLog("为用户 "+user.getNickName()+" 在社团 "+society.getSocietyName()+" 授予权限 "
+                            + UserManageSociety.getPriority(priority)+"。",user.getUserName());
+                    Log.addSocietyLog(user.getNickName()+" 将用户 "+Managers.UserManager.getUserById(id)
+                            +" 的权限授予为 "+ UserManageSociety.getPriority(priority)+"。",society.getSocietyName());
                 }
                 else if(("changeInformation").equals(operation)){
                     Enumeration<String> parameters=request.getParameterNames();
@@ -54,27 +68,54 @@ public class ManageSocietyServlet extends HttpServlet {
                     }
                     Managers.SocietyManager.updateSociety(society.getSocietyId(),values.get(0),values.get(1),
                             values.get(2),values.get(3),values.get(4),values.get(5),society.getStatus(),values.get(6));
+                    Log.addUserLog("修改了社团 "+society.getSocietyName()+"的信息",user.getUserId());
+                    Log.addSocietyLog("用户 "+user.getNickName()+" 修改了社团基本信息。",society.getSocietyName());
                 }
                 else if(("pass").equals(operation)){
                     Managers.JoinManager.passApplication(id,society.getSocietyId(),user.getUserId());
+                    Log.addSocietyLog("管理员 "+user.getNickName()+" 通过了用户 " +Managers.UserManager.getUserById(id).getNickName()
+                            +" 的社团申请。",society.getSocietyName());
+                    Log.addUserLog("你通过了用户 " +Managers.UserManager.getUserById(id).getNickName()+" 在社团 "+society.getSocietyName()
+                            +" 的社团申请。",user.getUserName());
+                    Log.addUserLog("你对社团 "+society.getSocietyName()+" 的申请被通过。",Managers.UserManager.getUserById(id).getUserName());
                 }
                 else if(("deny").equals(operation)){
                     Managers.JoinManager.denyApplication(id,society.getSocietyId(),user.getUserId());
+                    Log.addSocietyLog("管理员 "+user.getNickName()+" 拒绝或踢出了用户 " +Managers.UserManager.getUserById(id).getNickName()
+                            +"。",society.getSocietyName());
+                    Log.addUserLog("你拒绝或踢出了用户 " +Managers.UserManager.getUserById(id).getNickName()+" 在社团 "+society.getSocietyName()
+                            +" 的社团申请。",user.getUserName());
+                    Log.addUserLog("你对社团 "+society.getSocietyName()+" 的申请被拒绝或您被该社团踢出。",Managers.UserManager.getUserById(id).getUserName());
                 }
                 else if(("summit").equals(operation)){
                     String userId= ManageSocietyTool.getCommentUserId(id);
                     String commentDate=ManageSocietyTool.getCommentDate(id);
                     Managers.CommentManager.summitComment(userId,society.getSocietyId(),commentDate);
+                    Log.addSocietyLog("管理员 "+user.getNickName()+" 将用户 " +Managers.UserManager.getUserById(id).getNickName()
+                            +" 于 "+commentDate+" 发表的评论置顶。",society.getSocietyName());
+                    Log.addUserLog("你将用户 " +Managers.UserManager.getUserById(id).getNickName()+" 于 "+commentDate
+                            +" 在社团 "+society.getSocietyName() +" 发表的评论置顶。",user.getUserName());
+                    Log.addUserLog("你对社团 "+society.getSocietyName()+" 于 "+commentDate+"发表的评论被置顶。",Managers.UserManager.getUserById(id).getUserName());
                 }
                 else if(("show").equals(operation)){
                     String userId= ManageSocietyTool.getCommentUserId(id);
                     String commentDate=ManageSocietyTool.getCommentDate(id);
                     Managers.CommentManager.showComment(userId,society.getSocietyId(),commentDate);
+                    Log.addSocietyLog("管理员 "+user.getNickName()+" 将用户 " +Managers.UserManager.getUserById(id).getNickName()
+                            +" 于 "+commentDate+" 发表的评论正常显示。",society.getSocietyName());
+                    Log.addUserLog("你将用户 " +Managers.UserManager.getUserById(id).getNickName()+" 于 "+commentDate
+                            +" 在社团 "+society.getSocietyName() +" 发表的评论正常显示。",user.getUserName());
+                    Log.addUserLog("你对社团 "+society.getSocietyName()+" 于 "+commentDate+"发表的评论正常显示。",Managers.UserManager.getUserById(id).getUserName());
                 }
                 else if(("hide").equals(operation)){
                     String userId= ManageSocietyTool.getCommentUserId(id);
                     String commentDate=ManageSocietyTool.getCommentDate(id);
                     Managers.CommentManager.hideComment(userId,society.getSocietyId(),commentDate);
+                    Log.addSocietyLog("管理员 "+user.getNickName()+" 将用户 " +Managers.UserManager.getUserById(id).getNickName()
+                            +" 于 "+commentDate+" 发表的评论隐藏。",society.getSocietyName());
+                    Log.addUserLog("你将用户 " +Managers.UserManager.getUserById(id).getNickName()+" 于 "+commentDate
+                            +" 在社团 "+society.getSocietyName() +" 发表的评论隐藏。",user.getUserName());
+                    Log.addUserLog("你对社团 "+society.getSocietyName()+" 于 "+commentDate+"发表的评论被隐藏。",Managers.UserManager.getUserById(id).getUserName());
                 }
             }
         }
