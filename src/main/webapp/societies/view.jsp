@@ -204,14 +204,16 @@ ${alert}
             <div class="col-sm-12 col-xs-12 text-center">
                 <ul class="paginations">
                     <li><a href="#"><i class="icon-prev"></i></a></li>
-                    <c:forEach var="p" items="${currentPages}">
-                        <c:if test="${p.equals(currentPage)}">
-                            <li class="active"><a href="../view.Mall">${p}</a></li>
-                        </c:if>
-                        <c:if test="${!p.equals(currentPage)}">
-                            <li><a href="../view.Mall">${p}</a></li>
-                        </c:if>
-                    </c:forEach>
+                    <form action="<%=Pages.SOCIETY_MALL_PAGE%>">
+                        <c:forEach var="p" items="${currentPages}">
+                            <c:if test="${p.equals(currentPage)}">
+                                <input type="submit" name="${p}" value="${p}">
+                            </c:if>
+                            <c:if test="${!p.equals(currentPage)}">
+                                <input type="submit" name="${p}" value="${p}">
+                            </c:if>
+                        </c:forEach>
+                    </form>
                     <li><a href="#"><i class="icon-next"></i></a></li>
                 </ul>
             </div>
