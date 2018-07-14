@@ -128,8 +128,8 @@ ${alert}
             </div>
         </div>
         <div class="search-area">
-            <form action="#" method="post">
-                <input type="search" name="search" placeholder="输入社团名字">
+                <form action="#" method="post">
+                    <input type="search" name="search" placeholder="输入社团名字">
             </form>
             <a href="#" class="search-close"><i class="fa fa-times"></i></a>
         </div>

@@ -1,14 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="model.relation.UserCommentSociety" %>
 <%@ page import="model.relation.UserManageSociety" %>
 <%@ page import="util.function.Pages" %>
-<%@ page import="model.Managers" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
-<%@ page import="model.relation.UserCommentSociety" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="model.Managers" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2018/7/13
-  Time: 14:27
+  Date: 2018/7/14
+  Time: 9:35
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -92,30 +92,20 @@ ${alert}
 </div>
 <br/><br/>
 <%
-    List<UserCommentSociety> comments=society.getCommentUsers();
-    if(comments==null)comments=new ArrayList<>();
-    request.setAttribute("comments", comments);
+    request.setAttribute("logs", Managers.LogManager.getSocietyLogs(society.getSocietyName()));
 %>
-<c:forEach var="comment" items="${comments}">
-    <c:if test="${comments.size()<1}">
-        <br/>还没有人评论这个社团~
-    </c:if>
-    <c:if test="${comment.visible==1}">
-        <br/>
-        ${comment.user.nickName}于${comment.commentDate}评论：<br>
-        ${comment.comment}
-    </c:if>
-</c:forEach>
-<c:forEach var="comment" items="${comments}">
-    <c:if test="${comment.visible==0}">
-        <br/>
-        ${comment.user.nickName}于${comment.commentDate}评论：<br>
-        ${comment.comment}
-    </c:if>
-</c:forEach>
-<form method="post" action="../user.Comment">
-    <input type="text" name="comment" placeholder="您可以在这里输入您的评论：字数不超过500字。">
-    <input type="submit" value="评论">
-</form>
+<table>
+    <tr>
+        <th>时间</th>
+        <th>内容</th>
+    </tr>
+    <c:forEach var="log" items="${logs}">
+        <tr>
+            <td>${log.time}</td>
+            <td>${log.log}</td>
+        </tr>
+    </c:forEach>
+</table>
+
 </body>
 </html>

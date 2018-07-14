@@ -3,6 +3,7 @@ package controller.servlet.user;
 import model.Managers;
 import model.entity.Society;
 import model.entity.User;
+import util.Log;
 import util.function.Creator;
 import util.function.Pages;
 
@@ -28,6 +29,8 @@ public class CommentServlet extends HttpServlet {
             Managers.CommentManager.commentToSociety(user.getUserId(),society.getSocietyId(), Creator.getTime(),comment);
             session.setAttribute("user",user);
             session.setAttribute("society",society);
+            Log.addSocietyLog("用户"+user.getNickName()+"评论了社团。",society.getSocietyName());
+            Log.addUserLog("你评论了社团 "+society.getSocietyName()+"，目前该评论正常显示。",user.getUserName());
             response.sendRedirect(Pages.SOCIETY_COMMENT_PAGE);
         }
         else{
