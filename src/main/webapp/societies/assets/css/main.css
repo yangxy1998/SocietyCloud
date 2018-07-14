@@ -1410,7 +1410,7 @@
 		font-size: 15pt;
 		font-weight: 400;
 		letter-spacing: 0.075em;
-		line-height: 1.65em;
+		line-height: 0.1em;
 	}
 
 		@media screen and (max-width: 1680px) {
