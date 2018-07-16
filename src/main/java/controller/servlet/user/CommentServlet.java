@@ -25,7 +25,11 @@ public class CommentServlet extends HttpServlet {
         User user=(User)session.getAttribute("user");
         Society society=(Society)session.getAttribute("society");
         String comment=request.getParameter("comment");
-        if(society.getStatus()==0||society.getStatus()==-1){
+        if(user.getUserName()==null||user.getUserName().equals("")){
+            session.setAttribute("alert",Creator.getAlert("您还没有登录，请登录后再评论社团！"));
+            response.sendRedirect(Pages.USER_LOGIN_PAGE);
+        }
+        else if(society.getStatus()==0||society.getStatus()==-1){
             session.setAttribute("alert",Creator.getAlert("当前社团无法评论，可能是该社团已被冻结或尚未通过管理员审核。"));
             response.sendRedirect(Pages.SOCIETY_COMMENT_PAGE);
         }

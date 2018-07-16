@@ -31,7 +31,11 @@ public class ManageSocietyServlet extends HttpServlet {
         HttpSession session=request.getSession(false);
         Society society=(Society) session.getAttribute("society");
         User user=(User) session.getAttribute("user");
-        if(society.getStatus()==0){
+        if(user.getUserName()==null||user.getUserName().equals("")){
+            session.setAttribute("alert",Creator.getAlert("您还没有登录，请登录后再管理社团！"));
+            response.sendRedirect(Pages.USER_LOGIN_PAGE);
+        }
+        else if(society.getStatus()==0){
             session.setAttribute("alert",Creator.getAlert("当前社团还没有被管理员审核通过，审核通过后才可使用社团管理功能！"));
             response.sendRedirect(Pages.SOCIETY_MAIN_PAGE);
         }
@@ -53,7 +57,7 @@ public class ManageSocietyServlet extends HttpServlet {
                                 + UserManageSociety.getPriority(priority)+"。",Managers.UserManager.getUserById(id).getUserName());
                         Log.addUserLog("将 "+user.getNickName()+" 在社团 "+society.getSocietyName()+" 的权限修改为 "
                                 + UserManageSociety.getPriority(priority)+"。",user.getUserName());
-                        Log.addSocietyLog(user.getNickName()+" 将用户 "+Managers.UserManager.getUserById(id)
+                        Log.addSocietyLog(user.getNickName()+" 将用户 "+Managers.UserManager.getUserById(id).getNickName()
                                 +" 的权限修改为 "+ UserManageSociety.getPriority(priority)+"。",society.getSocietyName());
                     }
                     else if(("givePriority").equals(operation)){
@@ -63,7 +67,7 @@ public class ManageSocietyServlet extends HttpServlet {
                                 + UserManageSociety.getPriority(priority)+"。",Managers.UserManager.getUserById(id).getUserName());
                         Log.addUserLog("为用户 "+user.getNickName()+" 在社团 "+society.getSocietyName()+" 授予权限 "
                                 + UserManageSociety.getPriority(priority)+"。",user.getUserName());
-                        Log.addSocietyLog(user.getNickName()+" 将用户 "+Managers.UserManager.getUserById(id)
+                        Log.addSocietyLog(user.getNickName()+" 将用户 "+Managers.UserManager.getUserById(id).getNickName()
                                 +" 的权限授予为 "+ UserManageSociety.getPriority(priority)+"。",society.getSocietyName());
                     }
                     else if(("changeInformation").equals(operation)){

@@ -93,10 +93,9 @@ ${alert}
                         <h3>用户简介：<input type="text" name="description" value="${user.description}"></h3>
                         <input type="submit" value="提交信息">
                     </form>
+
+                    <h3><a href="<%=Pages.USER_LOG_PAGE%>">您可以在这里查看您的用户日志。</a> </h3>
                 </section>
-
-
-
             </div>
         </section>
     </article>

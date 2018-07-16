@@ -29,6 +29,10 @@ public class FoundServlet extends HttpServlet {
 
         HttpSession session=request.getSession(false);
         User user=(User) session.getAttribute("user");
+        if(user.getUserName()==null||user.getUserName().equals("")){
+            session.setAttribute("alert",Creator.getAlert("您还没有登录，请登录后再创建社团！"));
+            response.sendRedirect(Pages.USER_LOGIN_PAGE);
+        }
         Enumeration<String> parameters=request.getParameterNames();
         List<String> values=new ArrayList<>();
         while (parameters.hasMoreElements()){

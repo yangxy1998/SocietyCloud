@@ -30,7 +30,11 @@ public class JoinSocietyServlet extends HttpServlet {
         if(session.getAttribute("joinStatus").equals("加入社团")){
             User user=(User)session.getAttribute("user");
             Society society=(Society)session.getAttribute("society");
-            if(society.getStatus()==0){
+            if(user.getUserName()==null||user.getUserName().equals("")){
+                session.setAttribute("alert",Creator.getAlert("您还没有登录，请登录后再加入社团！"));
+                response.sendRedirect(Pages.USER_LOGIN_PAGE);
+            }
+            else if(society.getStatus()==0){
                 session.setAttribute("alert",Creator.getAlert("当前社团还没有被管理员审核通过，请等待审核通过后加入！"));
                 response.sendRedirect(Pages.SOCIETY_MAIN_PAGE);
             }
