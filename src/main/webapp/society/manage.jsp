@@ -11,28 +11,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Home</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Tutoring Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <link href="./css/bootstrap.css" rel='stylesheet' type='text/css' />
-    <link href="./css/style.css" rel='stylesheet' type='text/css' />
+    <title>社团云平台</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="./assets/js/ie/html5shiv.js"></script><![endif]-->
     <link rel="stylesheet" href="./assets/css/main.css" />
-    <script src="./js/jquery.min.js"></script>
-    <script src="./js/bootstrap.js"></script>
-    <!---- start-smoth-scrolling---->
-    <script type="text/javascript" src="./js/move-top.js"></script>
-    <script type="text/javascript" src="./js/easing.js"></script>
-    <script type="text/javascript">
-        jQuery(document).ready(function($) {
-            $(".scroll").click(function(event){
-                event.preventDefault();
-                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-            });
-        });
-    </script>
+    <!--[if lte IE 8]><link rel="stylesheet" href="./assets/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="./assets/css/ie9.css" /><![endif]-->
     <!--start-smoth-scrolling-->
 </head>
 <body>
@@ -62,6 +47,7 @@ ${alert}
             %>
         </h1>
 
+
         <nav id="nav">
             <ul>
                 <li class="special">
@@ -89,7 +75,12 @@ ${alert}
     </header>
 </div>
 <!--end-header-->
-
+<!-- Main -->
+<article id="main">
+    <header>
+        <h2>管理社团</h2>
+        <p>manage A Society</p>
+    </header>
 <center>
     <form method="post" action="../manage.Society">
         <c:if test="${priority>4}">
@@ -216,6 +207,9 @@ ${alert}
             <h3>社团ID：${society.societyId}</h3>
             <h3>社团名：<input type="text" name="societyName" placeholder="社团名"></h3>
             <h3>社团学校：
+                <%
+                    request.setAttribute("schools",Creator.getSchools());
+                %>
                 <select name="schoolName" size="1">
                     <c:forEach var="school" items="${schools}">
                         <option value="${school}">${school}</option>
@@ -335,20 +329,20 @@ ${alert}
 </center>
 <!--start-footer-->
 <div class="footer">
-    <div class="container">
-        <div class="footer-main">
-            <div class="col-md-4 footer-left">
-                <span class="glyphicon glyphicon-map-marker map-marker" aria-hidden="true"></span>
-                <p>武汉 <span>洪山区</span> 国软</p>
-            </div>
-            <div class="col-md-4 footer-left">
-                <span class="glyphicon glyphicon-phone map-marker" aria-hidden="true"></span>
-                <p>13163292915 <span>13163292915</span> </p>
-            </div>
+    <%--<div class="container">--%>
+        <%--<div class="footer-main">--%>
+            <%--<div class="col-md-4 footer-left">--%>
+                <%--<span class="glyphicon glyphicon-map-marker map-marker" aria-hidden="true"></span>--%>
+                <%--<p>武汉 <span>洪山区</span> 国软</p>--%>
+            <%--</div>--%>
+            <%--<div class="col-md-4 footer-left">--%>
+                <%--<span class="glyphicon glyphicon-phone map-marker" aria-hidden="true"></span>--%>
+                <%--<p>13163292915 <span>13163292915</span> </p>--%>
+            <%--</div>--%>
 
-            <div class="clearfix"></div>
-        </div>
-    </div>
+            <%--<div class="clearfix"></div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
     <script type="text/javascript">
         $(document).ready(function() {
             /*
@@ -364,6 +358,7 @@ ${alert}
 
         });
     </script>
+    </article>
 
 </div>
 <!--end-footer-->

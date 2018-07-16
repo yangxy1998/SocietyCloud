@@ -1472,6 +1472,9 @@
 		line-height: 1em;
 		margin: 0 0 1em 0;
 		text-transform: uppercase;
+		overflow: hidden;
+		text-overflow:ellipsis;
+		white-space: nowrap;
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -2226,10 +2229,10 @@
 		-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		background-color: #3c9cc1;
+		background-color: #c13c3c00;
 		border-radius: 3px;
 		border: 0;
-		box-shadow: inset 0 0 0 2px #fff;
+		/*box-shadow: inset 0 0 0 2px #fff;*/
 		color: #fff;
 		cursor: pointer;
 		display: inline-block;
