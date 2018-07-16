@@ -3,10 +3,10 @@ package controller.servlet.user;
 import controller.tools.user.RegisterTool;
 import model.Managers;
 import model.entity.User;
-import util.function.Creator;
 import util.Log;
 import util.annotation.Attribute;
 import util.annotation.Parameter;
+import util.function.Creator;
 import util.function.Pages;
 
 import javax.servlet.RequestDispatcher;
@@ -40,6 +40,16 @@ public class RegisterServlet extends HttpServlet {
         HttpSession session = request.getSession();
         User user= Managers.UserManager.getUserByName(username);
         RequestDispatcher dispatcher;
+        if(username.length()>=45){
+            Log.addErrorLog("用户 "+username+" 尝试注册，用户名超过45个字节。");
+            session.setAttribute("alert", Creator.getAlert("您输入的用户名不应超过45个字节！"));
+            response.sendRedirect(Pages.USER_REGISTER_PAGE);
+        }
+        else if(Creator.isChinese(username)){
+            Log.addErrorLog("用户 "+username+" 尝试注册，用户名含有中文。");
+            session.setAttribute("alert", Creator.getAlert("您输入的用户名不应包含中文！"));
+            response.sendRedirect(Pages.USER_REGISTER_PAGE);
+        }
         //账号已存在
         if(user!=null){
             Log.addErrorLog("用户 "+username+" 尝试注册，提示此用户名已存在。");

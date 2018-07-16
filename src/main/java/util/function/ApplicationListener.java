@@ -1,5 +1,6 @@
 package util.function;
 
+import controller.servlet.InitServlet;
 import util.Log;
 
 import javax.servlet.ServletRequestAttributeEvent;
@@ -31,7 +32,7 @@ public class ApplicationListener implements ServletRequestListener,
         String sessionId=event.getSession().getId();
         currentLog="一个 "+name+" 属性添加到会话 ["+sessionId+"]。";
         Log.addLog(currentLog);
-
+        InitServlet.session.commit();
     }
 
     @Override
@@ -42,7 +43,7 @@ public class ApplicationListener implements ServletRequestListener,
 
         currentLog="一个 "+name+" 属性从会话 ["+sessionId+"] 中移除。";
         Log.addLog(currentLog);
-
+        InitServlet.session.commit();
     }
 
     @Override
@@ -53,7 +54,7 @@ public class ApplicationListener implements ServletRequestListener,
 
         currentLog="一个 "+name+" 属性在会话 ["+sessionId+"]中被替换。";
         Log.addLog(currentLog);
-
+        InitServlet.session.commit();
     }
 
     @Override
@@ -67,7 +68,7 @@ public class ApplicationListener implements ServletRequestListener,
         currentLog="在地址：" +addr+"主机："+host+"端口："+port+
                 " 发来的请求中 "+name+" 属性被添加。";
         Log.addLog(currentLog);
-
+        InitServlet.session.commit();
     }
 
     @Override
@@ -81,7 +82,7 @@ public class ApplicationListener implements ServletRequestListener,
         currentLog="在地址：[" +addr+"]主机：["+host+"]端口：["+port+
                 "] 发来的请求中 "+name+" 属性被移除。";
         Log.addLog(currentLog);
-
+        InitServlet.session.commit();
     }
 
     @Override
@@ -95,7 +96,7 @@ public class ApplicationListener implements ServletRequestListener,
         currentLog="在地址：[" +addr+"]主机：["+host+"]端口：["+port+
                 "] 发来的请求中 "+name+" 属性被替换。";
         Log.addLog(currentLog);
-
+        InitServlet.session.commit();
     }
 
     @Override
@@ -107,7 +108,7 @@ public class ApplicationListener implements ServletRequestListener,
 
         currentLog="来自地址：[" +addr+"]主机：["+host+"]端口：["+port+"]的请求被销毁。";
         Log.addLog(currentLog);
-
+        InitServlet.session.commit();
     }
 
     @Override
@@ -119,7 +120,7 @@ public class ApplicationListener implements ServletRequestListener,
 
         currentLog="来自地址：[" +addr+"]主机：["+host+"]端口：["+port+"]的请求初始化。";
         Log.addLog(currentLog);
-
+        InitServlet.session.commit();
     }
 
 

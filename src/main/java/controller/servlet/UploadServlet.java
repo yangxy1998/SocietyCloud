@@ -1,26 +1,24 @@
 package controller.servlet;
 
 
+import model.entity.Society;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import util.Log;
+import util.function.Pages;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.jspsmart.upload.SmartUpload;
-import model.entity.Society;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import util.Log;
 
 
 /**
@@ -31,7 +29,7 @@ public class UploadServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     // 上传文件存储目录
-    private static final String UPLOAD_DIRECTORY = "upload";
+    private static final String UPLOAD_DIRECTORY = "SocietyFiles";
 
     // 上传配置
     private static final int MEMORY_THRESHOLD   = 1024 * 1024 * 3;  // 3MB
@@ -52,12 +50,6 @@ public class UploadServlet extends HttpServlet {
             return;
         }
 
-        //String user=request.getParameter("user");
-//        SmartUpload my = new SmartUpload();
-//        com.jspsmart.upload.Request r = my.getRequest();
-//        String user = r.getParameter("user");
-//        System.out.println(user);
-
         // 配置上传参数
         DiskFileItemFactory factory = new DiskFileItemFactory();
         // 设置内存临界值 - 超过后将产生临时文件并存储于临时目录中
@@ -76,8 +68,9 @@ public class UploadServlet extends HttpServlet {
         // 中文处理
         upload.setHeaderEncoding("UTF-8");
 
-        HttpSession hs = request.getSession();
-        String societyId= (String) hs.getAttribute("societyName");
+        HttpSession session = request.getSession();
+        Society society= (Society) session.getAttribute("society");
+        String societyId=society.getSocietyId();
         System.out.println("上传照片的society变量"+societyId);
         try {
             // 解析请求的内容提取文件数据
@@ -88,7 +81,7 @@ public class UploadServlet extends HttpServlet {
                 // 迭代表单数据
                 for (FileItem item : formItems) {
 
-                    if (item.isFormField()&&((String)item.getFieldName()).equals("societyName")) {
+                    if (item.isFormField()&&((String)item.getFieldName()).equals("society")) {
                         societyId = item.getString();
                         System.out.println(societyId);
                     }
@@ -97,11 +90,15 @@ public class UploadServlet extends HttpServlet {
                 // 构造临时路径来存储上传的文件
                 // 这个路径相对当前应用的目录
 
-
-                String uploadPath = "E:\\" + UPLOAD_DIRECTORY + File.separator + societyId;
+                String societyPath= InitServlet.innerPath + File.separator + UPLOAD_DIRECTORY;
+                String uploadPath =  societyPath + File.separator + societyId;
                 System.out.println("......"+uploadPath);
 
                 // 如果目录不存在则创建
+                File societyDir=new File(societyPath);
+                if (!societyDir.exists()) {
+                    if(!societyDir.mkdir()) Log.addErrorLog("创建文件夹失败。");
+                }
                 File uploadDir = new File(uploadPath);
                 if (!uploadDir.exists()) {
                     if(!uploadDir.mkdir()) Log.addErrorLog("创建文件夹失败。");
@@ -121,16 +118,13 @@ public class UploadServlet extends HttpServlet {
                         System.out.println(filePath);
                         // 保存文件到硬盘
                         item.write(storeFile);
-                        request.setAttribute("message", "文件上传成功!");
+                        session.setAttribute("alert", "文件上传成功！");
                     }
                 }
             }
         } catch (Exception ex) {
-            request.setAttribute("message",
-                    "错误信息: " + ex.getMessage());
+            session.setAttribute("alert", "上传失败！");
         }
-        // 跳转到 message.jsp
-        request.getServletContext().getRequestDispatcher("/message.jsp").forward(
-                request, response);
+        response.sendRedirect(Pages.SOCIETY_MANAGE_PAGE);
     }
 }

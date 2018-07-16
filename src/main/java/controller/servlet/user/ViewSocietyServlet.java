@@ -27,6 +27,7 @@ public class ViewSocietyServlet extends HttpServlet {
             Society society=Managers.SocietyManager.getSocietyById(societyId);
             session.setAttribute("society",society );
             Log.addSocietyLog("有用户查看了社团信息。",society.getSocietyName());
+            session.setAttribute("society",Managers.SocietyManager.getSocietyById(society.getSocietyId()));
             response.sendRedirect(Pages.SOCIETY_MAIN_PAGE);
         }
         else{

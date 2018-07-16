@@ -29,10 +29,14 @@ import java.io.InputStream;
 public class  InitServlet extends HttpServlet {
 
     public static SqlSession session;
+    public static String outerPath;
+    public static String innerPath;
 
     @Override
     public void init() throws ServletException {
         Log.addLog("Servlet初始化中...");
+        outerPath=this.getServletContext().getRealPath("/");
+        innerPath=this.getServletContext().getRealPath("/WEB-INF");
         String resource = "mybatis.xml";
         //使用类加载器加载mybatis的配置文件（它也加载关联的映射文件）
         InputStream is = InitServlet.class.getClassLoader().getResourceAsStream(resource);
