@@ -205,7 +205,7 @@ ${alert}
             <br>
             修改社团基本信息：
             <h3>社团ID：${society.societyId}</h3>
-            <h3>社团名：<input type="text" name="societyName" placeholder="社团名"></h3>
+            <h3>社团名：<input type="text" name="societyName" value="${society.societyName}" placeholder="社团名"></h3>
             <h3>社团学校：
                 <%
                     request.setAttribute("schools",Creator.getSchools());

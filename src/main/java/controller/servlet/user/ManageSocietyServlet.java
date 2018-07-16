@@ -78,7 +78,7 @@ public class ManageSocietyServlet extends HttpServlet {
                             if(FoundTool.checkParameter(parameterN))
                                 values.add(Creator.getChineseBytes(request.getParameter(parameterN)));
                         }
-                        if(Managers.SocietyManager.getSocietyByName(values.get(0))!=null){
+                        if(!values.get(0).equals(society.getSocietyName())&&Managers.SocietyManager.getSocietyByName(values.get(0))!=null){
                             session.setAttribute("alert",Creator.getAlert("社团名已被注册，请尝试使用其他社团名。"));
                             Log.addErrorLog(user.getUserName()+"尝试创建社团，但此社团名已被注册。");
                             response.sendRedirect(Pages.USER_FOUND_SOCIETY_PAGE);
