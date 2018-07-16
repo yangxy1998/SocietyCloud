@@ -181,11 +181,12 @@ ${alert}
                                 </div>
                             </div>
                             <div class="class-details">
-                                <h3>${society.societyName}<input type="submit" name="${society.societyId}"></h3>
+                                <h3>${society.societyName}
+                                    <br/><input type="submit" name="${society.societyId}" value="查看"></h3>
                                 <div class="clearfix">
                                     <div class="class-meta pull-left">
-                                        <span>Tution Fee</span>
-                                        <p>$129</p>
+                                        <span>所属学校</span>
+
                                     </div>
                                 </div>
                             </div>

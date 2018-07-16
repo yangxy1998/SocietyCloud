@@ -77,8 +77,6 @@
             <header class="major">
                 <h2>社团云介绍<br />
                     一个让你安心的管理平台</h2>
-                <p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX<br/>
-                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
             </header>
             <ul class="icons major">
                 <li><span class="icon fa-diamond major style1"><span class="label">Lorem</span></span></li>
@@ -92,23 +90,23 @@
     <section id="two" class="wrapper alt style2">
         <section class="spotlight">
             <div class="image"><img src="../index/images/01.jpg" alt="" /></div><div class="content">
-            <h2>XXXXXXXXXXXXXXXXXXXXXXXXXXXXX<br />
-               XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</h2>
-            <p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+            <h2>全面省心管理，校园身边事不再错过</h2>
+            <p>可视化全面查看社团运作情况、活动举办情况、同学参与情况；
+                校园身边事一手掌握，从此活动、信息不再错过。</p>
         </div>
         </section>
         <section class="spotlight">
             <div class="image"><img src="../index/images/02.jpg" alt="" /></div><div class="content">
-            <h2>XXXXXXXXXXXXXXXXXXXXXXX<br />
-                XXXXXXXXXXXXXXXXXXXXXXXX</h2>
-            <p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+            <h2>社团资讯助飞，校外活动精彩纷呈</h2>
+            <p>丰富的社团资讯，全国社团情况、活动趋势一看便知；
+                精彩的校外活动助力个人充分利用课余时间，实现全面成长！</p>
         </div>
         </section>
         <section class="spotlight">
             <div class="image"><img src="../index/images/03.jpg" alt="" /></div><div class="content">
-            <h2>XXXXXXXXXXXXXXXXXXXXXXXXXXX<br />
-                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</h2>
-            <p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
+            <h2>社团交流，关系网多点开花</h2>
+            <p>线上线下社团活动，祝你认识给多的人；
+                同校、同地、同一个世界，    天下谁人不识君！</p>
         </div>
         </section>
     </section>
@@ -118,17 +116,15 @@
         <div class="inner">
             <header class="major">
                 <h2>主要功能</h2>
-                <p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX<br />
-                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
             </header>
             <ul class="features">
                 <li class="icon fa-paper-plane-o">
                     <h3>新建社团</h3>
-                    <p>新建一个社团,XXXXXXXXX</p>
+                    <p>新建一个社团,开启一个全新的世界。</p>
                 </li>
                 <li class="icon fa-laptop">
                     <h3>管理社团</h3>
-                    <p>管理您的社团,XXXXXXXXXXXXXXXXXXXXXXX</p>
+                    <p></p>
                 </li>
                 <li class="icon fa-code">
                     <h3>查看社团最新消息</h3>
@@ -136,7 +132,7 @@
                 </li>
                 <li class="icon fa-headphones">
                     <h3>社团</h3>
-                    <p>社团XXXXXXXXXXXXXXXXX</p>
+
                 </li>
                 <li class="icon fa-heart-o">
                     <h3>关于</h3>

@@ -265,6 +265,9 @@ ${alert}
             <h3>社团简介：<input type="text" name="description" value="${society.description}"></h3>
             <input type="submit" name="changeInformation->0" value="提交信息">
             <br>
+            <br>
+            <br>
+            <br>
             批准用户申请：
             <table>
                 <tr>
@@ -319,6 +322,8 @@ ${alert}
         </c:if>
         <c:if test="${priority>2}">
     </form>
+    <br>
+    <br>
     社团图片上传：
     <form id="form" method="post" action="/upload" enctype="multipart/form-data" >
         <input type="submit" value="上传图片" />

@@ -1466,7 +1466,7 @@
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		color: #E09B4D;
+		color: #337ab7;
 		font-weight: 800;
 		letter-spacing: 0.225em;
 		line-height: 1em;
@@ -2229,7 +2229,7 @@
 		-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		background-color: #c13c3c00;
+		background-color: #2e3842;
 		border-radius: 3px;
 		border: 0;
 		/*box-shadow: inset 0 0 0 2px #fff;*/

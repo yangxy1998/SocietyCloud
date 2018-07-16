@@ -8,7 +8,8 @@
 		padding: 0;
 		border: 0;
 		font-size: 100%;
-		font: inherit;
+		/*font: inherit;*/
+		font-weight: 800;
 		vertical-align: baseline;
 		
 	}
@@ -1409,7 +1410,7 @@
 		color: #000000;
 		font-family: "Open Sans", Helvetica, sans-serif;
 		font-size: 15pt;
-		font-weight: bold;
+		font-weight: 500;
 		letter-spacing: 0.075em;
 		line-height: 1.65em;
 	}
@@ -1470,7 +1471,7 @@
 
 	h1, h3, h4, h5, h6 {
 		color: #000000;
-		font-weight: 800;
+		font-weight: 500;
 		letter-spacing: 0.225em;
 		line-height: 1em;
 		margin: 0 0 1em 0;
@@ -2177,7 +2178,7 @@
 		table th {
 			color: #000000;
 			font-size: 0.9em;
-			font-weight: 600;
+			font-weight: 500;
 			padding: 0 0.75em 0.75em 0.75em;
 			text-align: left;
 		}
