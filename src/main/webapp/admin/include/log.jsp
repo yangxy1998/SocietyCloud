@@ -17,36 +17,36 @@
 <html>
 <head>
     <title>查看日志</title>
-    <style type="text/css">
-        table
-        {
-            border-collapse: collapse;
-            margin: 0 auto;
-            text-align: center;
-        }
-        table td, table th
-        {
-            border: 1px solid #000000;
-            color: #020101;
-            height: 30px;
-        }
-        table thead th
-        {
-            background-color: #ddf4ff;
-            width: 100px;
-        }
-        table tr:nth-child(odd)
-        {
-            background: #ffd88d;
-        }
-        table tr:nth-child(even)
-        {
-            background: rgb(255, 251, 253);
-        }
+    <%--<style type="text/css">--%>
+        <%--table--%>
+        <%--{--%>
+            <%--border-collapse: collapse;--%>
+            <%--margin: 0 auto;--%>
+            <%--text-align: center;--%>
+        <%--}--%>
+        <%--table td, table th--%>
+        <%--{--%>
+            <%--border: 1px solid #000000;--%>
+            <%--color: #020101;--%>
+            <%--height: 30px;--%>
+        <%--}--%>
+        <%--table thead th--%>
+        <%--{--%>
+            <%--background-color: #ddf4ff;--%>
+            <%--width: 100px;--%>
+        <%--}--%>
+        <%--table tr:nth-child(odd)--%>
+        <%--{--%>
+            <%--background: #ffd88d;--%>
+        <%--}--%>
+        <%--table tr:nth-child(even)--%>
+        <%--{--%>
+            <%--background: rgb(255, 251, 253);--%>
+        <%--}--%>
 
 
 
-    </style>
+    <%--</style>--%>
 
 </head>
 
@@ -95,47 +95,47 @@
         <c:forEach var="log" items="${logs}">
             <c:if test="${log.type.equals(\"event\")}">
                 <tr>
-                    <td><font color="gray">${log.time}</font></td>
-                    <td><font color="gray">${log.log}</font></td>
-                    <td><font color="gray">${log.type}</font></td>
-                    <td><font color="gray">${log.attribute}</font></td>
+                    <td><font color="#115e11">${log.time}</font></td>
+                    <td><font color="#115e11">${log.log}</font></td>
+                    <td><font color="#115e11">${log.type}</font></td>
+                    <td><font color="#115e11">${log.attribute}</font></td>
                 </tr>
             </c:if>
             <c:if test="${log.type.equals(\"error\")}">
                 <tr>
-                    <td><font color="#8b0000">${log.time}</font></td>
-                    <td><font color="#8b0000">${log.log}</font></td>
-                    <td><font color="#8b0000">${log.type}</font></td>
-                    <td><font color="#8b0000">${log.attribute}</font></td>
+                    <td><font color="#7b000f">${log.time}</font></td>
+                    <td><font color="#7b000f">${log.log}</font></td>
+                    <td><font color="#7b000f">${log.type}</font></td>
+                    <td><font color="#7b000f">${log.attribute}</font></td>
                 </tr>
             </c:if>
             <c:if test="${log.type.equals(\"user\")}">
                 <tr>
-                    <td><font color="#b8860b">${log.time}</font></td>
-                    <td><font color="#b8860b">${log.log}</font></td>
-                    <td><font color="#b8860b">${log.type}</font></td>
-                    <td><font color="#b8860b">${log.attribute}</font></td>
+                    <td><font color="#786a05">${log.time}</font></td>
+                    <td><font color="#786a05">${log.log}</font></td>
+                    <td><font color="#786a05">${log.type}</font></td>
+                    <td><font color="#786a05">${log.attribute}</font></td>
                 </tr>
             </c:if>
             <c:if test="${log.type.equals(\"society\")}">
                 <tr>
-                    <td><font color="#8b008b">${log.time}</font></td>
-                    <td><font color="#8b008b">${log.log}</font></td>
-                    <td><font color="#8b008b">${log.type}</font></td>
-                    <td><font color="#8b008b">${log.attribute}</font></td>
+                    <td><font color="#5c0860">${log.time}</font></td>
+                    <td><font color="#5c0860">${log.log}</font></td>
+                    <td><font color="#5c0860">${log.type}</font></td>
+                    <td><font color="#5c0860">${log.attribute}</font></td>
                 </tr>
             </c:if>
             <c:if test="${log.type.equals(\"admin\")}">
                 <tr>
-                    <td><font color="#00008b">${log.time}</font></td>
-                    <td><font color="#00008b">${log.log}</font></td>
-                    <td><font color="#00008b">${log.type}</font></td>
-                    <td><font color="#00008b">${log.attribute}</font></td>
+                    <td><font color="#003a55">${log.time}</font></td>
+                    <td><font color="#003a55">${log.log}</font></td>
+                    <td><font color="#003a55">${log.type}</font></td>
+                    <td><font color="#003a55">${log.attribute}</font></td>
                 </tr>
             </c:if>
         </c:forEach>
     </table>
-    <form method="post" action="admin">
+    <form method="post" action="../admin">
         <input type="submit" style="width:104px;height:50px;border:none;" value="刷新">
         <%
             request.setAttribute("admin","log");

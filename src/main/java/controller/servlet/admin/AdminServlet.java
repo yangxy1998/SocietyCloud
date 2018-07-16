@@ -41,9 +41,8 @@ public class AdminServlet extends HttpServlet {
             Log.addAdminLog("访问了社团列表。",adminName);
             session.setAttribute("admin","society");
         }
-        RequestDispatcher dispatcher=request.getRequestDispatcher("./admin/admin.jsp");
         InitServlet.session.commit();
-        dispatcher.forward(request,response);
+        response.sendRedirect(Pages.ADMIN_MAIN_PAGE);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

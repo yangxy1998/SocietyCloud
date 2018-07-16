@@ -5,8 +5,8 @@ import controller.tools.admin.AdminTool;
 import model.Managers;
 import util.Log;
 import util.function.Creator;
+import util.function.Pages;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +25,6 @@ import java.util.List;
  */
 public class AdminSocietyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher diapatcher=request.getRequestDispatcher("./admin/admin.jsp");
         Enumeration<String> parameterNames=request.getParameterNames();
         HttpSession session=request.getSession();
         String adminName=(String) session.getAttribute("adminName");
@@ -61,6 +60,7 @@ public class AdminSocietyServlet extends HttpServlet {
                         Managers.SocietyManager.createSociety(newSocietyId,newSocietyName,newSchoolName,null,null,newFoundDate,newFounder);
                         Log.addAdminLog("成功添加一个社团，其社团ID为："+societyId+"。",adminName);
                         Log.addSocietyLog("社团被管理员添加。",newSocietyName);
+                        session.setAttribute("update","");
                     }
                     else {
                         Enumeration<String> parameters=request.getParameterNames();
@@ -84,6 +84,7 @@ public class AdminSocietyServlet extends HttpServlet {
                             Log.addSocietyLog("社团信息被管理员修改。",values.get(1));
                         }
                         Log.addAdminLog("更新社团"+societyId+"的信息，操作成功。",adminName);
+                        session.setAttribute("update","");
                     }
                 }
                 else {
@@ -94,7 +95,7 @@ public class AdminSocietyServlet extends HttpServlet {
         }
         session.setAttribute("societies",Managers.SocietyManager.getAllSocieties());
         session.setAttribute("admin", "society");
-        diapatcher.forward(request,response);
+        response.sendRedirect(Pages.ADMIN_MAIN_PAGE);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

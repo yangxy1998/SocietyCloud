@@ -13,41 +13,12 @@
 <html>
 <head>
     <title>社团管理</title>
-    <style type="text/css">
-        table
-        {
-            border-collapse: collapse;
-            margin: 0 auto;
-            text-align: center;
-        }
-        table td, table th
-        {
-            border: 1px solid #000000;
-            color: #020101;
-            height: 30px;
-        }
-        table thead th
-        {
-            background-color: #ddf4ff;
-            width: 100px;
-        }
-        table tr:nth-child(odd)
-        {
-            background: #ffd88d;
-        }
-        table tr:nth-child(even)
-        {
-            background: rgb(255, 251, 253);
-        }
-
-
-    </style>
 
 </head>
 <body>
 <jsp:useBean id="societies" type="java.util.List<model.entity.Society>" scope="session"/>
 <center>
-    <form method="post" action="admin.Society">
+    <form method="post" action="../admin.Society">
         <table border="1">
             <tr>
                 <th>社团ID</th>
@@ -93,7 +64,26 @@
                         <td><input type="text" name="subType" value="${society.subType}"></td>
                         <td><input type="text" name="foundDate" value="${society.foundDate}"></td>
                         <td><input type="text" name="founder" value="${society.founder}"></td>
-                        <td><input type="text" name="status" value="${society.status}" placeholder="-1：冻结 0：等待审核 1：正常"></td>
+                        <td>
+                            <%--<input type="text" name="status" value="${society.status}" placeholder="-1：冻结 0：等待审核 1：正常">--%>
+                                <select name="status">
+                                    <c:if test="${society.status==-1}">
+                                        <option value="-1" selected="selected">冻结</option>
+                                        <option value="0">等待审核</option>
+                                        <option value="1">正常</option>
+                                    </c:if>
+                                    <c:if test="${society.status==0}">
+                                        <option value="-1">冻结</option>
+                                        <option value="0" selected="selected">等待审核</option>
+                                        <option value="1">正常</option>
+                                    </c:if>
+                                    <c:if test="${society.status==1}">
+                                        <option value="-1">冻结</option>
+                                        <option value="0">等待审核</option>
+                                        <option value="1" selected="selected">正常</option>
+                                    </c:if>
+                                </select>
+                        </td>
                         <td><input type="text" name="description" value="${society.description}"></td>
                         <td><input type="submit" name="commit->${society.societyId}"style="width:104px;height:50px;border:none;"  value="确定"></td>
                         <td><input type="submit" name="cancel->${society.societyId}" style="width:104px;height:50px;border:none;" value="撤销"></td>

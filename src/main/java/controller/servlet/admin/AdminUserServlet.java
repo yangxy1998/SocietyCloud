@@ -5,8 +5,8 @@ import controller.tools.admin.AdminUserTool;
 import model.Managers;
 import util.Log;
 import util.function.Creator;
+import util.function.Pages;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +27,6 @@ import java.util.List;
 @WebServlet(name = "AdminUserServlet")
 public class AdminUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher diapatcher=request.getRequestDispatcher("./admin/admin.jsp");
         Enumeration<String> parameterNames=request.getParameterNames();
         HttpSession session=request.getSession();
         String adminName=(String) session.getAttribute("adminName");
@@ -53,7 +52,6 @@ public class AdminUserServlet extends HttpServlet {
                     Log.addUserLog("用户被管理员移除。",userName);
                 }
                 else if(operation.equals("commit")){
-                    request.setAttribute("update","");
                     if(userId.equals("newUser")){
                         String newUserId=request.getParameter("userId");
                         String newUserName=request.getParameter("userName");
@@ -62,6 +60,7 @@ public class AdminUserServlet extends HttpServlet {
                         Managers.UserManager.createUser(newUserId,newUserName,newPassword,newPhoneNum);
                         Log.addAdminLog("成功添加一个用户，其用户ID为："+newUserId+"。",adminName);
                         Log.addUserLog("帐号被网站管理员注册。",newUserName);
+                        session.setAttribute("update","");
                     }
                     else {
                         Enumeration<String> parameters=request.getParameterNames();
@@ -85,6 +84,7 @@ public class AdminUserServlet extends HttpServlet {
                             Log.addUserLog("帐号信息被管理员修改。",values.get(1));
                         }
                         Log.addAdminLog("更新用户"+userId+"的信息，操作成功。",adminName);
+                        session.setAttribute("update","");
                     }
                 }
                 else {
@@ -95,7 +95,7 @@ public class AdminUserServlet extends HttpServlet {
         }
         session.setAttribute("users",Managers.UserManager.getAllUsers());
         session.setAttribute("admin", "user");
-        diapatcher.forward(request,response);
+        response.sendRedirect(Pages.ADMIN_MAIN_PAGE);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
