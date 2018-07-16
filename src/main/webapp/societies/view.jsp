@@ -187,8 +187,9 @@ ${alert}
                                     <div class="class-meta pull-left">
                                         <span>所属学校：${society.schoolName}</span>
                                         <span>创建时间：${society.foundDate.split(" ")[0]}</span>
-                                        <span>社团人数：${society.joinUsers.size()}</span>
-
+                                        <span>
+                                            社团人数：${society.joinUsers.size()}
+                                        </span>
                                     </div>
                                 </div>
                             </div>

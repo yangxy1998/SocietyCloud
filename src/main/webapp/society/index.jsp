@@ -268,7 +268,7 @@ ${alert}
 <div class="teacher">
     <div class="container">
         <div class="teacher-top">
-            <h3>出色成员</h3>
+            <h3>社团成员</h3>
         </div>
         <div class="teacher-main">
             <c:forEach var="member" items="${society.joinUsers}">
