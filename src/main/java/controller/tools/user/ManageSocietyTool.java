@@ -6,12 +6,12 @@ package controller.tools.user;
 public class ManageSocietyTool {
 
     public static String getCommentDate(String id){
-        String depart[]=id.split("|");
+        String depart[]=id.split("<-");
         return depart[1];
     }
 
     public static String getCommentUserId(String id){
-        String depart[]=id.split("|");
+        String depart[]=id.split("<-");
         return depart[0];
     }
 

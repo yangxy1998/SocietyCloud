@@ -99,6 +99,9 @@ public class ViewMallTool {
                 i++;
             }
         }
+        for (Society society:societies) {
+            society.init();
+        }
         return societies;
     }
 

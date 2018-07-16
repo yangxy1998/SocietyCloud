@@ -116,31 +116,31 @@ public class ManageSocietyServlet extends HttpServlet {
                         String userId= ManageSocietyTool.getCommentUserId(id);
                         String commentDate=ManageSocietyTool.getCommentDate(id);
                         Managers.CommentManager.summitComment(userId,society.getSocietyId(),commentDate);
-                        Log.addSocietyLog("管理员 "+user.getNickName()+" 将用户 " +Managers.UserManager.getUserById(id).getNickName()
+                        Log.addSocietyLog("管理员 "+user.getNickName()+" 将用户 " +Managers.UserManager.getUserById(userId).getNickName()
                                 +" 于 "+commentDate+" 发表的评论置顶。",society.getSocietyName());
-                        Log.addUserLog("你将用户 " +Managers.UserManager.getUserById(id).getNickName()+" 于 "+commentDate
+                        Log.addUserLog("你将用户 " +Managers.UserManager.getUserById(userId).getNickName()+" 于 "+commentDate
                                 +" 在社团 "+society.getSocietyName() +" 发表的评论置顶。",user.getUserName());
-                        Log.addUserLog("你对社团 "+society.getSocietyName()+" 于 "+commentDate+"发表的评论被置顶。",Managers.UserManager.getUserById(id).getUserName());
+                        Log.addUserLog("你对社团 "+society.getSocietyName()+" 于 "+commentDate+"发表的评论被置顶。",Managers.UserManager.getUserById(userId).getUserName());
                     }
                     else if(("show").equals(operation)){
                         String userId= ManageSocietyTool.getCommentUserId(id);
                         String commentDate=ManageSocietyTool.getCommentDate(id);
                         Managers.CommentManager.showComment(userId,society.getSocietyId(),commentDate);
-                        Log.addSocietyLog("管理员 "+user.getNickName()+" 将用户 " +Managers.UserManager.getUserById(id).getNickName()
+                        Log.addSocietyLog("管理员 "+user.getNickName()+" 将用户 " +Managers.UserManager.getUserById(userId).getNickName()
                                 +" 于 "+commentDate+" 发表的评论正常显示。",society.getSocietyName());
-                        Log.addUserLog("你将用户 " +Managers.UserManager.getUserById(id).getNickName()+" 于 "+commentDate
+                        Log.addUserLog("你将用户 " +Managers.UserManager.getUserById(userId).getNickName()+" 于 "+commentDate
                                 +" 在社团 "+society.getSocietyName() +" 发表的评论正常显示。",user.getUserName());
-                        Log.addUserLog("你对社团 "+society.getSocietyName()+" 于 "+commentDate+"发表的评论正常显示。",Managers.UserManager.getUserById(id).getUserName());
+                        Log.addUserLog("你对社团 "+society.getSocietyName()+" 于 "+commentDate+"发表的评论正常显示。",Managers.UserManager.getUserById(userId).getUserName());
                     }
                     else if(("hide").equals(operation)){
                         String userId= ManageSocietyTool.getCommentUserId(id);
                         String commentDate=ManageSocietyTool.getCommentDate(id);
                         Managers.CommentManager.hideComment(userId,society.getSocietyId(),commentDate);
-                        Log.addSocietyLog("管理员 "+user.getNickName()+" 将用户 " +Managers.UserManager.getUserById(id).getNickName()
+                        Log.addSocietyLog("管理员 "+user.getNickName()+" 将用户 " +Managers.UserManager.getUserById(userId).getNickName()
                                 +" 于 "+commentDate+" 发表的评论隐藏。",society.getSocietyName());
-                        Log.addUserLog("你将用户 " +Managers.UserManager.getUserById(id).getNickName()+" 于 "+commentDate
+                        Log.addUserLog("你将用户 " +Managers.UserManager.getUserById(userId).getNickName()+" 于 "+commentDate
                                 +" 在社团 "+society.getSocietyName() +" 发表的评论隐藏。",user.getUserName());
-                        Log.addUserLog("你对社团 "+society.getSocietyName()+" 于 "+commentDate+"发表的评论被隐藏。",Managers.UserManager.getUserById(id).getUserName());
+                        Log.addUserLog("你对社团 "+society.getSocietyName()+" 于 "+commentDate+"发表的评论被隐藏。",Managers.UserManager.getUserById(userId).getUserName());
                     }
                 }
             }

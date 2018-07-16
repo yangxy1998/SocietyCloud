@@ -167,21 +167,20 @@ ${alert}
     <div class="container">
         <div class="welcome-top">
             <div class="col-md-6 welcome-left">
-                <h3>主要工作</h3>
-                <h4>XXXXXXXXXXXXX</h4>
-                <p>XXXXXXXXXXX</p>
+                <h3>社团简介</h3>
+                <h4>${society.description}</h4>
                 <div class="w-btn">
                     <a href="#" class="hvr-shutter-out-horizontal">Read More</a>
                 </div>
             </div>
-            <div class="col-md-6 welcome-left">
-                <h3>XXXXXXXX</h3>
-                <h4>XXXXXXXX</h4>
-                <p>XXXXXXXX</p>
-                <div class="w-btn">
-                    <a href="#" class="hvr-shutter-out-horizontal">Read More</a>
-                </div>
-            </div>
+            <%--<div class="col-md-6 welcome-left">--%>
+                <%--<h3>XXXXXXXX</h3>--%>
+                <%--<h4>XXXXXXXX</h4>--%>
+                <%--<p>XXXXXXXX</p>--%>
+                <%--<div class="w-btn">--%>
+                    <%--<a href="#" class="hvr-shutter-out-horizontal">Read More</a>--%>
+                <%--</div>--%>
+            <%--</div>--%>
             <div class="clearfix"></div>
         </div>
     </div>
@@ -193,18 +192,18 @@ ${alert}
         <div class="join-main">
             <div class="col-md-3 join-left">
                 <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                <h4>活动很多</h4>
-                <p>XXXXXXXXXXXXXXXXXXXXXXXXX</p>
+                <h4>创建时间</h4>
+                <p>${society.foundDate.split(" ")[0]}</p>
             </div>
             <div class="col-md-3 join-left">
                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                <h4>成员</h4>
-                <p>XXXXXXXXXXXXXXXXXXXXXXXXX</p>
+                <h4>创始人</h4>
+                <p>${society.founder}</p>
             </div>
             <div class="col-md-3 join-left">
                 <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                <h4>活动地点</h4>
-                <p>XXXXXXXXXXXXXXXXXXXXXXXXX</p>
+                <h4>学校</h4>
+                <p>${society.schoolName}</p>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -218,47 +217,47 @@ ${alert}
         <div class="news-top">
             <div class="col-md-8 news-left">
                 <div class="news-heading">
-                    <h3>新闻</h3>
+                    <h3>最新活动</h3>
                 </div>
-                <div class="news-bottom">
-                    <h4>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</h4>
-                    <p>XXXXXXXXXXXXXXXXXXXXXXXXXXX </p>
-                    <div class="news-one">
-                        <div class="news-one-left">
-                            <img src="images/n-1.jpg" alt="" />
-                        </div>
-                        <div class="news-one-right">
-                            <h4>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</h4>
-                            <p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="news-one">
-                        <h4>XXXXXXXXXXXXXXXXXXXXXXX</h4>
-                        <p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 news-right">
-                <div class="news-heading">
-                    <h3>相册</h3>
-                </div>
-                <div class="news-btm">
-                    <div class="news-1">
-                        <img src="images/n-2.jpg" alt="" />
-                        <div class="n-1">
-                            <h5>XXXXXXXXXXXX</h5>
-                            <p>XXXXXXXXXXXXXXXXXXX</p>
-                        </div>
-                    </div>
-                    <div class="news-1">
-                        <img src="images/n-3.jpg" alt="" />
-                        <div class="n-1">
-                            <h5>XXXXXXXXXXXXXXXXXXXXXXX</h5>
-                            <p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>
-                        </div>
-                    </div>
-                </div>
+                <%--<div class="news-bottom">--%>
+                    <%--<h4>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</h4>--%>
+                    <%--<p>XXXXXXXXXXXXXXXXXXXXXXXXXXX </p>--%>
+                    <%--<div class="news-one">--%>
+                        <%--<div class="news-one-left">--%>
+                            <%--<img src="images/n-1.jpg" alt="" />--%>
+                        <%--</div>--%>
+                        <%--<div class="news-one-right">--%>
+                            <%--<h4>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</h4>--%>
+                            <%--<p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>--%>
+                        <%--</div>--%>
+                        <%--<div class="clearfix"></div>--%>
+                    <%--</div>--%>
+                    <%--<div class="news-one">--%>
+                        <%--<h4>XXXXXXXXXXXXXXXXXXXXXXX</h4>--%>
+                        <%--<p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+            <%--<div class="col-md-4 news-right">--%>
+                <%--<div class="news-heading">--%>
+                    <%--<h3>相册</h3>--%>
+                <%--</div>--%>
+                <%--<div class="news-btm">--%>
+                    <%--<div class="news-1">--%>
+                        <%--<img src="images/n-2.jpg" alt="" />--%>
+                        <%--<div class="n-1">--%>
+                            <%--<h5>XXXXXXXXXXXX</h5>--%>
+                            <%--<p>XXXXXXXXXXXXXXXXXXX</p>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="news-1">--%>
+                        <%--<img src="images/n-3.jpg" alt="" />--%>
+                        <%--<div class="n-1">--%>
+                            <%--<h5>XXXXXXXXXXXXXXXXXXXXXXX</h5>--%>
+                            <%--<p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -272,31 +271,33 @@ ${alert}
             <h3>出色成员</h3>
         </div>
         <div class="teacher-main">
-            <div class="teacher-left">
-                <img src="images/t-1.jpg" alt="" />
-                <h4>陈小明</h4>
-                <p>🐮🍺</p>
-            </div>
-            <div class="teacher-left">
-                <img src="images/t-2.jpg" alt="" />
-                <h4>陈小明</h4>
-                <p>🐮🍺</p>
-            </div>
-            <div class="teacher-left">
-                <img src="images/t-3.jpg" alt="" />
-                <h4>陈小明</h4>
-                <p>🐮🍺</p>
-            </div>
-            <div class="teacher-left">
-                <img src="images/t-4.jpg" alt="" />
-                <h4>陈小明</h4>
-                <p>🐮🍺</p>
-            </div>
-            <div class="teacher-left">
-                <img src="images/t-5.jpg" alt="" />
-                <h4>陈小明</h4>
-                <p>🐮🍺</p>
-            </div>
+            <c:forEach var="member" items="${society.joinUsers}">
+                <div class="teacher-left">
+                    <h4>${member.user.nickName}</h4>
+                    <h4>${member.user.description}</h4>
+                </div>
+            </c:forEach>
+
+            <%--<div class="teacher-left">--%>
+                <%--<img src="images/t-2.jpg" alt="" />--%>
+                <%--<h4>陈小明</h4>--%>
+                <%--<p>🐮🍺</p>--%>
+            <%--</div>--%>
+            <%--<div class="teacher-left">--%>
+                <%--<img src="images/t-3.jpg" alt="" />--%>
+                <%--<h4>陈小明</h4>--%>
+                <%--<p>🐮🍺</p>--%>
+            <%--</div>--%>
+            <%--<div class="teacher-left">--%>
+                <%--<img src="images/t-4.jpg" alt="" />--%>
+                <%--<h4>陈小明</h4>--%>
+                <%--<p>🐮🍺</p>--%>
+            <%--</div>--%>
+            <%--<div class="teacher-left">--%>
+                <%--<img src="images/t-5.jpg" alt="" />--%>
+                <%--<h4>陈小明</h4>--%>
+                <%--<p>🐮🍺</p>--%>
+            <%--</div>--%>
             <div class="clearfix"></div>
         </div>
     </div>

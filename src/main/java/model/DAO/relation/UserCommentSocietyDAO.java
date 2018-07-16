@@ -24,7 +24,7 @@ public interface UserCommentSocietyDAO {
      * @param societyId 社团id
      * @return 评论列表
      */
-    List<UserCommentSociety> getCommentsBySocieyId(@Param("societyId") String societyId);
+    List<UserCommentSociety> getCommentsBySocietyId(@Param("societyId") String societyId);
 
     /**
      * 给一个社团留评论

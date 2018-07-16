@@ -171,7 +171,8 @@ public class User extends Entity{
     }
 
     @Override
-    protected void init() {
+    public void init() {
+        if(userId==null)return;
         this.joinSocieties= Managers.JoinManager.getSocietiesByUserId(userId);
         this.manageSocieties=Managers.ManageManager.getSocietiesByUserId(userId);
         this.commentSocieties=Managers.CommentManager.getCommentsByUserId(userId);

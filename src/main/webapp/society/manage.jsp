@@ -313,9 +313,9 @@ ${alert}
                         <c:if test="${comment.visible==0}">正常显示</c:if>
                         <c:if test="${comment.visible==-1}">隐藏</c:if>
                     </td>
-                    <td><input type="submit" name="summit->${comment.userId}|${comment.commentDate}" value="置顶"></td>
-                    <td><input type="submit" name="show->${comment.userId}|${comment.commentDate}" value="显示"></td>
-                    <td><input type="submit" name="hide->${comment.userId}|${comment.commentDate}" value="隐藏"></td>
+                    <td><input type="submit" name="summit->${comment.userId}<-${comment.commentDate}" value="置顶"></td>
+                    <td><input type="submit" name="show->${comment.userId}<-${comment.commentDate}" value="显示"></td>
+                    <td><input type="submit" name="hide->${comment.userId}<-${comment.commentDate}" value="隐藏"></td>
                 </tr>
             </c:forEach>
             </table>

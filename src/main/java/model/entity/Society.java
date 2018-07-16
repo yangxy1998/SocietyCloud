@@ -151,9 +151,10 @@ public class Society extends Entity{
     }
 
     @Override
-    protected void init() {
+    public void init() {
+        if (societyId==null)return;
         this.joinUsers= Managers.JoinManager.getUsersBySocietyId(societyId);
         this.manageUsers=Managers.ManageManager.getUsersBySocietyId(societyId);
-        this.commentUsers=Managers.CommentManager.getCommentsBySocieyId(societyId);
+        this.commentUsers=Managers.CommentManager.getCommentsBySocietyId(societyId);
     }
 }

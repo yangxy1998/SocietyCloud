@@ -119,7 +119,7 @@ public class Activity extends Entity{
     }
 
     @Override
-    protected void init() {
+    public void init() {
 
     }
 }
