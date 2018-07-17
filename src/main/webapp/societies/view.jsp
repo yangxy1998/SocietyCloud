@@ -82,19 +82,12 @@ ${alert}
 
 
     <!-- Breadcrumb  -->
-    <section class="breadcrumb-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-xs-12 text-center">
-                    <div class="breadcrumb-content">
-                        <br><br>
-                        <h2><font size="40">&nbsp;&nbsp;社团CLOUD</font></h2>
-                        <br>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <article id="main">
+        <header>
+            <p><font size="24">查看社团</font></p>
+            <p>Community view</p>
+        </header>
+    </article>
     <!-- /.breadcrumb-section  -->
     <br>
     <!-- /.header-top -->
