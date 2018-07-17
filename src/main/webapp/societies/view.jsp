@@ -1,7 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="util.function.Pages" %>
 <%@ page import="util.function.Creator" %>
-<%@ page import="controller.tools.user.ViewMallTool" %><%--
+<%@ page import="controller.tools.user.ViewMallTool" %>
+<%@ page import="controller.servlet.InitServlet" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/10
@@ -64,8 +65,7 @@ ${alert}
                                 <li><a href="<%=Pages.USER_REGISTER_PAGE%>">注册</a></li>
                             </c:if>
                             <c:if test="${user.userName!=null}">
-                                <li><a href="<%=Pages.USER_JOINED_SOCIETY_PAGE%>">查看社团</a></li>
-                                <li><a href="<%=Pages.USER_MANAGE_SOCIETY_PAGE%>">管理社团</a></li>
+                                <li><a href="<%=Pages.USER_MANAGE_SOCIETY_PAGE%>">我的社团</a></li>
                                 <li><a href="<%=Pages.USER_PERSONAL_CENTER_PAGE%>">个人中心</a></li>
                                 <li><a href="<%=Pages.USER_LOGIN_PAGE%>">退出登录</a> </li>
                             </c:if>
@@ -168,7 +168,7 @@ ${alert}
                     <div class="col-sm-4 col-xs-12 mix kinder play">
                         <div class="single-class">
                             <div class="class-img">
-                                <img alt="" src="images/class1/class1.jpg">
+                                <img alt="" src="../WEB-INF/SocietyFiles/${society.societyId}/${society.societyId}.jpg">
                                 <div class="class-hover">
                                     <a href="images/class1/class1.jpg" class="popup"><i class="icon-link"></i></a>
                                 </div>

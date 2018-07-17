@@ -1,4 +1,8 @@
+<%@ page import="model.entity.Society" %>
+<%@ page import="model.relation.UserJoinSociety" %>
 <%@ page import="util.function.Pages" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -8,6 +12,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="alert" type="java.lang.String" scope="session"/>
 <html>
 <head>
     <title>社团云平台</title>
@@ -44,8 +49,7 @@
                                 <li><a href="<%=Pages.USER_REGISTER_PAGE%>">注册</a></li>
                             </c:if>
                             <c:if test="${user.userName!=null}">
-                                <li><a href="<%=Pages.USER_JOINED_SOCIETY_PAGE%>">查看社团</a></li>
-                                <li><a href="<%=Pages.USER_MANAGE_SOCIETY_PAGE%>">管理社团</a></li>
+                                <li><a href="<%=Pages.USER_MANAGE_SOCIETY_PAGE%>">我的社团</a></li>
                                 <li><a href="<%=Pages.USER_PERSONAL_CENTER_PAGE%>">个人中心</a></li>
                                 <li><a href="<%=Pages.USER_LOGIN_PAGE%>">退出登录</a> </li>
                             </c:if>
@@ -62,6 +66,53 @@
             <h2>管理社团</h2>
             <p>Community Manage</p>
         </header>
+
+        <section class="wrapper style5">
+            <div class="inner">
+
+                <section>
+                    <c:if test="${user.joinSocieties.size()>=1}">
+                        <h4>已参加社团:</h4>
+                        <blockquote>
+                            <%
+                                List<Society> societies=new ArrayList<>();
+                                for (UserJoinSociety ujs:user.getJoinSocieties()) {
+                                    societies.add(ujs.getSociety());
+                                }
+                                session.setAttribute("societies",societies);
+                            %>
+                            <c:forEach var="society" items="${user.joinSocieties}">
+                                <form action="/view.Society" method="post">
+                                    <div class="12u$" class="row uniform">
+                                        <ul class="actions">
+                                            <li>
+                                                <input type="submit" style="width:300px;height:80px;" name="${society.society.societyId}" value="${society.society.societyName}" />
+
+                                                <c:if test="${society.status==0}">尚未审批</c:if>
+                                                <c:if test="${society.status==1}">正式成员</c:if>
+                                                <c:if test="${society.status==-1}">被拒绝或踢出</c:if>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </form>
+                            </c:forEach>
+                        </blockquote>
+                    </c:if>
+                    <c:if test="${user.joinSocieties.size()<1}">
+                        <blockquote>
+                            <h3>你并没有参加过社团哦~</h3>
+                        </blockquote>
+                    </c:if>
+
+                    <%--<blockquote>--%>
+                        <%--<h3>您可以<a href="/view.Mall">加入一个社团</a>。 </h3>--%>
+                    <%--</blockquote>--%>
+
+                    <hr />
+                    <hr />
+
+                </section>
+
         <section class="wrapper style5">
             <div class="inner">
 

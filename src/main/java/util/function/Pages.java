@@ -25,8 +25,8 @@ public final class Pages {
     //用户管理社团页
     public static final String USER_MANAGE_SOCIETY_PAGE="../index/manage.jsp";
 
-    //用户参加社团页
-    public static final String USER_JOINED_SOCIETY_PAGE="../index/view.jsp";
+//    //用户参加社团页
+//    public static final String USER_JOINED_SOCIETY_PAGE="../index/view.jsp";
 
     //用户个人中心页
     public static final String USER_PERSONAL_CENTER_PAGE="../index/personal.jsp";

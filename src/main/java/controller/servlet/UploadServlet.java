@@ -112,7 +112,7 @@ public class UploadServlet extends HttpServlet {
 
 
                         String fileName = new File(item.getName()).getName();
-                        String filePath = uploadPath + File.separator + societyId + time  + fileName;
+                        String filePath = uploadPath + File.separator + societyId+".jpg";
                         File storeFile = new File(filePath);
                         // 在控制台输出文件的上传路径
                         System.out.println(filePath);

@@ -76,8 +76,7 @@ ${alert}
                                 <li><a href="<%=Pages.USER_REGISTER_PAGE%>">注册</a></li>
                             </c:if>
                             <c:if test="${user.userName!=null}">
-                                <li><a href="<%=Pages.USER_JOINED_SOCIETY_PAGE%>">查看社团</a></li>
-                                <li><a href="<%=Pages.USER_MANAGE_SOCIETY_PAGE%>">管理社团</a></li>
+                                <li><a href="<%=Pages.USER_MANAGE_SOCIETY_PAGE%>">我的社团</a></li>
                                 <li><a href="<%=Pages.USER_PERSONAL_CENTER_PAGE%>">个人中心</a></li>
                                 <li><a href="<%=Pages.USER_LOGIN_PAGE%>">退出登录</a> </li>
                             </c:if>
