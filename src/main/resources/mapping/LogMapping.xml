@@ -57,6 +57,13 @@
         </where>
     </select>
 
+    <select id="getActivityLogs" resultMap="LogMap">
+        SELECT * FROM Log_view
+        <where>
+            type = 'activity' AND attribute='${activityId}'
+        </where>
+    </select>
+
 
     <insert id="addLog">
         INSERT INTO Log(time,log,type,attribute)

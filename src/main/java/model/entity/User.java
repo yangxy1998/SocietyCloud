@@ -2,8 +2,10 @@ package model.entity;
 
 import model.Managers;
 import model.relation.UserCommentSociety;
+import model.relation.UserJoinActivity;
 import model.relation.UserJoinSociety;
 import model.relation.UserManageSociety;
+import org.json.JSONObject;
 import util.Entity;
 
 import javax.servlet.http.HttpSessionBindingEvent;
@@ -64,6 +66,9 @@ public class User extends Entity{
 
     //用户评论的社团关系
     private List<UserCommentSociety> commentSocieties;
+
+    //用户加入的活动关系
+    private List<UserJoinActivity> joinActivities;
 
     public String getUserId() {
         return userId;
@@ -165,6 +170,10 @@ public class User extends Entity{
         return commentSocieties;
     }
 
+    public List<UserJoinActivity> getJoinActivities() {
+        return joinActivities;
+    }
+
     @Override
     public String getEntityLog() {
         return "用户 id："+this.userId+" 用户名："+this.userName;
@@ -173,9 +182,26 @@ public class User extends Entity{
     @Override
     public void init() {
         if(userId==null)return;
-        this.joinSocieties= Managers.JoinManager.getSocietiesByUserId(userId);
+        this.joinSocieties= Managers.JoinSocietyManager.getSocietiesByUserId(userId);
         this.manageSocieties=Managers.ManageManager.getSocietiesByUserId(userId);
         this.commentSocieties=Managers.CommentManager.getCommentsByUserId(userId);
+        this.joinActivities=Managers.JoinActivityManager.getActivitiesByUserId(userId);
+    }
+
+    @Override
+    public JSONObject getJSONObject() {
+        JSONObject object=new JSONObject();
+        object.put("userId",userId);
+        object.put("userName",userName);
+        object.put("password",password);
+        object.put("nickName",nickName);
+        object.put("realName",realName);
+        object.put("schoolName",schoolName);
+        object.put("academicNum",academicNum);
+        object.put("idCard",idCard);
+        object.put("description",description);
+        object.put("status",status);
+        return object;
     }
 
     private boolean login=false;

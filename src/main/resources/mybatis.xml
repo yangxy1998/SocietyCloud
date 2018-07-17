@@ -18,10 +18,13 @@
     <mappers>
         <mapper resource="mapping/UserMapping.xml"/>
         <mapper resource="mapping/SocietyMapping.xml"/>
+        <mapper resource="mapping/ActivityMapping.xml"/>
         <mapper resource="mapping/LogMapping.xml"/>
         <mapper resource="mapping/UJSMapping.xml"/>
         <mapper resource="mapping/UMSMapping.xml"/>
         <mapper resource="mapping/UCSMapping.xml"/>
+        <mapper resource="mapping/SOAMapping.xml"/>
+        <mapper resource="mapping/UJAMapping.xml"/>
     </mappers>
 </configuration>
         <!-- author:杨晓宇 -->

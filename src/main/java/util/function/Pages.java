@@ -55,6 +55,13 @@ public final class Pages {
     //社团日志页
     public static final String SOCIETY_LOG_PAGE="../society/societylog.jsp";
 
+    //活动中心页
+    public static final String ACTIVITY_CENTER_PAGE="../view.Center";
 
+    //组织活动页
+    public static final String ACTIVITY_ORGANIZE_PAGE="../society/organize.jsp";
+
+    //活动页面
+    public static final String ACTIVITY_MAIN_PAGE="../society/singleactivity.jsp";
 
 }

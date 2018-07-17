@@ -1,5 +1,7 @@
 package util;
 
+import org.json.JSONObject;
+
 import javax.servlet.http.HttpSessionActivationListener;
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
@@ -23,6 +25,8 @@ public abstract class Entity implements HttpSessionBindingListener,
      * 初始化一个实体，也就是把它所加入的所有联系都加载出来
      */
     public abstract void init();
+
+    public abstract JSONObject getJSONObject();
 
     @Override
     public void valueBound(HttpSessionBindingEvent event) {

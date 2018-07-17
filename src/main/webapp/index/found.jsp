@@ -37,7 +37,7 @@ ${alert}
         <h1>
             <a href="<%=Pages.USER_MAIN_PAGE%>"><b>首页</b></a>
             <a href="<%=Pages.SOCIETY_MALL_PAGE%>"><b>社团广场</b></a>
-            <a href=""><b>活动中心</b></a>
+            <a href="<%=Pages.ACTIVITY_CENTER_PAGE%>"><b>活动中心</b></a>
         </h1>
         <nav id="nav">
             <ul>

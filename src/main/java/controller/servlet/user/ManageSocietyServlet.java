@@ -97,7 +97,7 @@ public class ManageSocietyServlet extends HttpServlet {
                         Log.addSocietyLog("用户 "+user.getNickName()+" 修改了社团基本信息。",society.getSocietyName());
                     }
                     else if(("pass").equals(operation)){
-                        Managers.JoinManager.passApplication(id,society.getSocietyId(),user.getUserId());
+                        Managers.JoinSocietyManager.passApplication(id,society.getSocietyId(),user.getUserId());
                         Log.addSocietyLog("管理员 "+user.getNickName()+" 通过了用户 " +Managers.UserManager.getUserById(id).getNickName()
                                 +" 的社团申请。",society.getSocietyName());
                         Log.addUserLog("你通过了用户 " +Managers.UserManager.getUserById(id).getNickName()+" 在社团 "+society.getSocietyName()
@@ -105,7 +105,7 @@ public class ManageSocietyServlet extends HttpServlet {
                         Log.addUserLog("你对社团 "+society.getSocietyName()+" 的申请被通过。",Managers.UserManager.getUserById(id).getUserName());
                     }
                     else if(("deny").equals(operation)){
-                        Managers.JoinManager.denyApplication(id,society.getSocietyId(),user.getUserId());
+                        Managers.JoinSocietyManager.denyApplication(id,society.getSocietyId(),user.getUserId());
                         Log.addSocietyLog("管理员 "+user.getNickName()+" 拒绝或踢出了用户 " +Managers.UserManager.getUserById(id).getNickName()
                                 +"。",society.getSocietyName());
                         Log.addUserLog("你拒绝或踢出了用户 " +Managers.UserManager.getUserById(id).getNickName()+" 在社团 "+society.getSocietyName()

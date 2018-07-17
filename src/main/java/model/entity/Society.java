@@ -1,9 +1,8 @@
 package model.entity;
 
 import model.Managers;
-import model.relation.UserCommentSociety;
-import model.relation.UserJoinSociety;
-import model.relation.UserManageSociety;
+import model.relation.*;
+import org.json.JSONObject;
 import util.Entity;
 
 import java.util.List;
@@ -60,6 +59,9 @@ public class Society extends Entity{
 
     //评论社团的用户关系
     List<UserCommentSociety> commentUsers;
+
+    //社团举办的活动关系
+    List<SocietyOrganizeActivity> organizeActivities;
 
     public String getSocietyId() {
         return societyId;
@@ -145,6 +147,10 @@ public class Society extends Entity{
         return commentUsers;
     }
 
+    public List<SocietyOrganizeActivity> getOrganizeActivities() {
+        return organizeActivities;
+    }
+
     @Override
     public String getEntityLog() {
         return "社团 id："+this.societyId+" 社团名："+this.societyName;
@@ -153,8 +159,24 @@ public class Society extends Entity{
     @Override
     public void init() {
         if (societyId==null)return;
-        this.joinUsers= Managers.JoinManager.getUsersBySocietyId(societyId);
+        this.joinUsers= Managers.JoinSocietyManager.getUsersBySocietyId(societyId);
         this.manageUsers=Managers.ManageManager.getUsersBySocietyId(societyId);
         this.commentUsers=Managers.CommentManager.getCommentsBySocietyId(societyId);
+        this.organizeActivities=Managers.OrganizeManager.getActivitiesBySocietyId(societyId);
+    }
+
+    @Override
+    public JSONObject getJSONObject() {
+        JSONObject object=new JSONObject();
+        object.put("societyId",societyId);
+        object.put("societyName",societyName);
+        object.put("schoolName",schoolName);
+        object.put("mainType",mainType);
+        object.put("subType",subType);
+        object.put("foundDate",foundDate);
+        object.put("founder",founder);
+        object.put("description",description);
+        object.put("status",status);
+        return object;
     }
 }

@@ -133,6 +133,21 @@ public class Log {
     }
 
     /**
+     * 添加社团管理日志
+     * @param activityLog 活动日志
+     */
+    public static void addActivityLog(String activityLog,String activityId){
+        currentLog=new Log();
+        currentLog.time= Creator.getTime();
+        currentLog.log=activityLog;
+        currentLog.type=("activity");
+        currentLog.attribute=activityId;
+        logs.add(currentLog);
+        Managers.LogManager.addLog(currentLog.time,activityLog,"activity",activityId);
+        showLog();
+    }
+
+    /**
      * 添加管理员日志
      * @param adminLog 管理员日志
      * @param adminName 管理员名

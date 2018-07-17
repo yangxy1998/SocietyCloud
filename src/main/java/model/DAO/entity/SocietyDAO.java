@@ -48,4 +48,7 @@ public interface SocietyDAO {
 
     List<Society> getSubTypeOfSocieties(@Param("mainType") String mainType,
                                         @Param("subType") String subType);
+
+    List<Society> getSocietiesByKeyword(@Param("keyword") String keyword);
+
 }

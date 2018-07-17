@@ -1,11 +1,10 @@
 package util.function;
 
 import model.DAO.LogDAO;
+import model.DAO.entity.ActivityDAO;
 import model.DAO.entity.SocietyDAO;
 import model.DAO.entity.UserDAO;
-import model.DAO.relation.UserCommentSocietyDAO;
-import model.DAO.relation.UserJoinSocietyDAO;
-import model.DAO.relation.UserManageSocietyDAO;
+import model.DAO.relation.*;
 import model.Managers;
 import org.apache.ibatis.session.SqlSession;
 import util.exception.MapperNotFoundException;
@@ -33,12 +32,18 @@ public class Loader {
         if(Managers.SocietyManager==null)throw new MapperNotFoundException();
         Managers.LogManager=session.getMapper(LogDAO.class);
         if(Managers.LogManager==null)throw new MapperNotFoundException();
-        Managers.JoinManager=session.getMapper(UserJoinSocietyDAO.class);
-        if(Managers.JoinManager==null)throw new MapperNotFoundException();
+        Managers.JoinSocietyManager =session.getMapper(UserJoinSocietyDAO.class);
+        if(Managers.JoinSocietyManager ==null)throw new MapperNotFoundException();
         Managers.ManageManager=session.getMapper(UserManageSocietyDAO.class);
         if(Managers.ManageManager==null)throw new MapperNotFoundException();
         Managers.CommentManager=session.getMapper(UserCommentSocietyDAO.class);
         if(Managers.CommentManager==null)throw new MapperNotFoundException();
+        Managers.ActivityManager=session.getMapper(ActivityDAO.class);
+        if(Managers.ActivityManager==null)throw new MapperNotFoundException();
+        Managers.JoinActivityManager=session.getMapper(UserJoinActivityDAO.class);
+        if(Managers.JoinActivityManager==null)throw new MapperNotFoundException();
+        Managers.OrganizeManager=session.getMapper(SocietyOrganizeActivityDAO.class);
+        if(Managers.OrganizeManager==null)throw new MapperNotFoundException();
     }
 
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="model.DAO.relation.SocietyOrganizeActivityDAO">
+
+    <resultMap id="SOAMap" type="model.relation.SocietyOrganizeActivity">
+        <result property="societyId" column="societyId"/>
+        <result property="activityId" column="activityId"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <select id="getSocietiesByActivityId" resultMap="SOAMap">
+        SELECT *
+        FROM SocietyOrganizeActivity
+        WHERE activityId='${activityId}'
+    </select>
+
+    <select id="getActivitiesBySocietyId" resultMap="SOAMap">
+        SELECT *
+        FROM SocietyOrganizeActivity
+        WHERE societyId='${societyId}'
+    </select>
+
+    <insert id="organizeActivity">
+        INSERT INTO SocietyOrganizeActivity(societyId,activityId,status)
+        VALUES ('${societyId}','${activityId}',1)
+    </insert>
+
+    <insert id="inviteSocietyToActivity">
+        INSERT INTO SocietyOrganizeActivity(societyId,activityId,status)
+        VALUES ('${societyId}','${activityId}',0)
+    </insert>
+
+    <update id="receiveInvitation">
+        UPDATE SocietyOrganizeActivity
+        SET status=1
+        WHERE societyId='${societyId}' AND activityId='${activityId}'
+    </update>
+
+    <update id="refuseInvitation">
+        UPDATE SocietyOrganizeActivity
+        SET status=-1
+        WHERE societyId='${societyId}' AND activityId='${activityId}'
+    </update>
+
+</mapper>
+
+        <!-- author:杨晓宇 -->
+        <!-- author:程乐 -->

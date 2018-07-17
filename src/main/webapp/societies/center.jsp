@@ -1,8 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="util.function.Pages" %>
 <%@ page import="util.function.Creator" %>
-<%@ page import="controller.tools.user.ViewMallTool" %>
-<%@ page import="controller.servlet.InitServlet" %><%--
+<%@ page import="controller.tools.user.ViewMallTool" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/10
@@ -41,8 +40,8 @@ ${alert}
 <jsp:useBean id="user" type="model.entity.User" scope="session" />
 <jsp:useBean id="currentPages" type="java.util.List<java.lang.String>" scope="session" />
 <jsp:useBean id="currentPage" type="java.lang.String" scope="session" />
-<jsp:useBean id="societies" type="java.util.List<model.entity.Society>" scope="session"/>
-<jsp:useBean id="mainTypes" type="java.util.List<util.function.MainType>" scope="session"/>
+<jsp:useBean id="activities" type="java.util.List<model.entity.Activity>" scope="session"/>
+<jsp:useBean id="types" type="java.util.List<java.lang.String>" scope="session"/>
 <!-- Header Area -->
 <div id="page-wrapper">
     <header id="header" >
@@ -100,20 +99,10 @@ ${alert}
                     <ul class="main-menu pull-lift ">
 
 
-                        <form action="<%=Pages.SOCIETY_MALL_PAGE%>">
-                        <c:forEach var="mainType" items="${mainTypes}">
-
-
-                            <li class="menu-has-child">
-
-                                <input type="submit" name="${mainType.mainType}" value="${mainType.mainType}">
-                                <ul>
-                                    <c:forEach var="subType" items="${mainType.subTypes}">
-                                        <li ><input  type="submit" name="${subType}" value="${subType}">
-                                    </c:forEach>
-                                </ul>
-                            </li>
-                        </c:forEach>
+                        <form action="<%=Pages.ACTIVITY_CENTER_PAGE%>">
+                            <c:forEach var="type" items="${types}">
+                                    <input type="submit" name="${type}" value="${type}">
+                            </c:forEach>
                         </form>
                     </ul>
                     <div class="mobile-menu hidden-lg hidden-md hidden-sm">
@@ -126,8 +115,8 @@ ${alert}
             </div>
         </div>
         <div class="search-area">
-                <form action="#" method="post">
-                    <input type="search" name="search" placeholder="输入社团名字">
+            <form action="#" method="post">
+                <input type="search" name="search" placeholder="输入社团名字">
             </form>
             <a href="#" class="search-close"><i class="fa fa-times"></i></a>
         </div>
@@ -163,32 +152,32 @@ ${alert}
         <div class="row">
 
             <div id="mixer">
-                <form action="/view.Society" method="post">
-                <c:forEach var="society" items="${societies}">
-                    <div class="col-sm-4 col-xs-12 mix kinder play">
-                        <div class="single-class">
-                            <div class="class-img">
-                                <img alt="" src="images/class1/class1.jpg">
-                                <div class="class-hover">
-                                    <a href="images/class1/class1.jpg" class="popup"><i class="icon-link"></i></a>
+                <form action="/view.Activity" method="post">
+                    <c:forEach var="activity" items="${activities}">
+                        <div class="col-sm-4 col-xs-12 mix kinder play">
+                            <div class="single-class">
+                                <div class="class-img">
+                                    <img alt="" src="images/class1/class1.jpg">
+                                    <div class="class-hover">
+                                        <a href="images/class1/class1.jpg" class="popup"><i class="icon-link"></i></a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="class-details">
-                                <h3>${society.societyName}
-                                    <br/><input type="submit" name="${society.societyId}" value="查看"></h3>
-                                <div class="clearfix">
-                                    <div class="class-meta pull-left">
-                                        <span>所属学校：${society.schoolName}</span>
-                                        <span>创建时间：${society.foundDate.split(" ")[0]}</span>
+                                <div class="class-details">
+                                    <h3>${activity.activityName}
+                                        <br/><input type="submit" name="${activity.activityId}" value="查看"></h3>
+                                    <div class="clearfix">
+                                        <div class="class-meta pull-left">
+                                            <span>开始时间：${activity.beginTime.split(" ")[0]}</span>
+                                            <span>结束时间：${activity.endTime.split(" ")[0]}</span>
                                         <span>
-                                            社团人数：${society.joinUsers.size()}
+                                            参与人数：${activity.joinUsers.size()}
                                         </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </c:forEach>
+                    </c:forEach>
                 </form>
                 <div class="clearfix"></div>
             </div>
@@ -197,7 +186,7 @@ ${alert}
             <div class="col-sm-12 col-xs-12 text-center">
                 <ul class="paginations">
                     <li><a href="#"><i class="icon-prev"></i></a></li>
-                    <form action="<%=Pages.SOCIETY_MALL_PAGE%>">
+                    <form action="<%=Pages.ACTIVITY_CENTER_PAGE%>">
                         <c:forEach var="p" items="${currentPages}">
                             <c:if test="${p.equals(currentPage)}">
                                 <input type="submit" name="${p}" value="${p}">
@@ -237,13 +226,13 @@ ${alert}
         <script type="text/javascript">
             $(document).ready(function() {
                 /*
-                var defaults = {
-                      containerID: 'toTop', // fading element id
-                    containerHoverID: 'toTopHover', // fading element hover id
-                    scrollSpeed: 1200,
-                    easingType: 'linear'
+                 var defaults = {
+                 containerID: 'toTop', // fading element id
+                 containerHoverID: 'toTopHover', // fading element hover id
+                 scrollSpeed: 1200,
+                 easingType: 'linear'
                  };
-                */
+                 */
 
                 $().UItoTop({ easingType: 'easeOutQuart' });
 

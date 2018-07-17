@@ -19,7 +19,7 @@ public interface ActivityDAO {
                           @Param("beginTime") String beginTime,
                           @Param("endTime") String endTime,
                           @Param("address") String address,
-                          @Param("limit") int limit,
+                          @Param("limit") String limit,
                           @Param("description") String description);
 
     void updateActivity(@Param("activityId") String activityId,
@@ -29,7 +29,13 @@ public interface ActivityDAO {
                         @Param("beginTime") String beginTime,
                         @Param("endTime") String endTime,
                         @Param("address") String address,
-                        @Param("limit") int limit,
+                        @Param("limit") String limit,
                         @Param("description") String description);
+
+    Activity getActivityById(@Param("activityId") String activityId);
+
+    List<Activity> getTypeOfActivities(@Param("activityType") String activityType);
+
+    List<Activity> getRunningActivities(@Param("currentTime") String currentTime);
 
 }

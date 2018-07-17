@@ -63,8 +63,8 @@ public class FoundServlet extends HttpServlet {
                 response.sendRedirect(Pages.USER_FOUND_SOCIETY_PAGE);
             }
             else{
-                Managers.JoinManager.applyToJoinSociety(user.getUserId(),societyId,Creator.getTime());
-                Managers.JoinManager.passApplication(user.getUserId(),societyId,user.getUserId());
+                Managers.JoinSocietyManager.applyToJoinSociety(user.getUserId(),societyId,Creator.getTime());
+                Managers.JoinSocietyManager.passApplication(user.getUserId(),societyId,user.getUserId());
                 Managers.ManageManager.givePriority(user.getUserId(),societyId,5);
                 Log.addUserLog("创建了社团，社团名为："+values.get(0),user.getUserName());
                 Log.addUserLog("加入了社团 "+values.get(0),user.getUserName());

@@ -63,6 +63,11 @@
         WHERE mainType='${mainType}' AND subType='${subType}'
     </select>
 
+    <select id="getSocietiesByKeyword" resultMap="SocietyMap">
+        SELECT * FROM Society_view
+        WHERE societyName LIKE '%${keyword}%'
+    </select>
+
 </mapper>
         <!-- author:杨晓宇 -->
         <!-- author:程乐 -->

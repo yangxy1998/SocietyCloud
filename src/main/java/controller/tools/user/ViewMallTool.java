@@ -42,6 +42,12 @@ public class ViewMallTool {
         return null;
     }
 
+    public static String getKeyword(HttpServletRequest request){
+        String keyword=request.getParameter("keyword");
+        if(keyword!=null)return keyword;
+        else return null;
+    }
+
     public static String getPage(String mainType,String subType,HttpServletRequest request){
         Enumeration<String> parameterNames=request.getParameterNames();
         if (parameterNames.hasMoreElements()) {

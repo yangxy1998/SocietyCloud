@@ -1,6 +1,12 @@
 package model.entity;
 
+import model.Managers;
+import model.relation.SocietyOrganizeActivity;
+import model.relation.UserJoinActivity;
+import org.json.JSONObject;
 import util.Entity;
+
+import java.util.List;
 
 /**
  * Created by Administrator on 2018/7/12.
@@ -30,16 +36,19 @@ public class Activity extends Entity{
 
     /**
      * 活动人物限定
-     * 只限管理员：只限所有社团管理员
+     * 只限社团管理员：只限所有社团管理员
      * 只限社团成员：只限所有社团成员
      * 只限认证人员：只限有学校和学工号认证的人员
-     * 不限：不限任何成员
+     * 不限：不限人员
      */
     private String limit;
 
     //活动描述
     private String description;
 
+    private List<UserJoinActivity> joinUsers;
+
+    private List<SocietyOrganizeActivity> organizeSocieties;
 
     public String getActivityId() {
         return activityId;
@@ -113,13 +122,38 @@ public class Activity extends Entity{
         this.description = description;
     }
 
+    public List<UserJoinActivity> getJoinUsers() {
+        return joinUsers;
+    }
+
+    public List<SocietyOrganizeActivity> getOrganizeSocieties() {
+        return organizeSocieties;
+    }
+
     @Override
     public String getEntityLog() {
         return "活动 id："+this.activityId+" 活动名："+this.activityName;
     }
 
+
     @Override
     public void init() {
+        this.joinUsers= Managers.JoinActivityManager.getUsersByActivityId(activityId);
+        this.organizeSocieties=Managers.OrganizeManager.getSocietiesByActivityId(activityId);
+    }
 
+    @Override
+    public JSONObject getJSONObject() {
+        JSONObject object=new JSONObject();
+        object.put("activityId",activityId);
+        object.put("activityName",activityName);
+        object.put("activityType",activityType);
+        object.put("organizer",organizer);
+        object.put("beginTime",beginTime);
+        object.put("endTime",endTime);
+        object.put("address",address);
+        object.put("description",description);
+        object.put("limit",limit);
+        return object;
     }
 }

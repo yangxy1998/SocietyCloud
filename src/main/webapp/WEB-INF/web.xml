@@ -145,14 +145,68 @@
         <servlet-name>UploadServlet</servlet-name>
         <servlet-class>controller.servlet.UploadServlet</servlet-class>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>UploadServlet</servlet-name>
         <url-pattern>/upload</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>JSONServlet</servlet-name>
+        <servlet-class>controller.servlet.JSONServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JSONServlet</servlet-name>
+        <url-pattern>/getJson</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ViewCenterServlet</servlet-name>
+        <servlet-class>controller.servlet.user.ViewCenterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ViewCenterServlet</servlet-name>
+        <url-pattern>/view.Center</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>OrganizeServlet</servlet-name>
+        <servlet-class>controller.servlet.user.OrganizeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrganizeServlet</servlet-name>
+        <url-pattern>/society.Organize</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>JoinActivityServlet</servlet-name>
+        <servlet-class>controller.servlet.user.JoinActivityServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JoinActivityServlet</servlet-name>
+        <url-pattern>/join.Activity</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ViewActivityServlet</servlet-name>
+        <servlet-class>controller.servlet.user.ViewActivityServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ViewActivityServlet</servlet-name>
+        <url-pattern>/view.Activity</url-pattern>
+    </servlet-mapping>
+    
+    
+    
+    
+    
+    
     <listener>
         <listener-class>util.function.ApplicationListener</listener-class>
     </listener>
+
 
     <error-page>
         <error-code>404</error-code>

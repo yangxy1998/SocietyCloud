@@ -193,6 +193,25 @@ public class Creator {
         return subTypes;
     }
 
+    public static List<String> getActivityTypes(){
+        List<String> types=new ArrayList<>();
+        types.add("在线类");
+        types.add("观赏类");
+        types.add("游戏类");
+        types.add("竞赛类");
+        types.add("其他类");
+        return types;
+    }
+
+    public static List<String> getActivityLimits(){
+        List<String> types=new ArrayList<>();
+        types.add("不限");
+        types.add("只限认证人员");
+        types.add("只限社团人员");
+        types.add("只限社团管理员");
+        return types;
+    }
+
     public static String getMainTypeFromSubType(String subType){
         for (MainType mainType:getMainTypes()) {
             for(String s:mainType.getSubTypes()){

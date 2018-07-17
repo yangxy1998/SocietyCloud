@@ -13,7 +13,7 @@ public interface SocietyOrganizeActivityDAO {
     void organizeActivity(@Param("societyId") String societyId,
                           @Param("activityId") String activityId);
 
-    void inviteSocietyToOrganize(@Param("societyId") String societyId,
+    void inviteSocietyToActivity(@Param("societyId") String societyId,
                                  @Param("activityId") String activityId);
 
     void receiveInvitation(@Param("societyId") String societyId,
@@ -25,7 +25,5 @@ public interface SocietyOrganizeActivityDAO {
     List<SocietyOrganizeActivity> getActivitiesBySocietyId(@Param("societyId") String societyId);
 
     List<SocietyOrganizeActivity> getSocietiesByActivityId(@Param("activityId") String activityId);
-
-
 
 }

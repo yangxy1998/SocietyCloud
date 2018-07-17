@@ -24,6 +24,8 @@ public interface LogDAO {
 
     List<Log> getAdminLogs(@Param("adminName") String adminName);
 
+    List<Log> getActivityLogs(@Param("activityId") String activityId);
+
     void addLog(@Param("time") String time,
                 @Param("log") String log,
                 @Param("type") String type,

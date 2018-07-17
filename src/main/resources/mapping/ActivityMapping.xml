@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="model.DAO.entity.ActivityDAO">
+
+    <resultMap id="ActivityMap" type="model.entity.Activity">
+        <result property="activityId" column="activityId"/>
+        <result property="activityName" column="activityName"/>
+        <result property="activityType" column="activityType"/>
+        <result property="organizer" column="organizer"/>
+        <result property="beginTime" column="beginTime"/>
+        <result property="endTime" column="endTime"/>
+        <result property="address" column="address"/>
+        <result property="limit" column="limit"/>
+        <result property="description" column="description"/>
+    </resultMap>
+    
+
+    <select id="getAllActivities" resultMap="ActivityMap">
+        SELECT * FROM Activity
+        ORDER BY beginTime DESC ,endTime DESC ,activityName ASC
+    </select>
+
+    <insert id="organizeActivity">
+        INSERT INTO Activity(activityId,activityName,activityType,organizer,beginTime,endTime,address,limit,description)
+        VALUES ('${activityId}','${activityName}','${activityType}','${organizer}','${beginTime}','${endTime}','${address}','${limit}','${description}')
+    </insert>
+
+    <update id="updateActivity">
+        UPDATE Activity
+        SET activityName='${activityName}',activityType='${activityType}',
+        organizer='${organizer}',beginTime='${beginTime}',endTime='${endTime}',
+        address='${address}',limit='${limit}',description='${description}'
+        WHERE activityId='${activityId}'
+    </update>
+
+    <select id="getActivityById" resultMap="ActivityMap">
+        SELECT * FROM Activity
+        WHERE activityId='${activityId}'
+    </select>
+
+    <select id="getTypeOfActivities" resultMap="ActivityMap">
+        SELECT * FROM Activity
+        WHERE activityType='${activityType}'
+    </select>
+
+    <select id="getRunningActivities" resultMap="ActivityMap">
+        SELECT * FROM Activity
+        <where>
+            ${currentTime} BETWEEN beginTime AND endTime
+        </where>
+    </select>
+
+</mapper>
+        <!-- author:杨晓宇 -->
+        <!-- author:程乐 -->

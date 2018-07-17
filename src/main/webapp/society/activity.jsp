@@ -1,8 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="model.entity.Activity" %>
+<%@ page import="model.relation.SocietyOrganizeActivity" %>
 <%@ page import="model.relation.UserManageSociety" %>
 <%@ page import="util.function.Pages" %>
-<%@ page import="controller.tools.user.ViewSocietyTool" %>
-<%@ page import="model.relation.UserJoinSociety" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+<%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/10
@@ -55,7 +58,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 ${alert}
 <%session.setAttribute("alert","");%>
 <jsp:useBean id="user" type="model.entity.User" scope="session" />
-<jsp:useBean id="society" type="model.entity.Society" scope="session" />
+<jsp:useBean id="society" type="model.entity.Society" scope="session"/>
+
 <!--start-header-->
 <div id="page-wrapper">
 
@@ -63,18 +67,7 @@ ${alert}
     <header id="header" >
         <h1><a href="<%=Pages.USER_MAIN_PAGE%>"><b>首页</b></a>
             &nbsp;&nbsp;&nbsp;<a href="<%=Pages.SOCIETY_MALL_PAGE%>"><b>社团广场</b></a>
-            &nbsp;&nbsp;&nbsp;<a href="<%=Pages.SOCIETY_MAIN_PAGE%>"><b>社团首页</b></a>
-            &nbsp;&nbsp;&nbsp;<a href="<%=Pages.SOCIETY_COMMENT_PAGE%>"><b>社团评论</b></a>
-            &nbsp;&nbsp;&nbsp;<a href="<%=Pages.SOCIETY_ACTIVITY_PAGE%>"><b>社团活动</b></a>
-            <%
-                for (UserManageSociety ums:society.getManageUsers()) {
-                    if(ums.getUserId().equals(user.getUserId())){
-                        out.println("&nbsp;&nbsp;&nbsp;<a href=\""+Pages.SOCIETY_MANAGE_PAGE+"\"><b>管理社团</b></a>");
-                        out.println("&nbsp;&nbsp;&nbsp;<a href=\""+Pages.SOCIETY_LOG_PAGE+"\"><b>社团日志</b></a>");
-                        break;
-                    }
-                }
-            %>
+            &nbsp;&nbsp;&nbsp;<a href="<%=Pages.ACTIVITY_CENTER_PAGE%>"><b>活动中心</b></a>
         </h1>
 
         <nav id="nav">
@@ -104,60 +97,6 @@ ${alert}
 </div>
 <!--end-header-->
 
-
-<!--start-banner-->
-<%
-    UserJoinSociety ujs=ViewSocietyTool.isJoinedIntoSociety(user,society);
-    if(ujs!=null){
-        if(ujs.getStatus()==1)session.setAttribute("joinStatus","已经加入");
-        if(ujs.getStatus()==0)session.setAttribute("joinStatus","等待审批");
-        if(ujs.getStatus()==-1)session.setAttribute("joinStatus","已被拒绝");
-    }
-    else{
-        session.setAttribute("joinStatus","加入社团");
-    }
-%>
-<div class="banner">
-    <div class="container">
-        <section class="slider">
-            <div class="flexslider">
-                <ul class="slides">
-                    <li>
-                        <div class="banner-top">
-                            <h2>-${society.societyName}-</h2>
-                            <h3>-${society.mainType}-${society.subType}-</h3>
-                            <div class="bnr-btn">
-                                <c:if test="${!joinStatus.equals(\"加入社团\")}">
-                                    <div class="hvr-shutter-out-horizontal">${joinStatus}</div>
-                                </c:if>
-                                <c:if test="${joinStatus.equals(\"加入社团\")}">
-                                    <a href="/join.Society" class="hvr-shutter-out-horizontal">${joinStatus}</a>
-                                </c:if>
-                            </div>
-                        </div>
-                    </li>
-                    <%--<li>--%>
-                        <%--<div class="banner-top">--%>
-                            <%--<h2>${society.societyName}</h2>--%>
-                            <%--<div class="bnr-btn">--%>
-                                <%--<a href="#" class="hvr-shutter-out-horizontal">更多</a>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                    <%--</li>--%>
-                    <%--<li>--%>
-                        <%--<div class="banner-top">--%>
-                            <%--<h2>${society.societyName}</h2>--%>
-                            <%--<div class="bnr-btn">--%>
-                                <%--<a href="#" class="hvr-shutter-out-horizontal">更多</a>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                    <%--</li>--%>
-                </ul>
-            </div>
-        </section>
-    </div>
-</div>
-<!--end-banner-->
 <!--FlexSlider-->
 <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 <script defer src="./js/jquery.flexslider.js"></script>
@@ -175,37 +114,36 @@ ${alert}
     });
 </script>
 <!--End-slider-script-->
-
+<%
+    for (UserManageSociety ums:society.getManageUsers()) {
+        if(ums.getUserId().equals(user.getUserId())){
+            out.println("&nbsp;&nbsp;&nbsp;<a href=\""+Pages.SOCIETY_MANAGE_PAGE+"\"><b>管理社团</b></a>");
+            out.println("&nbsp;&nbsp;&nbsp;<a href=\""+Pages.SOCIETY_LOG_PAGE+"\"><b>社团日志</b></a>");
+            request.setAttribute("priority",ums.getPriority());
+        }
+    }
+%>
 
 <!-- Classes Section -->
 <section class="classes-section-2">
     <div class="container">
 
-        <!--搜索2
-            <div class="row">
-                <div class="col-sm-12 col-xs-12">
-                    <div class="class-sort-btn-section">
-                        <ul class="sort-btn pull-left">
-                            <li class="active filter" data-filter="mix"><a href="#">All</a></li>
-                            <li class="filter" data-filter="kinder" id="kinder"><a href="#">X1</a></li>
-                            <li class="filter" data-filter="play" id="play"><a href="#">X2</a></li>
-                            <li class="filter" data-filter="primary" id="primary"><a href="#">X3</a></li>
-                            <li class="filter" data-filter="story" id="story"><a href="#">X4</a></li>
-                        </ul>
-                        <form method="post" action="#" class="class-search pull-right">
-                            <input type="search" name="search" placeholder="搜索社团">
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </form>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
-        -->
+
+        <%
+            List<Activity> activities=new ArrayList<>();
+            for (SocietyOrganizeActivity soa:society.getOrganizeActivities()) {
+                activities.add(soa.getActivity());
+            }
+            session.setAttribute("activities",activities);
+        %>
         <div class="row">
 
             <div id="mixer">
-                <form action="/view.Society" method="post">
-                    <c:forEach var="society" items="${societies}">
+                <c:if test="${priority>2}">
+                    <a href="../society/organize.jsp">您可以创建一个活动。</a>
+                </c:if>
+                <form action="/view.Activity" method="post">
+                    <c:forEach var="activity" items="${activities}">
                         <div class="col-sm-4 col-xs-12 mix kinder play">
                             <div class="single-class">
                                 <div class="class-img">
@@ -215,14 +153,14 @@ ${alert}
                                     </div>
                                 </div>
                                 <div class="class-details">
-                                    <h3>${society.societyName}
-                                        <br/><input type="submit" name="${society.societyId}" value="查看"></h3>
+                                    <h3>${activity.activityName}
+                                        <br/><input type="submit" name="${activity.activityId}" value="查看"></h3>
                                     <div class="clearfix">
                                         <div class="class-meta pull-left">
-                                            <span>所属学校：${society.schoolName}</span>
-                                            <span>创建时间：${society.foundDate.split(" ")[0]}</span>
+                                            <span>主办方：${activity.organizer}</span>
+                                            <span>开始时间：${activity.beginTime}</span>
                                             <span>
-                                            社团人数：${society.joinUsers.size()}
+                                            参与人数：${activity.joinUsers.size()}
                                         </span>
                                         </div>
                                     </div>
@@ -232,24 +170,6 @@ ${alert}
                     </c:forEach>
                 </form>
                 <div class="clearfix"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12 col-xs-12 text-center">
-                <ul class="paginations">
-                    <li><a href="#"><i class="icon-prev"></i></a></li>
-                    <form action="<%=Pages.SOCIETY_MALL_PAGE%>">
-                        <c:forEach var="p" items="${currentPages}">
-                            <c:if test="${p.equals(currentPage)}">
-                                <input type="submit" name="${p}" value="${p}">
-                            </c:if>
-                            <c:if test="${!p.equals(currentPage)}">
-                                <input type="submit" name="${p}" value="${p}">
-                            </c:if>
-                        </c:forEach>
-                    </form>
-                    <li><a href="#"><i class="icon-next"></i></a></li>
-                </ul>
             </div>
         </div>
     </div>

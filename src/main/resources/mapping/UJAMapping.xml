@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="model.DAO.relation.UserJoinActivityDAO">
+
+    <resultMap id="UJAMap" type="model.relation.UserJoinActivity">
+        <result property="userId" column="userId"/>
+        <result property="activityId" column="activityId"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <select id="getUsersByActivityId" resultMap="UJAMap">
+        SELECT *
+        FROM UserJoinActivity
+        WHERE activityId='${activityId}'
+    </select>
+
+    <select id="getActivitiesByUserId" resultMap="UJAMap">
+        SELECT *
+        FROM UserJoinActivity
+        WHERE userId='${userId}'
+    </select>
+
+    <insert id="joinActivity">
+        INSERT INTO UserJoinActivity(userId,activityId,status)
+        VALUES ('${userId}','${activityId}',1)
+    </insert>
+
+    <insert id="inviteActivity">
+        INSERT INTO UserJoinActivity(userId,activityId,status)
+        VALUES ('${userId}','${activityId}',0)
+    </insert>
+
+    <update id="receiveInvitation">
+        UPDATE UserJoinActivity
+        SET status=1
+        WHERE userId='${userId}' AND activityId='${activityId}'
+    </update>
+
+    <update id="refuseInvitation">
+        UPDATE UserJoinActivity
+        SET status=-1
+        WHERE userId='${userId}' AND activityId='${activityId}'
+    </update>
+
+</mapper>

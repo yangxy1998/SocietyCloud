@@ -54,7 +54,7 @@ public class JoinSocietyServlet extends HttpServlet {
                     response.sendRedirect(Pages.SOCIETY_MAIN_PAGE);
                 }
                 else{
-                    Managers.JoinManager.applyToJoinSociety(user.getUserId(),society.getSocietyId(), Creator.getTime());
+                    Managers.JoinSocietyManager.applyToJoinSociety(user.getUserId(),society.getSocietyId(), Creator.getTime());
                     Log.addSocietyLog("用户 "+user.getNickName()+" 申请加入社团。",society.getSocietyName());
                     Log.addUserLog("你申请加入社团 "+society.getSocietyName()+" 。",user.getUserName());
                     session.setAttribute("society",Managers.SocietyManager.getSocietyById(society.getSocietyId()));
