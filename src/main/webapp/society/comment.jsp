@@ -117,5 +117,14 @@ ${alert}
     <input type="text" name="comment" placeholder="您可以在这里输入您的评论：字数不超过500字。">
     <input type="submit" value="评论">
 </form>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
 </body>
 </html>

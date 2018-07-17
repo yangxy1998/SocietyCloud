@@ -168,7 +168,7 @@ ${alert}
                     <div class="col-sm-4 col-xs-12 mix kinder play">
                         <div class="single-class">
                             <div class="class-img">
-                                <img alt="" src="../WEB-INF/SocietyFiles/${society.societyId}/${society.societyId}.jpg">
+                                <img alt="" src="images/class1/class1.jpg">
                                 <div class="class-hover">
                                     <a href="images/class1/class1.jpg" class="popup"><i class="icon-link"></i></a>
                                 </div>

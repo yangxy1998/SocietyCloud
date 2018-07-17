@@ -55,4 +55,6 @@ public final class Pages {
     //社团日志页
     public static final String SOCIETY_LOG_PAGE="../society/societylog.jsp";
 
+
+
 }
