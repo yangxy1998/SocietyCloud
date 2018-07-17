@@ -35,6 +35,18 @@ public class ViewActivityServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        HttpSession session=request.getSession(false);
+        String activityId=request.getParameter("activityId");
+        if(activityId!=null){
+            Activity activity= Managers.ActivityManager.getActivityById(activityId);
+            session.setAttribute("activity",activity );
+            Log.addActivityLog("有用户查看了活动信息。",activityId);
+            session.setAttribute("activity",activity);
+            response.sendRedirect(Pages.ACTIVITY_MAIN_PAGE);
+        }
+        else{
+            session.setAttribute("alert", Creator.getAlert("加载失败，请重新选择！"));
+            response.sendRedirect(Pages.ACTIVITY_CENTER_PAGE);
+        }
     }
 }

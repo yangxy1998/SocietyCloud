@@ -74,7 +74,7 @@ public class OrganizeServlet extends HttpServlet {
         Activity activity=(Activity) session.getAttribute("activity");
         String userName=request.getParameter("inviteUser");
         String societyName=request.getParameter("inviteSociety");
-        if(userName!=null){
+        if(userName!=null||!("").equals(userName)){
             User user=Managers.UserManager.getUserByName(userName);
             if(user!=null) {
                 Managers.JoinActivityManager.inviteActivity(user.getUserId(), activity.getActivityId());
@@ -84,7 +84,7 @@ public class OrganizeServlet extends HttpServlet {
                 session.setAttribute("alert",Creator.getAlert("找不到名为"+userName+"的用户！"));
             }
         }
-        if(societyName!=null){
+        if(societyName!=null||!("").equals(societyName)){
             Society society=Managers.SocietyManager.getSocietyByName(societyName);
             if(society!=null){
                 Managers.OrganizeManager.inviteSocietyToActivity(society.getSocietyId(),activity.getActivityId());
@@ -92,6 +92,18 @@ public class OrganizeServlet extends HttpServlet {
             }
             else{
                 session.setAttribute("alert",Creator.getAlert("找不到名为"+societyName+"的社团！"));
+            }
+        }
+        Society society=(Society) session.getAttribute("society");
+        String activityId=request.getParameter("activityId");
+        if(activityId!=null){
+            if(request.getParameter("receive")!=null){
+                Managers.OrganizeManager.receiveInvitation(society.getSocietyId(),activityId);
+                Log.addActivityLog("社团 "+society.getSocietyName()+" 接受了邀请。",activityId);
+            }
+            else if(request.getParameter("refuse")!=null){
+                Managers.OrganizeManager.refuseInvitation(society.getSocietyId(),activityId);
+                Log.addActivityLog("社团 "+society.getSocietyName()+" 拒绝了邀请。",activityId);
             }
         }
         response.sendRedirect(Pages.ACTIVITY_MAIN_PAGE);

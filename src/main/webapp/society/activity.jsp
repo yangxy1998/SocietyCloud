@@ -131,16 +131,33 @@ ${alert}
 
         <%
             List<Activity> activities=new ArrayList<>();
+            List<SocietyOrganizeActivity> soas=new ArrayList<>();
             for (SocietyOrganizeActivity soa:society.getOrganizeActivities()) {
-                activities.add(soa.getActivity());
+                if(soa.getStatus()==1) activities.add(soa.getActivity());
+                else soas.add(soa);
             }
             session.setAttribute("activities",activities);
+            request.setAttribute("soas",soas);
         %>
         <div class="row">
 
             <div id="mixer">
                 <c:if test="${priority>2}">
                     <a href="../society/organize.jsp">您可以创建一个活动。</a>
+                        <c:if test="${soas.size()>0}">
+                            您有待处理的活动邀请：
+                            <c:forEach var="soa" items="${soas}">
+                                <c:if test="${soa.status==0}">
+                                    <a href="/view.Activity?activityId=${soa.activityId}">${soa.activity.activityName}</a>
+                                    <a href="/society.Organize?activityId=${soa.activityId}&receive=true">接受邀请</a>
+                                    <a href="/society.Organize?activityId=${soa.activityId}&refuse=true">拒绝邀请</a>
+                                </c:if>
+                                <c:if test="${soa.status==-1}">
+                                    <a href="/view.Activity?activityId=${soa.activityId}">${soa.activity.activityName}</a>
+                                    <span>已拒绝</span>
+                                </c:if>
+                            </c:forEach>
+                        </c:if>
                 </c:if>
                 <form action="/view.Activity" method="post">
                     <c:forEach var="activity" items="${activities}">

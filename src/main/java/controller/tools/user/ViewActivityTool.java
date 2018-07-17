@@ -1,6 +1,7 @@
 package controller.tools.user;
 
 import model.entity.Activity;
+import model.entity.Society;
 import model.entity.User;
 import model.relation.SocietyOrganizeActivity;
 import model.relation.UserJoinActivity;
@@ -39,7 +40,9 @@ public class ViewActivityTool {
 
     public static UserManageSociety isManager(User user, Activity activity){
         for(SocietyOrganizeActivity soa:activity.getOrganizeSocieties()){
-            for (UserManageSociety ums:soa.getSociety().getManageUsers()) {
+            Society society=soa.getSociety();
+            society.init();
+            for (UserManageSociety ums:society.getManageUsers()) {
                 if(ums.getUserId().equals(user.getUserId()))return ums;
             }
         }

@@ -109,7 +109,7 @@ ${alert}
                                     <a href="/join.Activity?stat=receive" class="hvr-shutter-out-horizontal">接受邀请</a>
                                     <a href="/join.Activity?stat=refuse" class="hvr-shutter-out-horizontal">拒绝邀请</a>
                                 </c:if>
-                                <c:if test="${!joinStatus.equals(\"参加活动\")||!joinStatus.equals(\"接受邀请\")}">
+                                <c:if test="${!joinStatus.equals(\"参加活动\")&&!joinStatus.equals(\"接受邀请\")}">
                                     <div class="hvr-shutter-out-horizontal">${joinStatus}</div>
                                 </c:if>
                             </div>
@@ -169,7 +169,8 @@ ${alert}
                 </div>
             </div>
             <%
-                int priority=ViewActivityTool.isManager(user,activity).getPriority();
+                int priority=0;
+                if(ViewActivityTool.isManager(user,activity)!=null)priority=ViewActivityTool.isManager(user,activity).getPriority();
                 request.setAttribute("priority",priority);
             %>
             <c:if test="${priority>2}">
@@ -245,9 +246,11 @@ ${alert}
         <div class="teacher-main">
             <form action="/view.Society">
             <c:forEach var="society" items="${activity.organizeSocieties}">
-                <div class="teacher-left">
-                    <input type="submit" value="${society.society.societyName}" name="${society.society.societyId}">
-                </div>
+                <c:if test="${society.status==1}">
+                    <div class="teacher-left">
+                        <input type="submit" value="${society.society.societyName}" name="societyName">
+                    </div>
+                </c:if>
             </c:forEach>
             </form>
             <div class="clearfix"></div>

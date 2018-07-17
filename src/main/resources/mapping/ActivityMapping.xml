@@ -23,7 +23,7 @@
     </select>
 
     <insert id="organizeActivity">
-        INSERT INTO Activity(activityId,activityName,activityType,organizer,beginTime,endTime,address,limit,description)
+        INSERT INTO Activity(activityId,activityName,activityType,organizer,beginTime,endTime,address,`limit`,description)
         VALUES ('${activityId}','${activityName}','${activityType}','${organizer}','${beginTime}','${endTime}','${address}','${limit}','${description}')
     </insert>
 
