@@ -3651,7 +3651,7 @@
 		}
 
 			#main > header p a {
-				color: inherit;
+				color:white;
 			}
 
 		@media screen and (max-width: 1680px) {

@@ -105,7 +105,7 @@
         <section class="spotlight">
             <div class="image"><img src="../index/images/03.jpg" alt="" /></div><div class="content">
             <h2>社团交流，关系网多点开花</h2>
-            <p>线上线下社团活动，祝你认识给多的人；
+            <p>线上线下社团活动，助你认识给多的人；
                 同校、同地、同一个世界，    天下谁人不识君！</p>
         </div>
         </section>
