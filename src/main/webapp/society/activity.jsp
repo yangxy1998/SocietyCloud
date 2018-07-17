@@ -18,9 +18,23 @@
     <meta name="keywords" content="Tutoring Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+
+
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="../societies/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../societies/css/magnific-popup.css">
+    <link rel="stylesheet" href="../societies/css/animate.css">
+    <link rel="stylesheet" href="../societies/css/fonts.css">
+    <link rel="stylesheet" href="../societies/css/preset.css">
+    <link rel="stylesheet" href="../societies/css/style.css">
+    <link rel="stylesheet" href="../societies/css/responsive.css">
+    <link rel="stylesheet" href="./assets/css/main2.css" />
+
     <link href="./css/bootstrap.css" rel='stylesheet' type='text/css' />
     <link href="./css/style.css" rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="./assets/css/main.css" />
+
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.js"></script>
     <!---- start-smoth-scrolling---->
@@ -89,6 +103,8 @@ ${alert}
     </header>
 </div>
 <!--end-header-->
+
+
 <!--start-banner-->
 <%
     UserJoinSociety ujs=ViewSocietyTool.isJoinedIntoSociety(user,society);
@@ -159,150 +175,91 @@ ${alert}
     });
 </script>
 <!--End-slider-script-->
-<!--start-provide-->
 
-<!--end-provide-->
-<!--start-welcome-->
-<div class="welcome">
+
+<!-- Classes Section -->
+<section class="classes-section-2">
     <div class="container">
-        <div class="welcome-top">
-            <div class="col-md-6 welcome-left">
-                <h3>社团简介</h3>
-                <h4>${society.description}</h4>
-                <div class="w-btn">
-                    <a href="#" class="hvr-shutter-out-horizontal">Read More</a>
+
+        <!--搜索2
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <div class="class-sort-btn-section">
+                        <ul class="sort-btn pull-left">
+                            <li class="active filter" data-filter="mix"><a href="#">All</a></li>
+                            <li class="filter" data-filter="kinder" id="kinder"><a href="#">X1</a></li>
+                            <li class="filter" data-filter="play" id="play"><a href="#">X2</a></li>
+                            <li class="filter" data-filter="primary" id="primary"><a href="#">X3</a></li>
+                            <li class="filter" data-filter="story" id="story"><a href="#">X4</a></li>
+                        </ul>
+                        <form method="post" action="#" class="class-search pull-right">
+                            <input type="search" name="search" placeholder="搜索社团">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                        <div class="clearfix"></div>
+                    </div>
                 </div>
             </div>
-            <%--<div class="col-md-6 welcome-left">--%>
-                <%--<h3>XXXXXXXX</h3>--%>
-                <%--<h4>XXXXXXXX</h4>--%>
-                <%--<p>XXXXXXXX</p>--%>
-                <%--<div class="w-btn">--%>
-                    <%--<a href="#" class="hvr-shutter-out-horizontal">Read More</a>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-</div>
-<!--end-welcome-->
-<!--start-join-->
-<div class="join">
-    <div class="container">
-        <div class="join-main">
-            <div class="col-md-3 join-left">
-                <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                <h4>创建时间</h4>
-                <p>${society.foundDate.split(" ")[0]}</p>
-            </div>
-            <div class="col-md-3 join-left">
-                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                <h4>创始人</h4>
-                <p>${society.founder}</p>
-            </div>
-            <div class="col-md-3 join-left">
-                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                <h4>学校</h4>
-                <p>${society.schoolName}</p>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-</div>
-<!--end-join-->
+        -->
+        <div class="row">
 
-<!--start-news-->
-<div class="news">
-    <div class="container">
-        <div class="news-top">
-            <div class="col-md-8 news-left">
-                <div class="news-heading">
-                    <h3>最新活动</h3>
-                </div>
-                <%--<div class="news-bottom">--%>
-                    <%--<h4>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</h4>--%>
-                    <%--<p>XXXXXXXXXXXXXXXXXXXXXXXXXXX </p>--%>
-                    <%--<div class="news-one">--%>
-                        <%--<div class="news-one-left">--%>
-                            <%--<img src="images/n-1.jpg" alt="" />--%>
-                        <%--</div>--%>
-                        <%--<div class="news-one-right">--%>
-                            <%--<h4>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</h4>--%>
-                            <%--<p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>--%>
-                        <%--</div>--%>
-                        <%--<div class="clearfix"></div>--%>
-                    <%--</div>--%>
-                    <%--<div class="news-one">--%>
-                        <%--<h4>XXXXXXXXXXXXXXXXXXXXXXX</h4>--%>
-                        <%--<p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-            <%--<div class="col-md-4 news-right">--%>
-                <%--<div class="news-heading">--%>
-                    <%--<h3>相册</h3>--%>
-                <%--</div>--%>
-                <%--<div class="news-btm">--%>
-                    <%--<div class="news-1">--%>
-                        <%--<img src="images/n-2.jpg" alt="" />--%>
-                        <%--<div class="n-1">--%>
-                            <%--<h5>XXXXXXXXXXXX</h5>--%>
-                            <%--<p>XXXXXXXXXXXXXXXXXXX</p>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                    <%--<div class="news-1">--%>
-                        <%--<img src="images/n-3.jpg" alt="" />--%>
-                        <%--<div class="n-1">--%>
-                            <%--<h5>XXXXXXXXXXXXXXXXXXXXXXX</h5>--%>
-                            <%--<p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
+            <div id="mixer">
+                <form action="/view.Society" method="post">
+                    <c:forEach var="society" items="${societies}">
+                        <div class="col-sm-4 col-xs-12 mix kinder play">
+                            <div class="single-class">
+                                <div class="class-img">
+                                    <img alt="" src="images/class1/class1.jpg">
+                                    <div class="class-hover">
+                                        <a href="images/class1/class1.jpg" class="popup"><i class="icon-link"></i></a>
+                                    </div>
+                                </div>
+                                <div class="class-details">
+                                    <h3>${society.societyName}
+                                        <br/><input type="submit" name="${society.societyId}" value="查看"></h3>
+                                    <div class="clearfix">
+                                        <div class="class-meta pull-left">
+                                            <span>所属学校：${society.schoolName}</span>
+                                            <span>创建时间：${society.foundDate.split(" ")[0]}</span>
+                                            <span>
+                                            社团人数：${society.joinUsers.size()}
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </form>
+                <div class="clearfix"></div>
             </div>
-            <div class="clearfix"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-xs-12 text-center">
+                <ul class="paginations">
+                    <li><a href="#"><i class="icon-prev"></i></a></li>
+                    <form action="<%=Pages.SOCIETY_MALL_PAGE%>">
+                        <c:forEach var="p" items="${currentPages}">
+                            <c:if test="${p.equals(currentPage)}">
+                                <input type="submit" name="${p}" value="${p}">
+                            </c:if>
+                            <c:if test="${!p.equals(currentPage)}">
+                                <input type="submit" name="${p}" value="${p}">
+                            </c:if>
+                        </c:forEach>
+                    </form>
+                    <li><a href="#"><i class="icon-next"></i></a></li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
-<!--end-news-->
-<!--start-teacher-->
-<div class="teacher">
-    <div class="container">
-        <div class="teacher-top">
-            <h3>社团成员</h3>
-        </div>
-        <div class="teacher-main">
-            <c:forEach var="member" items="${society.joinUsers}">
-                <div class="teacher-left">
-                    <h4>${member.user.nickName}</h4>
-                    <h4>${member.user.description}</h4>
-                </div>
-            </c:forEach>
+</section>
+<!-- /.classes-section -->
 
-            <%--<div class="teacher-left">--%>
-                <%--<img src="images/t-2.jpg" alt="" />--%>
-                <%--<h4>陈小明</h4>--%>
-                <%--<p>🐮🍺</p>--%>
-            <%--</div>--%>
-            <%--<div class="teacher-left">--%>
-                <%--<img src="images/t-3.jpg" alt="" />--%>
-                <%--<h4>陈小明</h4>--%>
-                <%--<p>🐮🍺</p>--%>
-            <%--</div>--%>
-            <%--<div class="teacher-left">--%>
-                <%--<img src="images/t-4.jpg" alt="" />--%>
-                <%--<h4>陈小明</h4>--%>
-                <%--<p>🐮🍺</p>--%>
-            <%--</div>--%>
-            <%--<div class="teacher-left">--%>
-                <%--<img src="images/t-5.jpg" alt="" />--%>
-                <%--<h4>陈小明</h4>--%>
-                <%--<p>🐮🍺</p>--%>
-            <%--</div>--%>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-</div>
-<!--end-teacher-->
+
+
+
+
 <!--start-footer-->
 <div class="footer">
     <div class="container">
@@ -338,11 +295,18 @@ ${alert}
 </div>
 <!--end-footer-->
 <!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.scrollex.min.js"></script>
-<script src="assets/js/jquery.scrolly.min.js"></script>
-<script src="assets/js/skel.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="../societies/js/jquery.min.js"></script>
+<script src="../societies/js/bootstrap.min.js"></script>
+<script src="../societies/js/mixIt.js"></script>
+<script src="../societies/js/jquery.magnific-popup.min.js"></script>
+<script src="../societies/js/main.js"></script>
+
+
+<script src="../societies/assets/js/jquery.min.js"></script>
+<script src="../societies/assets/js/jquery.scrollex.min.js"></script>
+<script src="../societies/assets/js/jquery.scrolly.min.js"></script>
+<script src="../societies/assets/js/skel.min.js"></script>
+<script src="../societies/assets/js/util.js"></script>
+<script src="../societies/assets/js/main.js"></script>
 </body>
 </html>
