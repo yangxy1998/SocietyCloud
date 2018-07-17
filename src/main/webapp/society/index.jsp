@@ -120,22 +120,22 @@ ${alert}
                             </div>
                         </div>
                     </li>
-                    <li>
-                        <div class="banner-top">
-                            <h2>${society.societyName}</h2>
-                            <div class="bnr-btn">
-                                <a href="#" class="hvr-shutter-out-horizontal">更多</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="banner-top">
-                            <h2>${society.societyName}</h2>
-                            <div class="bnr-btn">
-                                <a href="#" class="hvr-shutter-out-horizontal">更多</a>
-                            </div>
-                        </div>
-                    </li>
+                    <%--<li>--%>
+                        <%--<div class="banner-top">--%>
+                            <%--<h2>${society.societyName}</h2>--%>
+                            <%--<div class="bnr-btn">--%>
+                                <%--<a href="#" class="hvr-shutter-out-horizontal">更多</a>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                        <%--<div class="banner-top">--%>
+                            <%--<h2>${society.societyName}</h2>--%>
+                            <%--<div class="bnr-btn">--%>
+                                <%--<a href="#" class="hvr-shutter-out-horizontal">更多</a>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    <%--</li>--%>
                 </ul>
             </div>
         </section>
