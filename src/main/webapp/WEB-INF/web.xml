@@ -207,8 +207,14 @@
         <url-pattern>/note</url-pattern>
     </servlet-mapping>
     
-    
-    
+    <servlet>
+        <servlet-name>ManageActivityServlet</servlet-name>
+        <servlet-class>controller.servlet.user.ManageActivityServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManageActivityServlet</servlet-name>
+        <url-pattern>/manage.Activity</url-pattern>
+    </servlet-mapping>
     
     <listener>
         <listener-class>util.function.ApplicationListener</listener-class>

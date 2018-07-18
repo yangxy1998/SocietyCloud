@@ -1,7 +1,6 @@
 package controller.servlet.user;
 
 import controller.tools.user.ViewCenterTool;
-import controller.tools.user.ViewMallTool;
 import model.entity.Activity;
 import util.function.Creator;
 
@@ -23,7 +22,7 @@ public class ViewCenterServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String activityType= ViewMallTool.getMainType(request);
+        String activityType= ViewCenterTool.getActivityType(request);
         String page= ViewCenterTool.getPage(activityType,request);
         HttpSession session=request.getSession(false);
         List<Activity> activities=ViewCenterTool.getShowActivities(page,activityType);

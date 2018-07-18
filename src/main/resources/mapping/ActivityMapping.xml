@@ -31,7 +31,7 @@
         UPDATE Activity
         SET activityName='${activityName}',activityType='${activityType}',
         organizer='${organizer}',beginTime='${beginTime}',endTime='${endTime}',
-        address='${address}',limit='${limit}',description='${description}'
+        address='${address}',`limit`='${limit}',description='${description}'
         WHERE activityId='${activityId}'
     </update>
 

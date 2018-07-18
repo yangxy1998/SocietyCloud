@@ -161,7 +161,7 @@ ${alert}
                             </c:forEach>
                         </c:if>
                 </c:if>
-                <form action="/view.Activity" method="post">
+
                     <c:forEach var="activity" items="${activities}">
                         <div class="col-sm-4 col-xs-12 mix kinder play">
                             <div class="single-class">
@@ -173,7 +173,15 @@ ${alert}
                                 </div>
                                 <div class="class-details">
                                     <h3>${activity.activityName}
-                                        <br/><input type="submit" name="${activity.activityId}" value="查看"></h3>
+                                        <form action="/view.Activity" method="post">
+                                        <br/><input type="submit" name="${activity.activityId}" value="查看">
+                                        </form>
+                                        <c:if test="${priority>2}">
+                                            <form action="/manage.Activity">
+                                                <br/><input type="submit" name="${activity.activityId}" value="修改">
+                                            </form>
+                                        </c:if>
+                                    </h3>
                                     <div class="clearfix">
                                         <div class="class-meta pull-left">
                                             <span>主办方：${activity.organizer}</span>
@@ -196,7 +204,6 @@ ${alert}
                             </div>
                         </div>
                     </c:forEach>
-                </form>
                 <div class="clearfix"></div>
             </div>
         </div>

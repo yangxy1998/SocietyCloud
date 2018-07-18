@@ -67,4 +67,7 @@ public final class Pages {
     //活动页面
     public static final String ACTIVITY_MAIN_PAGE="../society/singleactivity.jsp";
 
+    //活动修改页面
+    public static final String ACTIVITY_MANAGE_PAGE="../society/manageactivity.jsp";
+
 }
