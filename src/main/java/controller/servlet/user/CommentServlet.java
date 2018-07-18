@@ -34,7 +34,8 @@ public class CommentServlet extends HttpServlet {
             response.sendRedirect(Pages.SOCIETY_COMMENT_PAGE);
         }
         else if(comment!=null||!comment.equals("")){
-            Managers.CommentManager.commentToSociety(user.getUserId(),society.getSocietyId(), Creator.getTime(),comment);
+            Managers.CommentManager.commentToSociety(user.getUserId(),society.getSocietyId(), Creator.getTime(),
+                    Creator.getChineseBytes(comment));
             session.setAttribute("society",Managers.SocietyManager.getSocietyById(society.getSocietyId()));
             session.setAttribute("user",Managers.UserManager.getUserById(user.getUserId()));
             Log.addSocietyLog("用户"+user.getNickName()+"评论了社团。",society.getSocietyName());

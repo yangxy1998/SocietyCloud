@@ -1,5 +1,5 @@
-<%@ page import="model.entity.Society" %>
-<%@ page import="model.relation.UserJoinSociety" %>
+<%@ page import="model.entity.Activity" %>
+<%@ page import="model.relation.UserJoinActivity" %>
 <%@ page import="util.function.Pages" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
@@ -8,11 +8,12 @@
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2018/7/14
-  Time: 9:28
+  Date: 2018/7/10
+  Time: 18:32
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="alert" type="java.lang.String" scope="session"/>
 <html>
 <head>
     <title>社团云平台</title>
@@ -24,15 +25,14 @@
     <!--[if lte IE 9]><link rel="stylesheet" href="./assets/css/ie9.css" /><![endif]-->
 </head>
 <body>
-<jsp:useBean id="alert" type="java.lang.String" scope="session"/>
-${alert}
-<%session.setAttribute("alert","");%>
+
 <!-- Page Wrapper -->
 <div id="page-wrapper">
 
     <!-- Header -->
     <header id="header">
         <jsp:useBean id="user" class="model.entity.User" scope="session" />
+        <%user.init();%>
         <h1>
             <a href="<%=Pages.USER_MAIN_PAGE%>"><b>首页</b></a>
             <a href="<%=Pages.SOCIETY_MALL_PAGE%>"><b>社团广场</b></a>
@@ -62,25 +62,66 @@ ${alert}
             </ul>
         </nav>
     </header>
-    <form action="/note" method="post">
-        <input type="text" name="userNote" placeholder="您可以在这里手动输入一条个人日记。">
-        <input type="submit" value="提交日记">
-    </form>
-    <%
-        request.setAttribute("logs", Managers.LogManager.getUserLogs(user.getUserName()));
-    %>
-    <table>
-        <tr>
-            <th>时间</th>
-            <th>内容</th>
-        </tr>
-        <c:forEach var="log" items="${logs}">
-            <tr>
-                <td>${log.time}</td>
-                <td>${log.log}</td>
-            </tr>
-        </c:forEach>
-    </table>
+
+    <!-- Main -->
+    <article id="main">
+        <header>
+            <h2>参加活动</h2>
+            <p>Activity Participation</p>
+        </header>
+
+        <section class="wrapper style5">
+            <div class="inner">
+
+                <section>
+                    <c:if test="${user.joinActivities.size()>=1}">
+                        <h4>已参加活动:</h4>
+                        <blockquote>
+                            <c:forEach var="uja" items="${user.joinActivities}">
+                                <c:if test="${uja.status==1}">
+                                    <div class="12u$" class="row uniform">
+                                        <ul class="actions">
+                                            <li>
+                                                <a href="/view.Activity?activityId=${uja.activityId}">${uja.activity.activityName}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </c:if>
+                            </c:forEach>
+                        </blockquote>
+                        <h4>收到邀请:</h4>
+                        <blockquote>
+                            <c:forEach var="uja" items="${user.joinActivities}">
+                                <c:if test="${uja.status==0}">
+                                    <div class="12u$" class="row uniform">
+                                        <ul class="actions">
+                                            <li>
+                                                <a href="/view.Activity?activityId=${uja.activityId}">${uja.activity.activityName}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </c:if>
+                            </c:forEach>
+                        </blockquote>
+                    </c:if>
+                    <c:if test="${user.joinActivities.size()<1}">
+                        <blockquote>
+                            <h3>你并没有参加过活动且没有活动邀请~</h3>
+                        </blockquote>
+                    </c:if>
+
+
+                    <hr />
+                    <hr />
+
+                </section>
+
+                    </div>
+                </section>
+    </article>
+
+    <!-- Footer -->
+
 
 </div>
 

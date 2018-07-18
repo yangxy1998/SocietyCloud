@@ -59,6 +59,7 @@ ${alert}
                     if(ums.getUserId().equals(user.getUserId())){
                         out.println("&nbsp;&nbsp;&nbsp;<a href=\""+Pages.SOCIETY_MANAGE_PAGE+"\"><b>管理社团</b></a>");
                         out.println("&nbsp;&nbsp;&nbsp;<a href=\""+Pages.SOCIETY_LOG_PAGE+"\"><b>社团日志</b></a>");
+                        request.setAttribute("priority",ums.getPriority());
                     }
                 }
             %>
@@ -78,8 +79,9 @@ ${alert}
                             </c:if>
                             <c:if test="${user.userName!=null}">
                                 <li><a href="<%=Pages.USER_MANAGE_SOCIETY_PAGE%>">我的社团</a></li>
+                                <li><a href="<%=Pages.USER_ACTIVITY_PAGE%>">我的活动</a> </li>
                                 <li><a href="<%=Pages.USER_PERSONAL_CENTER_PAGE%>">个人中心</a></li>
-                                <li><a href="<%=Pages.USER_LOGIN_PAGE%>">退出登录</a> </li>
+                                <li><a href="../login">退出登录</a> </li>
                             </c:if>
                         </ul>
                     </div>
@@ -90,6 +92,12 @@ ${alert}
     </header>
 </div>
 <br/><br/>
+<c:if test="${priority>2}">
+    <form action="/note" method="post">
+        <input type="text" name="societyNote" placeholder="您可以在这里手动输入一条社团笔记。">
+        <input type="submit" value="提交笔记">
+    </form>
+</c:if>
 <%
     request.setAttribute("logs", Managers.LogManager.getSocietyLogs(society.getSocietyName()));
 %>

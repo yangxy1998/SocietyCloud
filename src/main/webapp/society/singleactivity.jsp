@@ -68,8 +68,9 @@ ${alert}
                             </c:if>
                             <c:if test="${user.userName!=null}">
                                 <li><a href="<%=Pages.USER_MANAGE_SOCIETY_PAGE%>">我的社团</a></li>
+                                <li><a href="<%=Pages.USER_ACTIVITY_PAGE%>">我的活动</a> </li>
                                 <li><a href="<%=Pages.USER_PERSONAL_CENTER_PAGE%>">个人中心</a></li>
-                                <li><a href="<%=Pages.USER_LOGIN_PAGE%>">退出登录</a> </li>
+                                <li><a href="../login">退出登录</a> </li>
                             </c:if>
                         </ul>
                     </div>
@@ -178,6 +179,10 @@ ${alert}
                     您可以邀请一个用户参加此活动：<input type="text" name="inviteUser" placeholder="用户名">
                     您可以邀请一个社团举办此活动：<input type="text" name="inviteSociety" placeholder="社团名">
                     <input type="submit">
+                </form>
+                <form action="/note" method="post">
+                    <input type="text" name="activityNote" placeholder="您可以在这里手动输入一条活动日志。">
+                    <input type="submit" value="提交日志">
                 </form>
             </c:if>
             <div class="clearfix"></div>

@@ -37,6 +37,9 @@ public final class Pages {
     //用户日志页
     public static final String USER_LOG_PAGE="../index/userlog.jsp";
 
+    //用户活动页
+    public static final String USER_ACTIVITY_PAGE="../index/activity.jsp";
+
     //社团广场页
     public static final String SOCIETY_MALL_PAGE="../view.Mall";
 

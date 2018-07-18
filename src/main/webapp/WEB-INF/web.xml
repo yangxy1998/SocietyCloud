@@ -197,8 +197,15 @@
         <servlet-name>ViewActivityServlet</servlet-name>
         <url-pattern>/view.Activity</url-pattern>
     </servlet-mapping>
-    
-    
+
+    <servlet>
+        <servlet-name>NoteServlet</servlet-name>
+        <servlet-class>controller.servlet.user.NoteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NoteServlet</servlet-name>
+        <url-pattern>/note</url-pattern>
+    </servlet-mapping>
     
     
     

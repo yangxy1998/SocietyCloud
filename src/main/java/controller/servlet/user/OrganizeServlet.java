@@ -74,7 +74,7 @@ public class OrganizeServlet extends HttpServlet {
         Activity activity=(Activity) session.getAttribute("activity");
         String userName=request.getParameter("inviteUser");
         String societyName=request.getParameter("inviteSociety");
-        if(userName!=null||!("").equals(userName)){
+        if(userName!=null&&!("").equals(userName)){
             User user=Managers.UserManager.getUserByName(userName);
             if(user!=null) {
                 Managers.JoinActivityManager.inviteActivity(user.getUserId(), activity.getActivityId());
@@ -84,7 +84,7 @@ public class OrganizeServlet extends HttpServlet {
                 session.setAttribute("alert",Creator.getAlert("找不到名为"+userName+"的用户！"));
             }
         }
-        if(societyName!=null||!("").equals(societyName)){
+        if(societyName!=null&&!("").equals(societyName)){
             Society society=Managers.SocietyManager.getSocietyByName(societyName);
             if(society!=null){
                 Managers.OrganizeManager.inviteSocietyToActivity(society.getSocietyId(),activity.getActivityId());
