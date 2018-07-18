@@ -83,6 +83,15 @@
                                         <ul class="actions">
                                             <li>
                                                 <a href="/view.Activity?activityId=${uja.activityId}">${uja.activity.activityName}</a>
+                                                <c:if test="${uja.activity.isComming==true}">
+                                                    <h4>即将开始</h4>
+                                                </c:if>
+                                                <c:if test="${uja.activity.isRunning==true}">
+                                                    <h4>正在进行</h4>
+                                                </c:if>
+                                                <c:if test="${uja.activity.isOver==true}">
+                                                    <h4>已经结束</h4>
+                                                </c:if>
                                             </li>
                                         </ul>
                                     </div>
@@ -97,6 +106,15 @@
                                         <ul class="actions">
                                             <li>
                                                 <a href="/view.Activity?activityId=${uja.activityId}">${uja.activity.activityName}</a>
+                                                <c:if test="${uja.activity.isComming==true}">
+                                                    <h4>即将开始</h4>
+                                                </c:if>
+                                                <c:if test="${uja.activity.isRunning==true}">
+                                                    <h4>正在进行</h4>
+                                                </c:if>
+                                                <c:if test="${uja.activity.isOver==true}">
+                                                    <h4>已经结束</h4>
+                                                </c:if>
                                             </li>
                                         </ul>
                                     </div>

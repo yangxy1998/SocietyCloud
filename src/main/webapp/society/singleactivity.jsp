@@ -102,6 +102,15 @@ ${alert}
                         <div class="banner-top">
                             <h2>-${activity.activityName}-</h2>
                             <h3>-${activity.activityType}-</h3>
+                            <c:if test="${activity.isComming==true}">
+                                <h4>即将开始</h4>
+                            </c:if>
+                            <c:if test="${activity.isRunning==true}">
+                                <h4>正在进行</h4>
+                            </c:if>
+                            <c:if test="${activity.isOver==true}">
+                                <h4>已经结束</h4>
+                            </c:if>
                             <div class="bnr-btn">
                                 <c:if test="${joinStatus.equals(\"参加活动\")}">
                                     <a href="/join.Activity" class="hvr-shutter-out-horizontal">${joinStatus}</a>

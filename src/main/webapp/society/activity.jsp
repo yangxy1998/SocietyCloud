@@ -5,6 +5,7 @@
 <%@ page import="util.function.Pages" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
+<%@ page import="controller.tools.user.ViewActivityTool" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -180,6 +181,15 @@ ${alert}
                                             <span>
                                             参与人数：${activity.joinUsers.size()}
                                         </span>
+                                            <c:if test="${activity.isComming==true}">
+                                                <span>即将开始</span>
+                                            </c:if>
+                                            <c:if test="${activity.isRunning==true}">
+                                                <span>正在进行</span>
+                                            </c:if>
+                                            <c:if test="${activity.isOver==true}">
+                                                <span>已经结束</span>
+                                            </c:if>
                                         </div>
                                     </div>
                                 </div>

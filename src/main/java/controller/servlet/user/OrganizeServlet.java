@@ -46,6 +46,10 @@ public class OrganizeServlet extends HttpServlet {
             session.setAttribute("alert",Creator.getAlert("您还有信息没有正确填写！"));
             response.sendRedirect(Pages.ACTIVITY_ORGANIZE_PAGE);
         }
+        else if(values.get(4).compareTo(values.get(5))>0){
+            session.setAttribute("alert",Creator.getAlert("结束时间不能在开始时间之前！"));
+            response.sendRedirect(Pages.ACTIVITY_ORGANIZE_PAGE);
+        }
         else{
             String activityId=OrganizeTool.getNewActivityId();
             Managers.ActivityManager.organizeActivity(activityId,values.get(0),values.get(1),

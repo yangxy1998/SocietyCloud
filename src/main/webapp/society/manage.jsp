@@ -98,11 +98,6 @@ ${alert}
                             <select name="priority">
                                 <c:if test="${manager.priority==5}">
                                     <option value="5" selected="selected">社团拥有者</option>
-                                    <option value="4">社团总管理</option>
-                                    <option value="3">社团发言人</option>
-                                    <option value="2">社团秘书</option>
-                                    <option value="1">社团委员</option>
-                                    <option value="0">无权限</option>
                                 </c:if>
                                 <c:if test="${manager.priority==4}">
                                     <option value="5">社团拥有者</option>

@@ -5,6 +5,7 @@ import model.relation.SocietyOrganizeActivity;
 import model.relation.UserJoinActivity;
 import org.json.JSONObject;
 import util.Entity;
+import util.function.Creator;
 
 import java.util.List;
 
@@ -128,6 +129,40 @@ public class Activity extends Entity{
 
     public List<SocietyOrganizeActivity> getOrganizeSocieties() {
         return organizeSocieties;
+    }
+
+    private boolean isComming;
+
+    private boolean isRunning;
+
+    private boolean isOver;
+
+
+    public boolean getIsRunning(){
+        //已经开始
+        if(beginTime.compareTo(Creator.getTime())<0){
+            //尚未结束
+            if(endTime.compareTo(Creator.getTime())>0){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean getIsComming(){
+        //即将开始
+        if(beginTime.compareTo(Creator.getTime())>0){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean getIsOver(){
+        //已经结束
+        if(endTime.compareTo(Creator.getTime())<0){
+            return true;
+        }
+        return false;
     }
 
     @Override

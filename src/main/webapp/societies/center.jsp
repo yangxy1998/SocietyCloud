@@ -168,11 +168,20 @@ ${alert}
                                         <br/><input type="submit" name="${activity.activityId}" value="查看"></h3>
                                     <div class="clearfix">
                                         <div class="class-meta pull-left">
-                                            <span>开始时间：${activity.beginTime.split(" ")[0]}</span>
-                                            <span>结束时间：${activity.endTime.split(" ")[0]}</span>
+                                            <span>开始时间：${activity.beginTime}</span>
+                                            <span>结束时间：${activity.endTime}</span>
                                         <span>
                                             参与人数：${activity.joinUsers.size()}
                                         </span>
+                                            <c:if test="${activity.isComming==true}">
+                                                <span>即将开始</span>
+                                            </c:if>
+                                            <c:if test="${activity.isRunning==true}">
+                                                <span>正在进行</span>
+                                            </c:if>
+                                            <c:if test="${activity.isOver==true}">
+                                                <span>已经结束</span>
+                                            </c:if>
                                         </div>
                                     </div>
                                 </div>
