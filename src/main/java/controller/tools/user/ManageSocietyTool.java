@@ -1,5 +1,9 @@
 package controller.tools.user;
 
+import model.entity.Society;
+import model.entity.User;
+import model.relation.UserManageSociety;
+
 /**
  * Created by Administrator on 2018/7/13.
  */
@@ -15,4 +19,10 @@ public class ManageSocietyTool {
         return depart[0];
     }
 
+    public static UserManageSociety isManager(User user, Society society){
+        for (UserManageSociety ums:society.getManageUsers()) {
+            if(ums.getUserId().equals(user.getUserId()))return ums;
+        }
+        return null;
+    }
 }

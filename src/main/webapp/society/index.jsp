@@ -1,8 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="controller.tools.user.ViewSocietyTool" %>
+<%@ page import="model.entity.Activity" %>
+<%@ page import="model.relation.SocietyOrganizeActivity" %>
+<%@ page import="model.relation.UserJoinSociety" %>
 <%@ page import="model.relation.UserManageSociety" %>
 <%@ page import="util.function.Pages" %>
-<%@ page import="controller.tools.user.ViewSocietyTool" %>
-<%@ page import="model.relation.UserJoinSociety" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/10
@@ -220,45 +224,31 @@ ${alert}
                 <div class="news-heading">
                     <h3>最新活动</h3>
                 </div>
-                <%--<div class="news-bottom">--%>
-                    <%--<h4>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</h4>--%>
-                    <%--<p>XXXXXXXXXXXXXXXXXXXXXXXXXXX </p>--%>
-                    <%--<div class="news-one">--%>
-                        <%--<div class="news-one-left">--%>
-                            <%--<img src="images/n-1.jpg" alt="" />--%>
-                        <%--</div>--%>
-                        <%--<div class="news-one-right">--%>
-                            <%--<h4>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</h4>--%>
-                            <%--<p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>--%>
-                        <%--</div>--%>
-                        <%--<div class="clearfix"></div>--%>
-                    <%--</div>--%>
-                    <%--<div class="news-one">--%>
-                        <%--<h4>XXXXXXXXXXXXXXXXXXXXXXX</h4>--%>
-                        <%--<p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-            <%--<div class="col-md-4 news-right">--%>
-                <%--<div class="news-heading">--%>
-                    <%--<h3>相册</h3>--%>
-                <%--</div>--%>
-                <%--<div class="news-btm">--%>
-                    <%--<div class="news-1">--%>
-                        <%--<img src="images/n-2.jpg" alt="" />--%>
-                        <%--<div class="n-1">--%>
-                            <%--<h5>XXXXXXXXXXXX</h5>--%>
-                            <%--<p>XXXXXXXXXXXXXXXXXXX</p>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                    <%--<div class="news-1">--%>
-                        <%--<img src="images/n-3.jpg" alt="" />--%>
-                        <%--<div class="n-1">--%>
-                            <%--<h5>XXXXXXXXXXXXXXXXXXXXXXX</h5>--%>
-                            <%--<p>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
+                <%
+                    List<Activity> activities=new ArrayList<>();
+                    int i=0;
+                    for (SocietyOrganizeActivity soa:society.getOrganizeActivities()) {
+                        activities.add(soa.getActivity());
+                        i++;
+                        if(i>=3)break;
+                    }
+                    request.setAttribute("activities",activities);
+                %>
+                <c:forEach var="activity" items="${activities}">
+                    <div class="teacher-left">
+                        <h4>${activity.activityName}</h4>
+                        <c:if test="${activity.isComming==true}">
+                            <h4>即将开始</h4>
+                        </c:if>
+                        <c:if test="${activity.isRunning==true}">
+                            <h4>正在进行</h4>
+                        </c:if>
+                        <c:if test="${activity.isOver==true}">
+                            <h4>已经结束</h4>
+                        </c:if>
+                        <a href="/view.Activity?activityId=${activity.activityId}">了解更多</a>
+                    </div>
+                </c:forEach>
             </div>
             <div class="clearfix"></div>
         </div>

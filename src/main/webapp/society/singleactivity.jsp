@@ -111,6 +111,7 @@ ${alert}
                             <c:if test="${activity.isOver==true}">
                                 <h4>已经结束</h4>
                             </c:if>
+                            <h4>参与人员限制：${activity.limit}</h4>
                             <div class="bnr-btn">
                                 <c:if test="${joinStatus.equals(\"参加活动\")}">
                                     <a href="/join.Activity" class="hvr-shutter-out-horizontal">${joinStatus}</a>

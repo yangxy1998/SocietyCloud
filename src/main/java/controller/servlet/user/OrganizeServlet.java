@@ -82,7 +82,7 @@ public class OrganizeServlet extends HttpServlet {
             User user=Managers.UserManager.getUserByName(userName);
             if(user!=null) {
                 Managers.JoinActivityManager.inviteActivity(user.getUserId(), activity.getActivityId());
-                Log.addActivityLog("向用户 "+userName+" 发出了邀请。",activity.getActivityId());
+                Log.addActivityLog("向用户 "+user.getNickName()+" 发出了邀请。",activity.getActivityId());
             }
             else{
                 session.setAttribute("alert",Creator.getAlert("找不到名为"+userName+"的用户！"));

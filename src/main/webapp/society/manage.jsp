@@ -1,7 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="model.relation.UserManageSociety" %>
 <%@ page import="util.function.Creator" %>
-<%@ page import="util.function.Pages" %><%--
+<%@ page import="util.function.Pages" %>
+<%@ page import="java.util.List" %>
+<%@ page import="model.relation.UserJoinSociety" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="controller.tools.user.ManageSocietyTool" %>
+<%@ page import="model.Managers" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/13
@@ -178,7 +183,16 @@ ${alert}
                     <th>用户昵称</th>
                     <th>授予权限</th>
                 </tr>
-                <c:forEach var="joiner" items="${society.joinUsers}">
+                <%
+                    List<UserJoinSociety> joiners=new ArrayList<>();
+                    for (UserJoinSociety joiner:society.getJoinUsers()) {
+                        UserManageSociety ums=ManageSocietyTool.isManager(
+                                Managers.UserManager.getUserById(joiner.getUserId()),society);
+                        if(ums==null)joiners.add(joiner);
+                    }
+                    request.setAttribute("joiners",joiners);
+                %>
+                <c:forEach var="joiner" items="${joiners}">
                     <c:if test="${joiner.status==1}">
                         <tr>
                             <td>${joiner.user.nickName}</td>
