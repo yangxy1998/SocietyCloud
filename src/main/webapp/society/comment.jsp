@@ -39,6 +39,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--start-smoth-scrolling-->
 </head>
 <body>
+
+<article id="main">
+    <header>
+        <h2>社团评论</h2>
+    </header>
+</article>
+
 <jsp:useBean id="alert" type="java.lang.String" scope="session"/>
 ${alert}
 <%session.setAttribute("alert","");%>
@@ -103,7 +110,7 @@ ${alert}
     <c:if test="${comment.visible==1}">
         <br/>
         ${comment.user.nickName}于${comment.commentDate}评论：<br>
-        ${comment.comment}
+        <font color="red">${comment.comment}</font>>
     </c:if>
 </c:forEach>
 <c:forEach var="comment" items="${comments}">

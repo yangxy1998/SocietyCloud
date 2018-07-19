@@ -91,10 +91,11 @@ ${alert}
         <c:if test="${priority>4}">
             <br>
             管理社团管理员权限：
-            <table>
+            <table style="width:1100px;height:200px;">
                 <tr>
                     <th>用户昵称</th>
                     <th>当前权限</th>
+                    <th>&nbsp;</th>
                 </tr>
                 <c:forEach var="manager" items="${society.manageUsers}">
                     <tr>
@@ -178,7 +179,7 @@ ${alert}
         <c:if test="${priority>3}">
             <br>
             授予其他成员权限：
-            <table>
+            <table style="width:1100px;height:200px;">
                 <tr>
                     <th>用户昵称</th>
                     <th>授予权限</th>
@@ -271,17 +272,23 @@ ${alert}
             </h3>
             <h3>创建时间：<input type="text" name="foundTime" value="${society.foundDate}"></h3>
             <h3>创始人：<input type="text" name="founder" value="${society.founder}"></h3>
-            <h3>社团简介：<input type="text" name="description" value="${society.description}"></h3>
+            <h3>社团简介：
+                <%--<input type="text" name="description" value="${society.description}">--%>
+                <textarea name="description" style="width:1100px;height:200px;">${society.description}</textarea>
+
+            </h3>
             <input type="submit" name="changeInformation->0" value="提交信息">
             <br>
             <br>
             <br>
             <br>
             批准用户申请：
-            <table>
+            <table style="width:1100px;height:200px;">
                 <tr>
                     <th>用户昵称</th>
                     <th>是否是社团成员</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
                 </tr>
                 <c:forEach var="joiner" items="${society.joinUsers}">
                     <tr>
@@ -305,12 +312,16 @@ ${alert}
         <c:if test="${priority>0}">
             <br>
             管理社团评论信息：
-            <table>
+            <table style="width:1100px;height:200px;">
                 <tr>
                     <th>用户昵称</th>
                     <th>评论时间</th>
                     <th>评论内容</th>
                     <th>可见性</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+
                 </tr>
             <c:forEach var="comment" items="${society.commentUsers}">
                 <tr>

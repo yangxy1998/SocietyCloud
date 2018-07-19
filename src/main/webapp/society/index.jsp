@@ -280,31 +280,17 @@ ${alert}
         <div class="teacher-main">
             <c:forEach var="member" items="${society.joinUsers}">
                 <div class="teacher-left">
+
+
+
+
                     <h4>${member.user.nickName}</h4>
+
+
+
                     <h4>${member.user.description}</h4>
                 </div>
             </c:forEach>
-
-            <%--<div class="teacher-left">--%>
-                <%--<img src="images/t-2.jpg" alt="" />--%>
-                <%--<h4>陈小明</h4>--%>
-                <%--<p>🐮🍺</p>--%>
-            <%--</div>--%>
-            <%--<div class="teacher-left">--%>
-                <%--<img src="images/t-3.jpg" alt="" />--%>
-                <%--<h4>陈小明</h4>--%>
-                <%--<p>🐮🍺</p>--%>
-            <%--</div>--%>
-            <%--<div class="teacher-left">--%>
-                <%--<img src="images/t-4.jpg" alt="" />--%>
-                <%--<h4>陈小明</h4>--%>
-                <%--<p>🐮🍺</p>--%>
-            <%--</div>--%>
-            <%--<div class="teacher-left">--%>
-                <%--<img src="images/t-5.jpg" alt="" />--%>
-                <%--<h4>陈小明</h4>--%>
-                <%--<p>🐮🍺</p>--%>
-            <%--</div>--%>
             <div class="clearfix"></div>
         </div>
     </div>
