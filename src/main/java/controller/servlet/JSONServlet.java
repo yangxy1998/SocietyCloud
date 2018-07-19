@@ -21,51 +21,51 @@ import java.io.PrintWriter;
 public class JSONServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String type=request.getParameter("type");
+        String entity=request.getParameter("entity");
         String id=request.getParameter("id");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=utf-8");
         PrintWriter out=response.getWriter();
-        if(("user").equals(type)){
+        if(("user").equals(entity)){
             User user=Managers.UserManager.getUserById(id);
             JSONObject object=user.getJSONObject();
             out.append(object.toString());
         }
-        else if(("society").equals(type)){
+        else if(("society").equals(entity)){
             Society society=Managers.SocietyManager.getSocietyById(id);
             JSONObject object=society.getJSONObject();
             out.append(object.toString());
         }
-        else if(("activity").equals(type)){
+        else if(("activity").equals(entity)){
             Activity activity=Managers.ActivityManager.getActivityById(id);
             JSONObject object=activity.getJSONObject();
             out.append(object.toString());
         }
-        else if(("log").equals(type)){
+        else if(("log").equals(entity)){
             String logType=request.getParameter("logType");
-            String attribute=request.getParameter("attribute");
             if(("user").equals(logType)){
-                for (Log log:Managers.LogManager.getUserLogs(attribute)) {
+                //这里的id是用户名
+                for (Log log:Managers.LogManager.getUserLogs(id)) {
                     out.append(log.getJSONObject().toString());
                 }
             }
             else if(("society").equals(logType)){
-                for (Log log:Managers.LogManager.getSocietyLogs(attribute)) {
+                //这里的id是社团名
+                for (Log log:Managers.LogManager.getSocietyLogs(id)) {
                     out.append(log.getJSONObject().toString());
                 }
             }
             else if(("activity").equals(logType)){
-                for (Log log:Managers.LogManager.getActivityLogs(attribute)) {
+                for (Log log:Managers.LogManager.getActivityLogs(id)) {
                     out.append(log.getJSONObject().toString());
                 }
             }
         }
-        else if(("add").equals(type)){
+        else if(("add").equals(entity)){
             String logType=request.getParameter("logType");
-            String attribute=request.getParameter("attribute");
             String log=request.getParameter("log");
-            if(logType!=null&&attribute!=null&&log!=null){
-                Managers.LogManager.addLog(Creator.getTime(),log,type,attribute);
+            if(logType!=null&&id!=null&&log!=null){
+                Managers.LogManager.addLog(Creator.getTime(),log,entity,id);
             }
         }
         out.close();
