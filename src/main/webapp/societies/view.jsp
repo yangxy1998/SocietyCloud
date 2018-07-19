@@ -2,7 +2,8 @@
 <%@ page import="util.function.Pages" %>
 <%@ page import="util.function.Creator" %>
 <%@ page import="controller.tools.user.ViewMallTool" %>
-<%@ page import="controller.servlet.InitServlet" %><%--
+<%@ page import="controller.servlet.InitServlet" %>
+<%@ page import="java.io.File" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/10
@@ -21,8 +22,7 @@
 
     <!-- Include All Css -->
 
-
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
 
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/magnific-popup.css">
@@ -35,6 +35,8 @@
 
 </head>
 <body >
+
+
 <jsp:useBean id="alert" type="java.lang.String" scope="session"/>
 ${alert}
 <%session.setAttribute("alert","");%>
@@ -169,7 +171,12 @@ ${alert}
                     <div class="col-sm-4 col-xs-12 mix kinder play">
                         <div class="single-class">
                             <div class="class-img">
-                                <img alt="" src="images/class1/class1.jpg">
+                                <c:if test="${society.isPictureExist}">
+                                    <img alt="" src="../SocietyFiles/${society.societyId}/${society.societyId}.jpg">
+                                </c:if>
+                                <c:if test="${!society.isPictureExist}">
+                                    <img alt="" src="images/class1/class1.jpg">
+                                </c:if>
                                 <div class="class-hover">
                                     <a href="images/class1/class1.jpg" class="popup"><i class="icon-link"></i></a>
                                 </div>
@@ -271,6 +278,8 @@ ${alert}
 <script src="./assets/js/skel.min.js"></script>
 <script src="./assets/js/util.js"></script>
 <script src="./assets/js/main.js"></script>
+
+
 
 </body>
 </html>

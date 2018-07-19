@@ -106,6 +106,22 @@ ${alert}
         session.setAttribute("joinStatus","加入社团");
     }
 %>
+<style>
+    .banner{
+    <c:if test="${society.isPictureExist}">
+        background: url("../SocietyFiles/${society.societyId}/${society.societyId}.jpg") no-repeat;
+    </c:if>
+    <c:if test="${!society.isPictureExist}">
+        background: url("./images/banner.jpg") no-repeat;
+    </c:if>
+        background-size:cover;
+        -webkit-background-size:cover;
+        -moz-background-size:cover;
+        -o-background-size:cover;
+        -ms-background-size:cover;
+        min-height:680px;
+    }
+</style>
 <div class="banner">
     <div class="container">
         <section class="slider">

@@ -1,10 +1,12 @@
 package model.entity;
 
+import controller.servlet.InitServlet;
 import model.Managers;
 import model.relation.*;
 import org.json.JSONObject;
 import util.Entity;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -149,6 +151,13 @@ public class Society extends Entity{
 
     public List<SocietyOrganizeActivity> getOrganizeActivities() {
         return organizeActivities;
+    }
+
+    public boolean getIsPictureExist(){
+        File file=new File(InitServlet.outerPath+File.separator+"SocietyFiles"+File.separator
+                +societyId+File.separator+societyId+".jpg");
+        boolean exist=file.exists();
+        return exist;
     }
 
     @Override

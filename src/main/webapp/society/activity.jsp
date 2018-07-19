@@ -166,7 +166,12 @@ ${alert}
                         <div class="col-sm-4 col-xs-12 mix kinder play">
                             <div class="single-class">
                                 <div class="class-img">
-                                    <img alt="" src="images/class1/class1.jpg">
+                                    <c:if test="${activity.isPictureExist}">
+                                        <img alt="" src="../ActivityFiles/${activity.activityId}/${activity.activityId}.jpg">
+                                    </c:if>
+                                    <c:if test="${!activity.isPictureExist}">
+                                        <img alt="" src="images/class1/class1.jpg">
+                                    </c:if>
                                     <div class="class-hover">
                                         <a href="images/class1/class1.jpg" class="popup"><i class="icon-link"></i></a>
                                     </div>

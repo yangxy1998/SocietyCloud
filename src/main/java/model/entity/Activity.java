@@ -1,5 +1,6 @@
 package model.entity;
 
+import controller.servlet.InitServlet;
 import model.Managers;
 import model.relation.SocietyOrganizeActivity;
 import model.relation.UserJoinActivity;
@@ -7,6 +8,7 @@ import org.json.JSONObject;
 import util.Entity;
 import util.function.Creator;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -163,6 +165,13 @@ public class Activity extends Entity{
             return true;
         }
         return false;
+    }
+
+    public boolean getIsPictureExist(){
+        File file=new File(InitServlet.outerPath+File.separator+"ActivityFiles"+File.separator
+                +activityId+File.separator+activityId+".jpg");
+        boolean exist=file.exists();
+        return exist;
     }
 
     @Override

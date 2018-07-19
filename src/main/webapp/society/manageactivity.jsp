@@ -126,6 +126,12 @@ ${alert}
         </form>
         <br>
         <br>
+        社团图片上传：
+        <form id="form" method="post" action="/upload?type=activity" enctype="multipart/form-data" >
+            <input type="submit" value="上传图片" />
+            选择文件:
+            <input type="file" name="uploadFile" />
+        </form>
     </center>
     <!--start-footer-->
     <div class="footer">
