@@ -14,8 +14,8 @@ import java.io.Serializable;
  * Created by Administrator on 2018/7/6.
  * @author 杨晓宇
  */
-public abstract class Entity implements HttpSessionBindingListener,
-        HttpSessionActivationListener,Serializable{
+public abstract class Entity extends Thread implements HttpSessionBindingListener,
+        HttpSessionActivationListener,Serializable {
 
     private static String currentLog;
 
@@ -27,6 +27,8 @@ public abstract class Entity implements HttpSessionBindingListener,
     public abstract void init();
 
     public abstract JSONObject getJSONObject();
+
+
 
     @Override
     public void valueBound(HttpSessionBindingEvent event) {
@@ -70,5 +72,10 @@ public abstract class Entity implements HttpSessionBindingListener,
         currentLog=this.getEntityLog()+
                 " 跟随 "+sessionId+"完成迁移。";
         Log.addLog(currentLog);
+    }
+
+    @Override
+    public void run() {
+        this.init();
     }
 }

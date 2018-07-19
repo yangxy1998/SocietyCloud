@@ -29,18 +29,34 @@ public class ViewMallServlet extends HttpServlet {
 
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        String mainType= ViewMallTool.getMainType(request);
-        String subType=ViewMallTool.getSubType(request);
-        if(mainType==null&&subType!=null)mainType=Creator.getMainTypeFromSubType(subType);
-        String page=ViewMallTool.getPage(mainType,subType,request);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         HttpSession session=request.getSession(false);
-        List<Society> societies=ViewMallTool.getShowSocieties(page,mainType,subType);
-        session.setAttribute("societies",societies);
-        session.setAttribute("currentPages",ViewMallTool.getPages(mainType,subType));
-        session.setAttribute("currentPage",page);
-        session.setAttribute("mainTypes", Creator.getMainTypes());
+        String keyword=ViewMallTool.getKeyword(request);
+        List<Society> societies;
+        String page;
+        List<String> pages;
+        try {
+            if(keyword!=null){
+                page=ViewMallTool.getPageWithKeyword(keyword,request);
+                societies=ViewMallTool.getShowSocietiesWithKeyword(page,keyword);
+                pages=ViewMallTool.getPagesWithKeyword(keyword);
+            }
+            else{
+                String mainType= ViewMallTool.getMainType(request);
+                String subType=ViewMallTool.getSubType(request);
+                if(mainType==null&&subType!=null)mainType=Creator.getMainTypeFromSubType(subType);
+                page=ViewMallTool.getPage(mainType,subType,request);
+                pages=ViewMallTool.getPages(mainType,subType);
+                societies=ViewMallTool.getShowSocieties(page,mainType,subType);
+            }
+            session.setAttribute("societies",societies);
+            session.setAttribute("currentPages",pages);
+            session.setAttribute("currentPage",page);
+            session.setAttribute("mainTypes", Creator.getMainTypes());
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
         response.sendRedirect("../societies/view.jsp");
     }
 }

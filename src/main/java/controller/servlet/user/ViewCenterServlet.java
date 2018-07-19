@@ -22,14 +22,31 @@ public class ViewCenterServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String activityType= ViewCenterTool.getActivityType(request);
-        String page= ViewCenterTool.getPage(activityType,request);
         HttpSession session=request.getSession(false);
-        List<Activity> activities=ViewCenterTool.getShowActivities(page,activityType);
-        session.setAttribute("activities",activities);
-        session.setAttribute("currentPages",ViewCenterTool.getPages(activityType));
-        session.setAttribute("currentPage",page);
-        session.setAttribute("types", Creator.getActivityTypes());
+        String keyword= ViewCenterTool.getKeyword(request);
+        List<Activity> activities;
+        String page;
+        List<String> pages;
+        try {
+            if(keyword!=null){
+                page=ViewCenterTool.getPageWithKeyword(keyword,request);
+                activities=ViewCenterTool.getShowActivitiesWithKeyword(page,keyword);
+                pages=ViewCenterTool.getPagesWithKeyword(keyword);
+            }
+            else{
+                String activityType= ViewCenterTool.getActivityType(request);
+                page= ViewCenterTool.getPage(activityType,request);
+                activities=ViewCenterTool.getShowActivities(page,activityType);
+                pages=ViewCenterTool.getPages(activityType);
+            }
+            session.setAttribute("activities",activities);
+            session.setAttribute("currentPages",pages);
+            session.setAttribute("currentPage",page);
+            session.setAttribute("types", Creator.getActivityTypes());
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+
         response.sendRedirect("../societies/center.jsp");
     }
 }

@@ -52,6 +52,11 @@
         </where>
     </select>
 
+    <select id="getActivitiesByKeyword" resultMap="ActivityMap">
+        SELECT * FROM Activity
+        WHERE activityName LIKE '%${keyword}%'
+    </select>
+
 </mapper>
         <!-- author:杨晓宇 -->
         <!-- author:程乐 -->

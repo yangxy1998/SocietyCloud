@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Created by Administrator on 2018/7/13.
@@ -81,7 +83,7 @@ public class ViewMallTool {
         return pages;
     }
 
-    public static List<Society> getShowSocieties(String page,String mainType,String subType){
+    public static List<Society> getShowSocieties(String page,String mainType,String subType) throws InterruptedException {
         List<Society> societies=new ArrayList<>();
         int p=Integer.parseInt(page);
         if(mainType==null){
@@ -105,10 +107,54 @@ public class ViewMallTool {
                 i++;
             }
         }
+        ExecutorService executor= Executors.newCachedThreadPool();
         for (Society society:societies) {
-            society.init();
+            executor.submit(society);
         }
-        return societies;
+        executor.shutdown();
+        while (true){
+            if(executor.isTerminated())return societies;
+            Thread.sleep(50);
+        }
     }
 
+    public static String getPageWithKeyword(String keyword,HttpServletRequest request){
+        Enumeration<String> parameterNames=request.getParameterNames();
+        if (parameterNames.hasMoreElements()) {
+            String parameter=parameterNames.nextElement();
+            for (String page: getPagesWithKeyword(keyword)) {
+                if(parameter.equals(page))
+                    if(request.getParameter(parameter)!=null)
+                        return parameter;
+            }
+        }
+        return ""+1;
+    }
+
+    public static List<String> getPagesWithKeyword(String keyword){
+        List<String> pages=new ArrayList<>();
+        for(int i=1;i<=Managers.SocietyManager.getSocietiesByKeyword(keyword).size()/9+1;i++){
+            pages.add(""+i);
+        }
+        return pages;
+    }
+
+    public static List<Society> getShowSocietiesWithKeyword(String page,String keyword) throws InterruptedException {
+        List<Society> societies=new ArrayList<>();
+        int p=Integer.parseInt(page);
+        int i=0;
+        for (Society society:Managers.SocietyManager.getSocietiesByKeyword(keyword)) {
+            if(i/9==p-1)societies.add(society);
+            i++;
+        }
+        ExecutorService executor= Executors.newCachedThreadPool();
+        for (Society society:societies) {
+            executor.submit(society);
+        }
+        executor.shutdown();
+        while (true){
+            if(executor.isTerminated())return societies;
+            Thread.sleep(50);
+        }
+    }
 }

@@ -36,6 +36,6 @@ public interface ActivityDAO {
 
     List<Activity> getTypeOfActivities(@Param("activityType") String activityType);
 
-    List<Activity> getRunningActivities(@Param("currentTime") String currentTime);
+    List<Activity> getActivitiesByKeyword(@Param("keyword") String keyword);
 
 }

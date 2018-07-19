@@ -128,12 +128,6 @@ ${alert}
                 </div>
             </div>
         </div>
-        <div class="search-area">
-                <form action="#" method="post">
-                    <input type="search" name="search" placeholder="输入社团名字">
-            </form>
-            <a href="#" class="search-close"><i class="fa fa-times"></i></a>
-        </div>
     </nav>
 </header>
 <!-- /.header-area -->
@@ -142,27 +136,17 @@ ${alert}
 <!-- Classes Section -->
 <section class="classes-section-2">
     <div class="container">
-
-        <!--搜索2
             <div class="row">
                 <div class="col-sm-12 col-xs-12">
                     <div class="class-sort-btn-section">
-                        <ul class="sort-btn pull-left">
-                            <li class="active filter" data-filter="mix"><a href="#">All</a></li>
-                            <li class="filter" data-filter="kinder" id="kinder"><a href="#">X1</a></li>
-                            <li class="filter" data-filter="play" id="play"><a href="#">X2</a></li>
-                            <li class="filter" data-filter="primary" id="primary"><a href="#">X3</a></li>
-                            <li class="filter" data-filter="story" id="story"><a href="#">X4</a></li>
-                        </ul>
-                        <form method="post" action="#" class="class-search pull-right">
-                            <input type="search" name="search" placeholder="搜索社团">
-                            <button type="submit"><i class="fa fa-search"></i></button>
+                        <form action="<%=Pages.SOCIETY_MALL_PAGE%>">
+                            <input type="text" name="keyword" placeholder="输入关键字">
+                            <input type="submit" value="搜索">
                         </form>
                         <div class="clearfix"></div>
                     </div>
                 </div>
             </div>
-        -->
         <div class="row">
 
             <div id="mixer">
