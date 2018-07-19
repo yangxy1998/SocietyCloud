@@ -178,7 +178,14 @@ ${alert}
                                     <img alt="" src="images/class1/class1.jpg">
                                 </c:if>
                                 <div class="class-hover">
-                                    <a href="images/class1/class1.jpg" class="popup"><i class="icon-link"></i></a>
+                                    <c:if test="${society.isPictureExist}">
+                                        <a href="../SocietyFiles/${society.societyId}/${society.societyId}.jpg" class="popup">
+                                    </c:if>
+                                    <c:if test="${!society.isPictureExist}">
+                                        <a href="images/class1/class1.jpg" class="popup">
+                                    </c:if>
+                                        <i class="icon-link"></i>
+                                    </a>
                                 </div>
                             </div>
                             <div class="class-details">
