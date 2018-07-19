@@ -793,7 +793,7 @@ div.owl-controls {
     -webkit-transition: all 500ms ease;
     transition: all 500ms ease;
     width: 358px;
-    height: 214 px;
+    height: 214px;
 }
 .class-img:hover img{
     -webkit-transform: scale(1.05);
