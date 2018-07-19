@@ -1,6 +1,7 @@
 package util;
 
 import model.Managers;
+import org.json.JSONObject;
 import util.function.Creator;
 
 import java.util.ArrayList;
@@ -180,6 +181,15 @@ public class Log {
             System.out.println("时间："+currentLog.time+" 管理员日志："+currentLog.log);
     }
 
+    public JSONObject getJSONObject(){
+        JSONObject object=new JSONObject();
+        object.put("time",time);
+        object.put("log",log);
+        object.put("type",type);
+        object.put("attribute",attribute);
+        return object;
+    }
+
     /**
      * 获取日志列表
      * @return 获取日志列表
@@ -199,6 +209,7 @@ public class Log {
         }
         return logs;
     }
+
     public static List<Log> getAllUserLogs(){
         List<Log> logs=new ArrayList<>();
         for (Log log:getAllLogs()) {
@@ -206,6 +217,7 @@ public class Log {
         }
         return logs;
     }
+
     public static List<Log> getAllSocietyLogs(){
         List<Log> logs=new ArrayList<>();
         for (Log log:getAllLogs()) {
@@ -213,6 +225,7 @@ public class Log {
         }
         return logs;
     }
+
     public static List<Log> getAllAdminLogs(){
         List<Log> logs=new ArrayList<>();
         for (Log log:getAllLogs()) {
@@ -220,4 +233,5 @@ public class Log {
         }
         return logs;
     }
+
 }
