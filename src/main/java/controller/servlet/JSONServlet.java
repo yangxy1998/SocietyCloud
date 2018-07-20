@@ -5,6 +5,8 @@ import model.entity.Activity;
 import model.entity.Society;
 import model.entity.User;
 import org.json.JSONObject;
+import net.sf.json.JSONArray;
+import net.sf.json.JsonConfig;
 import util.Log;
 import util.function.Creator;
 
@@ -14,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Administrator on 2018/7/17.
@@ -27,8 +31,18 @@ public class JSONServlet extends HttpServlet {
         response.setContentType("application/json; charset=utf-8");
         PrintWriter out=response.getWriter();
         if(("user").equals(entity)){
-            User user=Managers.UserManager.getUserById(id);
+            User user=Managers.UserManager.getUserByName(id);
             JSONObject object=user.getJSONObject();
+
+            List<Log> logList = new ArrayList<Log>();
+            for (Log log:Managers.LogManager.getUserLogs(id)) {
+                logList.add(log);
+            }
+            JsonConfig config=new JsonConfig();
+            config.setExcludes(new String[]{"JSONObject"});
+            JSONArray jsonArray = JSONArray.fromObject(logList,config);
+            /*String params = jsonArray.toString();*/
+            object.put("logList",jsonArray);
             out.append(object.toString());
         }
         else if(("society").equals(entity)){
@@ -65,7 +79,7 @@ public class JSONServlet extends HttpServlet {
             String logType=request.getParameter("logType");
             String log=request.getParameter("log");
             if(logType!=null&&id!=null&&log!=null){
-                Managers.LogManager.addLog(Creator.getTime(),log,entity,id);
+                Managers.LogManager.addLog(Creator.getTime(),log,logType,id);
             }
         }
         out.close();

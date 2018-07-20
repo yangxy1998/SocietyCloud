@@ -5,7 +5,7 @@
 <mapper namespace="model.DAO.entity.UserDAO">
 
     <resultMap id="UserMap" type="model.entity.User">
-        <result property="userId" column="userId"/>
+        <id property="userId" column="userId"/>
         <result property="userName" column="userName"/>
         <result property="password" column="password"/>
         <result property="phoneNum" column="phoneNum"/>
