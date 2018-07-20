@@ -176,6 +176,7 @@ ${alert}
                 <h3>活动简介</h3>
                 <h4>${activity.description}</h4>
             </div>
+            <br><br><br><br><br><br><br>
             <%
                 int priority=0;
                 if(ViewActivityTool.isManager(user,activity)!=null)priority=ViewActivityTool.isManager(user,activity).getPriority();

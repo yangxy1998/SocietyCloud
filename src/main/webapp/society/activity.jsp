@@ -144,23 +144,6 @@ ${alert}
         <div class="row">
 
             <div id="mixer">
-                <c:if test="${priority>2}">
-                    <a href="../society/organize.jsp">您可以创建一个活动。</a>
-                        <c:if test="${soas.size()>0}">
-                            您有待处理的活动邀请：
-                            <c:forEach var="soa" items="${soas}">
-                                <c:if test="${soa.status==0}">
-                                    <a href="/view.Activity?activityId=${soa.activityId}">${soa.activity.activityName}</a>
-                                    <a href="/society.Organize?activityId=${soa.activityId}&receive=true">接受邀请</a>
-                                    <a href="/society.Organize?activityId=${soa.activityId}&refuse=true">拒绝邀请</a>
-                                </c:if>
-                                <c:if test="${soa.status==-1}">
-                                    <a href="/view.Activity?activityId=${soa.activityId}">${soa.activity.activityName}</a>
-                                    <span>已拒绝</span>
-                                </c:if>
-                            </c:forEach>
-                        </c:if>
-                </c:if>
 
                     <c:forEach var="activity" items="${activities}">
                         <div class="col-sm-4 col-xs-12 mix kinder play">
@@ -209,6 +192,34 @@ ${alert}
                             </div>
                         </div>
                     </c:forEach>
+
+                <c:if test="${priority>2}">
+
+                    <table>
+                        <c:if test="${soas.size()>0}">
+                            <tr>
+                                <th>活动邀请</th>
+                                <th></th>
+                                <th><a href="../society/organize.jsp">您可以点此创建一个活动</a></th>
+                            </tr>
+                            <c:forEach var="soa" items="${soas}">
+                                <tr>
+                                <c:if test="${soa.status==0}">
+                                    <td><a href="/view.Activity?activityId=${soa.activityId}">${soa.activity.activityName}</a></td>
+                                    <td><a href="/society.Organize?activityId=${soa.activityId}&receive=true">接受邀请</a></td>
+                                    <td><a href="/society.Organize?activityId=${soa.activityId}&refuse=true">拒绝邀请</a></td>
+                                </c:if>
+                                <c:if test="${soa.status==-1}">
+                                    <td><a href="/view.Activity?activityId=${soa.activityId}">${soa.activity.activityName}</a></td>
+                                    <td><span>已拒绝</span></td>
+                                </c:if>
+                                </tr>
+                            </c:forEach>
+                        </c:if>
+                    </table>
+
+                </c:if>
+
                 <div class="clearfix"></div>
             </div>
         </div>
