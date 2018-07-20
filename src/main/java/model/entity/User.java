@@ -194,6 +194,7 @@ public class User extends Entity{
         object.put("userId",userId);
         object.put("userName",userName);
         object.put("password",password);
+        object.put("phoneNum",phoneNum);
         object.put("nickName",nickName);
         object.put("realName",realName);
         object.put("schoolName",schoolName);
