@@ -4,9 +4,11 @@ import model.Managers;
 import model.entity.Activity;
 import model.entity.Society;
 import model.entity.User;
-import org.json.JSONObject;
+import model.relation.UserJoinActivity;
+import model.relation.UserJoinSociety;
 import net.sf.json.JSONArray;
 import net.sf.json.JsonConfig;
+import org.json.JSONObject;
 import util.Log;
 import util.function.Creator;
 
@@ -33,16 +35,29 @@ public class JSONServlet extends HttpServlet {
         if(("user").equals(entity)){
             User user=Managers.UserManager.getUserByName(id);
             JSONObject object=user.getJSONObject();
-
             List<Log> logList = new ArrayList<Log>();
             for (Log log:Managers.LogManager.getUserLogs(id)) {
                 logList.add(log);
             }
+            //用户加入的社团信息
+            List<Society> societyList=new ArrayList<>();
+            for(UserJoinSociety ujs:Managers.JoinSocietyManager.getSocietiesByUserId(id)){
+                if(ujs.getStatus()==1)societyList.add(ujs.getSociety());
+            }
+            //用户参加的活动信息
+            List<Activity> activityList=new ArrayList<>();
+            for(UserJoinActivity uja:Managers.JoinActivityManager.getActivitiesByUserId(id)){
+                if(uja.getStatus()==1)activityList.add(uja.getActivity());
+            }
             JsonConfig config=new JsonConfig();
             config.setExcludes(new String[]{"JSONObject"});
-            JSONArray jsonArray = JSONArray.fromObject(logList,config);
+            JSONArray logArray = JSONArray.fromObject(logList,config);
+            JSONArray societyArray=JSONArray.fromObject(societyList,config);
+            JSONArray activityArray=JSONArray.fromObject(activityList,config);
             /*String params = jsonArray.toString();*/
-            object.put("logList",jsonArray);
+            object.put("logList",logArray);
+            object.put("societyList",societyArray);
+            object.put("activityList",activityArray);
             out.append(object.toString());
         }
         else if(("society").equals(entity)){
@@ -53,33 +68,22 @@ public class JSONServlet extends HttpServlet {
         else if(("activity").equals(entity)){
             Activity activity=Managers.ActivityManager.getActivityById(id);
             JSONObject object=activity.getJSONObject();
+            List<Log> logList = new ArrayList<Log>();
+            for (Log log:Managers.LogManager.getUserLogs(id)) {
+                logList.add(log);
+            }
+            //活动日志
+            JsonConfig config=new JsonConfig();
+            config.setExcludes(new String[]{"JSONObject"});
+            JSONArray logArray = JSONArray.fromObject(logList,config);
+            object.put("logList",logArray);
             out.append(object.toString());
-        }
-        else if(("log").equals(entity)){
-            String logType=request.getParameter("logType");
-            if(("user").equals(logType)){
-                //这里的id是用户名
-                for (Log log:Managers.LogManager.getUserLogs(id)) {
-                    out.append(log.getJSONObject().toString());
-                }
-            }
-            else if(("society").equals(logType)){
-                //这里的id是社团名
-                for (Log log:Managers.LogManager.getSocietyLogs(id)) {
-                    out.append(log.getJSONObject().toString());
-                }
-            }
-            else if(("activity").equals(logType)){
-                for (Log log:Managers.LogManager.getActivityLogs(id)) {
-                    out.append(log.getJSONObject().toString());
-                }
-            }
         }
         else if(("add").equals(entity)){
             String logType=request.getParameter("logType");
             String log=request.getParameter("log");
             if(logType!=null&&id!=null&&log!=null){
-                Managers.LogManager.addLog(Creator.getTime(),log,logType,id);
+                Managers.LogManager.addLog(Creator.getTime(),"记下："+Creator.getChineseBytes(log),logType,id);
             }
         }
         out.close();

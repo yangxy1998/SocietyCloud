@@ -3,11 +3,15 @@ package model.relation;
 import model.Managers;
 import model.entity.Activity;
 import model.entity.User;
+import org.apache.ibatis.annotations.Param;
+import org.json.JSONObject;
+import util.Entity;
+import util.Relation;
 
 /**
  * Created by Administrator on 2018/7/16.
  */
-public class UserJoinActivity {
+public class UserJoinActivity extends Relation{
 
     String userId;
 
@@ -49,5 +53,19 @@ public class UserJoinActivity {
 
     public Activity getActivity() {
         return Managers.ActivityManager.getActivityById(activityId);
+    }
+
+    @Override
+    public Entity get(@Param("entityType") String entityType) {
+        return null;
+    }
+
+    @Override
+    public JSONObject getJSONObject() {
+        JSONObject object=new JSONObject();
+        object.put("activityId",activityId);
+        object.put("userId",userId);
+        object.put("status",status);
+        return object;
     }
 }

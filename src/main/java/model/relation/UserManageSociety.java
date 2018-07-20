@@ -4,6 +4,7 @@ import model.Managers;
 import model.entity.Society;
 import model.entity.User;
 import org.apache.ibatis.annotations.Param;
+import org.json.JSONObject;
 import util.Entity;
 import util.Relation;
 
@@ -86,4 +87,12 @@ public class UserManageSociety extends Relation{
         return null;
     }
 
+    @Override
+    public JSONObject getJSONObject() {
+        JSONObject object=new JSONObject();
+        object.put("societyId",societyId);
+        object.put("userId",userId);
+        object.put("priority",priority);
+        return object;
+    }
 }

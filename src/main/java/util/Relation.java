@@ -1,6 +1,7 @@
 package util;
 
 import org.apache.ibatis.annotations.Param;
+import org.json.JSONObject;
 
 /**
  * 联系类
@@ -16,5 +17,7 @@ public abstract class Relation {
      * @return 实体
      */
     public abstract Entity get(@Param("entityType") String entityType);
+
+    public abstract JSONObject getJSONObject();
 
 }

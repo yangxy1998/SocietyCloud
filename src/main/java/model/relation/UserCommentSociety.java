@@ -4,6 +4,7 @@ import model.Managers;
 import model.entity.Society;
 import model.entity.User;
 import org.apache.ibatis.annotations.Param;
+import org.json.JSONObject;
 import util.Entity;
 import util.Relation;
 
@@ -93,6 +94,17 @@ public class UserCommentSociety extends Relation{
         if(entityType.equals("User"))return Managers.UserManager.getUserById(userId);
         if (entityType.equals("Society"))return Managers.SocietyManager.getSocietyById(societyId);
         else return null;
+    }
+
+    @Override
+    public JSONObject getJSONObject() {
+        JSONObject object=new JSONObject();
+        object.put("societyId",societyId);
+        object.put("userId",userId);
+        object.put("commentDate",commentDate);
+        object.put("comment",comment);
+        object.put("visible",visible);
+        return object;
     }
 
 }
