@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="util.function.Pages" %>
-<%@ page import="util.function.Creator" %>
-<%@ page import="controller.tools.user.ViewMallTool" %><%--
+<%--<%@ page import="util.function.Creator" %>--%>
+<%--<%@ page import="controller.tools.user.ViewMallTool" %>&lt;%&ndash;--%>
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/10
@@ -11,7 +11,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Home</title>
+    <title>活动中心</title>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -84,8 +84,8 @@ ${alert}
     <!-- Breadcrumb  -->
     <article id="main">
         <header>
-            <p><font size="24">查看社团</font></p>
-            <p>Community view</p>
+            <p><font size="24">活动中心</font></p>
+            <p>activity Center</p>
         </header>
     </article>
     <!-- /.breadcrumb-section  -->

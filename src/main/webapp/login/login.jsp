@@ -10,7 +10,7 @@
 <html>
 <head>
 
-    <title>登录表单</title>
+    <title>登录</title>
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,7 +32,7 @@
 <jsp:useBean id="alert" type="java.lang.String" scope="session"/>
 ${alert}
 <%session.setAttribute("alert","");%>
-<h1>社团Cloud</h1>
+<h1>社团云</h1>
 
 <div class="container w3layouts agileits">
 

@@ -13,7 +13,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Home</title>
+    <title>社团广场</title>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,8 +87,8 @@ ${alert}
     <!-- Breadcrumb  -->
     <article id="main">
         <header>
-            <p><font size="24">查看社团</font></p>
-            <p>Community view</p>
+            <p><font size="24">社团广场</font></p>
+            <p>Community square</p>
         </header>
     </article>
     <!-- /.breadcrumb-section  -->

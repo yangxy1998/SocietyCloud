@@ -14,7 +14,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Home</title>
+    <title>查看活动</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Tutoring Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
@@ -142,22 +142,6 @@ ${alert}
                             </div>
                         </div>
                     </li>
-                    <%--<li>--%>
-                    <%--<div class="banner-top">--%>
-                    <%--<h2>${society.societyName}</h2>--%>
-                    <%--<div class="bnr-btn">--%>
-                    <%--<a href="#" class="hvr-shutter-out-horizontal">更多</a>--%>
-                    <%--</div>--%>
-                    <%--</div>--%>
-                    <%--</li>--%>
-                    <%--<li>--%>
-                    <%--<div class="banner-top">--%>
-                    <%--<h2>${society.societyName}</h2>--%>
-                    <%--<div class="bnr-btn">--%>
-                    <%--<a href="#" class="hvr-shutter-out-horizontal">更多</a>--%>
-                    <%--</div>--%>
-                    <%--</div>--%>
-                    <%--</li>--%>
                 </ul>
             </div>
         </section>
@@ -191,9 +175,6 @@ ${alert}
             <div class="col-md-6 welcome-left">
                 <h3>活动简介</h3>
                 <h4>${activity.description}</h4>
-                <div class="w-btn">
-                    <a href="#" class="hvr-shutter-out-horizontal">Read More</a>
-                </div>
             </div>
             <%
                 int priority=0;
