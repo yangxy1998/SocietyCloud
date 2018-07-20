@@ -129,7 +129,7 @@
 .main-menu li{
     display: inline-block;
     position: relative;
-    margin-left: 37px;
+    margin-left:10px;
     padding-bottom: 29px;
 }
 .main-menu > li:after{
