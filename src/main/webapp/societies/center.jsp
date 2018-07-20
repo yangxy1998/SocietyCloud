@@ -104,14 +104,15 @@ ${alert}
                             <c:forEach var="type" items="${types}">
                                     <input type="submit" name="${type}" value="${type}">
                             </c:forEach>
+                            <li>
+                            <input style="width: 150px;height: 25px" type="text" name="keyword" placeholder="输入关键字">
+                            </li>
+                            <li>
+                            <input type="submit" value="搜索">
+                            </li>
                         </form>
                     </ul>
-                    <div class="mobile-menu hidden-lg hidden-md hidden-sm">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -123,17 +124,7 @@ ${alert}
 <!-- Classes Section -->
 <section class="classes-section-2">
     <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-xs-12">
-                    <div class="class-sort-btn-section">
-                        <form action="<%=Pages.ACTIVITY_CENTER_PAGE%>">
-                            <input type="text" name="keyword" placeholder="输入关键字">
-                            <input type="submit" value="搜索">
-                        </form>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
+
         <div class="row">
 
             <div id="mixer">
