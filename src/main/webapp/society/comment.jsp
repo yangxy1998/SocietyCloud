@@ -4,7 +4,8 @@
 <%@ page import="model.Managers" %>
 <%@ page import="java.util.List" %>
 <%@ page import="model.relation.UserCommentSociety" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="util.function.Creator" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/13
@@ -137,10 +138,14 @@ ${alert}
                     </c:if>
                     <c:if test="${comment.visible==1}">
                         <br/>
-                        <p><font color="black">(置顶)${comment.user.nickName}
+                        <p>
+                            <font color="#ff4500" size="5">TOP<br/>${comment.user.nickName}
                             <br/>于${comment.commentDate}评论：</font></p>
-                        <div style="width: 1000px;height: 80px;border: 2px solid black;border-radius:10px;" >
-                            <p>${comment.comment}</p>
+                        <%request.setAttribute("creator",new Creator());%>
+                        <div style="width: 1000px;border: 2px solid black;border-radius:10px;
+                        background-color: rgba(${creator.createRandomNumber(100)},${creator.createRandomNumber(100)}
+                                ,${creator.createRandomNumber(100)},0.23)" >
+                            <p><font color="black" size="5">${comment.comment}</font></p>
                             <br>
                         </div>
                     </c:if>
@@ -164,8 +169,10 @@ ${alert}
                         ${comment.user.nickName}
                         <br/>
                         于${comment.commentDate}评论：</font></p>
-                    <div style="width: 1000px;height: 80px;border: 2px solid black;border-radius:10px;">
-                        <p>${comment.comment}</p>
+                    <div style="width: 1000px;border: 2px solid black;border-radius:10px;
+                            background-color: rgba(${creator.createRandomNumber(100)},${creator.createRandomNumber(100)}
+                            ,${creator.createRandomNumber(100)},0.23)" >
+                        <p><font color="black">${comment.comment}</font></p>
                         <br>
                     </div>
                 </c:if>

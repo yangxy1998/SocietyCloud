@@ -242,6 +242,7 @@ ${alert}
                     subType.options.length=0;
                     if(mainType.selectedIndex==0){
                         subType.options.add(new Option("学生会"));
+                        subType.options.add(new Option("创新类"));
                         subType.options.add(new Option("志愿者"));
                     }
                     else if(mainType.selectedIndex==1){
@@ -255,6 +256,7 @@ ${alert}
                         subType.options.add(new Option("足球类"));
                         subType.options.add(new Option("篮球类"));
                         subType.options.add(new Option("排球类"));
+                        subType.options.add(new Option("电竞类"));
                     }
                     else if(mainType.selectedIndex==3){
                         subType.options.add(new Option("美术类"));

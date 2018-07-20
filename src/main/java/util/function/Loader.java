@@ -9,6 +9,8 @@ import model.Managers;
 import org.apache.ibatis.session.SqlSession;
 import util.exception.MapperNotFoundException;
 
+import java.io.*;
+
 /**
  *
  *
@@ -45,5 +47,39 @@ public class Loader {
         Managers.OrganizeManager=session.getMapper(SocietyOrganizeActivityDAO.class);
         if(Managers.OrganizeManager==null)throw new MapperNotFoundException();
     }
+
+    public static void copyFolder(File srcFile, File destFile) throws IOException {
+
+        if(srcFile.isDirectory()){
+            File newFolder=new File(destFile,srcFile.getName());
+            newFolder.mkdirs();
+            File[] fileArray=srcFile.listFiles();
+
+            for(File file:fileArray){
+                copyFolder(file, newFolder);
+            }
+
+        }else{
+            File newFile=new File(destFile,srcFile.getName());
+            copyFile(srcFile,newFile);
+        }
+
+    }
+
+    public static void copyFile(File srcFile, File newFile) throws IOException{
+
+        BufferedInputStream bis=new BufferedInputStream(new FileInputStream(srcFile));
+        BufferedOutputStream bos=new BufferedOutputStream(new FileOutputStream(newFile));
+
+        byte[] bys=new byte[1024];
+        int len=0;
+        while((len=bis.read(bys))!=-1){
+            bos.write(bys,0,len);
+        }
+        bos.close();
+        bis.close();
+
+    }
+
 
 }

@@ -48,6 +48,7 @@ public class MainType {
             subTypes.add("足球类");
             subTypes.add("篮球类");
             subTypes.add("排球类");
+            subTypes.add("电竞类");
         }
         if(mainType.equals("艺术类")){
             subTypes.add("美术类");

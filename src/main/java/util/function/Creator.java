@@ -220,4 +220,8 @@ public class Creator {
         }
         return null;
     }
+
+    public int createRandomNumber(int seed){
+        return (int)(Math.random()*seed);
+    }
 }

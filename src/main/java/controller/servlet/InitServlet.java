@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -32,6 +33,9 @@ public class  InitServlet extends HttpServlet {
     public static String outerPath;
     public static String innerPath;
 
+    //文件保存在本地的路径
+    private static String savePath="E://SocietyCloud";
+
     @Override
     public void init() throws ServletException {
         Log.addLog("Servlet初始化中...");
@@ -49,6 +53,13 @@ public class  InitServlet extends HttpServlet {
         } catch (MapperNotFoundException e) {
             e.printStackTrace();
         }
+        try {
+            Loader.copyFolder(new File(savePath+File.separator+"SocietyFiles"),new File(outerPath));
+            Loader.copyFolder(new File(savePath+File.separator+"ActivityFiles"),new File(outerPath));
+            Log.addLog("文件已还原。");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -64,6 +75,13 @@ public class  InitServlet extends HttpServlet {
         Log.addLog("关闭服务中...");
         session.commit();
         session.close();
+        try {
+            Loader.copyFolder(new File(outerPath+"SocietyFiles"),new File(savePath));
+            Loader.copyFolder(new File(outerPath+"ActivityFiles"),new File(savePath));
+            Log.addLog("文件已备份。");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Log.addLog("servlet服务已关闭。");
     }
 }
