@@ -260,6 +260,7 @@ ${alert}
             <form action="/view.Society">
             <c:forEach var="society" items="${activity.organizeSocieties}">
                 <c:if test="${society.status==1}">
+                    <br/>
                     <div class="teacher-left">
                         <input type="submit" value="${society.society.societyName}" name="societyName">
                     </div>

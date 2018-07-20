@@ -196,12 +196,13 @@ ${alert}
                 <c:if test="${priority>2}">
 
                     <table>
+                        <tr>
+                            <th><h3>活动邀请列表</h3></th>
+                            <th></th>
+                            <th><a href="../society/organize.jsp">您可以点此创建一个活动</a></th>
+                        </tr>
                         <c:if test="${soas.size()>0}">
-                            <tr>
-                                <th>活动邀请</th>
-                                <th></th>
-                                <th><a href="../society/organize.jsp">您可以点此创建一个活动</a></th>
-                            </tr>
+
                             <c:forEach var="soa" items="${soas}">
                                 <tr>
                                 <c:if test="${soa.status==0}">

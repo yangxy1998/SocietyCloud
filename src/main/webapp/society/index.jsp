@@ -22,7 +22,9 @@
     <meta name="keywords" content="Tutoring Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
     <link href="./css/bootstrap.css" rel='stylesheet' type='text/css' />
+
     <link href="./css/style.css" rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="./assets/css/main.css" />
     <script src="./js/jquery.min.js"></script>
@@ -39,13 +41,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     </script>
     <!--start-smoth-scrolling-->
+    <jsp:useBean id="society" type="model.entity.Society" scope="session" />
+
+    <script src="./css/new/jquery.js"></script>
+    <c:forEach var="member" items="${society.joinUsers}">
+        <script type="text/javascript">
+            <%--$(function(){--%>
+            <%--$("#${member.userId}").click(function()--%>
+            <%--{--%>
+            <%--$("#${member.user.nickName}").show();--%>
+            <%--});--%>
+            <%--});--%>
+            $(function(){
+                $(".${member.userId}").click(function(){
+                    $(".${member.user.userName}").show();
+                    if(".${member.user.userName}"!=document.lastShow)
+                        $(document.lastShow).hide();
+                    document.lastShow=".${member.user.userName}";
+                })
+            })
+        </script>
+    </c:forEach>
 </head>
 <body>
 <jsp:useBean id="alert" type="java.lang.String" scope="session"/>
 ${alert}
 <%session.setAttribute("alert","");%>
 <jsp:useBean id="user" type="model.entity.User" scope="session" />
-<jsp:useBean id="society" type="model.entity.Society" scope="session" />
+
 <!--start-header-->
 <div id="page-wrapper">
 
@@ -142,20 +165,20 @@ ${alert}
                         </div>
                     </li>
                     <%--<li>--%>
-                        <%--<div class="banner-top">--%>
-                            <%--<h2>${society.societyName}</h2>--%>
-                            <%--<div class="bnr-btn">--%>
-                                <%--<a href="#" class="hvr-shutter-out-horizontal">更多</a>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
+                    <%--<div class="banner-top">--%>
+                    <%--<h2>${society.societyName}</h2>--%>
+                    <%--<div class="bnr-btn">--%>
+                    <%--<a href="#" class="hvr-shutter-out-horizontal">更多</a>--%>
+                    <%--</div>--%>
+                    <%--</div>--%>
                     <%--</li>--%>
                     <%--<li>--%>
-                        <%--<div class="banner-top">--%>
-                            <%--<h2>${society.societyName}</h2>--%>
-                            <%--<div class="bnr-btn">--%>
-                                <%--<a href="#" class="hvr-shutter-out-horizontal">更多</a>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
+                    <%--<div class="banner-top">--%>
+                    <%--<h2>${society.societyName}</h2>--%>
+                    <%--<div class="bnr-btn">--%>
+                    <%--<a href="#" class="hvr-shutter-out-horizontal">更多</a>--%>
+                    <%--</div>--%>
+                    <%--</div>--%>
                     <%--</li>--%>
                 </ul>
             </div>
@@ -195,12 +218,12 @@ ${alert}
                 </div>
             </div>
             <%--<div class="col-md-6 welcome-left">--%>
-                <%--<h3>XXXXXXXX</h3>--%>
-                <%--<h4>XXXXXXXX</h4>--%>
-                <%--<p>XXXXXXXX</p>--%>
-                <%--<div class="w-btn">--%>
-                    <%--<a href="#" class="hvr-shutter-out-horizontal">Read More</a>--%>
-                <%--</div>--%>
+            <%--<h3>XXXXXXXX</h3>--%>
+            <%--<h4>XXXXXXXX</h4>--%>
+            <%--<p>XXXXXXXX</p>--%>
+            <%--<div class="w-btn">--%>
+            <%--<a href="#" class="hvr-shutter-out-horizontal">Read More</a>--%>
+            <%--</div>--%>
             <%--</div>--%>
             <div class="clearfix"></div>
         </div>
@@ -280,15 +303,24 @@ ${alert}
         <div class="teacher-main">
             <c:forEach var="member" items="${society.joinUsers}">
                 <div class="teacher-left">
-
-
-
-
-                    <h4>${member.user.nickName}</h4>
-
-
-
-                    <h4>${member.user.description}</h4>
+                    <input type="button" class="${member.userId}" value="${member.user.nickName}"/>
+                    <div class="${member.user.userName}" style="display:none;
+                     background-color: rgba(10, 10, 10, 0.23);">
+                        昵称：${member.user.nickName}<br/>
+                        学校：${member.user.schoolName}<br/>
+                        简介：${member.user.description}<br/>${member.user.init()}
+                        加入社团：
+                        <form action="/view.Society">
+                            <c:forEach var="ujs" items="${member.user.joinSocieties}">
+                                <c:if test="${ujs.status==1}">
+                                    <br/>
+                                    <div class="teacher-left" style="width: 300px">
+                                        <input type="submit" value="${ujs.society.societyName}" name="societyName">
+                                    </div>
+                                </c:if>
+                        </c:forEach>
+                        </form>
+                    </div>
                 </div>
             </c:forEach>
             <div class="clearfix"></div>

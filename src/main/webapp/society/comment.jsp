@@ -15,6 +15,7 @@
 <html>
 <head>
     <title>社团评论</title>
+    <jsp:useBean id="society" type="model.entity.Society" scope="session" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Tutoring Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
@@ -36,6 +37,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             });
         });
     </script>
+    <c:forEach var="comment" items="${society.commentUsers}">
+        <script type="text/javascript">
+            <%--$(function(){--%>
+            <%--$("#${member.userId}").click(function()--%>
+            <%--{--%>
+            <%--$("#${member.user.nickName}").show();--%>
+            <%--});--%>
+            <%--});--%>
+            $(function(){
+                $(".${comment.userId}").click(function(){
+                    $(".${comment.user.userName}").show();
+                    if(".${comment.user.userName}"!=document.lastShow)
+                        $(document.lastShow).hide();
+                    document.lastShow=".${comment.user.userName}";
+                })
+            })
+        </script>
+    </c:forEach>
     <!--start-smoth-scrolling-->
 </head>
 <body>
@@ -50,7 +69,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 ${alert}
 <%session.setAttribute("alert","");%>
 <jsp:useBean id="user" type="model.entity.User" scope="session" />
-<jsp:useBean id="society" type="model.entity.Society" scope="session" />
 <!--start-header-->
 <div id="page-wrapper">
 
@@ -98,33 +116,78 @@ ${alert}
     </header>
 </div>
 <br/><br/>
+
+
 <%
     List<UserCommentSociety> comments=society.getCommentUsers();
     if(comments==null)comments=new ArrayList<>();
     request.setAttribute("comments", comments);
 %>
-<c:forEach var="comment" items="${comments}">
-    <c:if test="${comments.size()<1}">
-        <br/>还没有人评论这个社团~
-    </c:if>
-    <c:if test="${comment.visible==1}">
-        <br/>
-        ${comment.user.nickName}于${comment.commentDate}评论：<br>
-        <font color="red">${comment.comment}</font>>
-    </c:if>
-</c:forEach>
-<c:forEach var="comment" items="${comments}">
-    <c:if test="${comment.visible==0}">
-        <br/>
-        ${comment.user.nickName}于${comment.commentDate}评论：<br>
-        ${comment.comment}
-    </c:if>
-</c:forEach>
+
+
+
+
+<div class="welcome">
+    <div class="container">
+        <div class="welcome-top">
+            <div class="col-md-6 welcome-left">
+                <c:forEach var="comment" items="${comments}">
+                    <c:if test="${comments.size()<1}">
+                        <br/>还没有人评论这个社团~
+                    </c:if>
+                    <c:if test="${comment.visible==1}">
+                        <br/>
+                        <p><font color="black">(置顶)${comment.user.nickName}
+                            <br/>于${comment.commentDate}评论：</font></p>
+                        <div style="width: 1000px;height: 80px;border: 2px solid black;border-radius:10px;" >
+                            <p>${comment.comment}</p>
+                            <br>
+                        </div>
+                    </c:if>
+                </c:forEach>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+<div class="join">
+    <div class="container">
+        <div class="join-main">
+
+
+            <c:forEach var="comment" items="${comments}">
+                <c:if test="${comment.visible==0}">
+                    <br/>
+                    <p><font color="black">
+                        ${comment.user.nickName}
+                        <br/>
+                        于${comment.commentDate}评论：</font></p>
+                    <div style="width: 1000px;height: 80px;border: 2px solid black;border-radius:10px;">
+                        <p>${comment.comment}</p>
+                        <br>
+                    </div>
+                </c:if>
+            </c:forEach>
+
+
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+
+
+<br/>
+<br/>
+<center>
 <form method="post" action="../user.Comment">
     <input type="text" name="comment" placeholder="您可以在这里输入您的评论：字数不超过500字。">
     <input type="submit" value="评论">
 </form>
-
+</center>
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/jquery.scrollex.min.js"></script>
