@@ -52,16 +52,6 @@ ${alert}
             </div>
         </form>
         <a href="<%=Pages.USER_REGISTER_PAGE%>" ><font size="3 " color="lightblue">注册</font></a>
-        <div class="social-icons w3layouts agileits">
-            <p>- 其他方式登录 -</p>
-            <ul>
-
-                <li class="weixin w3ls"><a href="#">
-                    <span class="icons w3layouts"></span>
-                    <span class="text w3layouts agileits">微信</span></a></li>
-
-            </ul>
-        </div>
         <div class="clear"></div>
     </div>
 
