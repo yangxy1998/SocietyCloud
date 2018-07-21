@@ -1,4 +1,5 @@
 /* pages/society/society.wxss */
+/*@作者：程乐 */
 .frame_a{
   background: #efefef;
   opacity: 0.8;

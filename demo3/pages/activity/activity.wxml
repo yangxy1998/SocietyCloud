@@ -1,4 +1,5 @@
 <!--pages/activity/activity.wxml-->
+<!--//@作者 程乐-->
 <view class='mainContainer'>
   <view class='frame_a'>  
     <text style='display:flex'>{{activity.activityName}}</text>
