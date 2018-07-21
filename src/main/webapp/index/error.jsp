@@ -1,6 +1,8 @@
+<!--@author 林志宸-->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="util.function.Creator" %>
-<%@ page import="util.function.Pages" %><%--
+<%@ page import="util.function.Pages" %>
+<%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/16

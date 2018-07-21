@@ -1,3 +1,4 @@
+<!--@author 黄健勇-->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="controller.tools.user.ViewSocietyTool" %>
 <%@ page import="model.entity.Activity" %>
@@ -46,12 +47,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="./css/new/jquery.js"></script>
     <c:forEach var="member" items="${society.joinUsers}">
         <script type="text/javascript">
-            <%--$(function(){--%>
-            <%--$("#${member.userId}").click(function()--%>
-            <%--{--%>
-            <%--$("#${member.user.nickName}").show();--%>
-            <%--});--%>
-            <%--});--%>
             $(function(){
                 $(".${member.userId}").click(function(){
                     $(".${member.user.userName}").show();
@@ -188,9 +183,6 @@ ${alert}
     });
 </script>
 <!--End-slider-script-->
-<!--start-provide-->
-
-<!--end-provide-->
 <!--start-welcome-->
 <div class="welcome">
     <div class="container">
@@ -199,14 +191,6 @@ ${alert}
                 <h3>社团简介</h3>
                 <h4>${society.description}</h4>
             </div>
-            <%--<div class="col-md-6 welcome-left">--%>
-            <%--<h3>XXXXXXXX</h3>--%>
-            <%--<h4>XXXXXXXX</h4>--%>
-            <%--<p>XXXXXXXX</p>--%>
-            <%--<div class="w-btn">--%>
-            <%--<a href="#" class="hvr-shutter-out-horizontal">Read More</a>--%>
-            <%--</div>--%>
-            <%--</div>--%>
             <div class="col-md-6 news-right">
                 <div class="news-heading">
                     <h3>最新活动</h3>
@@ -326,15 +310,6 @@ ${alert}
     </div>
     <script type="text/javascript">
         $(document).ready(function() {
-            /*
-             var defaults = {
-             containerID: 'toTop', // fading element id
-             containerHoverID: 'toTopHover', // fading element hover id
-             scrollSpeed: 1200,
-             easingType: 'linear'
-             };
-             */
-
             $().UItoTop({ easingType: 'easeOutQuart' });
 
         });

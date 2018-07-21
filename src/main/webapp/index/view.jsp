@@ -1,3 +1,4 @@
+<!--@author 黄健勇-->
 <%@ page import="model.entity.Society" %>
 <%@ page import="model.relation.UserJoinSociety" %>
 <%@ page import="util.function.Pages" %>

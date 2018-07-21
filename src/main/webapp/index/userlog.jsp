@@ -1,8 +1,5 @@
-<%@ page import="model.entity.Society" %>
-<%@ page import="model.relation.UserJoinSociety" %>
+<!--@author 林志宸-->
 <%@ page import="util.function.Pages" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.List" %>
 <%@ page import="model.Managers" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--

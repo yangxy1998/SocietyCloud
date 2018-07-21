@@ -1,3 +1,5 @@
+<!--@author 黄健勇-->
+<!--@author 林志宸-->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="model.entity.Activity" %>
 <%@ page import="model.relation.SocietyOrganizeActivity" %>
@@ -313,15 +315,6 @@ ${alert}
     </div>
     <script type="text/javascript">
         $(document).ready(function() {
-            /*
-             var defaults = {
-             containerID: 'toTop', // fading element id
-             containerHoverID: 'toTopHover', // fading element hover id
-             scrollSpeed: 1200,
-             easingType: 'linear'
-             };
-             */
-
             $().UItoTop({ easingType: 'easeOutQuart' });
 
         });

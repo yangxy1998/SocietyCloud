@@ -1,3 +1,5 @@
+<!--@author 万培林-->
+<!--@author 林志宸-->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="model.relation.UserManageSociety" %>
 <%@ page import="util.function.Creator" %>
@@ -118,38 +120,19 @@ ${alert}
     </center>
     <!--start-footer-->
     <div class="footer">
-        <%--<div class="container">--%>
-        <%--<div class="footer-main">--%>
-        <%--<div class="col-md-4 footer-left">--%>
-        <%--<span class="glyphicon glyphicon-map-marker map-marker" aria-hidden="true"></span>--%>
-        <%--<p>武汉 <span>洪山区</span> 国软</p>--%>
-        <%--</div>--%>
-        <%--<div class="col-md-4 footer-left">--%>
-        <%--<span class="glyphicon glyphicon-phone map-marker" aria-hidden="true"></span>--%>
-        <%--<p>13163292915 <span>13163292915</span> </p>--%>
-        <%--</div>--%>
 
-        <%--<div class="clearfix"></div>--%>
-        <%--</div>--%>
-        <%--</div>--%>
+
+
         <script type="text/javascript">
             $(document).ready(function() {
-                /*
-                 var defaults = {
-                 containerID: 'toTop', // fading element id
-                 containerHoverID: 'toTopHover', // fading element hover id
-                 scrollSpeed: 1200,
-                 easingType: 'linear'
-                 };
-                 */
-
                 $().UItoTop({ easingType: 'easeOutQuart' });
 
             });
         </script>
-</article>
+
 
 </div>
+</article>
 <!--end-footer-->
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>

@@ -1,7 +1,9 @@
+<!--@author 黄健勇-->
+<!--@author 万培林-->
+<!--@author 林志宸-->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="controller.tools.user.ViewActivityTool" %>
 <%@ page import="model.relation.UserJoinActivity" %>
-<%@ page import="model.relation.UserManageSociety" %>
 <%@ page import="util.function.Pages" %>
 <%@ page import="model.Managers" %>
 <%--
@@ -39,12 +41,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <jsp:useBean id="activity" type="model.entity.Activity" scope="session" />
     <c:forEach var="member" items="${activity.joinUsers}">
         <script type="text/javascript">
-            <%--$(function(){--%>
-            <%--$("#${member.userId}").click(function()--%>
-            <%--{--%>
-            <%--$("#${member.user.nickName}").show();--%>
-            <%--});--%>
-            <%--});--%>
             $(function(){
                 $(".${member.userId}").click(function(){
                     $(".${member.user.userName}").show();
@@ -183,9 +179,6 @@ ${alert}
     });
 </script>
 <!--End-slider-script-->
-<!--start-provide-->
-
-<!--end-provide-->
 <!--start-welcome-->
 <div class="welcome">
     <div class="container">
@@ -339,17 +332,7 @@ ${alert}
     </div>
     <script type="text/javascript">
         $(document).ready(function() {
-            /*
-             var defaults = {
-             containerID: 'toTop', // fading element id
-             containerHoverID: 'toTopHover', // fading element hover id
-             scrollSpeed: 1200,
-             easingType: 'linear'
-             };
-             */
-
             $().UItoTop({ easingType: 'easeOutQuart' });
-
         });
     </script>
 

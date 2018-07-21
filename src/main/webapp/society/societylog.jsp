@@ -1,12 +1,13 @@
+<!--@author 黄健勇-->
+<!--@author 万培林-->
+<!--@author 林志宸-->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="model.relation.UserCommentSociety" %>
 <%@ page import="model.relation.UserManageSociety" %>
 <%@ page import="util.function.Pages" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.List" %>
 <%@ page import="model.Managers" %>
 <%@ page import="model.relation.UserJoinSociety" %>
-<%@ page import="controller.tools.user.ViewSocietyTool" %><%--
+<%@ page import="controller.tools.user.ViewSocietyTool" %>
+<%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/14

@@ -1,8 +1,9 @@
+<!--@author 黄健勇-->
+<!--@author 万培林-->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="util.function.Pages" %>
 <%@ page import="util.function.Creator" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.List" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/11

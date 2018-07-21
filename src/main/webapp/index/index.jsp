@@ -1,8 +1,9 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--@author 黄健勇-->
 <!--@author 万培林-->
 <!--@author 林志宸-->
-<%@ page import="util.function.Pages" %><%--
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="util.function.Pages" %>
+<%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/5
@@ -136,7 +137,6 @@
                 </li>
                 <li class="icon fa-heart-o">
                     <h3>关于</h3>
-                    <p>本网站XXXXXXXXXXXXXXXXXXXXXX</p>
                 </li>
                 <li class="icon fa-flag-o">
                     <h3>反馈</h3>

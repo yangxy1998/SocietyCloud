@@ -1,9 +1,9 @@
+<!--@author 黄健勇-->
+<!--@author 万培林-->
+<!--@author 林志宸-->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="util.function.Pages" %>
-<%@ page import="util.function.Creator" %>
-<%@ page import="controller.tools.user.ViewMallTool" %>
-<%@ page import="controller.servlet.InitServlet" %>
-<%@ page import="java.io.File" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/10
@@ -187,7 +187,7 @@ ${alert}
         <div class="row">
             <div class="col-sm-12 col-xs-12 text-center">
                 <ul class="paginations">
-                    <li><a href="#"><i class="icon-prev"></i></a></li>
+
                     <form action="<%=Pages.SOCIETY_MALL_PAGE%>">
                         <c:forEach var="p" items="${currentPages}">
                             <c:if test="${p.equals(currentPage)}">
@@ -198,7 +198,7 @@ ${alert}
                             </c:if>
                         </c:forEach>
                     </form>
-                    <li><a href="#"><i class="icon-next"></i></a></li>
+
                 </ul>
             </div>
         </div>

@@ -1,9 +1,7 @@
-<%@ page import="model.entity.Activity" %>
-<%@ page import="model.relation.UserJoinActivity" %>
+<!--@author 黄健勇-->
+<!--@author 万培林-->
+<!--@author 林志宸-->
 <%@ page import="util.function.Pages" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.List" %>
-<%@ page import="model.Managers" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.

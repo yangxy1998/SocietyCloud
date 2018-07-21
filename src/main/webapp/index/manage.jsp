@@ -1,3 +1,5 @@
+<!--@author 黄健勇-->
+<!--@author 林志宸-->
 <%@ page import="model.entity.Society" %>
 <%@ page import="model.relation.UserJoinSociety" %>
 <%@ page import="util.function.Pages" %>
@@ -104,10 +106,6 @@
                             <h3>你并没有参加过社团哦~</h3>
                         </blockquote>
                     </c:if>
-
-                    <%--<blockquote>--%>
-                        <%--<h3>您可以<a href="/view.Mall">加入一个社团</a>。 </h3>--%>
-                    <%--</blockquote>--%>
 
                     <hr />
                     <hr />

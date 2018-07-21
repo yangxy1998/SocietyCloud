@@ -1,3 +1,5 @@
+<!--@author 万培林-->
+<!--@author 林志宸-->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="model.relation.UserManageSociety" %>
 <%@ page import="util.function.Creator" %>
@@ -7,7 +9,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="controller.tools.user.ManageSocietyTool" %>
 <%@ page import="model.Managers" %>
-<%@ page import="controller.tools.user.ViewSocietyTool" %><%--
+<%@ page import="controller.tools.user.ViewSocietyTool" %>
+<%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/13
