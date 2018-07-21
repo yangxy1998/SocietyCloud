@@ -64,8 +64,8 @@
     <!-- Main -->
     <article id="main">
         <header>
-            <h2>管理社团</h2>
-            <p>Community Manage</p>
+            <h2>我的社团</h2>
+            <p>My Community </p>
         </header>
 
         <section class="wrapper style5">

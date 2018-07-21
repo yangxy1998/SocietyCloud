@@ -66,8 +66,8 @@
     <!-- Main -->
     <article id="main">
         <header>
-            <h2>参加活动</h2>
-            <p>Activity Participation</p>
+            <h2>我的活动</h2>
+            <p>My Activity</p>
         </header>
 
         <section class="wrapper style5">
