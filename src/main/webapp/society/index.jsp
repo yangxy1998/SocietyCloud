@@ -214,9 +214,6 @@ ${alert}
             <div class="col-md-6 welcome-left">
                 <h3>社团简介</h3>
                 <h4>${society.description}</h4>
-                <div class="w-btn">
-                    <a href="#" class="hvr-shutter-out-horizontal">Read More</a>
-                </div>
             </div>
             <%--<div class="col-md-6 welcome-left">--%>
             <%--<h3>XXXXXXXX</h3>--%>
@@ -226,6 +223,41 @@ ${alert}
             <%--<a href="#" class="hvr-shutter-out-horizontal">Read More</a>--%>
             <%--</div>--%>
             <%--</div>--%>
+            <div class="col-md-6 news-right">
+                <div class="news-heading">
+                    <h3>最新活动</h3>
+                </div>
+                <%
+                    List<Activity> activities=new ArrayList<>();
+                    int i=0;
+                    for (SocietyOrganizeActivity soa:society.getOrganizeActivities()) {
+                        activities.add(soa.getActivity());
+                        i++;
+                        if(i>=3)break;
+                    }
+                    request.setAttribute("activities",activities);
+                %>
+                <c:forEach var="activity" items="${activities}">
+                    <div style="border: 2px solid #00E0F2">
+                        <center>
+                        <h3>${activity.activityName}</h3>
+                        <c:if test="${activity.isComming==true}">
+                            <h4>即将开始</h4>
+                        </c:if>
+                        <c:if test="${activity.isRunning==true}">
+                            <h4>正在进行</h4>
+                        </c:if>
+                        <c:if test="${activity.isOver==true}">
+                            <h4>已经结束</h4>
+                        </c:if>
+                        <div class="w-btn">
+                            <a href="/view.Activity?activityId=${activity.activityId}" class="hvr-shutter-out-horizontal">了解更多</a>
+                        </div>
+                        </center>
+                    </div>
+                    <br/>
+                </c:forEach>
+            </div>
             <div class="clearfix"></div>
         </div>
     </div>
@@ -256,45 +288,7 @@ ${alert}
 </div>
 <!--end-join-->
 
-<!--start-news-->
-<div class="news">
-    <div class="container">
-        <div class="news-top">
-            <div class="col-md-8 news-left">
-                <div class="news-heading">
-                    <h3>最新活动</h3>
-                </div>
-                <%
-                    List<Activity> activities=new ArrayList<>();
-                    int i=0;
-                    for (SocietyOrganizeActivity soa:society.getOrganizeActivities()) {
-                        activities.add(soa.getActivity());
-                        i++;
-                        if(i>=3)break;
-                    }
-                    request.setAttribute("activities",activities);
-                %>
-                <c:forEach var="activity" items="${activities}">
-                    <div class="teacher-left">
-                        <h4>${activity.activityName}</h4>
-                        <c:if test="${activity.isComming==true}">
-                            <h4>即将开始</h4>
-                        </c:if>
-                        <c:if test="${activity.isRunning==true}">
-                            <h4>正在进行</h4>
-                        </c:if>
-                        <c:if test="${activity.isOver==true}">
-                            <h4>已经结束</h4>
-                        </c:if>
-                        <a href="/view.Activity?activityId=${activity.activityId}">了解更多</a>
-                    </div>
-                </c:forEach>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-</div>
-<!--end-news-->
+
 <!--start-teacher-->
 <div class="teacher">
     <div class="container">
@@ -303,26 +297,27 @@ ${alert}
         </div>
         <div class="teacher-main">
             <c:forEach var="member" items="${society.joinUsers}">
-                <div class="teacher-left">
-                    <input type="button" class="${member.userId}" value="${member.user.nickName}"/>
-                    <div class="${member.user.userName}" style="display:none;
-                     background-color: rgba(10, 10, 10, 0.23);">
-                        昵称：${member.user.nickName}<br/>
-                        学校：${member.user.schoolName}<br/>
-                        简介：${member.user.description}<br/>${member.user.init()}
-                        加入社团：
-                        <form action="/view.Society">
-                            <c:forEach var="ujs" items="${member.user.joinSocieties}">
-                                <c:if test="${ujs.status==1}">
-                                    <br/>
-                                    <div class="teacher-left" style="width: 300px">
-                                        <input type="submit" value="${ujs.society.societyName}" name="societyName">
-                                    </div>
-                                </c:if>
-                        </c:forEach>
-                        </form>
+                <c:if test="${member.status==1}">
+                    <div class="teacher-left">
+                        <input type="button" class="${member.userId}" value="${member.user.nickName}"/>
+                        <div class="${member.user.userName}" style="display:none;
+                     background-color: rgba(10, 10, 10, 0.23);width: 300px">
+                            昵称：${member.user.nickName}<br/>
+                            学校：${member.user.schoolName}<br/>
+                            简介：${member.user.description}<br/>${member.user.init()}
+                            加入社团：
+                            <form action="/view.Society">
+                                <div style="">
+                                    <c:forEach var="ujs" items="${member.user.joinSocieties}">
+                                        <c:if test="${ujs.status==1}">
+                                            <input type="submit" value="${ujs.society.societyName}" name="societyName">
+                                        </c:if>
+                                    </c:forEach>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </div>
+                </c:if>
             </c:forEach>
             <div class="clearfix"></div>
         </div>

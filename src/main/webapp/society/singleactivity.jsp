@@ -36,6 +36,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             });
         });
     </script>
+    <jsp:useBean id="activity" type="model.entity.Activity" scope="session" />
+    <c:forEach var="member" items="${activity.joinUsers}">
+        <script type="text/javascript">
+            <%--$(function(){--%>
+            <%--$("#${member.userId}").click(function()--%>
+            <%--{--%>
+            <%--$("#${member.user.nickName}").show();--%>
+            <%--});--%>
+            <%--});--%>
+            $(function(){
+                $(".${member.userId}").click(function(){
+                    $(".${member.user.userName}").show();
+                    if(".${member.user.userName}"!=document.lastShow)
+                        $(document.lastShow).hide();
+                    document.lastShow=".${member.user.userName}";
+                })
+            })
+        </script>
+    </c:forEach>
     <!--start-smoth-scrolling-->
 </head>
 <body>
@@ -43,7 +62,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 ${alert}
 <%session.setAttribute("alert","");%>
 <jsp:useBean id="user" type="model.entity.User" scope="session" />
-<jsp:useBean id="activity" type="model.entity.Activity" scope="session" />
 <!--start-header-->
 <div id="page-wrapper">
 
@@ -176,6 +194,24 @@ ${alert}
                 <h3>活动简介</h3>
                 <h4>${activity.description}</h4>
             </div>
+            <div class="col-md-6 news-right">
+                <div class="teacher-top">
+                    <h3>参与社团</h3>
+                </div>
+                <div class="teacher-main">
+                    <center>
+                    <form action="/view.Society">
+                        <c:forEach var="society" items="${activity.organizeSocieties}">
+                            <c:if test="${society.status==1}">
+                                <br/>
+                                <input type="submit" value="${society.society.societyName}" name="societyName">
+                            </c:if>
+                        </c:forEach>
+                    </form>
+                    </center>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
             <br><br><br><br><br><br><br>
             <%
                 int priority=0;
@@ -254,19 +290,32 @@ ${alert}
 <div class="teacher">
     <div class="container">
         <div class="teacher-top">
-            <h3>参与社团</h3>
+            <h3>参与成员</h3>
         </div>
         <div class="teacher-main">
-            <form action="/view.Society">
-            <c:forEach var="society" items="${activity.organizeSocieties}">
-                <c:if test="${society.status==1}">
-                    <br/>
+            <c:forEach var="member" items="${activity.joinUsers}">
+                <c:if test="${member.status==1}">
                     <div class="teacher-left">
-                        <input type="submit" value="${society.society.societyName}" name="societyName">
+                        <input type="button" class="${member.userId}" value="${member.user.nickName}"/>
+                        <div class="${member.user.userName}" style="display:none;
+                     background-color: rgba(10, 10, 10, 0.23);width: 300px">
+                            昵称：${member.user.nickName}<br/>
+                            学校：${member.user.schoolName}<br/>
+                            简介：${member.user.description}<br/>${member.user.init()}
+                            加入社团：
+                            <form action="/view.Society">
+                                <div style="">
+                                    <c:forEach var="ujs" items="${member.user.joinSocieties}">
+                                        <c:if test="${ujs.status==1}">
+                                            <input type="submit" value="${ujs.society.societyName}" name="societyName">
+                                        </c:if>
+                                    </c:forEach>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </c:if>
             </c:forEach>
-            </form>
             <div class="clearfix"></div>
         </div>
     </div>
