@@ -6,7 +6,8 @@
 <%@ page import="model.relation.UserJoinSociety" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="controller.tools.user.ManageSocietyTool" %>
-<%@ page import="model.Managers" %><%--
+<%@ page import="model.Managers" %>
+<%@ page import="controller.tools.user.ViewSocietyTool" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/13
@@ -16,21 +17,42 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>管理社团</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!--[if lte IE 8]><script src="./assets/js/ie/html5shiv.js"></script><![endif]-->
+    <title>社团首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Tutoring Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+
+
+    <link href="./css/style.css" rel='stylesheet' type='text/css' />
+    <link href="./css/bootstrap.css" rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="./assets/css/main.css" />
-    <!--[if lte IE 8]><link rel="stylesheet" href="./assets/css/ie8.css" /><![endif]-->
-    <!--[if lte IE 9]><link rel="stylesheet" href="./assets/css/ie9.css" /><![endif]-->
+
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.js"></script>
+    <!---- start-smoth-scrolling---->
+    <script type="text/javascript" src="./js/move-top.js"></script>
+    <script type="text/javascript" src="./js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $(".scroll").click(function(event){
+                event.preventDefault();
+                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+            });
+        });
+    </script>
     <!--start-smoth-scrolling-->
+    <jsp:useBean id="society" type="model.entity.Society" scope="session" />
 </head>
 <body>
 <jsp:useBean id="alert" type="java.lang.String" scope="session"/>
 ${alert}
 <%session.setAttribute("alert","");%>
 <jsp:useBean id="user" type="model.entity.User" scope="session" />
-<jsp:useBean id="society" type="model.entity.Society" scope="session" />
+
+
 <!--start-header-->
 <div id="page-wrapper">
 
@@ -81,12 +103,62 @@ ${alert}
     </header>
 </div>
 <!--end-header-->
+<!--start-banner-->
+<%
+    UserJoinSociety ujs=ViewSocietyTool.isJoinedIntoSociety(user,society);
+    if(ujs!=null){
+        if(ujs.getStatus()==1)session.setAttribute("joinStatus","已经加入");
+        if(ujs.getStatus()==0)session.setAttribute("joinStatus","等待审批");
+        if(ujs.getStatus()==-1)session.setAttribute("joinStatus","已被拒绝");
+    }
+    else{
+        session.setAttribute("joinStatus","加入社团");
+    }
+%>
+<style>
+    .banner{
+    <c:if test="${society.isPictureExist}">
+        background: url("../SocietyFiles/${society.societyId}/${society.societyId}.jpg") no-repeat;
+    </c:if>
+    <c:if test="${!society.isPictureExist}">
+        background: url("./images/banner.jpg") no-repeat;
+    </c:if>
+        background-size:cover;
+        -webkit-background-size:cover;
+        -moz-background-size:cover;
+        -o-background-size:cover;
+        -ms-background-size:cover;
+        min-height:680px;
+    }
+</style>
+<div class="banner">
+    <div class="container">
+        <section class="slider">
+            <div class="flexslider">
+                <ul class="slides">
+                    <li>
+                        <div class="banner-top">
+                            <h2>-${society.societyName}-</h2>
+                            <h3>-${society.mainType}-${society.subType}-</h3>
+                            <div class="bnr-btn">
+                                <c:if test="${!joinStatus.equals(\"加入社团\")}">
+                                    <div class="hvr-shutter-out-horizontal">${joinStatus}</div>
+                                </c:if>
+                                <c:if test="${joinStatus.equals(\"加入社团\")}">
+                                    <a href="/join.Society" class="hvr-shutter-out-horizontal">${joinStatus}</a>
+                                </c:if>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+<!--end-banner-->
 <!-- Main -->
 <article id="main">
-    <header>
-        <h2>管理社团</h2>
-        <p>manage A Society</p>
-    </header>
+
 <center>
     <form method="post" action="../manage.Society">
         <c:if test="${priority>4}">
@@ -343,59 +415,38 @@ ${alert}
             </c:forEach>
             </table>
         </c:if>
-        <c:if test="${priority>2}">
+
     </form>
     <br>
-    <br>
+
+
+    <c:if test="${priority>2}">
     社团图片上传：
-    <form id="form" method="post" action="/upload" enctype="multipart/form-data" >
+    <form id="form" method="post" action="/upload" enctype="multipart/form-data" style="display:inline;"  >
+        <br>
+           <input type="file" name="uploadFile"  />
         <input type="submit" value="上传图片" />
-        选择文件:
-        <input type="file" name="uploadFile" />
     </form>
-        </c:if>
+    </c:if>
 </center>
 <!--start-footer-->
 <div class="footer">
-    <%--<div class="container">--%>
-        <%--<div class="footer-main">--%>
-            <%--<div class="col-md-4 footer-left">--%>
-                <%--<span class="glyphicon glyphicon-map-marker map-marker" aria-hidden="true"></span>--%>
-                <%--<p>武汉 <span>洪山区</span> 国软</p>--%>
-            <%--</div>--%>
-            <%--<div class="col-md-4 footer-left">--%>
-                <%--<span class="glyphicon glyphicon-phone map-marker" aria-hidden="true"></span>--%>
-                <%--<p>13163292915 <span>13163292915</span> </p>--%>
-            <%--</div>--%>
-
-            <%--<div class="clearfix"></div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
     <script type="text/javascript">
         $(document).ready(function() {
-            /*
-             var defaults = {
-             containerID: 'toTop', // fading element id
-             containerHoverID: 'toTopHover', // fading element hover id
-             scrollSpeed: 1200,
-             easingType: 'linear'
-             };
-             */
 
             $().UItoTop({ easingType: 'easeOutQuart' });
 
         });
     </script>
-    </article>
-
 </div>
+</article>
 <!--end-footer-->
 <!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.scrollex.min.js"></script>
-<script src="assets/js/jquery.scrolly.min.js"></script>
-<script src="assets/js/skel.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="./assets/js/jquery.min.js"></script>
+<script src="./assets/js/jquery.scrollex.min.js"></script>
+<script src="./assets/js/jquery.scrolly.min.js"></script>
+<script src="./assets/js/skel.min.js"></script>
+<script src="./assets/js/util.js"></script>
+<script src="./assets/js/main.js"></script>
 </body>
 </html>

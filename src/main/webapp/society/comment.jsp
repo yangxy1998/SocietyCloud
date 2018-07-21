@@ -5,7 +5,9 @@
 <%@ page import="java.util.List" %>
 <%@ page import="model.relation.UserCommentSociety" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="util.function.Creator" %><%--
+<%@ page import="util.function.Creator" %>
+<%@ page import="model.relation.UserJoinSociety" %>
+<%@ page import="controller.tools.user.ViewSocietyTool" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/13
@@ -40,12 +42,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </script>
     <c:forEach var="comment" items="${society.commentUsers}">
         <script type="text/javascript">
-            <%--$(function(){--%>
-            <%--$("#${member.userId}").click(function()--%>
-            <%--{--%>
-            <%--$("#${member.user.nickName}").show();--%>
-            <%--});--%>
-            <%--});--%>
             $(function(){
                 $(".${comment.userId}").click(function(){
                     $(".${comment.user.userName}").show();
@@ -60,16 +56,64 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 
-<article id="main">
-    <header>
-        <h2>社团评论</h2>
-    </header>
-</article>
 
 <jsp:useBean id="alert" type="java.lang.String" scope="session"/>
 ${alert}
 <%session.setAttribute("alert","");%>
 <jsp:useBean id="user" type="model.entity.User" scope="session" />
+<!--start-banner-->
+<%
+    UserJoinSociety ujs=ViewSocietyTool.isJoinedIntoSociety(user,society);
+    if(ujs!=null){
+        if(ujs.getStatus()==1)session.setAttribute("joinStatus","已经加入");
+        if(ujs.getStatus()==0)session.setAttribute("joinStatus","等待审批");
+        if(ujs.getStatus()==-1)session.setAttribute("joinStatus","已被拒绝");
+    }
+    else{
+        session.setAttribute("joinStatus","加入社团");
+    }
+%>
+<style>
+    .banner{
+    <c:if test="${society.isPictureExist}">
+        background: url("../SocietyFiles/${society.societyId}/${society.societyId}.jpg") no-repeat;
+    </c:if>
+    <c:if test="${!society.isPictureExist}">
+        background: url("./images/banner.jpg") no-repeat;
+    </c:if>
+        background-size:cover;
+        -webkit-background-size:cover;
+        -moz-background-size:cover;
+        -o-background-size:cover;
+        -ms-background-size:cover;
+        min-height:680px;
+    }
+</style>
+<div class="banner">
+    <div class="container">
+        <section class="slider">
+            <div class="flexslider">
+                <ul class="slides">
+                    <li>
+                        <div class="banner-top">
+                            <h2>-${society.societyName}-</h2>
+                            <h3>-${society.mainType}-${society.subType}-</h3>
+                            <div class="bnr-btn">
+                                <c:if test="${!joinStatus.equals(\"加入社团\")}">
+                                    <div class="hvr-shutter-out-horizontal">${joinStatus}</div>
+                                </c:if>
+                                <c:if test="${joinStatus.equals(\"加入社团\")}">
+                                    <a href="/join.Society" class="hvr-shutter-out-horizontal">${joinStatus}</a>
+                                </c:if>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+<!--end-banner-->
 <!--start-header-->
 <div id="page-wrapper">
 

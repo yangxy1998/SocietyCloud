@@ -4,7 +4,9 @@
 <%@ page import="util.function.Pages" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
-<%@ page import="model.Managers" %><%--
+<%@ page import="model.Managers" %>
+<%@ page import="model.relation.UserJoinSociety" %>
+<%@ page import="controller.tools.user.ViewSocietyTool" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/7/14
@@ -92,6 +94,59 @@ ${alert}
 
     </header>
 </div>
+<!--start-banner-->
+<%
+    UserJoinSociety ujs=ViewSocietyTool.isJoinedIntoSociety(user,society);
+    if(ujs!=null){
+        if(ujs.getStatus()==1)session.setAttribute("joinStatus","已经加入");
+        if(ujs.getStatus()==0)session.setAttribute("joinStatus","等待审批");
+        if(ujs.getStatus()==-1)session.setAttribute("joinStatus","已被拒绝");
+    }
+    else{
+        session.setAttribute("joinStatus","加入社团");
+    }
+%>
+<style>
+    .banner{
+    <c:if test="${society.isPictureExist}">
+        background: url("../SocietyFiles/${society.societyId}/${society.societyId}.jpg") no-repeat;
+    </c:if>
+    <c:if test="${!society.isPictureExist}">
+        background: url("./images/banner.jpg") no-repeat;
+    </c:if>
+        background-size:cover;
+        -webkit-background-size:cover;
+        -moz-background-size:cover;
+        -o-background-size:cover;
+        -ms-background-size:cover;
+        min-height:680px;
+    }
+</style>
+<div class="banner">
+    <div class="container">
+        <section class="slider">
+            <div class="flexslider">
+                <ul class="slides">
+                    <li>
+                        <div class="banner-top">
+                            <h2>-${society.societyName}-</h2>
+                            <h3>-${society.mainType}-${society.subType}-</h3>
+                            <div class="bnr-btn">
+                                <c:if test="${!joinStatus.equals(\"加入社团\")}">
+                                    <div class="hvr-shutter-out-horizontal">${joinStatus}</div>
+                                </c:if>
+                                <c:if test="${joinStatus.equals(\"加入社团\")}">
+                                    <a href="/join.Society" class="hvr-shutter-out-horizontal">${joinStatus}</a>
+                                </c:if>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+<!--end-banner-->
 <br/><br/>
 <c:if test="${priority>2}">
     <form action="/note" method="post">

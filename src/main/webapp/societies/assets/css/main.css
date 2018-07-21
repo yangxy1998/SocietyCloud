@@ -1455,6 +1455,7 @@
 	strong, b {
 		color: #fff;
 		font-weight: 600;
+		letter-spacing: 0.225em;
 	}
 
 	em, i {

@@ -6,6 +6,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 <%@ page import="controller.tools.user.ViewActivityTool" %>
+<%@ page import="model.relation.UserJoinSociety" %>
+<%@ page import="controller.tools.user.ViewSocietyTool" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -110,6 +112,34 @@ ${alert}
     </header>
 </div>
 <!--end-header-->
+<!--start-banner-->
+<%
+    UserJoinSociety ujs=ViewSocietyTool.isJoinedIntoSociety(user,society);
+    if(ujs!=null){
+        if(ujs.getStatus()==1)session.setAttribute("joinStatus","已经加入");
+        if(ujs.getStatus()==0)session.setAttribute("joinStatus","等待审批");
+        if(ujs.getStatus()==-1)session.setAttribute("joinStatus","已被拒绝");
+    }
+    else{
+        session.setAttribute("joinStatus","加入社团");
+    }
+%>
+<style>
+    .banner{
+    <c:if test="${society.isPictureExist}">
+        background: url("../SocietyFiles/${society.societyId}/${society.societyId}.jpg") no-repeat;
+    </c:if>
+    <c:if test="${!society.isPictureExist}">
+        background: url("./images/banner.jpg") no-repeat;
+    </c:if>
+        background-size:cover;
+        -webkit-background-size:cover;
+        -moz-background-size:cover;
+        -o-background-size:cover;
+        -ms-background-size:cover;
+        min-height:680px;
+    }
+</style>
 <div class="banner">
     <div class="container">
         <section class="slider">
@@ -129,27 +159,12 @@ ${alert}
                             </div>
                         </div>
                     </li>
-                    <%--<li>--%>
-                    <%--<div class="banner-top">--%>
-                    <%--<h2>${society.societyName}</h2>--%>
-                    <%--<div class="bnr-btn">--%>
-                    <%--<a href="#" class="hvr-shutter-out-horizontal">更多</a>--%>
-                    <%--</div>--%>
-                    <%--</div>--%>
-                    <%--</li>--%>
-                    <%--<li>--%>
-                    <%--<div class="banner-top">--%>
-                    <%--<h2>${society.societyName}</h2>--%>
-                    <%--<div class="bnr-btn">--%>
-                    <%--<a href="#" class="hvr-shutter-out-horizontal">更多</a>--%>
-                    <%--</div>--%>
-                    <%--</div>--%>
-                    <%--</li>--%>
                 </ul>
             </div>
         </section>
     </div>
 </div>
+<!--end-banner-->
 <!--FlexSlider-->
 <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 <script defer src="./js/jquery.flexslider.js"></script>
@@ -167,16 +182,6 @@ ${alert}
     });
 </script>
 <!--End-slider-script-->
-<%
-    for (UserManageSociety ums:society.getManageUsers()) {
-        if(ums.getUserId().equals(user.getUserId())){
-            out.println("&nbsp;&nbsp;&nbsp;<a href=\""+Pages.SOCIETY_MANAGE_PAGE+"\"><b>管理社团</b></a>");
-            out.println("&nbsp;&nbsp;&nbsp;<a href=\""+Pages.SOCIETY_LOG_PAGE+"\"><b>社团日志</b></a>");
-            request.setAttribute("priority",ums.getPriority());
-        }
-    }
-%>
-
 <!-- Classes Section -->
 <section class="classes-section-2">
     <div class="container">
