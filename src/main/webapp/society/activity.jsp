@@ -79,6 +79,7 @@ ${alert}
                     if(ums.getUserId().equals(user.getUserId())){
                         out.println("&nbsp;&nbsp;&nbsp;<a href=\""+Pages.SOCIETY_MANAGE_PAGE+"\"><b>管理社团</b></a>");
                         out.println("&nbsp;&nbsp;&nbsp;<a href=\""+Pages.SOCIETY_LOG_PAGE+"\"><b>社团日志</b></a>");
+                        request.setAttribute("priority",ums.getPriority());
                         break;
                     }
                 }
@@ -200,7 +201,6 @@ ${alert}
         <div class="row">
 
             <div id="mixer">
-
                     <c:forEach var="activity" items="${activities}">
                         <div class="col-sm-4 col-xs-12 mix kinder play">
                             <div class="single-class">
@@ -212,7 +212,14 @@ ${alert}
                                         <img alt="" src="images/class1/class1.jpg">
                                     </c:if>
                                     <div class="class-hover">
-                                        <a href="images/class1/class1.jpg" class="popup"><i class="icon-link"></i></a>
+                                        <c:if test="${activity.isPictureExist}">
+                                        <a href="../ActivityFiles/${activity.activityId}/${activity.activityId}.jpg" class="popup">
+                                            </c:if>
+                                            <c:if test="${!activity.isPictureExist}">
+                                            <a href="images/class1/class1.jpg" class="popup">
+                                                </c:if>
+                                                <i class="icon-link"></i>
+                                            </a>
                                     </div>
                                 </div>
                                 <div class="class-details">
