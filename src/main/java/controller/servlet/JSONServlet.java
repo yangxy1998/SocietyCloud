@@ -33,27 +33,35 @@ public class JSONServlet extends HttpServlet {
         response.setContentType("application/json; charset=utf-8");
         PrintWriter out=response.getWriter();
         if(("user").equals(entity)){
-            User user=Managers.UserManager.getUserByName(id);
-            JSONObject object=user.getJSONObject();
+            User user=Managers.UserManager.getUserById(id);
+            JSONObject object=new JSONObject();
+            object.put("userdetail",user.getJSONObject());
             List<Log> logList = new ArrayList<Log>();
-            for (Log log:Managers.LogManager.getUserLogs(id)) {
+            for (Log log:Managers.LogManager.getUserLogs(user.getUserName())) {
                 logList.add(log);
             }
             //用户加入的社团信息
-            List<Society> societyList=new ArrayList<>();
+            /*List<Society> societyList=new ArrayList<>();*/
+            JSONArray societyArray = new JSONArray();
             for(UserJoinSociety ujs:Managers.JoinSocietyManager.getSocietiesByUserId(id)){
-                if(ujs.getStatus()==1)societyList.add(ujs.getSociety());
+                if(ujs.getStatus()==1){
+                    JSONObject object1=ujs.getSociety().getJSONObject();
+                    societyArray.add(object1.toString());
+                }
             }
             //用户参加的活动信息
-            List<Activity> activityList=new ArrayList<>();
+            JSONArray activityArray = new JSONArray();
+            /*List<Activity> activityList=new ArrayList<>();*/
             for(UserJoinActivity uja:Managers.JoinActivityManager.getActivitiesByUserId(id)){
-                if(uja.getStatus()==1)activityList.add(uja.getActivity());
+                if(uja.getStatus()==1)activityArray.add(uja.getActivity().getJSONObject().toString());
+
             }
+
             JsonConfig config=new JsonConfig();
             config.setExcludes(new String[]{"JSONObject"});
             JSONArray logArray = JSONArray.fromObject(logList,config);
-            JSONArray societyArray=JSONArray.fromObject(societyList,config);
-            JSONArray activityArray=JSONArray.fromObject(activityList,config);
+            /*JSONArray societyArray=JSONArray.fromObject(societyList,config);
+            JSONArray activityArray=JSONArray.fromObject(activityList,config);*/
             /*String params = jsonArray.toString();*/
             object.put("logList",logArray);
             object.put("societyList",societyArray);
@@ -62,29 +70,43 @@ public class JSONServlet extends HttpServlet {
         }
         else if(("society").equals(entity)){
             Society society=Managers.SocietyManager.getSocietyById(id);
-            JSONObject object=society.getJSONObject();
+            JSONObject object=new JSONObject();
+            object.put("society",society.getJSONObject());
             out.append(object.toString());
         }
         else if(("activity").equals(entity)){
             Activity activity=Managers.ActivityManager.getActivityById(id);
-            JSONObject object=activity.getJSONObject();
-            List<Log> logList = new ArrayList<Log>();
+            JSONObject object=new JSONObject();
+            object.put("activity",activity.getJSONObject());
+            /*List<Log> logList = new ArrayList<Log>();
             for (Log log:Managers.LogManager.getUserLogs(id)) {
                 logList.add(log);
-            }
+            }*/
             //活动日志
-            JsonConfig config=new JsonConfig();
+            /*JsonConfig config=new JsonConfig();
             config.setExcludes(new String[]{"JSONObject"});
             JSONArray logArray = JSONArray.fromObject(logList,config);
-            object.put("logList",logArray);
+            object.put("logList",logArray);*/
+
             out.append(object.toString());
         }
         else if(("add").equals(entity)){
             String logType=request.getParameter("logType");
             String log=request.getParameter("log");
             if(logType!=null&&id!=null&&log!=null){
-                Managers.LogManager.addLog(Creator.getTime(),"记下："+Creator.getChineseBytes(log),logType,id);
+                Managers.LogManager.addLog(Creator.getTime(),"记下："+Creator.getChineseBytes(log),logType,Managers.UserManager.getUserById(id).getUserName());
             }
+        }else if (("login").equals(entity)){
+            String username = request.getParameter("username");
+            String passward = request.getParameter("passward");
+            User user=Managers.UserManager.getUserByName(username);
+            if(user.getPassword().equals(passward)){
+                JSONObject object=user.getJSONObject();
+                out.append(object.toString());
+            }else {
+
+            }
+
         }
         out.close();
     }
