@@ -42,24 +42,12 @@ public class UserJoinSociety extends Relation{
         return userId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
     public String getSocietyId() {
         return societyId;
     }
 
-    public void setSocietyId(String societyId) {
-        this.societyId = societyId;
-    }
-
     public String getJoinDate() {
         return joinDate;
-    }
-
-    public void setJoinDate(String date) {
-        this.joinDate = date;
     }
 
     public int getStatus() {
@@ -73,16 +61,6 @@ public class UserJoinSociety extends Relation{
     public String getManagerId() {
         return managerId;
     }
-
-    public void setManagerId(String managerId) {
-        this.managerId = managerId;
-    }
-
-    private User user;
-
-    private Society society;
-
-    private User manager;
 
     public User getUser() {
         return Managers.UserManager.getUserById(userId);

@@ -7,6 +7,9 @@ import java.util.List;
 
 /**
  * Created by Administrator on 2018/7/10.
+ *
+ * @author 杨晓宇
+ * @author 程乐
  */
 public interface LogDAO {
 

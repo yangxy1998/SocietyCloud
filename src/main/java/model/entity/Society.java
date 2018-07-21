@@ -69,72 +69,36 @@ public class Society extends Entity{
         return societyId;
     }
 
-    public void setSocietyId(String societyId) {
-        this.societyId = societyId;
-    }
-
     public String getSocietyName() {
         return societyName;
-    }
-
-    public void setSocietyName(String societyName) {
-        this.societyName = societyName;
     }
 
     public String getSchoolName() {
         return schoolName;
     }
 
-    public void setSchoolName(String schoolName) {
-        this.schoolName = schoolName;
-    }
-
     public String getMainType() {
         return mainType;
-    }
-
-    public void setMainType(String mainType) {
-        this.mainType = mainType;
     }
 
     public String getSubType() {
         return subType;
     }
 
-    public void setSubType(String subType) {
-        this.subType = subType;
-    }
-
     public String getFounder() {
         return founder;
-    }
-
-    public void setFounder(String founder) {
-        this.founder = founder;
     }
 
     public int getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getFoundDate() {
         return foundDate;
-    }
-
-    public void setFoundDate(String foundDate) {
-        this.foundDate = foundDate;
     }
 
     public List<UserJoinSociety> getJoinUsers() {

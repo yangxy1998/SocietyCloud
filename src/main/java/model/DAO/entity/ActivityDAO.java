@@ -2,11 +2,13 @@ package model.DAO.entity;
 
 import model.entity.Activity;
 import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
 
 /**
  * Created by Administrator on 2018/7/16.
+ *
+ * @author 杨晓宇
+ * @author 程乐
  */
 public interface ActivityDAO {
 

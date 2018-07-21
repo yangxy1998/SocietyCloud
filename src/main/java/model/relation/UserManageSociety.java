@@ -38,29 +38,13 @@ public class UserManageSociety extends Relation{
         return userId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
     public String getSocietyId() {
         return societyId;
-    }
-
-    public void setSocietyId(String societyId) {
-        this.societyId = societyId;
     }
 
     public int getPriority() {
         return priority;
     }
-
-    public void setPriority(int priority) {
-        this.priority = priority;
-    }
-
-    private User user;
-
-    private Society society;
 
     public User getUser() {
         return Managers.UserManager.getUserById(userId);

@@ -10,6 +10,10 @@ import util.Relation;
 
 /**
  * Created by Administrator on 2018/7/16.
+ * @author 林志宸
+ * @author 杨晓宇
+ * @author 黄健勇
+ * @author 万培林
  */
 public class SocietyOrganizeActivity extends Relation{
 
@@ -29,29 +33,13 @@ public class SocietyOrganizeActivity extends Relation{
         return societyId;
     }
 
-    public void setSocietyId(String societyId) {
-        this.societyId = societyId;
-    }
-
     public String getActivityId() {
         return activityId;
-    }
-
-    public void setActivityId(String activityId) {
-        this.activityId = activityId;
     }
 
     public int getStatus() {
         return status;
     }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    private Society society;
-
-    private Activity activity;
 
     public Society getSociety() {
         return Managers.SocietyManager.getSocietyById(societyId);
