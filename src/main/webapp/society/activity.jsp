@@ -69,6 +69,18 @@ ${alert}
         <h1><a href="<%=Pages.USER_MAIN_PAGE%>"><b>首页</b></a>
             &nbsp;&nbsp;&nbsp;<a href="<%=Pages.SOCIETY_MALL_PAGE%>"><b>社团广场</b></a>
             &nbsp;&nbsp;&nbsp;<a href="<%=Pages.ACTIVITY_CENTER_PAGE%>"><b>活动中心</b></a>
+            &nbsp;&nbsp;&nbsp;<a href="<%=Pages.SOCIETY_MAIN_PAGE%>"><b>社团首页</b></a>
+            &nbsp;&nbsp;&nbsp;<a href="<%=Pages.SOCIETY_COMMENT_PAGE%>"><b>社团评论</b></a>
+            &nbsp;&nbsp;&nbsp;<a href="<%=Pages.SOCIETY_ACTIVITY_PAGE%>"><b>社团活动</b></a>
+            <%
+                for (UserManageSociety ums:society.getManageUsers()) {
+                    if(ums.getUserId().equals(user.getUserId())){
+                        out.println("&nbsp;&nbsp;&nbsp;<a href=\""+Pages.SOCIETY_MANAGE_PAGE+"\"><b>管理社团</b></a>");
+                        out.println("&nbsp;&nbsp;&nbsp;<a href=\""+Pages.SOCIETY_LOG_PAGE+"\"><b>社团日志</b></a>");
+                        break;
+                    }
+                }
+            %>
         </h1>
 
         <nav id="nav">
@@ -98,7 +110,46 @@ ${alert}
     </header>
 </div>
 <!--end-header-->
-
+<div class="banner">
+    <div class="container">
+        <section class="slider">
+            <div class="flexslider">
+                <ul class="slides">
+                    <li>
+                        <div class="banner-top">
+                            <h2>-${society.societyName}-</h2>
+                            <h3>-${society.mainType}-${society.subType}-</h3>
+                            <div class="bnr-btn">
+                                <c:if test="${!joinStatus.equals(\"加入社团\")}">
+                                    <div class="hvr-shutter-out-horizontal">${joinStatus}</div>
+                                </c:if>
+                                <c:if test="${joinStatus.equals(\"加入社团\")}">
+                                    <a href="/join.Society" class="hvr-shutter-out-horizontal">${joinStatus}</a>
+                                </c:if>
+                            </div>
+                        </div>
+                    </li>
+                    <%--<li>--%>
+                    <%--<div class="banner-top">--%>
+                    <%--<h2>${society.societyName}</h2>--%>
+                    <%--<div class="bnr-btn">--%>
+                    <%--<a href="#" class="hvr-shutter-out-horizontal">更多</a>--%>
+                    <%--</div>--%>
+                    <%--</div>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                    <%--<div class="banner-top">--%>
+                    <%--<h2>${society.societyName}</h2>--%>
+                    <%--<div class="bnr-btn">--%>
+                    <%--<a href="#" class="hvr-shutter-out-horizontal">更多</a>--%>
+                    <%--</div>--%>
+                    <%--</div>--%>
+                    <%--</li>--%>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
 <!--FlexSlider-->
 <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 <script defer src="./js/jquery.flexslider.js"></script>
