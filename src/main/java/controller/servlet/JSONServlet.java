@@ -43,7 +43,6 @@ public class JSONServlet extends HttpServlet {
                 logList.add(log);
             }
             //用户加入的社团信息
-            /*List<Society> societyList=new ArrayList<>();*/
             JSONArray societyArray = new JSONArray();
             for(UserJoinSociety ujs:Managers.JoinSocietyManager.getSocietiesByUserId(id)){
                 if(ujs.getStatus()==1){
@@ -53,7 +52,6 @@ public class JSONServlet extends HttpServlet {
             }
             //用户参加的活动信息
             JSONArray activityArray = new JSONArray();
-            /*List<Activity> activityList=new ArrayList<>();*/
             for(UserJoinActivity uja:Managers.JoinActivityManager.getActivitiesByUserId(id)){
                 if(uja.getStatus()==1)activityArray.add(uja.getActivity().getJSONObject().toString());
 
@@ -62,9 +60,6 @@ public class JSONServlet extends HttpServlet {
             JsonConfig config=new JsonConfig();
             config.setExcludes(new String[]{"JSONObject"});
             JSONArray logArray = JSONArray.fromObject(logList,config);
-            /*JSONArray societyArray=JSONArray.fromObject(societyList,config);
-            JSONArray activityArray=JSONArray.fromObject(activityList,config);*/
-            /*String params = jsonArray.toString();*/
             object.put("logList",logArray);
             object.put("societyList",societyArray);
             object.put("activityList",activityArray);
@@ -80,16 +75,6 @@ public class JSONServlet extends HttpServlet {
             Activity activity=Managers.ActivityManager.getActivityById(id);
             JSONObject object=new JSONObject();
             object.put("activity",activity.getJSONObject());
-            /*List<Log> logList = new ArrayList<Log>();
-            for (Log log:Managers.LogManager.getUserLogs(id)) {
-                logList.add(log);
-            }*/
-            //活动日志
-            /*JsonConfig config=new JsonConfig();
-            config.setExcludes(new String[]{"JSONObject"});
-            JSONArray logArray = JSONArray.fromObject(logList,config);
-            object.put("logList",logArray);*/
-
             out.append(object.toString());
         }
         else if(("add").equals(entity)){
@@ -105,10 +90,7 @@ public class JSONServlet extends HttpServlet {
             if(user.getPassword().equals(passward)){
                 JSONObject object=user.getJSONObject();
                 out.append(object.toString());
-            }else {
-
             }
-
         }
         out.close();
     }

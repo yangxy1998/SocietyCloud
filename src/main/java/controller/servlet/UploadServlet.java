@@ -47,35 +47,36 @@ public class UploadServlet extends HttpServlet {
                           HttpServletResponse response) throws ServletException, IOException {
 
         String type=request.getParameter("type");
+        // 检测是否为多媒体上传
+        if (!ServletFileUpload.isMultipartContent(request)) {
+            // 如果不是则停止
+            PrintWriter writer = response.getWriter();
+            writer.println("Error: 表单必须包含 enctype=multipart/form-data");
+            writer.flush();
+            return;
+        }
+
+        // 配置上传参数
+        DiskFileItemFactory factory = new DiskFileItemFactory();
+        // 设置内存临界值 - 超过后将产生临时文件并存储于临时目录中
+        factory.setSizeThreshold(MEMORY_THRESHOLD);
+        // 设置临时存储目录
+        factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
+
+        ServletFileUpload upload = new ServletFileUpload(factory);
+
+        // 设置最大文件上传值
+        upload.setFileSizeMax(MAX_FILE_SIZE);
+
+        // 设置最大请求值 (包含文件和表单数据)
+        upload.setSizeMax(MAX_REQUEST_SIZE);
+
+        // 中文处理
+        upload.setHeaderEncoding("UTF-8");
+
+        HttpSession session = request.getSession();
+
         if(("activity").equals(type)){
-            // 检测是否为多媒体上传
-            if (!ServletFileUpload.isMultipartContent(request)) {
-                // 如果不是则停止
-                PrintWriter writer = response.getWriter();
-                writer.println("Error: 表单必须包含 enctype=multipart/form-data");
-                writer.flush();
-                return;
-            }
-
-            // 配置上传参数
-            DiskFileItemFactory factory = new DiskFileItemFactory();
-            // 设置内存临界值 - 超过后将产生临时文件并存储于临时目录中
-            factory.setSizeThreshold(MEMORY_THRESHOLD);
-            // 设置临时存储目录
-            factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
-
-            ServletFileUpload upload = new ServletFileUpload(factory);
-
-            // 设置最大文件上传值
-            upload.setFileSizeMax(MAX_FILE_SIZE);
-
-            // 设置最大请求值 (包含文件和表单数据)
-            upload.setSizeMax(MAX_REQUEST_SIZE);
-
-            // 中文处理
-            upload.setHeaderEncoding("UTF-8");
-
-            HttpSession session = request.getSession();
             Activity activity = (Activity) session.getAttribute("activity");
             String activityId=activity.getActivityId();
             System.out.println("上传照片的activity变量"+activityId);
@@ -135,34 +136,7 @@ public class UploadServlet extends HttpServlet {
             response.sendRedirect(Pages.ACTIVITY_MANAGE_PAGE);
         }
         else {
-            // 检测是否为多媒体上传
-            if (!ServletFileUpload.isMultipartContent(request)) {
-                // 如果不是则停止
-                PrintWriter writer = response.getWriter();
-                writer.println("Error: 表单必须包含 enctype=multipart/form-data");
-                writer.flush();
-                return;
-            }
 
-            // 配置上传参数
-            DiskFileItemFactory factory = new DiskFileItemFactory();
-            // 设置内存临界值 - 超过后将产生临时文件并存储于临时目录中
-            factory.setSizeThreshold(MEMORY_THRESHOLD);
-            // 设置临时存储目录
-            factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
-
-            ServletFileUpload upload = new ServletFileUpload(factory);
-
-            // 设置最大文件上传值
-            upload.setFileSizeMax(MAX_FILE_SIZE);
-
-            // 设置最大请求值 (包含文件和表单数据)
-            upload.setSizeMax(MAX_REQUEST_SIZE);
-
-            // 中文处理
-            upload.setHeaderEncoding("UTF-8");
-
-            HttpSession session = request.getSession();
             Society society= (Society) session.getAttribute("society");
             String societyId=society.getSocietyId();
             System.out.println("上传照片的society变量"+societyId);

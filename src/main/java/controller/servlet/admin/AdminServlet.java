@@ -7,7 +7,6 @@ import model.entity.User;
 import util.Log;
 import util.function.Pages;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -47,7 +46,6 @@ public class AdminServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        RequestDispatcher dispatcher;
         String adminName=request.getParameter("adminname");
         String adminPassword=request.getParameter("adminpassword");
         if(adminName.equals("admin")&& adminPassword.equals("admin")){

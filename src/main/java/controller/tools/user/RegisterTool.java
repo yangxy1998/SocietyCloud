@@ -30,5 +30,4 @@ public class RegisterTool {
         return uuid;
     }
 
-    //TODO:更多接口请在这里定义
 }
