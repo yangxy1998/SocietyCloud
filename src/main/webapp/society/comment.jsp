@@ -186,12 +186,12 @@ ${alert}
                     <c:if test="${comment.visible==1}">
                         <br/>
                         <p>
-                            <font color="#ff4500" size="5">TOP<br/>${comment.user.nickName}
+                            <font color="#db7093" size="5">TOP<br/>${comment.user.nickName}
                             <br/>于${comment.commentDate}评论：</font></p>
                         <%request.setAttribute("creator",new Creator());%>
                         <div style="width: 1000px;border: 2px solid black;border-radius:10px;
                         background-color: rgba(${creator.createRandomNumber(100)},${creator.createRandomNumber(100)}
-                                ,${creator.createRandomNumber(100)},0.23)" >
+                                ,${creator.createRandomNumber(100)},0.12)" >
                             <p><font color="black" size="5">${comment.comment}</font></p>
                             <br>
                         </div>
@@ -218,7 +218,7 @@ ${alert}
                         于${comment.commentDate}评论：</font></p>
                     <div style="width: 1000px;border: 2px solid black;border-radius:10px;
                             background-color: rgba(${creator.createRandomNumber(100)},${creator.createRandomNumber(100)}
-                            ,${creator.createRandomNumber(100)},0.23)" >
+                            ,${creator.createRandomNumber(100)},0.12)" >
                         <p><font color="black">${comment.comment}</font></p>
                         <br>
                     </div>
