@@ -1,4 +1,5 @@
 /* pages/showlogs/showlogs.wxss */
+/*//@作者 程乐*/
 .log-show{
   padding: 5px;
   margin: 5px;

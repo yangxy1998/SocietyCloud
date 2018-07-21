@@ -2,7 +2,6 @@
   "pages": [
     "pages/login/login",
     "pages/showlogs/showlogs",
-    "pages/index/index",
     "pages/logs/logs",
     "pages/showuser/showuser",
     "pages/activity/activity",

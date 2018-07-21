@@ -1,4 +1,6 @@
 // pages/activity/activity.js
+
+//@作者 程乐
 Page({
 
   /**
