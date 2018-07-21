@@ -1,0 +1,46 @@
+<!--pages/showuser/showuser.wxml-->
+<view class='mainContainer'>
+  <view class='userinfo frame_a'>
+  <label style='display:flex'>
+    <text>{{userdetail.realName}}</text>
+    <text>{{userdetail.academicNum}}</text>
+  </label>
+  <label style='display:flex'>
+    <text>{{userdetail.nickName}}</text>
+    <text>{{userdetail.idCard}}</text>
+  </label>
+    <text>{{userdetail.description}}</text>
+    <text>{{userdetail.userName}}</text>
+    <text>{{userdetail.userId}}</text>
+  </view>
+
+  <view class='logs frame_a'>
+    <navigator url='../showlogs/showlogs?id={{userdetail.userId}}'>查看日志</navigator>
+  </view>
+  <view class='activityinfo frame_a'>
+    <block wx:for-items='{{activityList}}' wx:for-item="item" wx:key='{{item.activityId}}'>
+      <view class='activityBlock'>
+        <text>{{item.activityName}}</text>
+        <label style='display:flex'>
+          <text>开始时间：{{item.beginTime}}</text>
+        </label>
+        <label style='display:flex'>
+          <text>结束时间：{{item.endTime}}</text>
+        </label>
+        <navigator class='link' url='../activity/activity?activityId={{item.activityId}}&userid={{userdetail.userId}}'>详情</navigator>
+      </view>
+    </block>
+  </view>
+
+  <view class='societyinfo frame_a'>
+    <block wx:for-items="{{societyList}}" wx:for-item='item' wx:key='{{item.societyId}}'>
+      <view class='societyBlock'>
+        <text>社团名称：{{item.societyName}}</text>
+        <label style='display:flex'>
+          <text>类型：{{item.mainType}}</text>
+        </label>
+        <navigator class='link' url='../society/society?societyId={{item.societyId}}&userid={{userdetail.userId}}'>详情</navigator>
+      </view> 
+    </block>
+  </view>
+</view>

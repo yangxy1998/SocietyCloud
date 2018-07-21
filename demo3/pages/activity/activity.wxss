@@ -1,0 +1,7 @@
+/* pages/activity/activity.wxss */
+.frame_a{
+  background: #efefef;
+  opacity: 0.8;
+  padding: 5px;
+  margin: 5px;
+}

@@ -1,0 +1,20 @@
+<!--pages/login/login.wxml-->
+<view class='maincontainer'>
+  <view class='loginwin frame_a'>
+    <form bindsubmit='loginCheck'>
+    用户名：
+    <view class='input'>
+      <input  name="username" placeholder='输入用户名'/>
+    </view>
+      
+    密码：
+    <view class='input'>
+      <input  name='passward' password='true'/>
+    </view>
+    <view class='input'>
+      <button form-type='submit'>sub</button>
+    </view>
+      
+    </form>
+  </view>
+</view>

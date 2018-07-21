@@ -1,0 +1,12 @@
+<!--pages/society/society.wxml-->
+<view class='maincontianer'>
+  <view class='frame_a'>
+    <text style='display:flex'>{{society.societyName}}</text>
+    <text style='display:flex'>创始人：{{society.founder}}</text>
+    <text style='display:flex'>创建时间：{{society.foundDate}}</text>
+    <text style='display:flex'>详情：{{society.description}}</text>
+    <text style='display:flex'>社团类型：{{society.subType}}</text>
+    <text style='display:flex'>{{society.mainType}}</text>
+    <text style='display:flex'>学校名称{{society.schoolName}}</text>
+  </view>
+</view>

@@ -1,0 +1,8 @@
+/* pages/showlogs/showlogs.wxss */
+.log-show{
+  padding: 5px;
+  margin: 5px;
+  background: #eeeeee;
+
+
+}

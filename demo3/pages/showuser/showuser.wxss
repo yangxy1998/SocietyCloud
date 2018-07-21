@@ -1,0 +1,24 @@
+/* pages/showuser/showuser.wxss */
+.activityBlock{
+  
+  border-width: 1px;
+  border-style: solid;
+  border-color: #efefef;
+  background: #efefef;
+  margin: 5px;
+  padding: 5px;
+}
+.societyBlock{
+  
+  border-width: 1px;
+  border-style: solid;
+  border-color: #efefef;
+  background: #efefef;
+  margin: 5px;
+  padding: 5px;
+}
+.logs{
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+}

@@ -1,0 +1,39 @@
+<!--pages/showlogs/showlogs.wxml-->
+<view class='maincontainer'>
+  <view class='userdetail frame_a'>
+  <label style='display:flex'>
+    <text>{{loglist.realName}}</text>
+    <text>{{loglist.academicNum}}</text>
+  </label>
+  <label style='display:flex'>
+    <text>{{loglist.nickName}}</text>
+    <text>{{loglist.idCard}}</text>
+  </label>
+    <text>{{loglist.description}}</text>
+    <text>{{loglist.userName}}</text>
+    <text>{{loglist.userId}}</text>
+  </view>
+
+  <view class='add frame_a'>
+    <form bindsubmit='subForm'>
+      <textarea name='logcontent' placeholder='输入日志'></textarea>
+      <button form-type='submit'>sub</button>
+    </form>
+  </view>
+
+  <view class='logdetail frame_a'>
+    <block wx:for-items='{{loglist}}' wx:for-item="item" wx:key='{{item.time}}'>
+    <view class='log-show'>
+      <label style='display:flex'>
+        <text class='element'>{{item.log}}</text>
+      </label>
+    
+      <text class='element'>{{item.time}}</text>
+      <label style='display:flex'>
+        <text class='element'>{{item.attribute}}</text>
+      <text class='element'>{{item.type}}</text>
+      </label> 
+    </view>
+    </block>
+  </view>
+</view>

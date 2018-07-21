@@ -1,0 +1,17 @@
+<!--pages/activity/activity.wxml-->
+<view class='mainContainer'>
+  <view class='frame_a'>  
+    <text style='display:flex'>{{activity.activityName}}</text>
+    <text style='display:flex'>组织者：{{activity.organizer}}</text>
+    <text style='display:flex'>相关限制：{{activity.limit}}</text>
+    <text style='display:flex'>详情：{{activity.description}}</text>
+    <text style='display:flex'>开始时间：{{activity.beginTime}}</text>
+    <text style='display:flex'>结束时间：{{activity.endTime}}</text>
+    <text style='display:flex'>活动类型：{{activity.activityType}}</text>
+    <text style='display:flex'>活动地点：{{activity.address}}</text>
+  </view>
+
+  <view>
+    <navigator url='../showuser/showuser?id={{userid}}'></navigator>
+  </view>
+</view>
