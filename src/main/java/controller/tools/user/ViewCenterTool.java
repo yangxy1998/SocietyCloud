@@ -13,6 +13,7 @@ import java.util.concurrent.Executors;
 
 /**
  * Created by Administrator on 2018/7/17.
+ * @author 杨晓宇
  */
 public class ViewCenterTool {
 

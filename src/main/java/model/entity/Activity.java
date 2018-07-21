@@ -13,6 +13,10 @@ import java.util.List;
 
 /**
  * Created by Administrator on 2018/7/12.
+ * @author 林志宸
+ * @author 杨晓宇
+ * @author 黄健勇
+ * @author 万培林
  */
 public class Activity extends Entity{
 
@@ -57,72 +61,36 @@ public class Activity extends Entity{
         return activityId;
     }
 
-    public void setActivityId(String activityId) {
-        this.activityId = activityId;
-    }
-
     public String getActivityName() {
         return activityName;
-    }
-
-    public void setActivityName(String activityName) {
-        this.activityName = activityName;
     }
 
     public String getActivityType() {
         return activityType;
     }
 
-    public void setActivityType(String activityType) {
-        this.activityType = activityType;
-    }
-
     public String getOrganizer() {
         return organizer;
-    }
-
-    public void setOrganizer(String organizer) {
-        this.organizer = organizer;
     }
 
     public String getBeginTime() {
         return beginTime;
     }
 
-    public void setBeginTime(String beginTime) {
-        this.beginTime = beginTime;
-    }
-
     public String getAddress() {
         return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
-    }
-
     public String getLimit() {
         return limit;
     }
 
-    public void setLimit(String limit) {
-        this.limit = limit;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public List<UserJoinActivity> getJoinUsers() {
@@ -132,13 +100,6 @@ public class Activity extends Entity{
     public List<SocietyOrganizeActivity> getOrganizeSocieties() {
         return organizeSocieties;
     }
-
-    private boolean isComming;
-
-    private boolean isRunning;
-
-    private boolean isOver;
-
 
     public boolean getIsRunning(){
         //已经开始

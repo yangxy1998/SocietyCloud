@@ -10,6 +10,10 @@ import util.Relation;
 
 /**
  * Created by Administrator on 2018/7/16.
+ * @author 林志宸
+ * @author 杨晓宇
+ * @author 黄健勇
+ * @author 万培林
  */
 public class UserJoinActivity extends Relation{
 
@@ -23,29 +27,13 @@ public class UserJoinActivity extends Relation{
         return userId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
     public String getActivityId() {
         return activityId;
-    }
-
-    public void setActivityId(String activityId) {
-        this.activityId = activityId;
     }
 
     public int getStatus() {
         return status;
     }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    private User user;
-
-    private Activity activity;
 
     public User getUser() {
         return Managers.UserManager.getUserById(userId);

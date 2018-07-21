@@ -11,6 +11,7 @@ import java.util.List;
 
 /**
  * Created by Administrator on 2018/7/13.
+ * @author 杨晓宇
  */
 public class ViewSocietyTool {
 

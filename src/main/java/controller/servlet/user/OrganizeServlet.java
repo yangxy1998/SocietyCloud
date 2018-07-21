@@ -21,6 +21,8 @@ import java.util.List;
 
 /**
  * Created by Administrator on 2018/7/17.
+ * @author 杨晓宇
+ * @author 林志宸
  */
 public class OrganizeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

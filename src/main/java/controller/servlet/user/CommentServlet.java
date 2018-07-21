@@ -16,6 +16,8 @@ import java.io.IOException;
 
 /**
  * Created by Administrator on 2018/7/13.
+ * @author 杨晓宇
+ * @author 林志宸
  */
 public class CommentServlet extends HttpServlet {
 

@@ -41,45 +41,21 @@ public class UserCommentSociety extends Relation{
         return userId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
     public String getSocietyId() {
         return societyId;
-    }
-
-    public void setSocietyId(String societyId) {
-        this.societyId = societyId;
     }
 
     public String getCommentDate() {
         return commentDate;
     }
 
-    public void setCommentDate(String commentDate) {
-        this.commentDate = commentDate;
-    }
-
     public String getComment() {
         return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
     }
 
     public int getVisible() {
         return visible;
     }
-
-    public void setVisible(int visible) {
-        this.visible = visible;
-    }
-
-    private User user;
-
-    private Society society;
 
     public User getUser() {
         return Managers.UserManager.getUserById(userId);

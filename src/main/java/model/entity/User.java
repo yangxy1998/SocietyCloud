@@ -74,88 +74,44 @@ public class User extends Entity{
         return userId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
     public String getUserName() {
         return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getPhoneNum() {
         return phoneNum;
-    }
-
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
     }
 
     public String getNickName() {
         return nickName;
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
-
     public String getRealName() {
         return realName;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName;
     }
 
     public int getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
     public String getIdCard() {
         return idCard;
-    }
-
-    public void setIdCard(String idCard) {
-        this.idCard = idCard;
     }
 
     public String getAcademicNum() {
         return academicNum;
     }
 
-    public void setAcademicNum(String academicNum) {
-        this.academicNum = academicNum;
-    }
-
     public String getSchoolName() {
         return schoolName;
     }
 
-    public void setSchoolName(String schoolName) {
-        this.schoolName = schoolName;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public List<UserJoinSociety> getJoinSocieties() {

@@ -6,6 +6,7 @@ import model.relation.UserManageSociety;
 
 /**
  * Created by Administrator on 2018/7/13.
+ * @author 杨晓宇
  */
 public class ManageSocietyTool {
 
