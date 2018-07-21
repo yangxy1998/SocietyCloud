@@ -73,7 +73,7 @@
 
     <!-- One -->
     <section id="one" class="wrapper style1 special">
-        <div class="inner">
+        <div class="inner" >
             <header class="major">
                 <h2>社团云介绍<br />
                     一个让你安心的管理平台</h2>
@@ -89,21 +89,21 @@
     <!-- Two -->
     <section id="two" class="wrapper alt style2">
         <section class="spotlight">
-            <div  style="background-color: #21b2a6;" class="image"><img src="../index/images/3.png" alt="" /></div><div class="content">
+            <div class="image"><img src="../index/images/3.png" alt="" /></div><div style="background-color: #21b2a6;" class="content">
             <h2>全面省心管理，校园身边事不再错过</h2>
             <p>可视化全面查看社团运作情况、活动举办情况、同学参与情况；
                 校园身边事一手掌握，从此活动、信息不再错过。</p>
         </div>
         </section>
         <section class="spotlight">
-            <div style="background-color: #4296c5;" class="image"><img src="../index/images/4.png" alt="" /></div><div class="content">
+            <div class="image"><img src="../index/images/4.png" alt="" /></div><div style="background-color: #4296c5;" class="content">
             <h2>社团资讯助飞，校外活动精彩纷呈</h2>
             <p>丰富的社团资讯，全国社团情况、活动趋势一看便知；
                 精彩的校外活动助力个人充分利用课余时间，实现全面成长！</p>
         </div>
         </section>
         <section class="spotlight">
-            <div style="background-color: #f070e7b3;" class="image"><img src="../index/images/2.png" alt="" /></div><div class="content">
+            <div class="image"><img src="../index/images/2.png" alt="" /></div><div style="background-color: #d08a8cb3;"     class="content">
             <h2>社团交流，关系网多点开花</h2>
             <p>线上线下社团活动，助你认识给多的人；
                 同校、同地、同一个世界，    天下谁人不识君！</p>
