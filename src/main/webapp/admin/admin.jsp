@@ -11,7 +11,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>社团云管理员工具</title>
+    <title>活动+管理员工具</title>
     <link rel="stylesheet" href="../admin-style.css" />
     <style type="text/css">
       table

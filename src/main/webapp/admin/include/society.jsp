@@ -12,7 +12,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>社团管理</title>
+    <title>活动组织管理</title>
 
 </head>
 <body>
@@ -21,15 +21,15 @@
     <form method="post" action="../admin.Society">
         <table border="1">
             <tr>
-                <th>社团ID</th>
-                <th>社团名</th>
+                <th>活动组织ID</th>
+                <th>活动组织名</th>
                 <th>学校名</th>
                 <th>主分类</th>
                 <th>次分类</th>
                 <th>成立时间</th>
                 <th>创始人</th>
-                <th>社团状态</th>
-                <th>社团描述</th>
+                <th>活动组织状态</th>
+                <th>活动组织描述</th>
                 <th><input type="submit" name="create->newSociety" style="width:104px;height:50px;border:none;" value="新增"></th>
             </tr>
             <jsp:useBean id="update" type="java.lang.String" scope="session"/>

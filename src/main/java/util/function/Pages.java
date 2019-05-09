@@ -23,6 +23,9 @@ public final class Pages {
     //用户注册页
     public static final String USER_REGISTER_PAGE="../login/register.jsp";
 
+    //用户查看社团页
+    public static final String USER_JOINED_SOCIETY_PAGE="../index/activity.jsp";
+
     //用户管理社团页
     public static final String USER_MANAGE_SOCIETY_PAGE="../index/manage.jsp";
 

@@ -13,7 +13,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>社团云平台</title>
+    <title>活动+平台</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../index/assets/css/main.css" />
@@ -47,7 +47,7 @@
                                 <li><a href="<%=Pages.USER_REGISTER_PAGE%>">注册</a></li>
                             </c:if>
                             <c:if test="${user.userName!=null}">
-                                <li><a href="<%=Pages.USER_MANAGE_SOCIETY_PAGE%>">我的社团</a></li>
+                                <li><a href="<%=Pages.USER_MANAGE_SOCIETY_PAGE%>">我的组织</a></li>
                                 <li><a href="<%=Pages.USER_ACTIVITY_PAGE%>">我的活动</a> </li>
                                 <li><a href="<%=Pages.USER_PERSONAL_CENTER_PAGE%>">个人中心</a></li>
                                 <li><a href="../login">退出登录</a> </li>
@@ -62,8 +62,9 @@
     <!-- Banner -->
     <section id="banner">
         <div class="inner">
-            <h2>社团云</h2>
-            <p>欢迎您来到社团云<br />
+            <h2>活动+</h2>
+            <p>欢迎您来到活动+<br />
+            <p>Welcome to Activity Plus<br />
                 <c:if test="${user.userName!=null}">
                 用户名：${user.userName}<br />
                 昵称：${user.nickName}
@@ -76,8 +77,8 @@
     <section id="one" class="wrapper style1 special">
         <div class="inner" >
             <header class="major">
-                <h2>社团云介绍<br />
-                    一个让你安心的管理平台</h2>
+                <h2>活动+介绍<br />
+                    一个让你安心的活动管理平台</h2>
             </header>
             <ul class="icons major">
                 <li><span class="icon fa-diamond major style1"><span class="label">Lorem</span></span></li>
@@ -92,20 +93,20 @@
         <section class="spotlight">
             <div class="image"><img src="../index/images/3.png" alt="" /></div><div style="background-color: #21b2a6;" class="content">
             <h2>全面省心管理，校园身边事不再错过</h2>
-            <p>可视化全面查看社团运作情况、活动举办情况、同学参与情况；
+            <p>可视化全面查看社团组织运作情况、活动举办情况、同学参与情况；
                 校园身边事一手掌握，从此活动、信息不再错过。</p>
         </div>
         </section>
         <section class="spotlight">
             <div class="image"><img src="../index/images/4.png" alt="" /></div><div style="background-color: #4296c5;" class="content">
-            <h2>社团资讯助飞，校外活动精彩纷呈</h2>
+            <h2>社团组织资讯助飞，校外活动精彩纷呈</h2>
             <p>丰富的社团资讯，全国社团情况、活动趋势一看便知；
                 精彩的校外活动助力个人充分利用课余时间，实现全面成长！</p>
         </div>
         </section>
         <section class="spotlight">
             <div class="image"><img src="../index/images/2.png" alt="" /></div><div style="background-color: #d08a8cb3;"     class="content">
-            <h2>社团交流，关系网多点开花</h2>
+            <h2>社团组织交流，关系网多点开花</h2>
             <p>线上线下社团活动，助你认识给多的人；
                 同校、同地、同一个世界，    天下谁人不识君！</p>
         </div>
@@ -120,19 +121,19 @@
             </header>
             <ul class="features">
                 <li class="icon fa-paper-plane-o">
-                    <h3>新建社团</h3>
-                    <p>新建一个社团,开启一个全新的世界。</p>
+                    <h3>新建组织</h3>
+                    <p>新建一个社团组织,开启一个全新的世界。</p>
                 </li>
                 <li class="icon fa-laptop">
-                    <h3>管理社团</h3>
+                    <h3>管理组织</h3>
                     <p></p>
                 </li>
                 <li class="icon fa-code">
-                    <h3>查看社团最新消息</h3>
-                    <p>获得社团最新活动信息</p>
+                    <h3>查看组织最新消息</h3>
+                    <p>获得组织最新活动信息</p>
                 </li>
                 <li class="icon fa-headphones">
-                    <h3>社团</h3>
+                    <h3>组织</h3>
 
                 </li>
                 <li class="icon fa-heart-o">

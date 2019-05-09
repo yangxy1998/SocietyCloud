@@ -12,7 +12,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>社团云平台</title>
+    <title>活动+平台</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../index/assets/css/main.css" />
@@ -43,7 +43,7 @@
                             <li><a href="<%=Pages.USER_REGISTER_PAGE%>">注册</a></li>
                         </c:if>
                         <c:if test="${user.userName!=null}">
-                            <li><a href="<%=Pages.USER_MANAGE_SOCIETY_PAGE%>">我的社团</a></li>
+                            <li><a href="<%=Pages.USER_MANAGE_SOCIETY_PAGE%>">我的组织</a></li>
                             <li><a href="<%=Pages.USER_ACTIVITY_PAGE%>">我的活动</a> </li>
                             <li><a href="<%=Pages.USER_PERSONAL_CENTER_PAGE%>">个人中心</a></li>
                             <li><a href="../login">退出登录</a> </li>
